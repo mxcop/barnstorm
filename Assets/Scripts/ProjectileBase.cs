@@ -6,6 +6,9 @@ public class ProjectileBase : MonoBehaviour
 {
     public Food food;
 
+    public float speed;
+    private Rigidbody2D rb;
+
     // Start is called before the first frame update
     void Start()
     {
