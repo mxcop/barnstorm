@@ -5,16 +5,12 @@ using UnityEngine;
 public class ProjectileBase : MonoBehaviour
 {
     public Food food;
+    private Rigidbody2D rb;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    void Start(){
+        rb = GetComponent<Rigidbody2D>();
+        rb.AddForce(transform.up.normalized * food.speed);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    private void OnCollisionEnter2D(Collision2D collision) => food.Collision(collision);
 }

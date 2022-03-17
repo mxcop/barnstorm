@@ -2,17 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Carrot : MonoBehaviour
+public class Carrot : Food
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public override void Collision(Collision2D collider) { 
+        Debug.Log(collider);
     }
 }
