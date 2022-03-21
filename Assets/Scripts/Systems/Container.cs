@@ -5,11 +5,11 @@ using Systems.Inventory;
 /// Keeps track of the data of a container.
 /// </summary>
 /// <typeparam name="T">The type to be stored inside the container.</typeparam>
-public class Inventory<T> where T : Item
+public class Container<T> where T : Item
 {
     public ContainedItem<T>[] data;
 
-    public Inventory(int slots = 3) 
+    public Container(int slots = 3) 
     {
         // Initlialize the data array.
         data = new ContainedItem<T>[slots];
