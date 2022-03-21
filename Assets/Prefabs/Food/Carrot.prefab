@@ -46,3 +46,4 @@ MonoBehaviour:
   nutrition: 3
   speed: 150
   hasSplash: 0
+  projectile: {fileID: 5985629657691347617, guid: 77b39fdb9fa82034293e94544bbe8ee6, type: 3}
