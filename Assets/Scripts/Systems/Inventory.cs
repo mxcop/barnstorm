@@ -21,19 +21,6 @@ public class Inventory : MonoBehaviour
         // Create the GUI of the inventory.
         gui = Instantiate(GUI, GameObject.FindWithTag("MainCanvas").transform).GetComponent<InventoryGUI>();
         gui.Initialize(size, ref container);
-
-        StartCoroutine(nameof(Test));
-    }
-
-    IEnumerator Test()
-    {
-        yield return new WaitForSeconds(1.0f);
-
-        Open();
-
-        yield return new WaitForSeconds(2.0f);
-
-        Close();
     }
 
     /// <summary>
@@ -41,10 +28,11 @@ public class Inventory : MonoBehaviour
     /// </summary>
     public void Open()
     {
+        gui.transform.position = Camera.main.WorldToScreenPoint(transform.position + (Vector3)offset);
         CanvasGroup canvas = gui.GetComponent<CanvasGroup>();
         gui.gameObject.SetActive(true);
         LeanTween.cancel(gui.gameObject);
-        LeanTween.value(gui.gameObject, a => canvas.alpha = a, canvas.alpha, 1.0f, 0.1f);
+        LeanTween.value(gui.gameObject, a => canvas.alpha = a, canvas.alpha, 1.0f, 0.3f);
     }
 
     /// <summary>
