@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Corn : Food
 {
-    public override void Collision(Collision2D collider)
+    public override void Collision(Collider2D collider)
     {
-        Debug.Log(collider);
+        base.Collision(collider);
     }
 }

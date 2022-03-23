@@ -36,7 +36,7 @@ public class TurretController : MonoBehaviour
         rotationState = round == 16 ? 0 : round;
         turretsr.sprite = sprite[rotationState];
 
-        shootAngle = AngleBetweenPoints(shootPoints[rotationState].position, targetEmemy.transform.position);
+        shootAngle = AngleBetweenPoints(shootPoints[rotationState].position, targetEmemy.transform.position + (Vector3)(Vector2.up * 0.25f));
 
         if (!shooting && targetEmemy != null)
             StartCoroutine(Shoot());
