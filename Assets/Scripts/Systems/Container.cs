@@ -36,6 +36,24 @@ public class Container<T> where T : Item
     }
 
     /// <summary>
+    /// Finds first matching item in the inventory.
+    /// </summary>
+    /// <param name="item">The item to match.</param>
+    /// <param name="slot">The index of the matched slot.</param>
+    /// <returns>Whether there is a matching slot.</returns>
+    private bool FirstMatch(T item, out int slot)
+    {
+        for (int i = 0; i < data.Length; i++)
+        {
+            if (data[i].item.GetType() == item.GetType())
+            {
+                slot = i; return true;
+            }
+        }
+        slot = -1; return false;
+    }
+
+    /// <summary>
     /// Check if a slot is empty / open.
     /// </summary>
     /// <param name="slot">The index of the slot to check.</param>
@@ -54,9 +72,12 @@ public class Container<T> where T : Item
     /// <returns>If the inventory had space to push the item.</returns>
     public bool PushItem(ContainedItem<T> item)
     {
-        if (!(item is null) && FirstOpen(out int slot))
+        if (!(item is null))
         {
-            return InsertItem(item, slot);
+            if (FirstMatch(item.item, out int match))
+                return InsertItem(item, match);
+            if (FirstOpen(out int slot))
+                return InsertItem(item, slot);
         }
         return false;
     }
@@ -69,9 +90,12 @@ public class Container<T> where T : Item
     /// <returns>If the inventory had space to push the item.</returns>
     public bool PushItem(T item, int amount)
     {
-        if (!(item is null) && FirstOpen(out int slot))
+        if (!(item is null))
         {
-            return InsertItem(new ContainedItem<T>(item, amount), slot);
+            if (FirstMatch(item, out int match))
+                return InsertItem(item, amount, match);
+            if (FirstOpen(out int slot))
+                return InsertItem(item, amount, slot);
         }
         return false;
     }
@@ -84,11 +108,20 @@ public class Container<T> where T : Item
     /// <returns>If the slot was empty.</returns>
     public bool InsertItem(ContainedItem<T> item, int slot)
     {
-        if (!(item is null) && Exists(slot) && IsOpen(slot))
+        if (!(item is null) && Exists(slot))
         {
-            data[slot] = item.Clone();
-            OnUpdate.Invoke(slot, item);
-            return true;
+            if (IsOpen(slot))
+            {
+                data[slot] = item.Clone();
+                OnUpdate.Invoke(slot, item);
+                return true;
+            }
+            else if (data[slot].item.GetType() == item.GetType())
+            {
+                data[slot].num += item.num;
+                OnUpdate.Invoke(slot, data[slot]);
+                return true;
+            }
         }
         return false;
     }
@@ -102,11 +135,20 @@ public class Container<T> where T : Item
     /// <returns>If the slot was empty.</returns>
     public bool InsertItem(T item, int amount, int slot)
     {
-        if (!(item is null) && Exists(slot) && IsOpen(slot))
+        if (!(item is null) && Exists(slot))
         {
-            data[slot] = new ContainedItem<T>(item, amount);
-            OnUpdate.Invoke(slot, data[slot]);
-            return true;
+            if (IsOpen(slot))
+            {
+                data[slot] = new ContainedItem<T>(item, amount);
+                OnUpdate.Invoke(slot, data[slot]);
+                return true;
+            }
+            else if (data[slot].item.GetType() == item.GetType())
+            {
+                data[slot].num += amount;
+                OnUpdate.Invoke(slot, data[slot]);
+                return true;
+            }
         }
         return false;
     }
