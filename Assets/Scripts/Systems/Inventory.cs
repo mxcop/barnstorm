@@ -10,7 +10,7 @@ public class Inventory : MonoBehaviour
     [Header("Config")]
     [SerializeField] private int size = 3;
 
-    public Item[] testItems;
+    /// public Item[] testItems;
 
     [HideInInspector] public Container<Item> container;
     private InventoryGUI gui;
