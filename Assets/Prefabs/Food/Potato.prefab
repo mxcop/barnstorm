@@ -44,5 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nutrition: 2
-  speed: 120
+  speed: 200
   hasSplash: 0
+  projectile: {fileID: 7069016472490964998, guid: 6a778cf308bf6ed438a162a2539f8b6e, type: 3}

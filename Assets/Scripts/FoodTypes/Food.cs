@@ -7,5 +7,6 @@ public class Food : Item
     public float nutrition;
     public float speed;
     public bool hasSplash;
+    public GameObject projectile;
     public virtual void Collision(Collision2D collider){}
 }
