@@ -24,9 +24,10 @@ public class Inventory : MonoBehaviour
         gui = Instantiate(GUI, GameObject.FindWithTag("MainCanvas").transform).GetComponent<InventoryGUI>();
         gui.Initialize(size, ref container);
 
-        StartCoroutine(nameof(InvTest));
+        /// StartCoroutine(nameof(InvTest));
     }
 
+#if UNITY_EDITOR
     IEnumerator InvTest()
     {
         yield return new WaitForSeconds(1);
@@ -58,4 +59,6 @@ public class Inventory : MonoBehaviour
             else container.InsertItem(testItems[Random.Range(0, testItems.Length)], 64, slot);
         }
     }
+
+#endif
 }
