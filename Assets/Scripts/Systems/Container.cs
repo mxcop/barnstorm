@@ -9,6 +9,9 @@ public class Container<T> where T : Item
 {
     public ContainedItem<T>[] data;
 
+    public delegate void ContainerUpdateEventHandler(int slot, ContainedItem<T> item);
+    public event ContainerUpdateEventHandler OnUpdate;
+
     public Container(int slots = 3) 
     {
         // Initlialize the data array.
@@ -59,6 +62,21 @@ public class Container<T> where T : Item
     }
 
     /// <summary>
+    /// Push an item into the inventory.
+    /// </summary>
+    /// <param name="item">The item to push.</param>
+    /// <param name="amount">The amount of items to push.</param>
+    /// <returns>If the inventory had space to push the item.</returns>
+    public bool PushItem(T item, int amount)
+    {
+        if (!(item is null) && FirstOpen(out int slot))
+        {
+            return InsertItem(new ContainedItem<T>(item, amount), slot);
+        }
+        return false;
+    }
+
+    /// <summary>
     /// Insert an item into the inventory.
     /// </summary>
     /// <param name="item">The item to insert.</param>
@@ -69,6 +87,7 @@ public class Container<T> where T : Item
         if (!(item is null) && Exists(slot) && IsOpen(slot))
         {
             data[slot] = item;
+            OnUpdate.Invoke(slot, item);
             return true;
         }
         return false;
@@ -86,6 +105,36 @@ public class Container<T> where T : Item
         {
             item = data[slot]; // Select the item.
             data[slot] = null; // Remove the item.
+            OnUpdate.Invoke(slot, null);
+            return true;
+        }
+        item = null;
+        return false;
+    }
+
+    /// <summary>
+    /// Pull a specific number of items from the inventory.
+    /// </summary>
+    /// <param name="slot">The index of the slot to pull from.</param>
+    /// <param name="num">The number of items to pull out of the slot.</param>
+    /// <param name="item">The item that has been pulled.</param>
+    /// <returns>If the item exists and num is bigger than zero.</returns>
+    public bool PullItem(int slot, int num, out ContainedItem<T> item)
+    {
+        if (Exists(slot) && IsOpen(slot) == false && num > 0)
+        {
+            if (data[slot].num <= num)
+            {
+                item = data[slot]; // Select the item.
+                data[slot] = null; // Remove the item.
+                OnUpdate.Invoke(slot, null);
+            } 
+            else
+            {
+                item = new ContainedItem<T>(data[slot].item, num); // Create new item with taken amount.
+                data[slot].num -= num; // Decrease the item with taken amount.
+                OnUpdate.Invoke(slot, data[slot]);
+            }
             return true;
         }
         item = null;
@@ -107,6 +156,20 @@ public class Container<T> where T : Item
         }
         item = null;
         return false;
+    }
+
+    /// <summary>
+    /// Peek a slot to see how many items are inside.
+    /// </summary>
+    /// <param name="slot">The index of the slot to check.</param>
+    /// <returns>The number of items in the slot.</returns>
+    public int PeekAmount(int slot)
+    {
+        if (Exists(slot) && IsOpen(slot) == false)
+        {
+            return data[slot].num;
+        }
+        return 0;
     }
 
     /// <summary>
