@@ -12,12 +12,20 @@ public class Player : MonoBehaviour
     [Space]
     public int inventoryMaxSize;
 
+    Animator anim;
+
     Vector2 input_move;
     float lastInputMag;
     Vector2 move;
 
     int currentSlot;
-    ButtonPromptType buttonPromptType;    
+    int animDir = 2;
+    ButtonPromptType buttonPromptType;
+
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
 
     private void Update()
     {
@@ -32,10 +40,22 @@ public class Player : MonoBehaviour
         }
 
         lastInputMag = input_move.magnitude;
-    }
-    public void OnJoin()
-    {
+        anim.SetFloat("Velocity", lastInputMag);
 
+        //chooses what direction to face
+        //anti-clockwise
+
+        Vector2 norm = input_move.normalized;
+        if (norm.y <= -0.5f) animDir = 2;
+        else if (norm.y >= 0.5f) animDir = 0;
+        else if (norm.x <= -0.5f) animDir = 1;
+        else if (norm.x >= 0.5f) animDir = 3;
+        anim.SetInteger("Dir", animDir);
+    }
+
+    private void FixedUpdate()
+    {
+        transform.Translate(move);
     }
 
     public void Move(CallbackContext input) { input_move = input.ReadValue<Vector2>(); }
@@ -44,6 +64,7 @@ public class Player : MonoBehaviour
     {
         switch (input.phase)
         {
+            case InputActionPhase.Started:
             case InputActionPhase.Performed:
                 if (input.action.WasPerformedThisFrame()) InteractStart();
                 break;
@@ -59,7 +80,7 @@ public class Player : MonoBehaviour
     /// </summary>
     void InteractStart()
     {
-
+        anim.SetBool("Tilling", true);
     }
 
     /// <summary>
@@ -67,7 +88,7 @@ public class Player : MonoBehaviour
     /// </summary>
     void InteractEnd()
     {
-
+        anim.SetBool("Tilling", false);
     }    
 
     #region Inventory Controls
@@ -108,11 +129,6 @@ public class Player : MonoBehaviour
         // :|
     }
     #endregion
-
-    private void FixedUpdate()
-    {
-        transform.Translate(move);
-    }
 }
 
 public enum ButtonPromptType
