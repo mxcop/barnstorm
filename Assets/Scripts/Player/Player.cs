@@ -13,21 +13,31 @@ public class Player : MonoBehaviour
     public int inventoryMaxSize;
 
     Vector2 input_move;
+    float lastInputMag;
     Vector2 move;
 
-    int currentSlot;    
+    int currentSlot;
+    ButtonPromptType buttonPromptType;    
 
     private void Update()
     {
+        float currentMaxSpeed = maxSpeed * lastInputMag;
         if (input_move != Vector2.zero)
         {
-            move = Vector2.ClampMagnitude(move + input_move * movementSpeed * Time.deltaTime, maxSpeed);
+            move = Vector2.ClampMagnitude(move + input_move * movementSpeed * Time.deltaTime, currentMaxSpeed);
         }
         else
         {
             move = Vector2.Lerp(move, Vector2.zero, friction * Time.deltaTime);
         }
+
+        lastInputMag = input_move.magnitude;
     }
+    public void OnJoin()
+    {
+
+    }
+
     public void Move(CallbackContext input) { input_move = input.ReadValue<Vector2>(); }
 
     public void ProcessInteract(CallbackContext input)
@@ -89,6 +99,10 @@ public class Player : MonoBehaviour
         // :(
     }
 
+    /// <summary>
+    /// Called every frame when held down
+    /// </summary>
+    /// <param name="input"></param>
     public void DropItem(CallbackContext input)
     {
         // :|
@@ -99,4 +113,9 @@ public class Player : MonoBehaviour
     {
         transform.Translate(move);
     }
+}
+
+public enum ButtonPromptType
+{
+    Playstation, Xbox, PC
 }
