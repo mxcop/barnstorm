@@ -1,4 +1,5 @@
 using Systems.Inventory;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -48,7 +49,7 @@ public class InventoryGUI : MonoBehaviour
     /// </summary>
     /// <param name="prefab">The prefab of the cell.</param>
     /// <returns>The image within the cell.</returns>
-    private Image InitCell(GameObject prefab) => Instantiate(prefab, transform).transform.GetChild(0).GetComponent<Image>();
+    private Image InitCell(GameObject prefab) => Instantiate(prefab, transform).transform.Find("Item").GetComponent<Image>();
 
     /// <summary>
     /// Called whenever the container has an update.
@@ -56,16 +57,62 @@ public class InventoryGUI : MonoBehaviour
     private void OnContainerUpdate(int slot, ContainedItem<Item> item)
     {
         Image cell = itemGUI[slot];
+        RectTransform panel = cell.transform.parent.Find("Panel").GetComponent<RectTransform>();
 
         if (item != null)
         {
             cell.enabled = true;
             cell.sprite = item.item.sprite;
+
+            // Animate the item sprite to scale in.
+            LeanTween.cancel(cell.gameObject);
+            RectTransform itemTransform = cell.GetComponent<RectTransform>();
+            if (itemTransform.localScale == Vector3.zero)
+            {
+                LeanTween.value(cell.gameObject, s => itemTransform.localScale = s, Vector3.zero, Vector3.one, 0.4f)
+                .setEaseOutBack().setOnComplete(() => itemTransform.localScale = Vector3.one);
+            }
+            else
+            {
+                LeanTween.value(cell.gameObject, s => itemTransform.localScale = s, Vector3.one * .75f, Vector3.one, 0.2f)
+                .setEaseOutBack().setOnComplete(() => itemTransform.localScale = Vector3.one);
+            }
+
+            // Animate the item amount panel to move in.
+            if (panel.localPosition.y != -27.5f)
+            {
+                panel.gameObject.SetActive(true);
+                LeanTween.cancel(panel.gameObject);
+                LeanTween.value(panel.gameObject, v => panel.anchoredPosition = v, panel.anchoredPosition, new Vector2(panel.anchoredPosition.x, -27.5f), 0.2f)
+                    .setOnComplete(() => panel.anchoredPosition = new Vector3(panel.anchoredPosition.x, -27.5f));
+            }
+
+            panel.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = item.num.ToString();
         }
         else
         {
-            cell.enabled = false;
-            cell.sprite = null;
+            // Animate the item sprite to scale out.
+            LeanTween.cancel(cell.gameObject);
+            RectTransform itemTransform = cell.GetComponent<RectTransform>();
+            LeanTween.value(cell.gameObject, s => itemTransform.localScale = s, itemTransform.localScale, Vector3.zero, 0.2f)
+            .setOnComplete(() =>
+            {
+                cell.enabled = false;
+                cell.sprite = null;
+                itemTransform.localScale = Vector3.zero;
+            });
+
+            // Animate the item amount panel to move out.
+            if (panel.localPosition.y != 27.5f)
+            {
+                LeanTween.cancel(panel.gameObject);
+                LeanTween.value(panel.gameObject, v => panel.anchoredPosition = v, panel.anchoredPosition, new Vector2(panel.anchoredPosition.x, 27.5f), 0.2f)
+                .setOnComplete(() => 
+                {
+                    panel.gameObject.SetActive(false);
+                    panel.localPosition = new Vector3(panel.anchoredPosition.x, 27.5f);
+                });
+            }
         }
     }
 }

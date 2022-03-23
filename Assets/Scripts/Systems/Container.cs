@@ -86,8 +86,26 @@ public class Container<T> where T : Item
     {
         if (!(item is null) && Exists(slot) && IsOpen(slot))
         {
-            data[slot] = item;
+            data[slot] = item.Clone();
             OnUpdate.Invoke(slot, item);
+            return true;
+        }
+        return false;
+    }
+
+    /// <summary>
+    /// Insert an item into the inventory.
+    /// </summary>
+    /// <param name="item">The item to insert.</param>
+    /// <param name="amount">The amount of items to insert.</param>
+    /// <param name="slot">The index of the slot to insert into.</param>
+    /// <returns>If the slot was empty.</returns>
+    public bool InsertItem(T item, int amount, int slot)
+    {
+        if (!(item is null) && Exists(slot) && IsOpen(slot))
+        {
+            data[slot] = new ContainedItem<T>(item, amount);
+            OnUpdate.Invoke(slot, data[slot]);
             return true;
         }
         return false;

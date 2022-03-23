@@ -23,6 +23,9 @@ TextureImporter:
   - first:
       213: -6959355026114658839
     second: cloud-cell
+  - first:
+      213: 2381927511759703273
+    second: inv-panel
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -254,6 +257,27 @@ TextureImporter:
       bones: []
       spriteID: 9ed3b9ad9776b6f90800000000000000
       internalID: -6959355026114658839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inv-panel
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 12
+        width: 16
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ecca23b37e4e0120800000000000000
+      internalID: 2381927511759703273
       vertices: []
       indices: 
       edges: []
