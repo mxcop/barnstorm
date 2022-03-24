@@ -21,5 +21,7 @@
             this.item = item;
             this.num = num;
         }
+
+        public ContainedItem<T> Clone() => new ContainedItem<T>(item, num);
     }
 }

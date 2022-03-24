@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d68f8e12689f6a41a7587fa15f6e1b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprite: {fileID: -3900414357838514297, guid: 3703f38d2ad9ca247bfd64177e9a999f, type: 3}
   nutrition: 1.5
   speed: 180
   hasSplash: 1
