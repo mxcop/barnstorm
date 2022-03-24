@@ -100,7 +100,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 5
   m_Sprite: {fileID: -2837714845883897987, guid: ab27a14067f9fb342973209f1dd04a14, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -182,6 +182,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8553758800243562975}
   - component: {fileID: 8553758800243562974}
+  - component: {fileID: 4390029904034604308}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -256,7 +257,21 @@ MonoBehaviour:
   turret: {fileID: 8553758799851338835}
   targetEmemy: {fileID: 0}
   reloadTime: 0.5
-  shootAngle: 0
+--- !u!114 &4390029904034604308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8553758800243562973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfb48d436e6951f4bb2753d23935c7ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GUI: {fileID: 7250508737016191856, guid: 522efdd4d09a1914ab5d84aec6d280b8, type: 3}
+  offset: {x: 0, y: 0}
+  size: 1
 --- !u!1 &8553758800512426718
 GameObject:
   m_ObjectHideFlags: 0
