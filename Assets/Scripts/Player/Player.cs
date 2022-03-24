@@ -9,6 +9,9 @@ public class Player : MonoBehaviour
     [SerializeField] float movementSpeed;
     [SerializeField] float maxSpeed;
     [SerializeField] float friction;
+    [Space]
+    [SerializeField] float interactCheckRadius;
+    [SerializeField] LayerMask cf;
 
     [HideInInspector] public ButtonPromptType buttonPromptType;
 
@@ -21,10 +24,12 @@ public class Player : MonoBehaviour
     int animDir = 2;
     
     bool usingTool;
+    Interactable currentInteraction;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
+        PlayerInput i;
     }
 
     private void Update()
@@ -51,6 +56,9 @@ public class Player : MonoBehaviour
         else if (norm.x <= -0.5f) animDir = 1;
         else if (norm.x >= 0.5f) animDir = 3;
         anim.SetInteger("Dir", animDir);
+
+        //break interaction with interactable when too far away
+        if (currentInteraction != null && Vector2.Distance((currentInteraction as MonoBehaviour).transform.position, transform.position) > interactCheckRadius) BreakInteraction();
     }
 
     private void FixedUpdate()
@@ -80,8 +88,8 @@ public class Player : MonoBehaviour
     /// </summary>
     void InteractStart()
     {
+        BreakInteraction();
         anim.SetBool("Tilling", true);
-        usingTool = true;
     }
 
     /// <summary>
@@ -90,7 +98,31 @@ public class Player : MonoBehaviour
     void InteractEnd()
     {
         anim.SetBool("Tilling", false);
-        usingTool = false;
+    }
+
+    bool CheckForInteractable()
+    {
+        Collider2D[] colls = new Collider2D[2];
+        Physics2D.OverlapCircleNonAlloc(transform.position, interactCheckRadius, results: colls, cf);
+
+        for (int i = 0; i < colls.Length; i++)
+        {
+            if (colls[i] != null)
+            {
+                currentInteraction = colls[i].gameObject.GetComponent<Interactable>();
+                if (!currentInteraction.inUse) return true;
+            }
+        }
+        return false;
+    }
+
+    void BreakInteraction()
+    {
+        if (currentInteraction != null)
+        {
+            currentInteraction.BreakInteraction();
+            currentInteraction = null;
+        }
     }
 
     #region Inventory Controls
@@ -117,7 +149,10 @@ public class Player : MonoBehaviour
     /// </summary>
     public void InventorySwap(CallbackContext input)
     {
-        // :)
+        if(currentInteraction == null && CheckForInteractable())
+        {
+            currentInteraction.Interact();
+        }
     }
 
     /// <summary>
@@ -125,7 +160,10 @@ public class Player : MonoBehaviour
     /// </summary>
     public void InventorySplit(CallbackContext input)
     {
-        // :(
+        if (currentInteraction == null && CheckForInteractable())
+        {
+            currentInteraction.Interact();
+        }
     }
 
     /// <summary>
@@ -137,6 +175,14 @@ public class Player : MonoBehaviour
         // :|
     }
     #endregion
+
+    public void Anim_TillEvent()
+    {
+        //todo: till soil
+        usingTool = false;
+    }
+
+    public void Anim_TillStart() => usingTool = true;
 }
 
 public enum ButtonPromptType
