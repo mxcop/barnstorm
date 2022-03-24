@@ -109,8 +109,12 @@ public class Player : MonoBehaviour
         {
             if (colls[i] != null)
             {
-                currentInteraction = colls[i].gameObject.GetComponent<Interactable>();
-                if (!currentInteraction.inUse) return true;
+                Interactable c = colls[i].gameObject.GetComponent<Interactable>();
+                if (c != null && !c.inUse)
+                {
+                    currentInteraction = c;
+                    return true;
+                }
             }
         }
         return false;
