@@ -7,4 +7,7 @@ public interface Interactable
     public bool inUse { get; set; }
     public abstract void Interact();
     public abstract void BreakInteraction();
+
+    public abstract void SplitAction();
+    public abstract void SwapAction();
 }

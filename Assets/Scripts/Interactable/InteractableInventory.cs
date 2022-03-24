@@ -17,4 +17,14 @@ public class InteractableInventory : Inventory, Interactable
         Close();
         inUse = false;
     }
+
+    public void SplitAction()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void SwapAction()
+    {
+        throw new System.NotImplementedException();
+    }
 }

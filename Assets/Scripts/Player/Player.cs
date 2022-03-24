@@ -153,9 +153,16 @@ public class Player : MonoBehaviour
     /// </summary>
     public void InventorySwap(CallbackContext input)
     {
-        if(currentInteraction == null && CheckForInteractable())
+        if(currentInteraction == null)
         {
-            currentInteraction.Interact();
+            if (CheckForInteractable())
+            {
+                currentInteraction.Interact();
+            }
+        }
+        else
+        {
+            currentInteraction.SwapAction();
         }
     }
 
@@ -164,9 +171,16 @@ public class Player : MonoBehaviour
     /// </summary>
     public void InventorySplit(CallbackContext input)
     {
-        if (currentInteraction == null && CheckForInteractable())
+        if (currentInteraction == null)
         {
-            currentInteraction.Interact();
+            if (CheckForInteractable())
+            {
+                currentInteraction.Interact();
+            }
+        }
+        else
+        {
+            currentInteraction.SplitAction();
         }
     }
 
