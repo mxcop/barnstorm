@@ -11,7 +11,7 @@ public class Inventory : MonoBehaviour
     [HideInInspector] public Container<Item> container;
     private InventoryGUI gui;
 
-    private void Start()
+    private void Awake()
     {
         // Initialize the container of the inventory.
         container = new Container<Item>(size);
