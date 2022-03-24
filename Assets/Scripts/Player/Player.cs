@@ -200,13 +200,13 @@ public class Player : MonoBehaviour
     {
         usingTool = false;
         CropDataTile t;
-        Vector2 offset = new Vector2(0, -0.5f);
+        Vector2 offset;
         switch (tillDir)
         {
-            default: offset += Vector2.up; break;
-            case 1: offset += Vector2.left; break;
-            case 2: offset += Vector2.down; break;
-            case 3: offset += Vector2.right; break;
+            default: offset = new Vector2(0, 0.4f); break;
+            case 1: offset = new Vector2(-0.8f, -0.45f); break;
+            case 2: offset = new Vector2(0, -0.8f); break;
+            case 3: offset = new Vector2(0.8f, -0.45f); break;
         }
 
         Vector2Int pos = new Vector2Int(Mathf.FloorToInt(transform.position.x + offset.x), Mathf.FloorToInt(transform.position.y + offset.y));
