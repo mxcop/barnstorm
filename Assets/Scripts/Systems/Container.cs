@@ -45,7 +45,7 @@ public class Container<T> where T : Item
     {
         for (int i = 0; i < data.Length; i++)
         {
-            if (data[i].item.GetType() == item.GetType())
+            if (data[i] != null && data[i].item != null && data[i].item.GetType() == item.GetType())
             {
                 slot = i; return true;
             }
