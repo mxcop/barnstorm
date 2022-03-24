@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     [SerializeField] float interactCheckRadius;
     [SerializeField] LayerMask cf;
 
+    [HideInInspector] public ButtonPromptType buttonPromptType;
+
     Animator anim;
 
     Vector2 input_move;
@@ -20,8 +22,7 @@ public class Player : MonoBehaviour
     Vector2 move;
 
     int animDir = 2;
-    ButtonPromptType buttonPromptType;
-
+    
     bool usingTool;
     Interactable currentInteraction;
 
@@ -186,5 +187,5 @@ public class Player : MonoBehaviour
 
 public enum ButtonPromptType
 {
-    Playstation, Xbox, PC
+    Unknown, Playstation, Xbox, PC
 }
