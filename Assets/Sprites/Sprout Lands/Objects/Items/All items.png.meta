@@ -1,0 +1,504 @@
+fileFormatVersion: 2
+guid: 3703f38d2ad9ca247bfd64177e9a999f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6689160971107792810
+    second: Potato
+  - first:
+      213: -7778967240658538108
+    second: Pepper
+  - first:
+      213: -6326554769541213105
+    second: Hoe
+  - first:
+      213: -123238161473367849
+    second: All items_3
+  - first:
+      213: 9124856216509703372
+    second: All items_4
+  - first:
+      213: -1648857455878751160
+    second: All items_5
+  - first:
+      213: -3900414357838514297
+    second: Corn
+  - first:
+      213: -3736146023192578149
+    second: All items_7
+  - first:
+      213: 2952979881545722372
+    second: All items_8
+  - first:
+      213: 5115550639011725568
+    second: All items_9
+  - first:
+      213: 5006998840432495038
+    second: All items_10
+  - first:
+      213: -2412440982564910823
+    second: All items_11
+  - first:
+      213: 2156724270138435551
+    second: All items_12
+  - first:
+      213: -5068283769163259296
+    second: All items_13
+  - first:
+      213: 1979382666408782389
+    second: Carrot
+  - first:
+      213: 5163748576842974001
+    second: All items_15
+  - first:
+      213: 3988496964452640132
+    second: All items_16
+  - first:
+      213: -1527610530650056052
+    second: All items_17
+  - first:
+      213: -6010330762861105228
+    second: All items_18
+  - first:
+      213: 830598708762549574
+    second: All items_19
+  - first:
+      213: -2119609117114138685
+    second: All items_20
+  - first:
+      213: 1034162768556719569
+    second: All items_21
+  - first:
+      213: 3069923650044799152
+    second: All items_22
+  - first:
+      213: -4824028433389592713
+    second: All items_23
+  - first:
+      213: -7897759921500907801
+    second: All items_24
+  - first:
+      213: -4405558067075882534
+    second: All items_25
+  - first:
+      213: 6274082422588443329
+    second: All items_26
+  - first:
+      213: -4376792064506923469
+    second: All items_27
+  - first:
+      213: 815580863195743817
+    second: All items_28
+  - first:
+      213: 7367773177783784325
+    second: All items_29
+  - first:
+      213: 8641937697410740026
+    second: All items_30
+  - first:
+      213: 856645704702664958
+    second: All items_31
+  - first:
+      213: 2022356991762174099
+    second: All items_32
+  - first:
+      213: 5167140393955264678
+    second: All items_33
+  - first:
+      213: -4647002276939164125
+    second: All items_34
+  - first:
+      213: -7040336507021487275
+    second: All items_35
+  - first:
+      213: 6437658026292010940
+    second: All items_36
+  - first:
+      213: 6610175193823472563
+    second: All items_37
+  - first:
+      213: -3122038730974599866
+    second: All items_38
+  - first:
+      213: 4515252511108969625
+    second: All items_39
+  - first:
+      213: 661470226386143141
+    second: All items_40
+  - first:
+      213: 8390481650000962414
+    second: All items_41
+  - first:
+      213: 3267049666440253954
+    second: All items_42
+  - first:
+      213: 2462826086292584569
+    second: All items_43
+  - first:
+      213: -3868810699479195049
+    second: All items_44
+  - first:
+      213: -3944598461320838034
+    second: All items_45
+  - first:
+      213: 5825306476005100750
+    second: All items_46
+  - first:
+      213: 8041714837616402709
+    second: All items_47
+  - first:
+      213: -6643593419896435196
+    second: All items_48
+  - first:
+      213: -8479740272810669291
+    second: All items_49
+  - first:
+      213: -975159860757259731
+    second: All items_50
+  - first:
+      213: -9047464742459622052
+    second: All items_51
+  - first:
+      213: -5439737942777631415
+    second: All items_52
+  - first:
+      213: 5290926212116709826
+    second: All items_53
+  - first:
+      213: -783583217706812038
+    second: All items_54
+  - first:
+      213: -2141163466252953988
+    second: All items_55
+  - first:
+      213: 460000104958335837
+    second: All items_56
+  - first:
+      213: -393219916973731921
+    second: All items_57
+  - first:
+      213: 2908033463634126793
+    second: All items_58
+  - first:
+      213: 7055156915570774493
+    second: All items_59
+  - first:
+      213: 4082233676133939069
+    second: All items_60
+  - first:
+      213: 5079613261092526438
+    second: All items_61
+  - first:
+      213: 4236308370512682552
+    second: All items_62
+  - first:
+      213: -1867165549405880032
+    second: All items_63
+  - first:
+      213: -1016871936508484426
+    second: All items_64
+  - first:
+      213: -7067401606127634767
+    second: All items_65
+  - first:
+      213: 885909395832794797
+    second: All items_66
+  - first:
+      213: 313344144316846123
+    second: Pumpkin
+  - first:
+      213: -5742103126824286344
+    second: All items_68
+  - first:
+      213: -8769850734827765532
+    second: All items_69
+  - first:
+      213: 6806026761725411122
+    second: All items_70
+  - first:
+      213: -8010773156094195114
+    second: All items_71
+  - first:
+      213: 4728722487862912821
+    second: All items_72
+  - first:
+      213: -2260639064680362542
+    second: All items_73
+  - first:
+      213: 8591462531319496109
+    second: All items_74
+  - first:
+      213: 5402616447849175404
+    second: All items_75
+  - first:
+      213: -8152415364496194000
+    second: All items_76
+  - first:
+      213: 515176421543120068
+    second: All items_77
+  - first:
+      213: -7620713712307766641
+    second: All items_78
+  - first:
+      213: -8267788293057572570
+    second: All items_79
+  - first:
+      213: -4769944279504546176
+    second: All items_80
+  - first:
+      213: 5427144952678106148
+    second: All items_81
+  - first:
+      213: -6203105911082862751
+    second: All items_82
+  - first:
+      213: 138653183466178206
+    second: All items_83
+  - first:
+      213: 5315206608652835149
+    second: All items_84
+  - first:
+      213: 8356940250768190022
+    second: All items_85
+  - first:
+      213: 5722554788734427757
+    second: All items_86
+  - first:
+      213: 1381411457851999146
+    second: All items_87
+  - first:
+      213: -7400738162107665974
+    second: All items_88
+  - first:
+      213: 577088391429763439
+    second: All items_89
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Hoe
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 224
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f445175e4ff8338a0800000000000000
+      internalID: -6326554769541213105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Corn
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 787b33c8ec1fed9c0800000000000000
+      internalID: -3900414357838514297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Carrot
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53a6cd14c0e287b10800000000000000
+      internalID: 1979382666408782389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pumpkin
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b20547ec6d8395400800000000000000
+      internalID: 313344144316846123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Potato
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa77948667ca4dc50800000000000000
+      internalID: 6689160971107792810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pepper
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 481b525628e8b0490800000000000000
+      internalID: -7778967240658538108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
