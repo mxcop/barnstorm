@@ -10,8 +10,8 @@ public class Food : Item
     public GameObject projectile;
     public GameObject destroyObject;
     public virtual void Collision(Collider2D collider){}
-    public virtual void Destroy() {
-        Instantiate(destroyObject);
-        Destroy(gameObject);
+    public virtual void Destroy(GameObject self) {
+        Instantiate(destroyObject, self.transform.position, Quaternion.identity);
+        GameObject.Destroy(self);
     }
 }

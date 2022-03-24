@@ -48,3 +48,4 @@ MonoBehaviour:
   speed: 4.2
   hasSplash: 0
   projectile: {fileID: 7069016472490964998, guid: 6a778cf308bf6ed438a162a2539f8b6e, type: 3}
+  destroyObject: {fileID: 5577374176780847287, guid: ba950cf03fb3b4e41baa60afcc127fec, type: 3}

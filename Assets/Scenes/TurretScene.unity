@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 312333915}
   m_Layer: 0
   m_Name: Barn
-  m_TagString: Untagged
+  m_TagString: Barn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -287,17 +287,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4390029904034604308, guid: 4d2222380f00d2442bbe45dc154b863e, type: 3}
-      propertyPath: offset.y
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 8553758800243562973, guid: 4d2222380f00d2442bbe45dc154b863e, type: 3}
       propertyPath: m_Name
       value: Turret
-      objectReference: {fileID: 0}
-    - target: {fileID: 8553758800243562974, guid: 4d2222380f00d2442bbe45dc154b863e, type: 3}
-      propertyPath: targetEmemy
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8553758800243562975, guid: 4d2222380f00d2442bbe45dc154b863e, type: 3}
       propertyPath: m_RootOrder
