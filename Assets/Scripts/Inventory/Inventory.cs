@@ -31,7 +31,7 @@ public class Inventory : MonoBehaviour
     /// </summary>
     public void Open()
     {
-        gui.transform.position = Camera.main.WorldToScreenPoint(transform.position + (Vector3)offset);
+        gui.transform.position = transform.position + (Vector3)offset;
         CanvasGroup canvas = gui.GetComponent<CanvasGroup>();
         gui.gameObject.SetActive(true);
         LeanTween.cancel(gui.gameObject);

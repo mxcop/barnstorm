@@ -49,7 +49,7 @@ public class InventoryGUI : MonoBehaviour
     /// </summary>
     /// <param name="prefab">The prefab of the cell.</param>
     /// <returns>The image within the cell.</returns>
-    private Image InitCell(GameObject prefab) => Instantiate(prefab, transform).transform.Find("Item").GetComponent<Image>();
+    private Image InitCell(GameObject prefab) => Instantiate(prefab, transform.Find("Grid")).transform.Find("Item").GetComponent<Image>();
 
     /// <summary>
     /// Called whenever the container has an update.
