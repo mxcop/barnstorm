@@ -45,6 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 313344144316846123, guid: 3703f38d2ad9ca247bfd64177e9a999f, type: 3}
   nutrition: 8
-  speed: 150
+  speed: 3
   hasSplash: 0
   projectile: {fileID: 7811857560452402360, guid: 2dae165fd4a998445b4a017d962363e0, type: 3}

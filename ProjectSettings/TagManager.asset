@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - MainCanvas
+  - Undefined
+  - Barn
+  - Enemy
   layers:
   - Default
   - TransparentFX

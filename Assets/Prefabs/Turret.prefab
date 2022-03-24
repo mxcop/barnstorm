@@ -183,6 +183,7 @@ GameObject:
   - component: {fileID: 8553758800243562975}
   - component: {fileID: 8553758800243562974}
   - component: {fileID: 4390029904034604308}
+  - component: {fileID: 6774032272002536594}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -219,7 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b390c2ca00f8c7842a6312ab9616dd2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammunition: {fileID: 3813922953985300109, guid: 29e3dfb59d94dd84a8f1f981c187a7f8, type: 3}
+  ammunition: {fileID: 7618592410482247493, guid: 3650e097378961f4ba8021e9ab27d9b8, type: 3}
   sprite:
   - {fileID: 7721177293500312529, guid: ab27a14067f9fb342973209f1dd04a14, type: 3}
   - {fileID: 6930528599539336896, guid: ab27a14067f9fb342973209f1dd04a14, type: 3}
@@ -255,8 +256,8 @@ MonoBehaviour:
   - {fileID: 8553758801471292070}
   - {fileID: 8553758800934422139}
   turret: {fileID: 8553758799851338835}
-  targetEmemy: {fileID: 0}
   reloadTime: 0.5
+  targetEnemies: []
 --- !u!114 &4390029904034604308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,9 +270,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb48d436e6951f4bb2753d23935c7ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GUI: {fileID: 7250508737016191856, guid: 522efdd4d09a1914ab5d84aec6d280b8, type: 3}
-  offset: {x: 0, y: 0}
+  offset: {x: 0, y: 3}
   size: 1
+--- !u!58 &6774032272002536594
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8553758800243562973}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 5
 --- !u!1 &8553758800512426718
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,7 +493,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8553758801196294226}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8553758800243562975}

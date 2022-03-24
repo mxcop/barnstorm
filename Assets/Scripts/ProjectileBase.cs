@@ -9,12 +9,15 @@ public class ProjectileBase : MonoBehaviour
 
     void Start(){
         rb = GetComponent<Rigidbody2D>();
-        rb.AddForce(transform.up.normalized * food.speed);
+        rb.velocity = (transform.up.normalized * food.speed);
     }
+
     private void OnTriggerEnter2D(Collider2D collision) {
         food.Collision(collision);
 
-        if (collision.CompareTag("Enemy"))
+        if (collision.CompareTag("Enemy")){
             collision.gameObject.GetComponent<EnemyBase>().Feed(food);
+            food.Destroy();
+        }   
     }
 }
