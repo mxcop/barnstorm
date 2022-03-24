@@ -109,8 +109,12 @@ public class Player : MonoBehaviour
         {
             if (colls[i] != null)
             {
-                currentInteraction = colls[i].gameObject.GetComponent<Interactable>();
-                if (!currentInteraction.inUse) return true;
+                Interactable c = colls[i].gameObject.GetComponent<Interactable>();
+                if (c != null && !c.inUse)
+                {
+                    currentInteraction = c;
+                    return true;
+                }
             }
         }
         return false;
@@ -149,9 +153,16 @@ public class Player : MonoBehaviour
     /// </summary>
     public void InventorySwap(CallbackContext input)
     {
-        if(currentInteraction == null && CheckForInteractable())
+        if(currentInteraction == null)
         {
-            currentInteraction.Interact();
+            if (CheckForInteractable())
+            {
+                currentInteraction.Interact();
+            }
+        }
+        else
+        {
+            currentInteraction.SwapAction();
         }
     }
 
@@ -160,9 +171,16 @@ public class Player : MonoBehaviour
     /// </summary>
     public void InventorySplit(CallbackContext input)
     {
-        if (currentInteraction == null && CheckForInteractable())
+        if (currentInteraction == null)
         {
-            currentInteraction.Interact();
+            if (CheckForInteractable())
+            {
+                currentInteraction.Interact();
+            }
+        }
+        else
+        {
+            currentInteraction.SplitAction();
         }
     }
 

@@ -102,10 +102,11 @@ MonoBehaviour:
   movementSpeed: 6
   maxSpeed: 0.12
   friction: 14
-  interactCheckRadius: 2
+  interactCheckRadius: 1.6
   cf:
     serializedVersion: 2
     m_Bits: 64
+  buttonPromptType: 0
 --- !u!114 &9097193240834651908
 MonoBehaviour:
   m_ObjectHideFlags: 0
