@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    [Header("Prefabs")]
-    [SerializeField] private GameObject GUI;
+    private GameObject GUI;
 
     [Header("Config")]
     [SerializeField] private Vector2 offset;
@@ -16,6 +15,9 @@ public class Inventory : MonoBehaviour
     {
         // Initialize the container of the inventory.
         container = new Container<Item>(size);
+
+        // Load the resources.
+        GUI = Resources.Load<GameObject>("InventoryPanel");
 
         // Create the GUI of the inventory.
         gui = Instantiate(GUI, GameObject.FindWithTag("MainCanvas").transform).GetComponent<InventoryGUI>();
