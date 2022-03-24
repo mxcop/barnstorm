@@ -4,9 +4,11 @@ public class Inventory : MonoBehaviour
 {
     private GameObject GUI;
 
-    [Header("Config")]
+    [Header("Inventory Config")]
     [SerializeField] private Vector2 offset;
     [SerializeField] private int size = 3;
+
+    [Space]
 
     [HideInInspector] public Container<Item> container;
     private InventoryGUI gui;
