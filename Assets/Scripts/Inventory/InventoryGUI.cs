@@ -79,12 +79,12 @@ public class InventoryGUI : MonoBehaviour
             }
 
             // Animate the item amount panel to move in.
-            if (panel.localPosition.y != -27.5f)
+            if (panel.localPosition.y != -0.25f)
             {
                 panel.gameObject.SetActive(true);
                 LeanTween.cancel(panel.gameObject);
-                LeanTween.value(panel.gameObject, v => panel.anchoredPosition = v, panel.anchoredPosition, new Vector2(panel.anchoredPosition.x, -27.5f), 0.2f)
-                    .setOnComplete(() => panel.anchoredPosition = new Vector3(panel.anchoredPosition.x, -27.5f));
+                LeanTween.value(panel.gameObject, v => panel.anchoredPosition = v, panel.anchoredPosition, new Vector2(panel.anchoredPosition.x, -0.25f), 0.2f)
+                    .setOnComplete(() => panel.anchoredPosition = new Vector3(panel.anchoredPosition.x, -0.25f));
             }
 
             panel.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = item.num.ToString();
@@ -103,14 +103,14 @@ public class InventoryGUI : MonoBehaviour
             });
 
             // Animate the item amount panel to move out.
-            if (panel.localPosition.y != 27.5f)
+            if (panel.localPosition.y != 0.25f)
             {
                 LeanTween.cancel(panel.gameObject);
-                LeanTween.value(panel.gameObject, v => panel.anchoredPosition = v, panel.anchoredPosition, new Vector2(panel.anchoredPosition.x, 27.5f), 0.2f)
+                LeanTween.value(panel.gameObject, v => panel.anchoredPosition = v, panel.anchoredPosition, new Vector2(panel.anchoredPosition.x, 0.25f), 0.2f)
                 .setOnComplete(() => 
                 {
                     panel.gameObject.SetActive(false);
-                    panel.localPosition = new Vector3(panel.anchoredPosition.x, 27.5f);
+                    panel.localPosition = new Vector3(panel.anchoredPosition.x, 0.25f);
                 });
             }
         }
