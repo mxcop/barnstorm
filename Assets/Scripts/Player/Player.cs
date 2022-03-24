@@ -9,8 +9,6 @@ public class Player : MonoBehaviour
     [SerializeField] float movementSpeed;
     [SerializeField] float maxSpeed;
     [SerializeField] float friction;
-    [Space]
-    public int inventoryMaxSize;
 
     Animator anim;
 
@@ -18,9 +16,10 @@ public class Player : MonoBehaviour
     float lastInputMag;
     Vector2 move;
 
-    int currentSlot;
     int animDir = 2;
     ButtonPromptType buttonPromptType;
+
+    bool usingTool;
 
     private void Awake()
     {
@@ -30,7 +29,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         float currentMaxSpeed = maxSpeed * lastInputMag;
-        if (input_move != Vector2.zero)
+        if (input_move != Vector2.zero && !usingTool)
         {
             move = Vector2.ClampMagnitude(move + input_move * movementSpeed * Time.deltaTime, currentMaxSpeed);
         }
@@ -81,6 +80,7 @@ public class Player : MonoBehaviour
     void InteractStart()
     {
         anim.SetBool("Tilling", true);
+        usingTool = true;
     }
 
     /// <summary>
@@ -89,7 +89,8 @@ public class Player : MonoBehaviour
     void InteractEnd()
     {
         anim.SetBool("Tilling", false);
-    }    
+        usingTool = false;
+    }
 
     #region Inventory Controls
     /// <summary>
@@ -98,10 +99,16 @@ public class Player : MonoBehaviour
     /// <param name="slot"></param>
     public void HotbarSwitch(int slot)
     {
-        currentSlot = slot;
     }
-    public void HotbarSwitchR(CallbackContext input) => HotbarSwitch(Mathf.Clamp(inventoryMaxSize + 1, 0, inventoryMaxSize));
-    public void HotbarSwitchL(CallbackContext input) => HotbarSwitch(Mathf.Clamp(inventoryMaxSize - 1, 0, inventoryMaxSize));
+
+    public void HotbarSwitchR(CallbackContext input) 
+    { 
+        //HotbarSwitch(Mathf.Clamp(inventoryMaxSize + 1, 0, inventoryMaxSize)); 
+    }
+    public void HotbarSwitchL(CallbackContext input) 
+    { 
+        //HotbarSwitch(Mathf.Clamp(inventoryMaxSize - 1, 0, inventoryMaxSize)); 
+    }
 
     /// <summary>
     /// Swaps the currently held item with the item in single-inventory 
