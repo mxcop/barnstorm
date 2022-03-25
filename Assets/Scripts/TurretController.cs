@@ -33,7 +33,7 @@ public class TurretController : MonoBehaviour
         return Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 180;
     }
 
-    void Start()
+    private void Start()
     {
         turretsr = turret.GetComponent<SpriteRenderer>();
         inv = GetComponent<Inventory>();
@@ -47,9 +47,6 @@ public class TurretController : MonoBehaviour
 
     void Update()
     {
-        // Get the Position of the mouse in world coordinates
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());  
-        
         // if we don't have a enemy in range dont go any further
         if (targetEnemies.Count <= 0)
             return;
@@ -58,7 +55,7 @@ public class TurretController : MonoBehaviour
         if (targetEnemies[0].state == EnemyBase.EnemyState.eating)
         {
             targetEnemies.RemoveAt(0);
-            sortTargets();
+            SortTargets();
             return;
         }
             
@@ -104,7 +101,7 @@ public class TurretController : MonoBehaviour
         shooting = false;
     }
 
-    public void sortTargets()
+    public void SortTargets()
     {
         if (targetEnemies.Count <= 0)
             return;
@@ -135,7 +132,7 @@ public class TurretController : MonoBehaviour
             return;
 
         targetEnemies.Add(coll.gameObject.GetComponent<EnemyBase>());
-        sortTargets();
+        SortTargets();
     }
 
     private void OnTriggerExit2D(Collider2D coll)
@@ -144,7 +141,7 @@ public class TurretController : MonoBehaviour
             return;
 
         targetEnemies.Remove(coll.gameObject.GetComponent<EnemyBase>());
-        sortTargets();
+        SortTargets();
     }
 
 }
