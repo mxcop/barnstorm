@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: corn0
+  m_Name: corn3
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -4471035681727069231, guid: 9f172822beda7d246a8fd39bc6f83168, type: 3}
+  m_Sprite: {fileID: -5784410927573482350, guid: 9f172822beda7d246a8fd39bc6f83168, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
