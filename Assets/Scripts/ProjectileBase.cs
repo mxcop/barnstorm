@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ProjectileBase : MonoBehaviour
@@ -5,17 +7,17 @@ public class ProjectileBase : MonoBehaviour
     public Food food;
     private Rigidbody2D rb;
 
-    void Start() 
-    {
+    void Start(){
         rb = GetComponent<Rigidbody2D>();
-        rb.AddForce(transform.up.normalized * food.speed);
+        rb.velocity = (transform.up.normalized * food.speed);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) 
-    {
+    private void OnTriggerEnter2D(Collider2D collision) {
         food.Collision(collision);
 
-        if (collision.CompareTag("Enemy"))
+        if (collision.CompareTag("Enemy")){
             collision.gameObject.GetComponent<EnemyBase>().Feed(food);
+            food.Destroy(gameObject);
+        }   
     }
 }

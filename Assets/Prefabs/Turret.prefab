@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8553758799757301755}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Point (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8553758799851338837}
   - component: {fileID: 8553758799851338836}
-  m_Layer: 0
+  - component: {fileID: 1007487105}
+  m_Layer: 6
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,6 +113,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1007487105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8553758799851338835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7a8b64b028e29f4d89d4160b94f4dab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isStatic: 1
+  layerOffset: 4
 --- !u!1 &8553758799931233679
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,7 +136,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8553758799931233648}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Point (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +166,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8553758800231864662}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Point (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,8 +197,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8553758800243562975}
   - component: {fileID: 8553758800243562974}
-  - component: {fileID: 4390029904034604308}
-  m_Layer: 0
+  - component: {fileID: 6774032272002536594}
+  - component: {fileID: 415339341}
+  m_Layer: 6
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,7 +235,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b390c2ca00f8c7842a6312ab9616dd2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammunition: {fileID: 3813922953985300109, guid: 29e3dfb59d94dd84a8f1f981c187a7f8, type: 3}
+  offset: {x: 0, y: 0.5}
+  size: 0
+  ammunition: {fileID: 7618592410482247493, guid: 3650e097378961f4ba8021e9ab27d9b8, type: 3}
   sprite:
   - {fileID: 7721177293500312529, guid: ab27a14067f9fb342973209f1dd04a14, type: 3}
   - {fileID: 6930528599539336896, guid: ab27a14067f9fb342973209f1dd04a14, type: 3}
@@ -255,23 +273,40 @@ MonoBehaviour:
   - {fileID: 8553758801471292070}
   - {fileID: 8553758800934422139}
   turret: {fileID: 8553758799851338835}
-  targetEmemy: {fileID: 0}
   reloadTime: 0.5
---- !u!114 &4390029904034604308
-MonoBehaviour:
+  targetEnemies: []
+--- !u!58 &6774032272002536594
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8553758800243562973}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfb48d436e6951f4bb2753d23935c7ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GUI: {fileID: 7250508737016191856, guid: 522efdd4d09a1914ab5d84aec6d280b8, type: 3}
-  offset: {x: 0, y: 0}
-  size: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 5
+--- !u!70 &415339341
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8553758800243562973}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.11}
+  m_Size: {x: 1, y: 0.5}
+  m_Direction: 1
 --- !u!1 &8553758800512426718
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,7 +316,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8553758800512426719}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Point (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -311,7 +346,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8553758800875925735}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Point (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -341,7 +376,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8553758800883908541}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Point (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -371,7 +406,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8553758800934422139}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Point (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -401,7 +436,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8553758800977382651}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Point (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -431,7 +466,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8553758801008380351}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Point (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -462,7 +497,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8553758801196294227}
   - component: {fileID: 8553758801196294228}
-  m_Layer: 0
+  - component: {fileID: 304752539}
+  m_Layer: 6
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -477,7 +513,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8553758801196294226}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8553758800243562975}
@@ -522,7 +558,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -8493582869925436510, guid: ab27a14067f9fb342973209f1dd04a14, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -534,6 +570,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &304752539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8553758801196294226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7a8b64b028e29f4d89d4160b94f4dab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isStatic: 1
+  layerOffset: 2
 --- !u!1 &8553758801229928252
 GameObject:
   m_ObjectHideFlags: 0
@@ -543,7 +593,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8553758801229928253}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Point (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -573,7 +623,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8553758801471292070}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Point (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -603,7 +653,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8553758801516562271}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Point (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -633,7 +683,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8553758801580227916}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ShootPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -679,7 +729,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8553758801797364906}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Point (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -709,7 +759,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8553758801813562282}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Point (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -739,7 +789,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8553758801819295018}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Point (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -769,7 +819,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8553758801853680295}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Point (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
