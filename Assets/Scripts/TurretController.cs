@@ -5,8 +5,7 @@ using Systems.Inventory;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(Inventory))]
-public class TurretController : MonoBehaviour
+public class TurretController : Inventory, Interactable
 {
     public Food ammunition;
 
@@ -17,11 +16,35 @@ public class TurretController : MonoBehaviour
 
     public List<EnemyBase> targetEnemies = new List<EnemyBase>();
     private SpriteRenderer turretsr;
-    private Inventory inv;
     private Transform barn;
     private int rotationState = 0;
     private bool shooting = false;
     private float shootAngle;
+
+    [HideInInspector]
+    public bool inUse { get; set; }
+
+    public void Interact()
+    {
+        Open();
+        inUse = true;
+    }
+
+    public void BreakInteraction()
+    {
+        Close();
+        inUse = false;
+    }
+
+    public void SplitAction()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void SwapAction()
+    {
+        throw new System.NotImplementedException();
+    }
 
     /// <summary>
     /// Calculating the angle between 2 points in degrees. 
@@ -36,12 +59,11 @@ public class TurretController : MonoBehaviour
     private void Start()
     {
         turretsr = turret.GetComponent<SpriteRenderer>();
-        inv = GetComponent<Inventory>();
         barn = GameObject.FindGameObjectWithTag("Barn").transform;
 
         // ---------Temporary---------
-        inv.Open();
-        inv.container.PushItem(ammunition, 25);
+        //Open();
+        container.PushItem(ammunition, 25);
         // ---------Temporary---------
     }
 
@@ -71,7 +93,7 @@ public class TurretController : MonoBehaviour
         // If we are not shooting, the enemy is in a "attackable" state and we have more than 0 food in our turret we start the shooting coroutine
         if (!shooting && 
             (targetEnemies[0].state != EnemyBase.EnemyState.eating && targetEnemies[0].state != EnemyBase.EnemyState.retreating) && 
-            inv.container.PeekAmount(0) > 0) {  
+            container.PeekAmount(0) > 0) {  
             StartCoroutine(Shoot());
         }
             
@@ -94,7 +116,7 @@ public class TurretController : MonoBehaviour
         // Instantiate bullet and remove a item from the inventory
         GameObject proj = Instantiate(ammunition.projectile, shootPoints[rotationState].position, Quaternion.identity);
         proj.transform.localRotation = Quaternion.Euler(0,0, shootAngle - 90);
-        inv.container.PullItem(0, 1, out ContainedItem<Item> _);
+        container.PullItem(0, 1, out ContainedItem<Item> _);
 
         // Apply shoot delay adn set shooting false so we can shoot again
         yield return new WaitForSeconds(reloadTime);

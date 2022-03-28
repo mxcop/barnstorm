@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3121955686671688589}
   - component: {fileID: 3121955686671688588}
   - component: {fileID: 3121955686671688586}
+  - component: {fileID: 80430111}
   m_Layer: 0
   m_Name: baby brown cow
   m_TagString: Enemy
@@ -162,3 +163,17 @@ CapsuleCollider2D:
   m_Offset: {x: -0.05, y: 0.45}
   m_Size: {x: 1, y: 0.75}
   m_Direction: 1
+--- !u!114 &80430111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3121955686671688576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7a8b64b028e29f4d89d4160b94f4dab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isStatic: 0
+  layerOffset: 0
