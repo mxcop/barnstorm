@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     Vector2 move;
 
     int animDir = 2;
+    int tillDir = 2;
     
     bool usingTool;
     Interactable currentInteraction;
@@ -90,6 +91,7 @@ public class Player : MonoBehaviour
     {
         BreakInteraction();
         anim.SetBool("Tilling", true);
+        tillDir = animDir;
     }
 
     /// <summary>
@@ -196,8 +198,29 @@ public class Player : MonoBehaviour
 
     public void Anim_TillEvent()
     {
-        //todo: till soil
         usingTool = false;
+        CropDataTile t;
+        Vector2 offset;
+        switch (tillDir)
+        {
+            default: offset = new Vector2(0, 0.4f); break;
+            case 1: offset = new Vector2(-0.8f, -0.45f); break;
+            case 2: offset = new Vector2(0, -0.8f); break;
+            case 3: offset = new Vector2(0.8f, -0.45f); break;
+        }
+
+        Vector2Int pos = new Vector2Int(Mathf.FloorToInt(transform.position.x + offset.x), Mathf.FloorToInt(transform.position.y + offset.y));
+
+        if (CropManager.current.TryGetTile(pos.x, pos.y, out t))
+        {
+            switch (t.cropData.type)
+            {
+                case TileType.Grass:
+                    CropManager.current.PlaceTile(TileType.Tilled, pos.x, pos.y);
+                    break;
+            }
+            
+        }
     }
 
     public void Anim_TillStart() => usingTool = true;
