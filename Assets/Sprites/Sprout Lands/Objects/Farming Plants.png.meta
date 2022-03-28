@@ -1,7 +1,178 @@
 fileFormatVersion: 2
 guid: 9f172822beda7d246a8fd39bc6f83168
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -7528199513585423542
+    second: plants-corn-0
+  - first:
+      213: 736865317306615500
+    second: plants-corn-1
+  - first:
+      213: 3482569451149137530
+    second: plants-corn-2
+  - first:
+      213: -5784410927573482350
+    second: plants-corn-3
+  - first:
+      213: 7448935753994061408
+    second: plants-corn-4
+  - first:
+      213: 1116706725642825598
+    second: plants-carrot-0
+  - first:
+      213: 8796380703106566107
+    second: plants-carrot-1
+  - first:
+      213: -3098547097148736168
+    second: plants-carrot-2
+  - first:
+      213: 136203948458210870
+    second: plants-carrot-3
+  - first:
+      213: -1975231421049208761
+    second: Farming Plants_11
+  - first:
+      213: -7682574386745198715
+    second: Farming Plants_12
+  - first:
+      213: 2296300339379097373
+    second: Farming Plants_13
+  - first:
+      213: 837022769627655913
+    second: Farming Plants_14
+  - first:
+      213: 2738774946353408788
+    second: Farming Plants_15
+  - first:
+      213: -666210954468627096
+    second: Farming Plants_16
+  - first:
+      213: 1774109583823818138
+    second: Farming Plants_17
+  - first:
+      213: -3183003883038844764
+    second: Farming Plants_18
+  - first:
+      213: -8813222334067813782
+    second: Farming Plants_19
+  - first:
+      213: 3220655293762564766
+    second: Farming Plants_20
+  - first:
+      213: 8170261900100007297
+    second: Farming Plants_21
+  - first:
+      213: -3231000803385817452
+    second: Farming Plants_22
+  - first:
+      213: 1818892797483825402
+    second: Farming Plants_23
+  - first:
+      213: 6499908242938464321
+    second: Farming Plants_24
+  - first:
+      213: 2072862404122990272
+    second: Farming Plants_25
+  - first:
+      213: -1102263230651182495
+    second: Farming Plants_26
+  - first:
+      213: 1881330961402987585
+    second: Farming Plants_27
+  - first:
+      213: 3392196742602721534
+    second: Farming Plants_28
+  - first:
+      213: -797183112896774214
+    second: Farming Plants_29
+  - first:
+      213: -8226948184702604985
+    second: Farming Plants_30
+  - first:
+      213: -4471035681727069231
+    second: Farming Plants_31
+  - first:
+      213: -7536419532554554813
+    second: Farming Plants_32
+  - first:
+      213: -261361533921887324
+    second: Farming Plants_33
+  - first:
+      213: -7051298420961986638
+    second: Farming Plants_34
+  - first:
+      213: 9113586584930331469
+    second: plants-pumpkin-0
+  - first:
+      213: -972495551902887074
+    second: plants-pumpkin-1
+  - first:
+      213: 6849194982135307561
+    second: plants-pumpkin-2
+  - first:
+      213: -7057375707926749745
+    second: plants-pumpkin-3
+  - first:
+      213: 7047291313409791736
+    second: plants-potato-0
+  - first:
+      213: 7608346437684365089
+    second: plants-potato-1
+  - first:
+      213: -3568057398433270251
+    second: plants-potato-2
+  - first:
+      213: -2154233836028310421
+    second: plants-potato-3
+  - first:
+      213: 1135652761176964885
+    second: Farming Plants_43
+  - first:
+      213: 8764029024336308573
+    second: Farming Plants_44
+  - first:
+      213: 148012229996709633
+    second: Farming Plants_45
+  - first:
+      213: -7574556534369598227
+    second: Farming Plants_46
+  - first:
+      213: 6165657481621290884
+    second: Farming Plants_47
+  - first:
+      213: 826091489802236462
+    second: Farming Plants_48
+  - first:
+      213: 4992162155970904034
+    second: Farming Plants_49
+  - first:
+      213: 2340613614041932094
+    second: Farming Plants_50
+  - first:
+      213: -2227832012819510273
+    second: Farming Plants_51
+  - first:
+      213: -7827499416449815192
+    second: Farming Plants_52
+  - first:
+      213: 4513640947493604732
+    second: Farming Plants_53
+  - first:
+      213: -6644102658241979279
+    second: Farming Plants_54
+  - first:
+      213: -4343015011740814535
+    second: plants-pepper-0
+  - first:
+      213: 593002793200147421
+    second: plants-pepper-1
+  - first:
+      213: 3391927106950375280
+    second: plants-pepper-2
+  - first:
+      213: -5420819059952913401
+    second: plants-pepper-3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,12 +212,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -68,7 +239,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -80,7 +251,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -89,7 +260,448 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: plants-corn-0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 208
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.46875, y: 0.1875}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4be872bd66768790800000000000000
+      internalID: -7528199513585423542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plants-corn-1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 208
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1875}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc6cd5d1a1fd93a00800000000000000
+      internalID: 736865317306615500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plants-corn-2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 208
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1875}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a761f51e672945030800000000000000
+      internalID: 3482569451149137530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plants-corn-3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 208
+        width: 16
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.09375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 294481398e4a9bfa0800000000000000
+      internalID: -5784410927573482350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plants-corn-4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 208
+        width: 16
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.09375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 066c5832a9fef5760800000000000000
+      internalID: 7448935753994061408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plants-carrot-0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.46875, y: 0.1875}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7fea34b9d65f7f00800000000000000
+      internalID: 1116706725642825598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plants-carrot-1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 192
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1875}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd784cde4a5031a70800000000000000
+      internalID: 8796380703106566107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plants-carrot-2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 192
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1875}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85db1aaf4dfbff4d0800000000000000
+      internalID: -3098547097148736168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plants-carrot-3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 192
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1875}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6367bdcf4c4e3e100800000000000000
+      internalID: 136203948458210870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plants-pumpkin-0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.46875, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4ba98096b6f97e70800000000000000
+      internalID: 9113586584930331469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plants-pumpkin-1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 80
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1875}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e535e23b2700182f0800000000000000
+      internalID: -972495551902887074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plants-pumpkin-2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 80
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1875}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92d10933c8a3d0f50800000000000000
+      internalID: 6849194982135307561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plants-pumpkin-3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 80
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1875}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcd1e8a6f2a2f0e90800000000000000
+      internalID: -7057375707926749745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plants-potato-0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1875}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f69c748c120dc160800000000000000
+      internalID: 7047291313409791736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plants-potato-1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 64
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1875}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 127094a36c6469960800000000000000
+      internalID: 7608346437684365089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plants-potato-2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1875}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5163e2453b6bb7ec0800000000000000
+      internalID: -3568057398433270251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plants-potato-3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 64
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.46875, y: 0.1875}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6cc7606dbf9a12e0800000000000000
+      internalID: -2154233836028310421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plants-pepper-0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.53125, y: 0.1875}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 933fffa6bd28ab3c0800000000000000
+      internalID: -4343015011740814535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plants-pepper-1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5625, y: 0.1875}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddb528706e4ca3800800000000000000
+      internalID: 593002793200147421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plants-pepper-2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.4375, y: 0.1875}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 077abc98bbb821f20800000000000000
+      internalID: 3391927106950375280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plants-pepper-3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.4375, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 704f6d329c165c4b0800000000000000
+      internalID: -5420819059952913401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
