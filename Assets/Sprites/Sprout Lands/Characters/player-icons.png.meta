@@ -1,28 +1,19 @@
 fileFormatVersion: 2
-guid: df615b84d4e8193418a8f83dc3dde1f0
+guid: f5582b5a642ad9a4798631f4921e49e6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3798508834554645098
-    second: tilled-land-left
+      213: 2192384948400609162
+    second: player-blue
   - first:
-      213: -3706740577196066806
-    second: tilled-land-right
+      213: -6857656769228258564
+    second: player-red
   - first:
-      213: -1883389543817844829
-    second: tilled-land-0
+      213: -5862361606438442238
+    second: player-green
   - first:
-      213: -5763094840692529376
-    second: tilled-land-1
-  - first:
-      213: 1368266141117240500
-    second: tilled-land-2
-  - first:
-      213: -4251084111418639164
-    second: tilled-land-3
-  - first:
-      213: 3835424663159278867
-    second: tilled-land-single
+      213: -2647784610352950161
+    second: player-yellow
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -112,136 +103,10 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tilled-land-left
+      name: player-blue
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 695ff20275cf84bc0800000000000000
-      internalID: -3798508834554645098
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tilled-land-right
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a08b3bd85130f8cc0800000000000000
-      internalID: -3706740577196066806
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tilled-land-0
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3a76d03403bdcd5e0800000000000000
-      internalID: -1883389543817844829
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tilled-land-1
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 027a2adc6cf5500b0800000000000000
-      internalID: -5763094840692529376
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tilled-land-2
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4b4dc735ece0df210800000000000000
-      internalID: 1368266141117240500
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tilled-land-3
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4ccb59c168d1105c0800000000000000
-      internalID: -4251084111418639164
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tilled-land-single
-      rect:
-        serializedVersion: 2
-        x: 96
         y: 0
         width: 16
         height: 16
@@ -252,8 +117,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 31d8162096a2a3530800000000000000
-      internalID: 3835424663159278867
+      spriteID: a87d45cae7aec6e10800000000000000
+      internalID: 2192384948400609162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-red
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf2c8967085b4d0a0800000000000000
+      internalID: -6857656769228258564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-green
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20b2957dd25b4aea0800000000000000
+      internalID: -5862361606438442238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-yellow
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f649a2aeced214bd0800000000000000
+      internalID: -2647784610352950161
       vertices: []
       indices: 
       edges: []
