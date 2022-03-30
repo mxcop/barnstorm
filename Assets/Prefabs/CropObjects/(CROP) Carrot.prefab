@@ -48,20 +48,22 @@ MonoBehaviour:
   stageData:
   - sprite: {fileID: 1116706725642825598, guid: 9f172822beda7d246a8fd39bc6f83168, type: 3}
     growthDelay: 8
-    _item: {fileID: 0}
+    _item: {fileID: 3895952035281508092, guid: 29e3dfb59d94dd84a8f1f981c187a7f8, type: 3}
     amount: 1
   - sprite: {fileID: 8796380703106566107, guid: 9f172822beda7d246a8fd39bc6f83168, type: 3}
     growthDelay: 16
-    _item: {fileID: 0}
+    _item: {fileID: 3895952035281508092, guid: 29e3dfb59d94dd84a8f1f981c187a7f8, type: 3}
     amount: 1
   - sprite: {fileID: -3098547097148736168, guid: 9f172822beda7d246a8fd39bc6f83168, type: 3}
     growthDelay: 16
-    _item: {fileID: 0}
+    _item: {fileID: 3895952035281508092, guid: 29e3dfb59d94dd84a8f1f981c187a7f8, type: 3}
     amount: 1
   - sprite: {fileID: 136203948458210870, guid: 9f172822beda7d246a8fd39bc6f83168, type: 3}
     growthDelay: 16
-    _item: {fileID: 0}
+    _item: {fileID: 3895952035281508092, guid: 29e3dfb59d94dd84a8f1f981c187a7f8, type: 3}
     amount: 2
+  autoRespawn: 0
+  growthDelayMultiplier: 1
   startingGrowth: 0
 --- !u!212 &9188833176126706496
 SpriteRenderer:
@@ -103,7 +105,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 1979382666408782389, guid: 3703f38d2ad9ca247bfd64177e9a999f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -111,7 +113,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &9188833176126706497

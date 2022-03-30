@@ -26,9 +26,8 @@ public class Player : PlayerInventory
     int animDir = 2;
     int tillDir = 2;
 
-    bool usingTool;
-    Interactable currentInteraction;
-
+    private bool usingTool;
+    private Interactable currentInteraction;
     private Inventory currentInventory;
 
     private void Start()
@@ -146,8 +145,20 @@ public class Player : PlayerInventory
         SelectSlot(slot);
     }
 
-    public void HotbarSwitchR(CallbackContext _) => HotbarSwitch(Mathf.Clamp(container.size + 1, 0, container.size));
-    public void HotbarSwitchL(CallbackContext _) => HotbarSwitch(Mathf.Clamp(container.size - 1, 0, container.size));
+    public void HotbarSwitchR(CallbackContext c)
+    {
+        if (c.phase == InputActionPhase.Performed)
+        {
+            HotbarSwitch(Mathf.Clamp(selected + 1, 0, container.size - 1));
+        }
+    }
+    public void HotbarSwitchL(CallbackContext c)
+    {
+        if (c.phase == InputActionPhase.Performed)
+        {
+            HotbarSwitch(Mathf.Clamp(selected - 1, 0, container.size - 1));
+        }
+    }
 
     /// <summary>
     /// Swaps the currently held item with the item in single-inventory 
@@ -207,7 +218,7 @@ public class Player : PlayerInventory
             if(_crop != null)
             {
                 CropData crop = (CropData)_crop;
-                Debug.Log(crop.amount);
+                container.PushItem(crop.item, crop.amount);
             }
         }
 
