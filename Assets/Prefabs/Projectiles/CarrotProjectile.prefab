@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 614993599846758938}
   - component: {fileID: 3210844043196925340}
   - component: {fileID: 5457910862270563708}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 5985629657691347612}
   - component: {fileID: 5985629657691347615}
   - component: {fileID: 5985629657691347614}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CarrotProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}

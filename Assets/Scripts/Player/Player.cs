@@ -29,8 +29,6 @@ public class Player : PlayerInventory
     bool usingTool;
     Interactable currentInteraction;
 
-    private bool usingTool;
-    private Interactable currentInteraction;
     private Inventory currentInventory;
 
     private void Start()

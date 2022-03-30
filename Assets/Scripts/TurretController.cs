@@ -63,7 +63,7 @@ public class TurretController : Inventory, Interactable
 
         // ---------Temporary---------
         //Open();
-        container.PushItem(ammunition, 25);
+        container.PushItem(ammunition, 99);
         // ---------Temporary---------
     }
 

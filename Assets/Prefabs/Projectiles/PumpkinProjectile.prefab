@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6904714399301120688}
   - component: {fileID: 4413709068574340530}
   - component: {fileID: 7272490877497768674}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 7555240021066719545}
   - component: {fileID: 8568542809029616561}
   - component: {fileID: 4781576061895054723}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PumpkinProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}

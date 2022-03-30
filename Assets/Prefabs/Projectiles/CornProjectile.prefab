@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9124121453040794500}
   - component: {fileID: 9057968941883426300}
   - component: {fileID: 6293411518922182918}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 4525391680973343682}
   - component: {fileID: 4525391680973343681}
   - component: {fileID: 4525391680973343680}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CornProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
