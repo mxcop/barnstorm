@@ -12,6 +12,8 @@ public class Player : PlayerInventory
     [Header("Interactions")]
     [SerializeField] float interactCheckRadius;
     [SerializeField] LayerMask cf;
+    [Space]
+    [SerializeField] TransformArray[] tillPoints;
 
     [HideInInspector] public ButtonPromptType buttonPromptType;
 
@@ -21,8 +23,11 @@ public class Player : PlayerInventory
     private float lastInputMag;
     private Vector2 move;
 
-    private int animDir = 2;
-    private int tillDir = 2;
+    int animDir = 2;
+    int tillDir = 2;
+
+    bool usingTool;
+    Interactable currentInteraction;
 
     private bool usingTool;
     private Interactable currentInteraction;
@@ -153,7 +158,7 @@ public class Player : PlayerInventory
     public void InventorySwap(CallbackContext input)
     {
         if (input.phase != InputActionPhase.Performed) return;
-
+        
         if (currentInteraction == null)
         {
             if (CheckForInteractable())
@@ -194,25 +199,22 @@ public class Player : PlayerInventory
     public void Anim_TillEvent()
     {
         usingTool = false;
-        var offset = tillDir switch
-        {
-            1 => new Vector2(-0.8f, -0.45f),
-            2 => new Vector2(0, -0.8f),
-            3 => new Vector2(0.8f, -0.45f),
-            _ => new Vector2(0, 0.4f),
-        };
-        Vector2Int pos = new Vector2Int(Mathf.FloorToInt(transform.position.x + offset.x), Mathf.FloorToInt(transform.position.y + offset.y));
 
-        if (CropManager.current.TryGetTile(pos.x, pos.y, out CropDataTile t))
+        TransformArray tps = tillPoints[tillDir];
+
+        for (int i = 0; i < tps.array.Length; i++)
         {
-            switch (t.cropData.type)
+            Vector2 pos = tps[i].position;
+            CropData? _crop = CropManager.current.Till(pos);
+            if(_crop != null)
             {
-                case TileType.Grass:
-                    CropManager.current.PlaceTile(TileType.Tilled, pos.x, pos.y);
-                    break;
+                CropData crop = (CropData)_crop;
+                Debug.Log(crop.amount);
             }
         }
-    }
+
+    }   
+
 
     public void Anim_TillStart() => usingTool = true;
 }
@@ -220,4 +222,15 @@ public class Player : PlayerInventory
 public enum ButtonPromptType
 {
     Unknown, Playstation, Xbox, PC
+}
+
+[System.Serializable]
+public struct TransformArray
+{
+    public Transform[] array;
+    public Transform this[int i]
+    {
+        get { return array[i]; }
+        set { array[i] = value; }
+    }
 }
