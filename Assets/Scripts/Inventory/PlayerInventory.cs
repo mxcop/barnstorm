@@ -39,7 +39,6 @@ public class PlayerInventory : MonoBehaviour
     public void SelectSlot(int slot)
     {
         selected = slot;
-
-        // TODO : Select a slot visually
+        gui.UpdateSelection(slot);
     }
 }

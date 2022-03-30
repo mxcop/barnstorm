@@ -26,6 +26,9 @@ TextureImporter:
   - first:
       213: 2381927511759703273
     second: inv-panel
+  - first:
+      213: -3571835806672157156
+    second: inv-select-arrow
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -278,6 +281,27 @@ TextureImporter:
       bones: []
       spriteID: 9ecca23b37e4e0120800000000000000
       internalID: 2381927511759703273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inv-select-arrow
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
+        width: 20
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c16094b124a4e6ec0800000000000000
+      internalID: -3571835806672157156
       vertices: []
       indices: 
       edges: []
