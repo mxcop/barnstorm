@@ -8,6 +8,7 @@ using Systems.Inventory;
 public class Container<T> where T : Item
 {
     public ContainedItem<T>[] data;
+    public int size;
 
     public delegate void ContainerUpdateEventHandler(int slot, ContainedItem<T> item);
     public event ContainerUpdateEventHandler OnUpdate;
@@ -16,6 +17,7 @@ public class Container<T> where T : Item
     {
         // Initlialize the data array.
         data = new ContainedItem<T>[slots];
+        size = slots;
     }
 
     /// <summary>
@@ -116,7 +118,7 @@ public class Container<T> where T : Item
                 OnUpdate.Invoke(slot, item);
                 return true;
             }
-            else if (data[slot].item.GetType() == item.GetType())
+            else if (data[slot].item.GetType() == item.item.GetType())
             {
                 data[slot].num += item.num;
                 OnUpdate.Invoke(slot, data[slot]);
@@ -241,5 +243,18 @@ public class Container<T> where T : Item
         for (int i = 0; i < data.Length; i++)
             if (data[i].item.GetType() == item) return true;
         return false;
+    }
+
+    public override string ToString()
+    {
+        string str = "";
+        for (int i = 0; i < data.Length; i++)
+        {
+            if (data[i] != null)
+                str += "\n" + data[i].item.ToString() + ":" + data[i].num;
+            else
+                str += "\nEmpty:0";
+        }
+        return str;
     }
 }
