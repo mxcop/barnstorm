@@ -57,8 +57,6 @@ public class Inventory : MonoBehaviour
     /// <param name="slot">The selected slot in the player inventory.</param>
     public void QuickSwap(PlayerInventory player, int slot)
     {
-        
-
         bool invItemExists = container.PullItem(0, out ContainedItem<Item> inventoryItem);
 
         bool sameType = invItemExists && player.container.ContainsAt(inventoryItem.item.GetType(), slot);
@@ -82,12 +80,20 @@ public class Inventory : MonoBehaviour
     /// <param name="slot">The selected slot in the player inventory.</param>
     public void QuickSplit(PlayerInventory player, int slot)
     {
-        int half = Mathf.CeilToInt(player.container.PeekAmount(slot) / 2.0f);
+        bool invItemExists = container.Peek(0, out Item inventoryItem);
+        bool playerItemExists = player.container.Peek(slot, out Item playerItem);
 
-        // If the player has an item in this slot:
-        if (player.container.PullItem(slot, half, out ContainedItem<Item> item))
+        // If the player has an item:
+        if (playerItemExists) 
         {
-            container.InsertItem(item, 0);
+            // If either the inventory has no item, or the item is of the same type:
+            if (invItemExists == false || inventoryItem.GetType() == playerItem.GetType())
+            {
+                // Pull the item from the player and insert it into the inventory.
+                int half = Mathf.CeilToInt(player.container.PeekAmount(slot) / 2.0f);
+                player.container.PullItem(slot, half, out ContainedItem<Item> item);
+                container.InsertItem(item, 0);
+            }
         }
     }
 }
