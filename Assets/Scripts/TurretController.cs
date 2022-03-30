@@ -125,6 +125,14 @@ public class TurretController : Inventory, Interactable
 
     public void SortTargets()
     {
+
+        // Remove all defeated enemies
+        for (int i = targetEnemies.Count - 1; i >= 0; i--) {
+            if (targetEnemies[i].state == EnemyBase.EnemyState.eating)
+                targetEnemies.RemoveAt(i);
+        }
+
+        // Check if there are enemies left
         if (targetEnemies.Count <= 0)
             return;
 

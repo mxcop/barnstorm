@@ -19,10 +19,13 @@ public class EnemyBase : MonoBehaviour
 
     public Rigidbody2D rb;
     public float speed;
+    public float bounceStrength;
+    public float bounceTime;
 
     private Animator anim;
     private SpriteRenderer sr;
-    
+    private bool isBouncing = false;
+
     [SerializeField] private float maxHunger;
     [SerializeField] private float hunger;
     [SerializeField] private Transform target;
@@ -39,6 +42,9 @@ public class EnemyBase : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (isBouncing)
+            return;
+
         switch (state)
         {
             case EnemyState.running:
@@ -77,5 +83,19 @@ public class EnemyBase : MonoBehaviour
         if (direction.x > 0) sr.flipX = true;
         else sr.flipX = false;
         rb.velocity = (-direction * speed);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Untagged"))
+            StartCoroutine(Bounce(collision.transform, (collision.transform.position.x - transform.position.x > 0 ? true : false)));
+    }
+
+    IEnumerator Bounce(Transform other, bool rightSide)
+    {
+        isBouncing = true;
+        rb.AddForceAtPosition(-(other.transform.position - transform.position + (Vector3)(rightSide ? Vector2.right : Vector2.left) * 2).normalized * bounceStrength, other.transform.position);
+        yield return new WaitForSeconds(bounceTime);
+        isBouncing = false;
     }
 }
