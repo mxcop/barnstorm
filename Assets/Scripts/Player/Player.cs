@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     [Space]
     [SerializeField] float interactCheckRadius;
     [SerializeField] LayerMask cf;
+    [Space]
+    [SerializeField] TransformArray[] tillPoints;
 
     [HideInInspector] public ButtonPromptType buttonPromptType;
 
@@ -23,7 +25,7 @@ public class Player : MonoBehaviour
 
     int animDir = 2;
     int tillDir = 2;
-    
+
     bool usingTool;
     Interactable currentInteraction;
 
@@ -140,12 +142,12 @@ public class Player : MonoBehaviour
     {
     }
 
-    public void HotbarSwitchR(CallbackContext input) 
-    { 
+    public void HotbarSwitchR(CallbackContext input)
+    {
         //HotbarSwitch(Mathf.Clamp(inventoryMaxSize + 1, 0, inventoryMaxSize)); 
     }
-    public void HotbarSwitchL(CallbackContext input) 
-    { 
+    public void HotbarSwitchL(CallbackContext input)
+    {
         //HotbarSwitch(Mathf.Clamp(inventoryMaxSize - 1, 0, inventoryMaxSize)); 
     }
 
@@ -155,7 +157,7 @@ public class Player : MonoBehaviour
     /// </summary>
     public void InventorySwap(CallbackContext input)
     {
-        if(currentInteraction == null)
+        if (currentInteraction == null)
         {
             if (CheckForInteractable())
             {
@@ -199,29 +201,26 @@ public class Player : MonoBehaviour
     public void Anim_TillEvent()
     {
         usingTool = false;
-        CropDataTile t;
-        Vector2 offset;
-        switch (tillDir)
+
+        TransformArray tps = tillPoints[tillDir];
+
+        for (int i = 0; i < tps.array.Length; i++)
         {
-            default: offset = new Vector2(0, 0.4f); break;
-            case 1: offset = new Vector2(-0.8f, -0.45f); break;
-            case 2: offset = new Vector2(0, -0.8f); break;
-            case 3: offset = new Vector2(0.8f, -0.45f); break;
+            Vector2 pos = tps[i].position;
+            Till(pos);
         }
 
-        Vector2Int pos = new Vector2Int(Mathf.FloorToInt(transform.position.x + offset.x), Mathf.FloorToInt(transform.position.y + offset.y));
+    }
 
-        if (CropManager.current.TryGetTile(pos.x, pos.y, out t))
+    void Till(Vector2 pos) => Till(Mathf.FloorToInt(pos.x), Mathf.FloorToInt(pos.y));        
+    void Till(int x, int y)
+    {
+        if (CropManager.current.TileIsTillable(x, y))
         {
-            switch (t.cropData.type)
-            {
-                case TileType.Grass:
-                    CropManager.current.PlaceTile(TileType.Tilled, pos.x, pos.y);
-                    break;
-            }
-            
+            CropManager.current.PlaceTile(TileType.Tilled, x, y);
         }
     }
+
 
     public void Anim_TillStart() => usingTool = true;
 }
@@ -229,4 +228,15 @@ public class Player : MonoBehaviour
 public enum ButtonPromptType
 {
     Unknown, Playstation, Xbox, PC
+}
+
+[System.Serializable]
+public struct TransformArray
+{
+    public Transform[] array;
+    public Transform this[int i]
+    {
+        get { return array[i]; }
+        set { array[i] = value; }
+    }
 }

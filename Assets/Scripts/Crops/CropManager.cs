@@ -7,17 +7,16 @@ using UnityEngine.Tilemaps;
 public class CropManager : MonoBehaviour
 {
     public static CropManager current;
-    [SerializeField] Tilemap tilemap;
+    [SerializeField] Tilemap grassMap, tilledMap, cropsMap, ambientMap;
 
-    [SerializeField] CropData[] grass, tilled, crops;
+    [SerializeField] CropData[] crops;
+    [SerializeField] CropData grass, tilled;
     Dictionary<string, CropData> dict = new Dictionary<string, CropData>();
 
     private void Awake()
     {
         current = this;
 
-        foreach (CropData c in grass) { dict.Add(c.name, c); }
-        foreach (CropData c in tilled) { dict.Add(c.name, c); }
         foreach (CropData c in crops) { dict.Add(c.name, c); }
     }
 
@@ -27,58 +26,50 @@ public class CropManager : MonoBehaviour
     /// <param name="type"></param>
     public void PlaceTile(TileType type, int x, int y)
     {
-        Tile t = null;
         switch (type)
         {
             case TileType.Grass:
-                t = grass[Random.Range(0, grass.Length)].tile;
+                grassMap.SetTile(new Vector3Int(x, y, 0), grass.tile);
+                tilledMap.SetTile(new Vector3Int(x, y, 0), null);
                 break;
 
             case TileType.Tilled:
-                t = tilled[Random.Range(0, tilled.Length)].tile;
+                tilledMap.SetTile(new Vector3Int(x, y, 0), tilled.tile);
                 break;
 
                 //food crops
             case TileType.Potato:
-                t = GetCropData("potato0").tile;
+                cropsMap.SetTile(new Vector3Int(x, y, 0), GetCropData("potato0").tile);
                 break;
 
             case TileType.Carrot:
-                t = GetCropData("carrot0").tile;
+                cropsMap.SetTile(new Vector3Int(x, y, 0), GetCropData("carrot0").tile);
                 break;
 
             case TileType.Corn:
-                t = GetCropData("corn0").tile;
+                cropsMap.SetTile(new Vector3Int(x, y, 0), GetCropData("corn0").tile);
                 break;
 
             case TileType.Pumpkin:
-                t = GetCropData("pumpkin0").tile;
+                cropsMap.SetTile(new Vector3Int(x, y, 0), GetCropData("pumpkin0").tile);
                 break;
 
             case TileType.Pepper:
-                t = GetCropData("pepper0").tile;
+                cropsMap.SetTile(new Vector3Int(x, y, 0), GetCropData("pepper0").tile);
                 break;
-        }
-
-        if (t != null)
-        {
-            tilemap.SetTile(new Vector3Int(x, y, 0), t);
         }
     }
 
     public CropData GetCropData(string n) => dict[n];
 
-    public bool TryGetTile(int x, int y, out CropDataTile tileData)
+    public bool TileIsTillable(int x, int y)
     {
-        TileBase tile = tilemap.GetTile(new Vector3Int(x, y, 0));
-        if (tile != null && dict.ContainsKey(tile.name))
+        if (grassMap.GetTile(new Vector3Int(x, y, 0)) != null && ambientMap.GetTile(new Vector3Int(x, y, 0)) == null)
         {
-            tileData = new CropDataTile(dict[tile.name], x, y);
             return true;
         }
         else
         {
-            tileData = new CropDataTile();
             return false;
         }
     }
@@ -88,7 +79,7 @@ public class CropManager : MonoBehaviour
 [System.Serializable]
 public struct CropData
 {
-    public Tile tile;
+    public TileBase tile;
     public string name => tile.name;
     public TileType type;
 

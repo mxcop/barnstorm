@@ -42,6 +42,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Tilemap
+    uniqueID: 772333389
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
