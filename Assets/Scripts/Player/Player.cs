@@ -207,19 +207,14 @@ public class Player : MonoBehaviour
         for (int i = 0; i < tps.array.Length; i++)
         {
             Vector2 pos = tps[i].position;
-            Till(pos);
+            CropDataTile crop = CropManager.current.Till(pos);
+            if(crop != null)
+            {
+                Debug.Log(crop.cropData.name);
+            }
         }
 
-    }
-
-    void Till(Vector2 pos) => Till(Mathf.FloorToInt(pos.x), Mathf.FloorToInt(pos.y));        
-    void Till(int x, int y)
-    {
-        if (CropManager.current.TileIsTillable(x, y))
-        {
-            CropManager.current.PlaceTile(TileType.Tilled, x, y);
-        }
-    }
+    }   
 
 
     public void Anim_TillStart() => usingTool = true;

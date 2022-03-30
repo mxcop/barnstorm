@@ -74,6 +74,23 @@ public class CropManager : MonoBehaviour
         }
     }
 
+    public CropDataTile? Till(Vector2 pos) => Till(Mathf.FloorToInt(pos.x), Mathf.FloorToInt(pos.y));
+    public CropDataTile? Till(int x, int y)
+    {
+        if (TileIsTillable(x, y))
+        {
+            PlaceTile(TileType.Tilled, x, y);
+        }
+
+        TileBase t = cropsMap.GetTile(new Vector3Int(x, y, 0));
+        if (t != null)
+        {
+            cropsMap.SetTile(new Vector3Int(x, y, 0), null);
+            return new CropDataTile(GetCropData(t.name), x, y);
+        }
+        else return null;
+    }
+
 }
 
 [System.Serializable]
@@ -88,7 +105,7 @@ public struct CropData
     public int yield;
 }
 
-public struct CropDataTile
+public class CropDataTile
 {
     public int x, y;
     public CropData cropData;
