@@ -7,6 +7,8 @@ public class ProjectileBase : MonoBehaviour
     public Food food;
     private Rigidbody2D rb;
 
+    private int hitCount = 0;
+
     void Start(){
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = (transform.up.normalized * food.speed);
@@ -16,8 +18,9 @@ public class ProjectileBase : MonoBehaviour
         food.Collision(collision);
 
         if (collision.CompareTag("Enemy")){
+            hitCount++;
             collision.gameObject.GetComponent<EnemyBase>().Feed(food);
-            food.Destroy(gameObject);
+            food.Destroy(gameObject, hitCount);
         }   
     }
 }
