@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7069016472490965051}
   - component: {fileID: 7069016472490965048}
   - component: {fileID: 7069016472490965049}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PotatoProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 3849460571296809530}
   - component: {fileID: 7089622688953234944}
   - component: {fileID: 436229720422994949}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

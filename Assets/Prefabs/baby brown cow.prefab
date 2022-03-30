@@ -119,7 +119,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 3
-  m_LinearDrag: 0
+  m_LinearDrag: 8
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -142,11 +142,12 @@ MonoBehaviour:
   inAnimation: 0
   doneEating: 0
   state: 0
-  rb: {fileID: 0}
+  particle: {fileID: 1608683506982260623, guid: cd7c3a00f47d9e7478a327ad3872990b, type: 3}
   speed: 1.8
+  bounceStrength: 550
+  bounceTime: 0.2
+  rb: {fileID: 0}
   maxHunger: 10
-  hunger: 0
-  target: {fileID: 0}
 --- !u!70 &3121955686671688586
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

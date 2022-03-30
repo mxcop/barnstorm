@@ -17,25 +17,36 @@ public class EnemyBase : MonoBehaviour
     }
     public EnemyState state = EnemyState.running;
 
-    public Rigidbody2D rb;
+    public GameObject particle;
     public float speed;
     public float bounceStrength;
     public float bounceTime;
 
     private Animator anim;
     private SpriteRenderer sr;
+    private Collider2D coll;
     private bool isBouncing = false;
 
+    [HideInInspector] public Rigidbody2D rb;
     [SerializeField] private float maxHunger;
-    [SerializeField] private float hunger;
-    [SerializeField] private Transform target;
 
-    public void Feed(Food food) { hunger -= food.nutrition; if (hunger <= 0 && state != EnemyState.retreating) state = EnemyState.eating; }
+    private float hunger;
+    private Transform target;
+
+    public void Feed(Food food) { 
+        hunger -= food.nutrition; 
+
+        if (hunger <= 0 && state != EnemyState.retreating) 
+            state = EnemyState.eating;
+
+        Instantiate(particle, transform.position + (Vector3)(Vector2.up * 0.75f + (sr.flipX ? Vector2.left : Vector2.right) * 0.25f), particle.transform.rotation);
+    }
 
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
+        coll = GetComponent<Collider2D>();
         target = GameObject.FindGameObjectWithTag("Barn").transform;
         hunger = maxHunger;
     }
@@ -56,7 +67,8 @@ public class EnemyBase : MonoBehaviour
                 if (!inAnimation){
                     inAnimation = true;
                     rb.velocity = Vector2.zero;
-                    anim.SetTrigger("Eat");
+                    gameObject.layer = 9;
+                    anim.SetTrigger("Eat");   
                 }
                 if (doneEating)
                     state = EnemyState.retreating;
@@ -76,6 +88,9 @@ public class EnemyBase : MonoBehaviour
 
     protected virtual void Retreating()
     {
+        if (transform.position.magnitude > 22)
+            Destroy(gameObject);
+
         speed = 5f;
         anim.speed = 1.5f;
         Vector2 direction = (target.transform.position - transform.position).normalized;

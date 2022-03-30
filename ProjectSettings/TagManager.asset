@@ -19,8 +19,8 @@ TagManager:
   - Interactable
   - Player
   - Enemy
-  - 
-  - 
+  - RetreatingEnemy
+  - Projectile
   - 
   - 
   - 

@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStatic: 1
-  layerOffset: 4
+  layerOffset: 2
 --- !u!1 &8553758799931233679
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,8 +235,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b390c2ca00f8c7842a6312ab9616dd2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0.5}
-  size: 0
+  offset: {x: 0, y: 3}
+  size: 1
   ammunition: {fileID: 7618592410482247493, guid: 3650e097378961f4ba8021e9ab27d9b8, type: 3}
   sprite:
   - {fileID: 7721177293500312529, guid: ab27a14067f9fb342973209f1dd04a14, type: 3}
@@ -583,7 +583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStatic: 1
-  layerOffset: 2
+  layerOffset: 0
 --- !u!1 &8553758801229928252
 GameObject:
   m_ObjectHideFlags: 0
