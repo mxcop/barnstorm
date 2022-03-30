@@ -9,6 +9,9 @@ public class Crop : MonoBehaviour
     int currentStage;
     float lastGrowthT;
 
+    [Header("Settings")]
+    [SerializeField] bool autoRespawn;
+    [SerializeField] float growthDelayMultiplier;
     [SerializeField] int startingGrowth;
 
     SpriteRenderer spr;
@@ -27,7 +30,7 @@ public class Crop : MonoBehaviour
 
     private void Update()
     {
-        if (lastGrowthT + currentStageData.growthDelay < Time.time) SetGrowthStage(currentStage + 1);
+        if (lastGrowthT + currentStageData.growthDelay * growthDelayMultiplier < Time.time) SetGrowthStage(currentStage + 1);
     }
 
     void SetGrowthStage(int i)
@@ -44,7 +47,12 @@ public class Crop : MonoBehaviour
         if (!isHarvested)
         {
             isHarvested = true;
-            Destroy(gameObject);
+            if (!autoRespawn) Destroy(gameObject);
+            else
+            {
+                SetGrowthStage(0);
+                isHarvested = false;
+            }
             return stageData[currentStage];
         }
         else return null;
