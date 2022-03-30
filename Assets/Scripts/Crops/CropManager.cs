@@ -7,17 +7,52 @@ using UnityEngine.Tilemaps;
 public class CropManager : MonoBehaviour
 {
     public static CropManager current;
-    [SerializeField] Tilemap grassMap, tilledMap, cropsMap, ambientMap;
+    [SerializeField] Tilemap grassMap, tilledMap, ambientMap;
 
-    [SerializeField] CropData[] crops;
-    [SerializeField] CropData grass, tilled;
-    Dictionary<string, CropData> dict = new Dictionary<string, CropData>();
+    [SerializeField] CropPrefab[] _cropTypeLib;
+    [SerializeField] TileBase grass, tilled;
+    Dictionary<CropType, GameObject> cropTypeLib = new Dictionary<CropType, GameObject>();
+
+    //crops auto-assign to this dictionary
+    Dictionary<Vector3Int, Crop> crops = new Dictionary<Vector3Int, Crop>();
 
     private void Awake()
     {
         current = this;
 
-        foreach (CropData c in crops) { dict.Add(c.name, c); }
+        foreach (CropPrefab c in _cropTypeLib) { cropTypeLib.Add(c.type, c.prefab); }
+    }
+
+    public bool AddToCrops(Vector3Int pos, Crop crop)
+    {
+        if (GetFromCrops(pos) != null) return false;
+        else
+        {
+            crops.Add(pos, crop);
+            return true;
+        }
+    }
+
+    public Crop GetFromCrops(Vector3Int pos)
+    {
+        if (crops.ContainsKey(pos))
+        {
+            if (crops[pos] != null)
+            {
+                return crops[pos];
+            }
+            else
+            {
+                crops.Remove(pos);
+                return null;
+            }
+        }
+        else return null;
+    }
+
+    public void PlaceCrop(CropType type, int x, int y)
+    {
+        Instantiate(cropTypeLib[type], new Vector3(x, y, 0), Quaternion.identity);
     }
 
     /// <summary>
@@ -29,38 +64,15 @@ public class CropManager : MonoBehaviour
         switch (type)
         {
             case TileType.Grass:
-                grassMap.SetTile(new Vector3Int(x, y, 0), grass.tile);
+                grassMap.SetTile(new Vector3Int(x, y, 0), grass);
                 tilledMap.SetTile(new Vector3Int(x, y, 0), null);
                 break;
 
             case TileType.Tilled:
-                tilledMap.SetTile(new Vector3Int(x, y, 0), tilled.tile);
-                break;
-
-                //food crops
-            case TileType.Potato:
-                cropsMap.SetTile(new Vector3Int(x, y, 0), GetCropData("potato0").tile);
-                break;
-
-            case TileType.Carrot:
-                cropsMap.SetTile(new Vector3Int(x, y, 0), GetCropData("carrot0").tile);
-                break;
-
-            case TileType.Corn:
-                cropsMap.SetTile(new Vector3Int(x, y, 0), GetCropData("corn0").tile);
-                break;
-
-            case TileType.Pumpkin:
-                cropsMap.SetTile(new Vector3Int(x, y, 0), GetCropData("pumpkin0").tile);
-                break;
-
-            case TileType.Pepper:
-                cropsMap.SetTile(new Vector3Int(x, y, 0), GetCropData("pepper0").tile);
+                tilledMap.SetTile(new Vector3Int(x, y, 0), tilled);
                 break;
         }
     }
-
-    public CropData GetCropData(string n) => dict[n];
 
     public bool TileIsTillable(int x, int y)
     {
@@ -74,55 +86,35 @@ public class CropManager : MonoBehaviour
         }
     }
 
-    public CropDataTile? Till(Vector2 pos) => Till(Mathf.FloorToInt(pos.x), Mathf.FloorToInt(pos.y));
-    public CropDataTile? Till(int x, int y)
+    public CropData? Till(Vector2 pos) => Till(Mathf.FloorToInt(pos.x), Mathf.FloorToInt(pos.y));
+    public CropData? Till(int x, int y)
     {
         if (TileIsTillable(x, y))
         {
             PlaceTile(TileType.Tilled, x, y);
         }
 
-        TileBase t = cropsMap.GetTile(new Vector3Int(x, y, 0));
-        if (t != null)
-        {
-            cropsMap.SetTile(new Vector3Int(x, y, 0), null);
-            return new CropDataTile(GetCropData(t.name), x, y);
-        }
-        else return null;
+        return GetFromCrops(new Vector3Int(x, y, 0))?.Harvest();
     }
 
-}
-
-[System.Serializable]
-public struct CropData
-{
-    public TileBase tile;
-    public string name => tile.name;
-    public TileType type;
-
-    [Space]
-    public Item item;
-    public int yield;
-}
-
-public class CropDataTile
-{
-    public int x, y;
-    public CropData cropData;
-
-    public CropDataTile(CropData _cropData, int _x, int _y)
-    {
-        cropData = _cropData;
-        x = _x;
-        y = _y;
-    }
 }
 
 public enum TileType
 {
-    Indestructible,
+    Dirt,
     Grass,
-    Tilled,
+    Tilled
+}
+
+[System.Serializable]
+public struct CropPrefab
+{
+    public CropType type;
+    public GameObject prefab;
+}
+
+public enum CropType
+{
     Potato,
     Carrot,
     Corn,

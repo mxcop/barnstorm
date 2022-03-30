@@ -207,10 +207,11 @@ public class Player : MonoBehaviour
         for (int i = 0; i < tps.array.Length; i++)
         {
             Vector2 pos = tps[i].position;
-            CropDataTile crop = CropManager.current.Till(pos);
-            if(crop != null)
+            CropData? _crop = CropManager.current.Till(pos);
+            if(_crop != null)
             {
-                Debug.Log(crop.cropData.name);
+                CropData crop = (CropData)_crop;
+                Debug.Log(crop.amount);
             }
         }
 
