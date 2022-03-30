@@ -1,3 +1,4 @@
+using Systems.Inventory;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -22,7 +23,7 @@ public class Inventory : MonoBehaviour
         GUI = Resources.Load<GameObject>("InventoryPanel");
 
         // Create the GUI of the inventory.
-        gui = Instantiate(GUI, GameObject.FindWithTag("MainCanvas").transform).GetComponent<InventoryGUI>();
+        gui = Instantiate(GUI, GameObject.FindWithTag("WorldCanvas").transform).GetComponent<InventoryGUI>();
         gui.Initialize(size, ref container);
     }
 
@@ -47,5 +48,46 @@ public class Inventory : MonoBehaviour
         LeanTween.cancel(gui.gameObject);
         LeanTween.value(gui.gameObject, a => canvas.alpha = a, canvas.alpha, 0.0f, 0.1f)
             .setOnComplete(() => gui.gameObject.SetActive(false));
+    }
+
+    /// <summary>
+    /// Swap the item in the selected player slot with the first inventory slot.
+    /// </summary>
+    /// <param name="player">The player to swap with.</param>
+    /// <param name="slot">The selected slot in the player inventory.</param>
+    public void QuickSwap(PlayerInventory player, int slot)
+    {
+        
+
+        bool invItemExists = container.PullItem(0, out ContainedItem<Item> inventoryItem);
+
+        bool sameType = invItemExists && player.container.ContainsAt(inventoryItem.item.GetType(), slot);
+
+        if (sameType == false)
+        {
+            bool playerItemExists = player.container.PullItem(slot, out ContainedItem<Item> playerItem);
+
+            if (invItemExists) player.container.InsertItem(inventoryItem, slot);
+            if (playerItemExists) container.InsertItem(playerItem, 0);
+            return;
+        }
+
+        player.container.InsertItem(inventoryItem, slot);
+    }
+
+    /// <summary>
+    /// Split the item in the selected player slot into the first inventory slot.
+    /// </summary>
+    /// <param name="player">The player to split with.</param>
+    /// <param name="slot">The selected slot in the player inventory.</param>
+    public void QuickSplit(PlayerInventory player, int slot)
+    {
+        int half = Mathf.CeilToInt(player.container.PeekAmount(slot) / 2.0f);
+
+        // If the player has an item in this slot:
+        if (player.container.PullItem(slot, half, out ContainedItem<Item> item))
+        {
+            container.InsertItem(item, 0);
+        }
     }
 }

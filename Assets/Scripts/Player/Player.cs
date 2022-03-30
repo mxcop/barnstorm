@@ -1,15 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
 
-public class Player : MonoBehaviour
+public class Player : PlayerInventory
 {
+    [Header("Movement")]
     [SerializeField] float movementSpeed;
     [SerializeField] float maxSpeed;
     [SerializeField] float friction;
     [Space]
+    [Header("Interactions")]
     [SerializeField] float interactCheckRadius;
     [SerializeField] LayerMask cf;
     [Space]
@@ -17,11 +17,11 @@ public class Player : MonoBehaviour
 
     [HideInInspector] public ButtonPromptType buttonPromptType;
 
-    Animator anim;
+    private Animator anim;
 
-    Vector2 input_move;
-    float lastInputMag;
-    Vector2 move;
+    private Vector2 inputMove;
+    private float lastInputMag;
+    private Vector2 move;
 
     int animDir = 2;
     int tillDir = 2;
@@ -29,38 +29,36 @@ public class Player : MonoBehaviour
     bool usingTool;
     Interactable currentInteraction;
 
-    private void Awake()
+    private bool usingTool;
+    private Interactable currentInteraction;
+    private Inventory currentInventory;
+
+    private void Start()
     {
         anim = GetComponent<Animator>();
-        PlayerInput i;
     }
 
     private void Update()
     {
         float currentMaxSpeed = maxSpeed * lastInputMag;
-        if (input_move != Vector2.zero && !usingTool)
-        {
-            move = Vector2.ClampMagnitude(move + input_move * movementSpeed * Time.deltaTime, currentMaxSpeed);
-        }
+        if (inputMove != Vector2.zero && !usingTool)
+            move = Vector2.ClampMagnitude(move + inputMove * movementSpeed * Time.deltaTime, currentMaxSpeed);
         else
-        {
             move = Vector2.Lerp(move, Vector2.zero, friction * Time.deltaTime);
-        }
 
-        lastInputMag = input_move.magnitude;
+        lastInputMag = inputMove.magnitude;
         anim.SetFloat("Velocity", lastInputMag);
 
-        //chooses what direction to face
-        //anti-clockwise
-
-        Vector2 norm = input_move.normalized;
+        // Chooses what direction to face
+        // Anti-clockwise
+        Vector2 norm = inputMove.normalized;
         if (norm.y <= -0.5f) animDir = 2;
         else if (norm.y >= 0.5f) animDir = 0;
         else if (norm.x <= -0.5f) animDir = 1;
         else if (norm.x >= 0.5f) animDir = 3;
         anim.SetInteger("Dir", animDir);
 
-        //break interaction with interactable when too far away
+        // Break interaction with interactable when too far away
         if (currentInteraction != null && Vector2.Distance((currentInteraction as MonoBehaviour).transform.position, transform.position) > interactCheckRadius) BreakInteraction();
     }
 
@@ -69,7 +67,7 @@ public class Player : MonoBehaviour
         transform.Translate(move);
     }
 
-    public void Move(CallbackContext input) { input_move = input.ReadValue<Vector2>(); }
+    public void Move(CallbackContext input) { inputMove = input.ReadValue<Vector2>(); }
 
     public void ProcessInteract(CallbackContext input)
     {
@@ -92,6 +90,7 @@ public class Player : MonoBehaviour
     void InteractStart()
     {
         BreakInteraction();
+        currentInventory = currentInteraction as Inventory;
         anim.SetBool("Tilling", true);
         tillDir = animDir;
     }
@@ -104,7 +103,11 @@ public class Player : MonoBehaviour
         anim.SetBool("Tilling", false);
     }
 
-    bool CheckForInteractable()
+    /// <summary>
+    /// Checks if there is an interactable within the players range.
+    /// </summary>
+    /// <returns>Whether an interactable was found.</returns>
+    private bool CheckForInteractable()
     {
         Collider2D[] colls = new Collider2D[2];
         Physics2D.OverlapCircleNonAlloc(transform.position, interactCheckRadius, results: colls, cf);
@@ -117,6 +120,7 @@ public class Player : MonoBehaviour
                 if (c != null && !c.inUse)
                 {
                     currentInteraction = c;
+                    currentInventory = currentInteraction as Inventory;
                     return true;
                 }
             }
@@ -130,6 +134,7 @@ public class Player : MonoBehaviour
         {
             currentInteraction.BreakInteraction();
             currentInteraction = null;
+            currentInventory = null;
         }
     }
 
@@ -140,16 +145,11 @@ public class Player : MonoBehaviour
     /// <param name="slot"></param>
     public void HotbarSwitch(int slot)
     {
+        SelectSlot(slot);
     }
 
-    public void HotbarSwitchR(CallbackContext input)
-    {
-        //HotbarSwitch(Mathf.Clamp(inventoryMaxSize + 1, 0, inventoryMaxSize)); 
-    }
-    public void HotbarSwitchL(CallbackContext input)
-    {
-        //HotbarSwitch(Mathf.Clamp(inventoryMaxSize - 1, 0, inventoryMaxSize)); 
-    }
+    public void HotbarSwitchR(CallbackContext _) => HotbarSwitch(Mathf.Clamp(container.size + 1, 0, container.size));
+    public void HotbarSwitchL(CallbackContext _) => HotbarSwitch(Mathf.Clamp(container.size - 1, 0, container.size));
 
     /// <summary>
     /// Swaps the currently held item with the item in single-inventory 
@@ -157,6 +157,8 @@ public class Player : MonoBehaviour
     /// </summary>
     public void InventorySwap(CallbackContext input)
     {
+        if (input.phase != InputActionPhase.Performed) return;
+        
         if (currentInteraction == null)
         {
             if (CheckForInteractable())
@@ -164,10 +166,7 @@ public class Player : MonoBehaviour
                 currentInteraction.Interact();
             }
         }
-        else
-        {
-            currentInteraction.SwapAction();
-        }
+        else if (currentInventory != null) currentInventory.QuickSwap(this, selected);
     }
 
     /// <summary>
@@ -175,6 +174,8 @@ public class Player : MonoBehaviour
     /// </summary>
     public void InventorySplit(CallbackContext input)
     {
+        if (input.phase != InputActionPhase.Performed) return;
+
         if (currentInteraction == null)
         {
             if (CheckForInteractable())
@@ -182,10 +183,7 @@ public class Player : MonoBehaviour
                 currentInteraction.Interact();
             }
         }
-        else
-        {
-            currentInteraction.SplitAction();
-        }
+        else if (currentInventory != null) currentInventory.QuickSplit(this, selected);
     }
 
     /// <summary>
