@@ -145,8 +145,20 @@ public class Player : PlayerInventory
         SelectSlot(slot);
     }
 
-    public void HotbarSwitchR(CallbackContext _) => HotbarSwitch(Mathf.Clamp(container.size + 1, 0, container.size));
-    public void HotbarSwitchL(CallbackContext _) => HotbarSwitch(Mathf.Clamp(container.size - 1, 0, container.size));
+    public void HotbarSwitchR(CallbackContext c)
+    {
+        if (c.phase == InputActionPhase.Performed)
+        {
+            HotbarSwitch(Mathf.Clamp(selected + 1, 0, container.size - 1));
+        }
+    }
+    public void HotbarSwitchL(CallbackContext c)
+    {
+        if (c.phase == InputActionPhase.Performed)
+        {
+            HotbarSwitch(Mathf.Clamp(selected - 1, 0, container.size - 1));
+        }
+    }
 
     /// <summary>
     /// Swaps the currently held item with the item in single-inventory 
