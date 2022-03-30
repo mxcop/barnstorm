@@ -245,6 +245,16 @@ public class Container<T> where T : Item
         return false;
     }
 
+    /// <summary>
+    /// Check if the inventory contains an item of this type.
+    /// </summary>
+    /// <param name="item">The type of item to look for.</param>
+    /// /// <param name="slot">The index of the slot to check.</param>
+    public bool ContainsAt(Type item, int slot)
+    {
+        return !(data[slot] is null) && data[slot].item.GetType() == item;
+    }
+
     public override string ToString()
     {
         string str = "";

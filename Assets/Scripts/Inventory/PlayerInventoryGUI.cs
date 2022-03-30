@@ -13,6 +13,7 @@ public class PlayerInventoryGUI : MonoBehaviour
     [SerializeField] private float slotSize = 136.5f;
 
     private Image[] itemGUI;
+    private RectTransform selectArrow;
 
     /// <summary>
     /// Initialize the inventory GUI.
@@ -40,6 +41,9 @@ public class PlayerInventoryGUI : MonoBehaviour
             }
         }
 
+        // Get the selection arrow transform.
+        selectArrow = transform.Find("Panel").Find("Select").GetComponent<RectTransform>();
+
         // Subscribe to the containers update event.
         container.OnUpdate += OnContainerUpdate;
     }
@@ -50,6 +54,17 @@ public class PlayerInventoryGUI : MonoBehaviour
     /// <param name="prefab">The prefab of the cell.</param>
     /// <returns>The image within the cell.</returns>
     private Image InitCell(GameObject prefab) => Instantiate(prefab, transform.Find("Panel").Find("Inv")).transform.Find("Item").GetComponent<Image>();
+
+    /// <summary>
+    /// Update the selection arrow gui.
+    /// </summary>
+    /// <param name="slot">The new selected slot.</param>
+    public void UpdateSelection(int slot)
+    {
+        LeanTween.cancel(selectArrow.gameObject);
+        LeanTween.value(selectArrow.gameObject, e => selectArrow.anchoredPosition = e, selectArrow.anchoredPosition, new Vector2(slotSize * 1.5f + slotSize * slot, selectArrow.anchoredPosition.y), 0.1f)
+            .setOnComplete(() => selectArrow.anchoredPosition = new Vector3(slotSize * 1.5f + slotSize * slot, selectArrow.anchoredPosition.y));
+    }
 
     /// <summary>
     /// Called whenever the container has an update.
