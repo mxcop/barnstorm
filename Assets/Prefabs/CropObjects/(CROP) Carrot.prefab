@@ -48,19 +48,19 @@ MonoBehaviour:
   stageData:
   - sprite: {fileID: 1116706725642825598, guid: 9f172822beda7d246a8fd39bc6f83168, type: 3}
     growthDelay: 8
-    _item: {fileID: 0}
+    _item: {fileID: 3895952035281508092, guid: 29e3dfb59d94dd84a8f1f981c187a7f8, type: 3}
     amount: 1
   - sprite: {fileID: 8796380703106566107, guid: 9f172822beda7d246a8fd39bc6f83168, type: 3}
     growthDelay: 16
-    _item: {fileID: 0}
+    _item: {fileID: 3895952035281508092, guid: 29e3dfb59d94dd84a8f1f981c187a7f8, type: 3}
     amount: 1
   - sprite: {fileID: -3098547097148736168, guid: 9f172822beda7d246a8fd39bc6f83168, type: 3}
     growthDelay: 16
-    _item: {fileID: 0}
+    _item: {fileID: 3895952035281508092, guid: 29e3dfb59d94dd84a8f1f981c187a7f8, type: 3}
     amount: 1
   - sprite: {fileID: 136203948458210870, guid: 9f172822beda7d246a8fd39bc6f83168, type: 3}
     growthDelay: 16
-    _item: {fileID: 0}
+    _item: {fileID: 3895952035281508092, guid: 29e3dfb59d94dd84a8f1f981c187a7f8, type: 3}
     amount: 2
   startingGrowth: 0
 --- !u!212 &9188833176126706496

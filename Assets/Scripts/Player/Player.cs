@@ -26,9 +26,6 @@ public class Player : PlayerInventory
     int animDir = 2;
     int tillDir = 2;
 
-    bool usingTool;
-    Interactable currentInteraction;
-
     private bool usingTool;
     private Interactable currentInteraction;
     private Inventory currentInventory;
@@ -209,7 +206,7 @@ public class Player : PlayerInventory
             if(_crop != null)
             {
                 CropData crop = (CropData)_crop;
-                Debug.Log(crop.amount);
+                container.PushItem(crop.item, crop.amount);
             }
         }
 
