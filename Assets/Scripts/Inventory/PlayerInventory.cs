@@ -30,6 +30,8 @@ public class PlayerInventory : MonoBehaviour
 
         container.PushItem(TEST_ITEM, 14);
         container.PushItem(TEST_ITEM, 5);
+
+        SelectSlot(0);
     }
 
     /// <summary>
