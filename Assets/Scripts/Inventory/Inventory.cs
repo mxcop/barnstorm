@@ -100,7 +100,7 @@ public class Inventory : MonoBehaviour
             // Pull the item from the inventory and insert into the playerinventory
             int half = Mathf.CeilToInt(container.PeekAmount(slot) / 2.0f);
             container.PullItem(slot, half, out ContainedItem<Item> item);
-            player.container.InsertItem(item, 0);
+            player.container.PushItem(item);
         }
     }
 }

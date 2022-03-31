@@ -212,7 +212,12 @@ public class Player : PlayerInventory
     /// <param name="input"></param>
     public void DropItem(CallbackContext input)
     {
-        // :|
+        if (input.phase != InputActionPhase.Performed) return;
+
+        if (container.PullItem(selected, out var item))
+        {
+            DroppedItem.DropUp(item.item, item.num, transform.position);
+        }
     }
     #endregion
 
@@ -229,7 +234,12 @@ public class Player : PlayerInventory
             if(_crop != null)
             {
                 CropData crop = (CropData)_crop;
-                container.PushItem(crop.item, crop.amount);
+                for (int j = 0; j < crop.amount; j++)
+                {
+                    DroppedItem.DropOut(crop.item, 1, pos, Random.insideUnitCircle.normalized * 0.5f);
+                }
+                
+                //container.PushItem(crop.item, crop.amount);
             }
         }
 
