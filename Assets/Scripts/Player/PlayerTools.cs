@@ -9,7 +9,6 @@ public class PlayerTools : MonoBehaviour
     [HideInInspector] public bool isUsing;
     [SerializeField] Vector2[] offsets;
 
-    ItemAction currentAction;
     PlayerAngle lockedDirection;
     
     /// <summary>
@@ -17,13 +16,12 @@ public class PlayerTools : MonoBehaviour
     /// </summary>
     public void PlayerUse()
     {
-        isUsing = true;
-
         switch (GetHeldItemAction())
         {
             case ItemAction.Till:
                 playerAnim.SetBool("Tilling", true);
                 lockedDirection = plr.animDir;
+                isUsing = true;
                 break;
         }
     }
@@ -41,7 +39,14 @@ public class PlayerTools : MonoBehaviour
 
     ItemAction GetHeldItemAction()
     {
-        if (plr.container.ContainsAt(typeof(Hoe), plr.selected)) return ItemAction.Till;
+        //if (plr.container.ContainsAt(typeof(Hoe), plr.selected)) return ItemAction.Till;
+        //else return ItemAction.None;
+
+        Item it;
+        if (plr.container.Peek(plr.selected, out it))
+        {
+            return it.useAction;
+        }
         else return ItemAction.None;
     }
 
@@ -84,9 +89,3 @@ public enum PlayerAngle
     Right = 3
 }
 
-enum ItemAction
-{
-    None,
-    Plant,
-    Till
-}
