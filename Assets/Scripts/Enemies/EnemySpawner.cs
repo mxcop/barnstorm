@@ -33,7 +33,6 @@ public class EnemySpawner : MonoBehaviour
     IEnumerator WaveLoop()
     {
         while (true) {
-            if (canSpawn){
                 currentWave++;
                 yield return new WaitForSeconds(waveDelay);
                 for (int i = 0; i < groups; i++)
@@ -53,10 +52,6 @@ public class EnemySpawner : MonoBehaviour
                 t = 1600f;
 
                 groups = 1 + Mathf.RoundToInt((Mathf.Sqrt(currentWave * v) + Mathf.Pow(currentWave, 2f) * p) / t);
-            }
-            else {
-
-            }
         }
        
     }
