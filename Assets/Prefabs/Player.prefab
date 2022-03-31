@@ -258,13 +258,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dde3c1554600824bade552025ffb5c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  size: 3
+  selected: 0
+  TEST_ITEM: {fileID: 0}
   movementSpeed: 6
   maxSpeed: 0.12
   friction: 14
-  interactCheckRadius: 1.6
+  interactCheckRadius: 1.4
   cf:
-    serializedVersion: 2
-    m_Bits: 64
+    useTriggers: 0
+    useLayerMask: 1
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 64
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
   tillPoints:
   - array:
     - {fileID: 9056926766165095960}
@@ -526,8 +540,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 2
+  m_Mass: 4
+  m_LinearDrag: 16
   m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}

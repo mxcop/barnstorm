@@ -11,7 +11,7 @@ public class Player : PlayerInventory
     [Space]
     [Header("Interactions")]
     [SerializeField] float interactCheckRadius;
-    [SerializeField] LayerMask cf;
+    [SerializeField] ContactFilter2D cf;
     [Space]
     [SerializeField] TransformArray[] tillPoints;
 
@@ -57,12 +57,12 @@ public class Player : PlayerInventory
         anim.SetInteger("Dir", animDir);
 
         // Break interaction with interactable when too far away
-        if (currentInteraction != null && Vector2.Distance((currentInteraction as MonoBehaviour).transform.position, transform.position) > interactCheckRadius) BreakInteraction();
+        if (currentInteraction != null && Vector2.Distance((currentInteraction as MonoBehaviour).transform.position, transform.position) -0.5f > interactCheckRadius) BreakInteraction();
     }
 
     private void FixedUpdate()
     {
-        transform.Translate(move);
+        transform.Translate(move);        
     }
 
     public void Move(CallbackContext input) { inputMove = input.ReadValue<Vector2>(); }
@@ -106,9 +106,10 @@ public class Player : PlayerInventory
     /// <returns>Whether an interactable was found.</returns>
     private bool CheckForInteractable()
     {
-        Collider2D[] colls = new Collider2D[2];
-        Physics2D.OverlapCircleNonAlloc(transform.position, interactCheckRadius, results: colls, cf);
+        Collider2D[] colls = new Collider2D[3];
+        Physics2D.OverlapCircle(transform.position, interactCheckRadius, cf, colls);
 
+        (Interactable, float) closest = (null,0);
         for (int i = 0; i < colls.Length; i++)
         {
             if (colls[i] != null)
@@ -116,10 +117,16 @@ public class Player : PlayerInventory
                 Interactable c = colls[i].gameObject.GetComponent<Interactable>();
                 if (c != null && !c.inUse)
                 {
-                    currentInteraction = c;
-                    return true;
+                    float d = Vector2.Distance((c as MonoBehaviour).transform.position, transform.position);
+                    if (closest.Item2 < d) closest = (c, d);
                 }
             }
+        }
+
+        if (closest.Item1 != null)
+        {
+            currentInteraction = closest.Item1;
+            return true;
         }
         return false;
     }
@@ -166,14 +173,11 @@ public class Player : PlayerInventory
     public void InventorySwap(CallbackContext input)
     {
         if (input.phase != InputActionPhase.Performed) return;
-        
-        if (currentInteraction == null)
+
+        if (CheckForInteractable())
         {
-            if (CheckForInteractable())
-            {
-                currentInteraction.Interact();
-                currentInventory = currentInteraction as Inventory;
-            }
+            currentInteraction.Interact();
+            currentInventory = currentInteraction as Inventory;
         }
         else if (currentInventory != null) currentInventory.QuickSwap(this, selected);
     }
