@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStatic: 1
-  layerOffset: 2
+  layerOffset: 3
 --- !u!1 &8553758799931233679
 GameObject:
   m_ObjectHideFlags: 0

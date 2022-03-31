@@ -3741,7 +3741,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &523508404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3754,6 +3754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df39fcba4ce577f47bdee664f76e8fb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canSpawn: 0
   enemyPrefabs:
   - {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
   waves: 64
