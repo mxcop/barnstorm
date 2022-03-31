@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed55ba51cc2ec3f4f90ff36f38ad2ba8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 1.5}
+  offset: {x: 0, y: 1.75}
   size: 1
   crates:
   - {fileID: 2958523863171369250, guid: 442aa78916c3f9845ab57843e67a1156, type: 3}
