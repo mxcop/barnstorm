@@ -233,4 +233,3 @@ public enum ButtonPromptType
 {
     Unknown, Playstation, Xbox, PC
 }
-

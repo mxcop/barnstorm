@@ -126,6 +126,24 @@ public class Container<T> where T : Item
     }
 
     /// <summary>
+    /// Check if you can push an item into the inventory.
+    /// </summary>
+    /// <param name="item">The item to push.</param>
+    /// <param name="amount">The amount of items to push.</param>
+    /// <returns>If the inventory had space to push the item.</returns>
+    public bool CanPushItem(T item, int amount)
+    {
+        if (!(item is null))
+        {
+            if (FirstMatch(item, amount, out int match))
+                return CanInsertItem(item, amount, match);
+            if (FirstOpen(out int slot))
+                return CanInsertItem(item, amount, slot);
+        }
+        return false;
+    }
+
+    /// <summary>
     /// Insert an item into the inventory.
     /// </summary>
     /// <param name="item">The item to insert.</param>
@@ -174,6 +192,25 @@ public class Container<T> where T : Item
                 OnUpdate.Invoke(slot, data[slot]);
                 return true;
             }
+        }
+        return false;
+    }
+
+    /// <summary>
+    /// Check if you can insert an item at a certain position.
+    /// </summary>
+    /// <param name="slot">The index of the slot to pull from.</param>
+    /// <param name="amount">The amount of items to insert.</param>
+    /// <param name="item">The item that has been pulled.</param>
+    /// <returns>If it is possible.</returns>
+    public bool CanInsertItem(T item, int amount, int slot)
+    {
+        if (!(item is null) && Exists(slot))
+        {
+            if (IsOpen(slot))
+                return true;
+            else if (data[slot].item.GetType() == item.GetType() && data[slot].HasSpaceFor(amount))
+                return true;
         }
         return false;
     }
