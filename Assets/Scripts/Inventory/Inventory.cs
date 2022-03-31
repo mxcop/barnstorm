@@ -91,16 +91,28 @@ public class Inventory : MonoBehaviour
             {
                 // Pull the item from the player and insert it into the inventory.
                 int half = Mathf.CeilToInt(player.container.PeekAmount(slot) / 2.0f);
-                player.container.PullItem(slot, half, out ContainedItem<Item> item);
-                container.InsertItem(item, 0);
+
+                // Check if the item can be inserted:
+                player.container.Peek(slot, out Item peek);
+                if (container.CanInsertItem(peek, half, 0))
+                {
+                    player.container.PullItem(slot, half, out ContainedItem<Item> item);
+                    container.InsertItem(item, 0);
+                }
             }
         }
         else
         {
             // Pull the item from the inventory and insert into the playerinventory
             int half = Mathf.CeilToInt(container.PeekAmount(slot) / 2.0f);
-            container.PullItem(slot, half, out ContainedItem<Item> item);
-            player.container.PushItem(item);
+
+            // Check if the item can be inserted:
+            container.Peek(slot, out Item peek);
+            if (player.container.CanPushItem(peek, half))
+            {
+                container.PullItem(slot, half, out ContainedItem<Item> item);
+                player.container.PushItem(item);
+            }
         }
     }
 }
