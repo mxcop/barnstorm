@@ -17,29 +17,32 @@ public class PlayerTools : MonoBehaviour
     public void PlayerUse()
     {
         Item item;
-        if (GetHeldItem(out item)) {
-            switch (item.useAction)
-            {
-                case ItemAction.None:
-                    int switchTo;
-                    if (plr.container.FirstItemOfType(typeof(Hoe), out switchTo))
-                    {
-                        plr.HotbarSwitch(switchTo);
-                        goto case ItemAction.Till;
-                    }
-                    break;
+        ItemAction act = ItemAction.None;
 
-                case ItemAction.Till:
-                    playerAnim.SetBool("Tilling", true);
-                    lockedDirection = plr.animDir;
-                    isUsing = true;
-                    break;
+        if (GetHeldItem(out item)) act = item.useAction;
 
-                case ItemAction.Plant:
-                    ToolAction();
-                    break;
-            }
+        switch (act)
+        {
+            case ItemAction.None:
+                int switchTo;
+                if (plr.container.FirstItemOfType(typeof(Hoe), out switchTo))
+                {
+                    plr.HotbarSwitch(switchTo);
+                    goto case ItemAction.Till;
+                }
+                break;
+
+            case ItemAction.Till:
+                playerAnim.SetBool("Tilling", true);
+                lockedDirection = plr.animDir;
+                isUsing = true;
+                break;
+
+            case ItemAction.Plant:
+                ToolAction();
+                break;
         }
+        
     }
 
     public void PlayerStopUse()
