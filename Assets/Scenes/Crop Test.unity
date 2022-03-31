@@ -235,7 +235,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
       propertyPath: autoRespawn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
       propertyPath: startingGrowth
@@ -456,7 +456,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
       propertyPath: autoRespawn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
       propertyPath: startingGrowth
@@ -649,7 +649,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
       propertyPath: autoRespawn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
       propertyPath: startingGrowth
@@ -674,7 +674,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
       propertyPath: autoRespawn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
       propertyPath: startingGrowth
@@ -4223,7 +4223,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
       propertyPath: autoRespawn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
       propertyPath: startingGrowth
@@ -4328,6 +4328,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1167416791}
   - component: {fileID: 1167416790}
+  - component: {fileID: 1167416792}
   m_Layer: 0
   m_Name: Player Input Manager
   m_TagString: Untagged
@@ -4354,7 +4355,7 @@ MonoBehaviour:
   m_PlayerJoinedEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1167416792}
         m_TargetAssemblyTypeName: LobbyManager, Assembly-CSharp
         m_MethodName: OnPlayerJoined
         m_Mode: 0
@@ -4369,7 +4370,7 @@ MonoBehaviour:
   m_PlayerLeftEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1167416792}
         m_TargetAssemblyTypeName: LobbyManager, Assembly-CSharp
         m_MethodName: OnPlayerLeft
         m_Mode: 0
@@ -4417,6 +4418,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1167416792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167416789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e11c40a72d51d144bbbef18fd4290a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1176582800
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4430,7 +4443,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
       propertyPath: autoRespawn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
       propertyPath: startingGrowth
@@ -5112,7 +5125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
       propertyPath: autoRespawn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
       propertyPath: growthDelayMultiplier
@@ -5120,6 +5133,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
+--- !u!1001 &5482722390585470392
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5482722391119134417, guid: a81ffa6451ec4a8459dd08e831d59453, type: 3}
+      propertyPath: m_Name
+      value: PlayerTools
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482722391119134419, guid: a81ffa6451ec4a8459dd08e831d59453, type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482722391119134419, guid: a81ffa6451ec4a8459dd08e831d59453, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482722391119134419, guid: a81ffa6451ec4a8459dd08e831d59453, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482722391119134419, guid: a81ffa6451ec4a8459dd08e831d59453, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482722391119134419, guid: a81ffa6451ec4a8459dd08e831d59453, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482722391119134419, guid: a81ffa6451ec4a8459dd08e831d59453, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482722391119134419, guid: a81ffa6451ec4a8459dd08e831d59453, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482722391119134419, guid: a81ffa6451ec4a8459dd08e831d59453, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482722391119134419, guid: a81ffa6451ec4a8459dd08e831d59453, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482722391119134419, guid: a81ffa6451ec4a8459dd08e831d59453, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482722391119134419, guid: a81ffa6451ec4a8459dd08e831d59453, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a81ffa6451ec4a8459dd08e831d59453, type: 3}
 --- !u!1001 &7990665765712661016
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5133,7 +5203,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
       propertyPath: autoRespawn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
       propertyPath: growthDelayMultiplier

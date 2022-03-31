@@ -86,7 +86,7 @@ public class CropManager : MonoBehaviour
         }
     }
 
-    public CropData? Till(Vector2 pos) => Till(Mathf.FloorToInt(pos.x), Mathf.FloorToInt(pos.y));
+    public CropData? Till(Vector2Int pos) => Till(pos.x,pos.y);
     public CropData? Till(int x, int y)
     {
         if (TileIsTillable(x, y))
