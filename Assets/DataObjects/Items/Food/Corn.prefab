@@ -46,6 +46,7 @@ MonoBehaviour:
   sprite: {fileID: -3900414357838514297, guid: 3703f38d2ad9ca247bfd64177e9a999f, type: 3}
   useAction: 1
   maximumStack: 999
+  cropType: 2
   nutrition: 1.5
   speed: 3.5
   hasSplash: 1

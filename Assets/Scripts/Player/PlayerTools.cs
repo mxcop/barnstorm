@@ -16,14 +16,33 @@ public class PlayerTools : MonoBehaviour
     /// </summary>
     public void PlayerUse()
     {
-        switch (GetHeldItemAction())
+        Item item;
+        ItemAction act = ItemAction.None;
+
+        if (GetHeldItem(out item)) act = item.useAction;
+
+        switch (act)
         {
+            case ItemAction.None:
+                int switchTo;
+                if (plr.container.FirstItemOfType(typeof(Hoe), out switchTo))
+                {
+                    plr.HotbarSwitch(switchTo);
+                    goto case ItemAction.Till;
+                }
+                break;
+
             case ItemAction.Till:
                 playerAnim.SetBool("Tilling", true);
                 lockedDirection = plr.animDir;
                 isUsing = true;
                 break;
+
+            case ItemAction.Plant:
+                ToolAction();
+                break;
         }
+        
     }
 
     public void PlayerStopUse()
@@ -37,17 +56,16 @@ public class PlayerTools : MonoBehaviour
         return new Vector2Int(Mathf.FloorToInt(v.x), Mathf.FloorToInt(v.y));
     }
 
-    ItemAction GetHeldItemAction()
+    bool GetHeldItem(out Item it)
     {
         //if (plr.container.ContainsAt(typeof(Hoe), plr.selected)) return ItemAction.Till;
         //else return ItemAction.None;
 
-        Item it;
         if (plr.container.Peek(plr.selected, out it))
         {
-            return it.useAction;
+            return true;
         }
-        else return ItemAction.None;
+        else return false;
     }
 
     /// <summary>
@@ -55,26 +73,41 @@ public class PlayerTools : MonoBehaviour
     /// </summary>
     /// <param name="selectedItem"></param>
     /// <param name="dir"></param>
-    public void Anim_ToolAction()
+    public void ToolAction()
     {
+        Item item;
+        if (GetHeldItem(out item))
+        {
+            switch (item.useAction)
+            {
+                case ItemAction.Till:
+
+                    CropData? _crop = CropManager.current.Till(GetPlayerOffsetPos(lockedDirection));
+                    if (_crop != null)
+                    {
+                        CropData crop = (CropData)_crop;
+                        for (int j = 0; j < crop.amount; j++)
+                        {
+                            DroppedItem.DropOut(crop.item, 1, GetPlayerOffsetPos(lockedDirection), Random.insideUnitCircle.normalized * 0.5f);
+                        }
+                    }
+                    break;
+
+                case ItemAction.Plant:
+                    Vector2Int vec = GetPlayerOffsetPos(plr.animDir);
+                    if (CropManager.current.TileIsOfType(TileType.Tilled, vec.x, vec.y))
+                    {
+                        if (CropManager.current.PlaceCrop((item as Food).cropType, vec.x, vec.y))
+                        {
+                            plr.container.RemoveItem(plr.selected, 1);
+                        }
+                    }
+                    break;
+            }
+        }
+
         isUsing = false;
 
-        switch (GetHeldItemAction())
-        {
-            case ItemAction.Till:               
-
-                CropData? _crop = CropManager.current.Till(GetPlayerOffsetPos(lockedDirection));
-                if (_crop != null)
-                {
-                    CropData crop = (CropData)_crop;
-                    for (int j = 0; j < crop.amount; j++)
-                    {
-                        DroppedItem.DropOut(crop.item, 1, GetPlayerOffsetPos(lockedDirection), Random.insideUnitCircle.normalized * 0.5f);
-                    }
-                }
-                break;
-        }
-        
     }
 
     public void Anim_ToolStart() => isUsing = true;

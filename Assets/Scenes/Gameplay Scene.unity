@@ -180,7 +180,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
       propertyPath: autoRespawn
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
+      propertyPath: startingGrowth
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
       propertyPath: growthDelayMultiplier
@@ -245,11 +249,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
       propertyPath: autoRespawn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
       propertyPath: startingGrowth
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
       propertyPath: growthDelayMultiplier
@@ -270,11 +274,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
       propertyPath: autoRespawn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
       propertyPath: startingGrowth
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
       propertyPath: growthDelayMultiplier
@@ -463,7 +467,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
       propertyPath: autoRespawn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
       propertyPath: startingGrowth
@@ -3382,6 +3386,8 @@ MonoBehaviour:
   _cropTypeLib:
   - type: 0
     prefab: {fileID: 7990665765009090805, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
+  - type: 1
+    prefab: {fileID: 9188833176126706524, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
   grass: {fileID: 11400000, guid: 0b348a67c08fd9d4b9d8d0dab9284716, type: 2}
   tilled: {fileID: 11400000, guid: e7457c3aac92bb54c8c77a9bb12ce073, type: 2}
 --- !u!4 &235671514
@@ -3455,7 +3461,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
       propertyPath: autoRespawn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
       propertyPath: startingGrowth
@@ -3707,11 +3713,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
       propertyPath: autoRespawn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
       propertyPath: startingGrowth
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
       propertyPath: growthDelayMultiplier
@@ -4685,11 +4691,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
       propertyPath: autoRespawn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
       propertyPath: startingGrowth
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
       propertyPath: growthDelayMultiplier
@@ -4798,7 +4804,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
       propertyPath: autoRespawn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
       propertyPath: startingGrowth
@@ -5285,11 +5291,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
       propertyPath: autoRespawn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
       propertyPath: startingGrowth
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
       propertyPath: growthDelayMultiplier
@@ -5431,7 +5437,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
       propertyPath: autoRespawn
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
+      propertyPath: startingGrowth
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
       propertyPath: growthDelayMultiplier
@@ -5639,7 +5649,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
       propertyPath: autoRespawn
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
+      propertyPath: startingGrowth
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
       propertyPath: growthDelayMultiplier
@@ -5722,7 +5736,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
       propertyPath: autoRespawn
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
+      propertyPath: startingGrowth
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
       propertyPath: growthDelayMultiplier
@@ -5787,11 +5805,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
       propertyPath: autoRespawn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
       propertyPath: startingGrowth
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
       propertyPath: growthDelayMultiplier
@@ -5856,7 +5874,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
       propertyPath: autoRespawn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
       propertyPath: startingGrowth
@@ -6026,11 +6044,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
       propertyPath: autoRespawn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
       propertyPath: startingGrowth
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
       propertyPath: growthDelayMultiplier
@@ -6163,11 +6181,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
       propertyPath: autoRespawn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
       propertyPath: startingGrowth
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
       propertyPath: growthDelayMultiplier

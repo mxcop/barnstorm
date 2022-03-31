@@ -50,9 +50,14 @@ public class CropManager : MonoBehaviour
         else return null;
     }
 
-    public void PlaceCrop(CropType type, int x, int y)
+    public bool PlaceCrop(CropType type, int x, int y)
     {
-        Instantiate(cropTypeLib[type], new Vector3(x, y, 0), Quaternion.identity);
+        if (GetFromCrops(new Vector3Int(x,y,0)) == null)
+        {
+            Instantiate(cropTypeLib[type], new Vector3(x, y, 0), Quaternion.identity);
+            return true;
+        }
+        else return false;
     }
 
     /// <summary>
@@ -63,7 +68,7 @@ public class CropManager : MonoBehaviour
     {
         switch (type)
         {
-            case TileType.Grass:
+            case TileType.Tillable:
                 grassMap.SetTile(new Vector3Int(x, y, 0), grass);
                 tilledMap.SetTile(new Vector3Int(x, y, 0), null);
                 break;
@@ -74,22 +79,27 @@ public class CropManager : MonoBehaviour
         }
     }
 
-    public bool TileIsTillable(int x, int y)
+    public bool TileIsOfType(TileType type, int x, int y)
     {
-        if (grassMap.GetTile(new Vector3Int(x, y, 0)) != null && ambientMap.GetTile(new Vector3Int(x, y, 0)) == null)
+        switch (type)
         {
-            return true;
+            default:
+                return false;
+
+            case TileType.Tillable:
+                return (grassMap.GetTile(new Vector3Int(x, y, 0)) != null && ambientMap.GetTile(new Vector3Int(x, y, 0)) == null);
+
+            case TileType.Tilled:
+                Debug.Log((tilledMap.GetTile(new Vector3Int(x, y, 0)) != null));
+                return (tilledMap.GetTile(new Vector3Int(x, y, 0)) != null);
         }
-        else
-        {
-            return false;
-        }
+        
     }
 
     public CropData? Till(Vector2Int pos) => Till(pos.x,pos.y);
     public CropData? Till(int x, int y)
     {
-        if (TileIsTillable(x, y))
+        if (TileIsOfType(TileType.Tillable, x, y))
         {
             PlaceTile(TileType.Tilled, x, y);
         }
@@ -101,8 +111,7 @@ public class CropManager : MonoBehaviour
 
 public enum TileType
 {
-    Dirt,
-    Grass,
+    Tillable,
     Tilled
 }
 
