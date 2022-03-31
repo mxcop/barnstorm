@@ -18,6 +18,15 @@ public class PlayerTools : MonoBehaviour
     {
         switch (GetHeldItemAction())
         {
+            case ItemAction.None:
+                int switchTo;
+                if(plr.container.FirstItemOfType(typeof(Hoe), out switchTo))
+                {
+                    plr.HotbarSwitch(switchTo);
+                    goto case ItemAction.Till;
+                }
+                break;
+
             case ItemAction.Till:
                 playerAnim.SetBool("Tilling", true);
                 lockedDirection = plr.animDir;
@@ -72,6 +81,11 @@ public class PlayerTools : MonoBehaviour
                         DroppedItem.DropOut(crop.item, 1, GetPlayerOffsetPos(lockedDirection), Random.insideUnitCircle.normalized * 0.5f);
                     }
                 }
+                break;
+
+            case ItemAction.Plant:
+
+
                 break;
         }
         
