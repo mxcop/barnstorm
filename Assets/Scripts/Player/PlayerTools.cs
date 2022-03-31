@@ -75,8 +75,6 @@ public class PlayerTools : MonoBehaviour
     /// <param name="dir"></param>
     public void ToolAction()
     {
-        isUsing = false;
-
         Item item;
         if (GetHeldItem(out item))
         {
@@ -100,11 +98,14 @@ public class PlayerTools : MonoBehaviour
                     if (CropManager.current.TileIsOfType(TileType.Tilled, vec.x, vec.y))
                     {
                         CropManager.current.PlaceCrop((item as Food).cropType, vec.x, vec.y);
+                        plr.container.RemoveItem(plr.selected, 1);
                     }
                     break;
             }
         }
-        
+
+        isUsing = false;
+
     }
 
     public void Anim_ToolStart() => isUsing = true;
