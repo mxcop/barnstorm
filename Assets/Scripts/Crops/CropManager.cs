@@ -50,9 +50,14 @@ public class CropManager : MonoBehaviour
         else return null;
     }
 
-    public void PlaceCrop(CropType type, int x, int y)
+    public bool PlaceCrop(CropType type, int x, int y)
     {
-        Instantiate(cropTypeLib[type], new Vector3(x, y, 0), Quaternion.identity);
+        if (GetFromCrops(new Vector3Int(x,y,0)) == null)
+        {
+            Instantiate(cropTypeLib[type], new Vector3(x, y, 0), Quaternion.identity);
+            return true;
+        }
+        else return false;
     }
 
     /// <summary>

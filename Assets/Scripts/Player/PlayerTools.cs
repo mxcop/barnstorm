@@ -97,8 +97,10 @@ public class PlayerTools : MonoBehaviour
                     Vector2Int vec = GetPlayerOffsetPos(plr.animDir);
                     if (CropManager.current.TileIsOfType(TileType.Tilled, vec.x, vec.y))
                     {
-                        CropManager.current.PlaceCrop((item as Food).cropType, vec.x, vec.y);
-                        plr.container.RemoveItem(plr.selected, 1);
+                        if (CropManager.current.PlaceCrop((item as Food).cropType, vec.x, vec.y))
+                        {
+                            plr.container.RemoveItem(plr.selected, 1);
+                        }
                     }
                     break;
             }

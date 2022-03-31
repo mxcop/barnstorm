@@ -183,6 +183,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
+      propertyPath: startingGrowth
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
       propertyPath: growthDelayMultiplier
       value: 0.5
       objectReference: {fileID: 0}
@@ -249,7 +253,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
       propertyPath: startingGrowth
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
       propertyPath: growthDelayMultiplier
@@ -274,7 +278,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
       propertyPath: startingGrowth
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
       propertyPath: growthDelayMultiplier
@@ -3713,7 +3717,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
       propertyPath: startingGrowth
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
       propertyPath: growthDelayMultiplier
@@ -4690,7 +4694,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
       propertyPath: startingGrowth
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
       propertyPath: growthDelayMultiplier
@@ -5290,7 +5294,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
       propertyPath: startingGrowth
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
       propertyPath: growthDelayMultiplier
@@ -5433,6 +5437,10 @@ PrefabInstance:
     - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
       propertyPath: autoRespawn
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
+      propertyPath: startingGrowth
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
       propertyPath: growthDelayMultiplier
@@ -5643,6 +5651,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
+      propertyPath: startingGrowth
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
       propertyPath: growthDelayMultiplier
       value: 0.5
       objectReference: {fileID: 0}
@@ -5726,6 +5738,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
+      propertyPath: startingGrowth
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
       propertyPath: growthDelayMultiplier
       value: 0.5
       objectReference: {fileID: 0}
@@ -5792,7 +5808,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
       propertyPath: startingGrowth
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
       propertyPath: growthDelayMultiplier
@@ -6031,7 +6047,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
       propertyPath: startingGrowth
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9188833176126706527, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
       propertyPath: growthDelayMultiplier
@@ -6168,7 +6184,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
       propertyPath: startingGrowth
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7990665765009090806, guid: d9734f68e3505e341a145c0b1d9df3c0, type: 3}
       propertyPath: growthDelayMultiplier
