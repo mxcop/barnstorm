@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    [HideInInspector] public bool canSpawn;
     public List<GameObject> enemyPrefabs;
     
-
     [Header("Wave")]
     public int waves;
     public float waveDelay;
@@ -22,6 +22,8 @@ public class EnemySpawner : MonoBehaviour
 
     public int groups;
 
+    private int currentWave = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,18 +32,28 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator WaveLoop()
     {
-        for (int j = 0; j < waves; j++)
-        {
-            yield return new WaitForSeconds(waveDelay);
-            for (int i = 0; i < groups; i++)
-                SpawnGroup();
+        while (true) {
+                currentWave++;
+                yield return new WaitForSeconds(waveDelay);
+                for (int i = 0; i < groups; i++)
+                    SpawnGroup();
 
-            waveDelay += 5;
-            groupSize.x++;
-            groupSize.y++;
-            groups++;
+                waveDelay += 4;
+
+                float v = 1.5f;
+                float t = 3.5f;
+                float p;
+
+                groupSize.x = Mathf.RoundToInt(Mathf.Pow(Mathf.Sqrt(currentWave), 1.25f) / t) + 1;
+                groupSize.y = Mathf.RoundToInt(Mathf.Pow(Mathf.Sqrt(currentWave), 1.3f) / v) + 1;
+
+                v = 5000000f;
+                p = 2.7f;
+                t = 1600f;
+
+                groups = 1 + Mathf.RoundToInt((Mathf.Sqrt(currentWave * v) + Mathf.Pow(currentWave, 2f) * p) / t);
         }
-        yield return null;
+       
     }
 
     void SpawnGroup()

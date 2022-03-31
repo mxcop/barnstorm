@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7a8b64b028e29f4d89d4160b94f4dab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isStatic: 0
+  isStatic: 1
   layerOffset: 1
 --- !u!1 &4454691463886603243
 GameObject:
@@ -208,5 +208,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7a8b64b028e29f4d89d4160b94f4dab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isStatic: 0
-  layerOffset: -1
+  isStatic: 1
+  layerOffset: 1

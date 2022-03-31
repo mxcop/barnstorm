@@ -223,7 +223,7 @@ public class Player : PlayerInventory
 
     //are called by the animator attached to this player, do not call these via code
     #region Animation events
-    public void Anim_ToolAction() => tools.Anim_ToolAction();
+    public void Anim_ToolAction() => tools.ToolAction();
 
     public void Anim_ToolStart() => tools.Anim_ToolStart();
     #endregion

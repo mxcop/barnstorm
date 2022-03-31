@@ -263,6 +263,8 @@ public class Container<T> where T : Item
         return false;
     }
 
+    public void RemoveItem(int slot, int num) => PullItem(slot, num, out _);
+
     /// <summary>
     /// Peek a slot to see what's inside of it.
     /// </summary>
