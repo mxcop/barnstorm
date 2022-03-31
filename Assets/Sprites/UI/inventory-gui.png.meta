@@ -29,6 +29,9 @@ TextureImporter:
   - first:
       213: -3571835806672157156
     second: inv-select-arrow
+  - first:
+      213: 8462998288999050848
+    second: player-cursor
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -302,6 +305,27 @@ TextureImporter:
       bones: []
       spriteID: c16094b124a4e6ec0800000000000000
       internalID: -3571835806672157156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-cursor
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 5
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06ee68eda1c927570800000000000000
+      internalID: 8462998288999050848
       vertices: []
       indices: 
       edges: []
