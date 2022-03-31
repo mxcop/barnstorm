@@ -30,8 +30,9 @@ public class Player : PlayerInventory
     private Interactable currentInteraction;
     private Inventory currentInventory;
 
-    private void Start()
+    protected override void Awake()
     {
+        base.Awake();
         anim = GetComponent<Animator>();
     }
 
@@ -86,8 +87,7 @@ public class Player : PlayerInventory
     /// </summary>
     void InteractStart()
     {
-        BreakInteraction();
-        currentInventory = currentInteraction as Inventory;
+        BreakInteraction();        
         anim.SetBool("Tilling", true);
         tillDir = animDir;
     }
@@ -117,7 +117,6 @@ public class Player : PlayerInventory
                 if (c != null && !c.inUse)
                 {
                     currentInteraction = c;
-                    currentInventory = currentInteraction as Inventory;
                     return true;
                 }
             }
@@ -173,6 +172,7 @@ public class Player : PlayerInventory
             if (CheckForInteractable())
             {
                 currentInteraction.Interact();
+                currentInventory = currentInteraction as Inventory;
             }
         }
         else if (currentInventory != null) currentInventory.QuickSwap(this, selected);
@@ -190,9 +190,13 @@ public class Player : PlayerInventory
             if (CheckForInteractable())
             {
                 currentInteraction.Interact();
+                currentInventory = currentInteraction as Inventory;
             }
         }
-        else if (currentInventory != null) currentInventory.QuickSplit(this, selected);
+        else if (currentInventory != null)
+        {
+            currentInventory.QuickSplit(this, selected);
+        }
     }
 
     /// <summary>

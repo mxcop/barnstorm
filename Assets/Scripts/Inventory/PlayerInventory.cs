@@ -16,7 +16,7 @@ public class PlayerInventory : MonoBehaviour
 
     [SerializeField] private Item TEST_ITEM;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         // Initialize the container of the inventory.
         container = new Container<Item>(size);
