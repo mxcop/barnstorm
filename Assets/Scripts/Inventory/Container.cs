@@ -59,6 +59,26 @@ public class Container<T> where T : Item
     }
 
     /// <summary>
+    /// Find the first item of a specific type in the container.
+    /// </summary>
+    /// <param name="item">The item to match.</param>
+    /// <param name="slot">The index of the matched slot.</param>
+    /// <returns>Whether there is a matching slot.</returns>
+    public bool FirstItemOfType(Type item, out int slot)
+    {
+        for (int i = 0; i < data.Length; i++)
+        {
+            ContainedItem<T> match = data[i];
+
+            if (match != null && match.item.GetType() == item)
+            {
+                slot = i; return true;
+            }
+        }
+        slot = -1; return false;
+    }
+
+    /// <summary>
     /// Check if a slot is empty / open.
     /// </summary>
     /// <param name="slot">The index of the slot to check.</param>
