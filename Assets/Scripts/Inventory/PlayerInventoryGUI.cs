@@ -8,6 +8,7 @@ public class PlayerInventoryGUI : MonoBehaviour
     [Header("Prefabs")]
     [SerializeField] private GameObject singleCell;
     [SerializeField] private GameObject leftCell, multiCell, rightCell;
+    [SerializeField] private Sprite[] players;
 
     [Header("Config")]
     [SerializeField] private float slotSize = 136.5f;
@@ -30,19 +31,24 @@ public class PlayerInventoryGUI : MonoBehaviour
         {
             itemGUI = new Image[size];
 
+            // The following seems like its in reverse!
+            // However this is intentional because the grid is reversed!
             if (size == 1)
                 itemGUI[0] = InitCell(singleCell);
             else
             {
-                itemGUI[0] = InitCell(leftCell);
-                for (int i = 0; i < size - 2; i++)
-                    itemGUI[i + 1] = InitCell(multiCell);
                 itemGUI[size - 1] = InitCell(rightCell);
+                for (int i = 0; i < size - 2; i++)
+                    itemGUI[size - 2 - i] = InitCell(multiCell);
+                itemGUI[0] = InitCell(leftCell);
             }
         }
 
         // Get the selection arrow transform.
         selectArrow = transform.Find("Panel").Find("Select").GetComponent<RectTransform>();
+
+        // Set the player icon.
+        transform.Find("Panel").Find("Icon").GetComponent<Image>().sprite = players[LobbyManager.players.Count - 1];
 
         // Subscribe to the containers update event.
         container.OnUpdate += OnContainerUpdate;
@@ -111,12 +117,11 @@ public class PlayerInventoryGUI : MonoBehaviour
         if (displayPanel)
         {
             // Animate the item amount panel to move in.
-            if (panel.localPosition.y != -15f)
+            if (panel.localScale.y != 1)
             {
-                panel.gameObject.SetActive(true);
                 LeanTween.cancel(panel.gameObject);
-                LeanTween.value(panel.gameObject, v => panel.anchoredPosition = v, panel.anchoredPosition, new Vector2(panel.anchoredPosition.x, -15f), 0.2f)
-                    .setOnComplete(() => panel.anchoredPosition = new Vector3(panel.anchoredPosition.x, -15f));
+                LeanTween.value(panel.gameObject, v => panel.localScale = v, panel.localScale, Vector3.one, 0.2f).setEaseOutBack()
+                    .setOnComplete(() => panel.localScale = Vector3.one);
             }
 
             panel.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = item.num.ToString();
@@ -124,15 +129,11 @@ public class PlayerInventoryGUI : MonoBehaviour
         else
         {
             // Animate the item amount panel to move out.
-            if (panel.localPosition.y != 25f)
+            if (panel.localScale.y != 0)
             {
                 LeanTween.cancel(panel.gameObject);
-                LeanTween.value(panel.gameObject, v => panel.anchoredPosition = v, panel.anchoredPosition, new Vector2(panel.anchoredPosition.x, 25f), 0.2f)
-                .setOnComplete(() => 
-                {
-                    panel.gameObject.SetActive(false);
-                    panel.localPosition = new Vector3(panel.anchoredPosition.x, 25f);
-                });
+                LeanTween.value(panel.gameObject, v => panel.localScale = v, panel.localScale, new Vector3(1, 0, 1), 0.2f).setEaseInBack()
+                    .setOnComplete(() => panel.localScale = new Vector3(1, 0, 1));
             }
         }
     }

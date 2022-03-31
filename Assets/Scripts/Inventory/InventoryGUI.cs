@@ -29,14 +29,16 @@ public class InventoryGUI : MonoBehaviour
         {
             itemGUI = new Image[size];
 
+            // The following seems like its in reverse!
+            // However this is intentional because the grid is reversed!
             if (size == 1)
                 itemGUI[0] = InitCell(singleCell);
             else
             {
-                itemGUI[0] = InitCell(leftCell);
-                for (int i = 0; i < size - 2; i++)
-                    itemGUI[i + 1] = InitCell(multiCell);
                 itemGUI[size - 1] = InitCell(rightCell);
+                for (int i = 0; i < size - 2; i++)
+                    itemGUI[size - i - 1] = InitCell(multiCell);
+                itemGUI[0] = InitCell(leftCell);
             }
         }
 
@@ -96,12 +98,11 @@ public class InventoryGUI : MonoBehaviour
         if (displayPanel)
         {
             // Animate the item amount panel to move in.
-            if (panel.localPosition.y != -0.1905f)
+            if (panel.localScale.y != 1)
             {
-                panel.gameObject.SetActive(true);
                 LeanTween.cancel(panel.gameObject);
-                LeanTween.value(panel.gameObject, v => panel.anchoredPosition = v, panel.anchoredPosition, new Vector2(panel.anchoredPosition.x, -0.1905f), 0.2f)
-                    .setOnComplete(() => panel.anchoredPosition = new Vector3(panel.anchoredPosition.x, -0.1905f));
+                LeanTween.value(panel.gameObject, v => panel.localScale = v, panel.localScale, Vector3.one, 0.2f).setEaseOutBack()
+                    .setOnComplete(() => panel.localScale = Vector3.one);
             }
 
             panel.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = item.num.ToString();
@@ -109,15 +110,11 @@ public class InventoryGUI : MonoBehaviour
         else
         {
             // Animate the item amount panel to move out.
-            if (panel.localPosition.y != 0.25f)
+            if (panel.localScale.y != 0)
             {
                 LeanTween.cancel(panel.gameObject);
-                LeanTween.value(panel.gameObject, v => panel.anchoredPosition = v, panel.anchoredPosition, new Vector2(panel.anchoredPosition.x, 0.25f), 0.2f)
-                .setOnComplete(() =>
-                {
-                    panel.gameObject.SetActive(false);
-                    panel.localPosition = new Vector3(panel.anchoredPosition.x, 0.25f);
-                });
+                LeanTween.value(panel.gameObject, v => panel.localScale = v, panel.localScale, new Vector3(1, 0, 1), 0.2f).setEaseInBack()
+                    .setOnComplete(() => panel.localScale = new Vector3(1, 0, 1));
             }
         }
     }

@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -50}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0, y: -52.5}
+  m_SizeDelta: {x: 100, y: 105}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4936627892936654989
 CanvasRenderer:
@@ -59,9 +59,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 0b3f2db13b515bf48b1758cf90627334, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -162,10 +162,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2771631afeb862e488e803fb39955dd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  singleCell: {fileID: 2361873767263993031, guid: 5818999d6fe5e614c9d0df76c39e9645, type: 3}
-  leftCell: {fileID: 5290811068606292970, guid: 2bf8ffffda899cd43a52859d1d85d653, type: 3}
-  multiCell: {fileID: 9115294622997783236, guid: 75893979086c4794baed74ca3c0d19f9, type: 3}
-  rightCell: {fileID: 9204756063233607828, guid: 7df9ab10492df4443b2e1fda56ddcf7e, type: 3}
+  singleCell: {fileID: 8844697918847837630, guid: 5818999d6fe5e614c9d0df76c39e9645, type: 3}
+  leftCell: {fileID: 7859334254068169171, guid: 11e8cdf63f3b74b4caddd02627970205, type: 3}
+  multiCell: {fileID: 1523679852295866229, guid: bb72fa85f77b4fa4bb1fd353af93403f, type: 3}
+  rightCell: {fileID: 4247973504126295133, guid: a986948a9b2a5194c888ac168d74a6dc, type: 3}
+  players:
+  - {fileID: 2192384948400609162, guid: f5582b5a642ad9a4798631f4921e49e6, type: 3}
+  - {fileID: -6857656769228258564, guid: f5582b5a642ad9a4798631f4921e49e6, type: 3}
+  - {fileID: -2647784610352950161, guid: f5582b5a642ad9a4798631f4921e49e6, type: 3}
+  - {fileID: -5862361606438442238, guid: f5582b5a642ad9a4798631f4921e49e6, type: 3}
   slotSize: 100
 --- !u!1 &4654510592554757634
 GameObject:
@@ -199,10 +204,10 @@ RectTransform:
   m_Father: {fileID: 4654510591934689103}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -150, y: 0}
-  m_SizeDelta: {x: 300, y: 100}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -150, y: -52.5}
+  m_SizeDelta: {x: 300, y: 105}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4654510592554757639
 CanvasRenderer:
@@ -230,9 +235,9 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_StartCorner: 0
+  m_StartCorner: 1
   m_StartAxis: 0
-  m_CellSize: {x: 100, y: 100}
+  m_CellSize: {x: 100, y: 105}
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
@@ -295,9 +300,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []

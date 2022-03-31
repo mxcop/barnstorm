@@ -54,9 +54,9 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_StartCorner: 0
+  m_StartCorner: 1
   m_StartAxis: 0
-  m_CellSize: {x: 1.25, y: 1.25}
+  m_CellSize: {x: 1.25, y: 1.3125}
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
@@ -94,8 +94,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -0.21875}
-  m_SizeDelta: {x: 0.375, y: 0.3125}
+  m_AnchoredPosition: {x: 0, y: -0.3125}
+  m_SizeDelta: {x: 0.375, y: 0.375}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3970094393209719451
 CanvasRenderer:
@@ -186,10 +186,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00a17097df0d61e4ba4bf112a58b2cd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  singleCell: {fileID: 2361873767263993031, guid: 037e5c74a61d63f4ebb8e54c8f92115b, type: 3}
-  leftCell: {fileID: 5290811068606292970, guid: b3c7c89238ac6304daa0882835df7e55, type: 3}
-  multiCell: {fileID: 9115294622997783236, guid: c15e57fbb864591449ee366c782f867c, type: 3}
-  rightCell: {fileID: 9204756063233607828, guid: f2bc464521cc47947a73dc48c1a1184c, type: 3}
+  singleCell: {fileID: 5332496209451351315, guid: 037e5c74a61d63f4ebb8e54c8f92115b, type: 3}
+  leftCell: {fileID: 8377066604183312517, guid: 0b61d6b363f32cb4a996b0a713a0d6bd, type: 3}
+  multiCell: {fileID: 5820915692317246924, guid: 19ad5380bfcf02f45b1fafcd4d2cb008, type: 3}
+  rightCell: {fileID: 789813775294815583, guid: cc8d6b769b9d3f84bb69ad5ae3acdb3f, type: 3}
   slotSize: 1.25
 --- !u!225 &2023587814002753427
 CanvasGroup:
