@@ -14,7 +14,7 @@ public class PlayerInventory : MonoBehaviour
 
     private PlayerInventoryGUI gui;
 
-    [SerializeField] private Item TEST_ITEM;
+    [SerializeField] private StarterItem[] starterItems;
 
     private void Awake()
     {
@@ -28,10 +28,17 @@ public class PlayerInventory : MonoBehaviour
         gui = Instantiate(GUI, GameObject.FindWithTag("MainCanvas").transform.Find("Lobby Panel")).GetComponent<PlayerInventoryGUI>();
         gui.Initialize(size, ref container);
 
-        container.PushItem(TEST_ITEM, 14);
-        container.PushItem(TEST_ITEM, 5);
+        for (int i = 0; i < starterItems.Length; i++)
+            container.PushItem(starterItems[i].item, starterItems[i].amount);
 
         SelectSlot(0);
+    }
+
+    [System.Serializable]
+    private struct StarterItem
+    {
+        public Item item;
+        public int amount;
     }
 
     /// <summary>

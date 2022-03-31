@@ -258,6 +258,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dde3c1554600824bade552025ffb5c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  size: 3
+  selected: 0
+  starterItems:
+  - item: {fileID: 3984615582560117230, guid: ce5b0580c9d6ee24aaa35305c1596a94, type: 3}
+    amount: 1
   movementSpeed: 6
   maxSpeed: 0.12
   friction: 14

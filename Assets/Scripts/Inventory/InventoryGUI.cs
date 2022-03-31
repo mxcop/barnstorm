@@ -58,6 +58,7 @@ public class InventoryGUI : MonoBehaviour
     {
         Image cell = itemGUI[slot];
         RectTransform panel = cell.transform.parent.Find("Panel").GetComponent<RectTransform>();
+        bool displayPanel = item != null && item.item.maximumStack > 1;
 
         if (item != null)
         {
@@ -77,17 +78,6 @@ public class InventoryGUI : MonoBehaviour
                 LeanTween.value(cell.gameObject, s => itemTransform.localScale = s, Vector3.one * .75f, Vector3.one, 0.2f)
                 .setEaseOutBack().setOnComplete(() => itemTransform.localScale = Vector3.one);
             }
-
-            // Animate the item amount panel to move in.
-            if (panel.localPosition.y != -0.1905f)
-            {
-                panel.gameObject.SetActive(true);
-                LeanTween.cancel(panel.gameObject);
-                LeanTween.value(panel.gameObject, v => panel.anchoredPosition = v, panel.anchoredPosition, new Vector2(panel.anchoredPosition.x, -0.1905f), 0.2f)
-                    .setOnComplete(() => panel.anchoredPosition = new Vector3(panel.anchoredPosition.x, -0.1905f));
-            }
-
-            panel.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = item.num.ToString();
         }
         else
         {
@@ -101,13 +91,29 @@ public class InventoryGUI : MonoBehaviour
                 cell.sprite = null;
                 itemTransform.localScale = Vector3.zero;
             });
+        }
 
+        if (displayPanel)
+        {
+            // Animate the item amount panel to move in.
+            if (panel.localPosition.y != -0.1905f)
+            {
+                panel.gameObject.SetActive(true);
+                LeanTween.cancel(panel.gameObject);
+                LeanTween.value(panel.gameObject, v => panel.anchoredPosition = v, panel.anchoredPosition, new Vector2(panel.anchoredPosition.x, -0.1905f), 0.2f)
+                    .setOnComplete(() => panel.anchoredPosition = new Vector3(panel.anchoredPosition.x, -0.1905f));
+            }
+
+            panel.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = item.num.ToString();
+        }
+        else
+        {
             // Animate the item amount panel to move out.
             if (panel.localPosition.y != 0.25f)
             {
                 LeanTween.cancel(panel.gameObject);
                 LeanTween.value(panel.gameObject, v => panel.anchoredPosition = v, panel.anchoredPosition, new Vector2(panel.anchoredPosition.x, 0.25f), 0.2f)
-                .setOnComplete(() => 
+                .setOnComplete(() =>
                 {
                     panel.gameObject.SetActive(false);
                     panel.localPosition = new Vector3(panel.anchoredPosition.x, 0.25f);
