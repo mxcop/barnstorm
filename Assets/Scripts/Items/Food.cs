@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Food : Item
 {
+    public CropType cropType;
     public float nutrition;
     public float speed;
     public bool hasSplash;

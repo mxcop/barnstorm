@@ -16,22 +16,29 @@ public class PlayerTools : MonoBehaviour
     /// </summary>
     public void PlayerUse()
     {
-        switch (GetHeldItemAction())
-        {
-            case ItemAction.None:
-                int switchTo;
-                if(plr.container.FirstItemOfType(typeof(Hoe), out switchTo))
-                {
-                    plr.HotbarSwitch(switchTo);
-                    goto case ItemAction.Till;
-                }
-                break;
+        Item item;
+        if (GetHeldItem(out item)) {
+            switch (item.useAction)
+            {
+                case ItemAction.None:
+                    int switchTo;
+                    if (plr.container.FirstItemOfType(typeof(Hoe), out switchTo))
+                    {
+                        plr.HotbarSwitch(switchTo);
+                        goto case ItemAction.Till;
+                    }
+                    break;
 
-            case ItemAction.Till:
-                playerAnim.SetBool("Tilling", true);
-                lockedDirection = plr.animDir;
-                isUsing = true;
-                break;
+                case ItemAction.Till:
+                    playerAnim.SetBool("Tilling", true);
+                    lockedDirection = plr.animDir;
+                    isUsing = true;
+                    break;
+
+                case ItemAction.Plant:
+                    ToolAction();
+                    break;
+            }
         }
     }
 
@@ -46,17 +53,16 @@ public class PlayerTools : MonoBehaviour
         return new Vector2Int(Mathf.FloorToInt(v.x), Mathf.FloorToInt(v.y));
     }
 
-    ItemAction GetHeldItemAction()
+    bool GetHeldItem(out Item it)
     {
         //if (plr.container.ContainsAt(typeof(Hoe), plr.selected)) return ItemAction.Till;
         //else return ItemAction.None;
 
-        Item it;
         if (plr.container.Peek(plr.selected, out it))
         {
-            return it.useAction;
+            return true;
         }
-        else return ItemAction.None;
+        else return false;
     }
 
     /// <summary>
@@ -64,29 +70,36 @@ public class PlayerTools : MonoBehaviour
     /// </summary>
     /// <param name="selectedItem"></param>
     /// <param name="dir"></param>
-    public void Anim_ToolAction()
+    public void ToolAction()
     {
         isUsing = false;
 
-        switch (GetHeldItemAction())
+        Item item;
+        if (GetHeldItem(out item))
         {
-            case ItemAction.Till:               
+            switch (item.useAction)
+            {
+                case ItemAction.Till:
 
-                CropData? _crop = CropManager.current.Till(GetPlayerOffsetPos(lockedDirection));
-                if (_crop != null)
-                {
-                    CropData crop = (CropData)_crop;
-                    for (int j = 0; j < crop.amount; j++)
+                    CropData? _crop = CropManager.current.Till(GetPlayerOffsetPos(lockedDirection));
+                    if (_crop != null)
                     {
-                        DroppedItem.DropOut(crop.item, 1, GetPlayerOffsetPos(lockedDirection), Random.insideUnitCircle.normalized * 0.5f);
+                        CropData crop = (CropData)_crop;
+                        for (int j = 0; j < crop.amount; j++)
+                        {
+                            DroppedItem.DropOut(crop.item, 1, GetPlayerOffsetPos(lockedDirection), Random.insideUnitCircle.normalized * 0.5f);
+                        }
                     }
-                }
-                break;
+                    break;
 
-            case ItemAction.Plant:
-
-
-                break;
+                case ItemAction.Plant:
+                    Vector2Int vec = GetPlayerOffsetPos(plr.animDir);
+                    if (CropManager.current.TileIsOfType(TileType.Tilled, vec.x, vec.y))
+                    {
+                        CropManager.current.PlaceCrop((item as Food).cropType, vec.x, vec.y);
+                    }
+                    break;
+            }
         }
         
     }
