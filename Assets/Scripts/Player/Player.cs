@@ -212,7 +212,12 @@ public class Player : PlayerInventory
     /// <param name="input"></param>
     public void DropItem(CallbackContext input)
     {
-        // :|
+        if (input.phase != InputActionPhase.Performed) return;
+
+        if (container.PullItem(selected, out var item))
+        {
+            DroppedItem.DropUp(item.item, item.num, transform.position);
+        }
     }
     #endregion
 

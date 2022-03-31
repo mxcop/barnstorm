@@ -1,8 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class LobbyManager : MonoBehaviour
 {
+    public static List<Player> players;
+
     public void OnPlayerJoined(PlayerInput input)
     {
         Player player = input.GetComponent<Player>();
@@ -10,6 +13,10 @@ public class LobbyManager : MonoBehaviour
         {
             player.buttonPromptType = ButtonPromptParse(input.devices[0].displayName);
         }
+
+        if (players == null) players = new List<Player>();
+        players.Add(player);
+        Debug.Log("Player Joined");
 
         // TODO : Handle the joining with the UI.
     }
