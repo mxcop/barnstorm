@@ -22,6 +22,10 @@
             this.num = num;
         }
 
+        /// <param name="num">The number of items to check for.</param>
+        /// <returns>Whether there is space for the given number of items.</returns>
+        public bool HasSpaceFor(int num) => this.num + num <= item.maximumStack;
+
         public ContainedItem<T> Clone() => new ContainedItem<T>(item, num);
     }
 }

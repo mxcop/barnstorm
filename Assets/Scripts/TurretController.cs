@@ -80,7 +80,6 @@ public class TurretController : Inventory, Interactable
             SortTargets();
             return;
         }
-            
 
         // Get the angle from the turret to the enemy to determine 
         float spriteAngle = AngleBetweenPoints(turret.transform.position, targetEnemies[0].transform.position);
@@ -92,11 +91,14 @@ public class TurretController : Inventory, Interactable
 
         // If we are not shooting, the enemy is in a "attackable" state and we have more than 0 food in our turret we start the shooting coroutine
         if (!shooting && 
-            (targetEnemies[0].state != EnemyBase.EnemyState.eating && targetEnemies[0].state != EnemyBase.EnemyState.retreating) && 
-            container.PeekAmount(0) > 0) {  
-            StartCoroutine(Shoot());
+            (targetEnemies[0].state != EnemyBase.EnemyState.eating && targetEnemies[0].state != EnemyBase.EnemyState.retreating) &&
+            container.Peek(0, out Item item)) {
+            if(item is Food food)
+            {
+                ammunition = food;
+                StartCoroutine(Shoot());
+            }            
         }
-            
     }
 
     IEnumerator Shoot()

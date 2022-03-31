@@ -41,13 +41,16 @@ public class Container<T> where T : Item
     /// Finds first matching item in the inventory.
     /// </summary>
     /// <param name="item">The item to match.</param>
+    /// <param name="num">The number of items that will be added.</param>
     /// <param name="slot">The index of the matched slot.</param>
     /// <returns>Whether there is a matching slot.</returns>
-    private bool FirstMatch(T item, out int slot)
+    private bool FirstMatch(T item, int num, out int slot)
     {
         for (int i = 0; i < data.Length; i++)
         {
-            if (data[i] != null && data[i].item != null && data[i].item.GetType() == item.GetType())
+            ContainedItem<T> match = data[i];
+
+            if (match != null && match.item.GetType() == item.GetType() && match.HasSpaceFor(num))
             {
                 slot = i; return true;
             }
@@ -76,7 +79,7 @@ public class Container<T> where T : Item
     {
         if (!(item is null))
         {
-            if (FirstMatch(item.item, out int match))
+            if (FirstMatch(item.item, item.num, out int match))
                 return InsertItem(item, match);
             if (FirstOpen(out int slot))
                 return InsertItem(item, slot);
@@ -94,7 +97,7 @@ public class Container<T> where T : Item
     {
         if (!(item is null))
         {
-            if (FirstMatch(item, out int match))
+            if (FirstMatch(item, amount, out int match))
                 return InsertItem(item, amount, match);
             if (FirstOpen(out int slot))
                 return InsertItem(item, amount, slot);
@@ -118,7 +121,7 @@ public class Container<T> where T : Item
                 OnUpdate.Invoke(slot, item);
                 return true;
             }
-            else if (data[slot].item.GetType() == item.item.GetType())
+            else if (data[slot].item.GetType() == item.item.GetType() && data[slot].HasSpaceFor(item.num))
             {
                 data[slot].num += item.num;
                 OnUpdate.Invoke(slot, data[slot]);
@@ -145,7 +148,7 @@ public class Container<T> where T : Item
                 OnUpdate.Invoke(slot, data[slot]);
                 return true;
             }
-            else if (data[slot].item.GetType() == item.GetType())
+            else if (data[slot].item.GetType() == item.GetType() && data[slot].HasSpaceFor(amount))
             {
                 data[slot].num += amount;
                 OnUpdate.Invoke(slot, data[slot]);
