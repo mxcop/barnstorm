@@ -1,3 +1,4 @@
+using Systems.Inventory;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
@@ -12,34 +13,36 @@ public class Player : PlayerInventory
     [Header("Interactions")]
     [SerializeField] float interactCheckRadius;
     [SerializeField] ContactFilter2D cf;
-    [Space]
-    [SerializeField] TransformArray[] tillPoints;
 
     [HideInInspector] public ButtonPromptType buttonPromptType;
 
     private Animator anim;
+    public PlayerAngle animDir;
 
     private Vector2 inputMove;
     private float lastInputMag;
     private Vector2 move;
+    private int queuedHotbarSelect = -1;
 
-    int animDir = 2;
-    int tillDir = 2;
-
-    private bool usingTool;
     private Interactable currentInteraction;
     private Inventory currentInventory;
+
+    [SerializeField] GameObject playerToolsPrefab;
+    PlayerTools tools;
 
     protected override void Awake()
     {
         base.Awake();
         anim = GetComponent<Animator>();
+        tools = Instantiate(playerToolsPrefab).GetComponent<PlayerTools>();
+        tools.plr = this;
+        tools.playerAnim = anim;
     }
 
     private void Update()
     {
         float currentMaxSpeed = maxSpeed * lastInputMag;
-        if (inputMove != Vector2.zero && !usingTool)
+        if (inputMove != Vector2.zero && !tools.isUsing)
             move = Vector2.ClampMagnitude(move + inputMove * movementSpeed * Time.deltaTime, currentMaxSpeed);
         else
             move = Vector2.Lerp(move, Vector2.zero, friction * Time.deltaTime);
@@ -50,14 +53,21 @@ public class Player : PlayerInventory
         // Chooses what direction to face
         // Anti-clockwise
         Vector2 norm = inputMove.normalized;
-        if (norm.y <= -0.5f) animDir = 2;
-        else if (norm.y >= 0.5f) animDir = 0;
-        else if (norm.x <= -0.5f) animDir = 1;
-        else if (norm.x >= 0.5f) animDir = 3;
-        anim.SetInteger("Dir", animDir);
+        if (norm.y <= -0.5f) animDir = PlayerAngle.Down;
+        else if (norm.y >= 0.5f) animDir = PlayerAngle.Up;
+        else if (norm.x <= -0.5f) animDir = PlayerAngle.Left;
+        else if (norm.x >= 0.5f) animDir = PlayerAngle.Right;
+        anim.SetInteger("Dir", (int)animDir);
 
         // Break interaction with interactable when too far away
         if (currentInteraction != null && Vector2.Distance((currentInteraction as MonoBehaviour).transform.position, transform.position) -0.5f > interactCheckRadius) BreakInteraction();
+
+        // Switched to queued hotbar slot
+        if(queuedHotbarSelect >= 0)
+        {
+            HotbarSwitch(queuedHotbarSelect);
+            queuedHotbarSelect = -1;
+        }
     }
 
     private void FixedUpdate()
@@ -74,34 +84,17 @@ public class Player : PlayerInventory
         {
             case InputActionPhase.Started:
             case InputActionPhase.Performed:
-                if (input.action.WasPerformedThisFrame()) InteractStart();
+                if (input.action.WasPerformedThisFrame())
+                {
+                    BreakInteraction();
+                    tools.PlayerUse();
+                }
                 break;
 
             case InputActionPhase.Canceled:
-                InteractEnd();
+                tools.PlayerStopUse();
                 break;
         }
-    }
-
-    /// <summary>
-    /// Press and hold to use tools and open inventories
-    /// </summary>
-    void InteractStart()
-    {
-        BreakInteraction();
-        if (container.ContainsAt(typeof(Hoe), selected))
-        {
-            anim.SetBool("Tilling", true);
-            tillDir = animDir;
-        }
-    }
-
-    /// <summary>
-    /// Called when interact button stops being held
-    /// </summary>
-    void InteractEnd()
-    {
-        anim.SetBool("Tilling", false);
     }
     #endregion
 
@@ -155,7 +148,8 @@ public class Player : PlayerInventory
     /// <param name="slot"></param>
     public void HotbarSwitch(int slot)
     {
-        SelectSlot(slot);
+        if (!tools.isUsing) SelectSlot(slot);
+        else queuedHotbarSelect = slot;
     }
 
     public void HotbarSwitchR(CallbackContext c)
@@ -224,27 +218,9 @@ public class Player : PlayerInventory
 
     //are called by the animator attached to this player, do not call these via code
     #region Animation events
-    public void Anim_TillEvent()
-    {
-        usingTool = false;
+    public void Anim_ToolAction() => tools.Anim_ToolAction();
 
-        TransformArray tps = tillPoints[tillDir];
-
-        for (int i = 0; i < tps.array.Length; i++)
-        {
-            Vector2 pos = tps[i].position;
-            CropData? _crop = CropManager.current.Till(pos);
-            if(_crop != null)
-            {
-                CropData crop = (CropData)_crop;
-                container.PushItem(crop.item, crop.amount);
-            }
-        }
-
-    }   
-
-
-    public void Anim_TillStart() => usingTool = true;
+    public void Anim_ToolStart() => tools.Anim_ToolStart();
     #endregion
 }
 
@@ -253,13 +229,3 @@ public enum ButtonPromptType
     Unknown, Playstation, Xbox, PC
 }
 
-[System.Serializable]
-public struct TransformArray
-{
-    public Transform[] array;
-    public Transform this[int i]
-    {
-        get { return array[i]; }
-        set { array[i] = value; }
-    }
-}
