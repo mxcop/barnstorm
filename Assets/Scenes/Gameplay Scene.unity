@@ -3751,10 +3751,11 @@ MonoBehaviour:
   enemyPrefabs:
   - {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
   waves: 64
-  waveDelay: 2
+  waveDelay: 5
   spawnAngles:
   - {x: 0, y: 360}
   spawnRadius: 20
+  groupIndicator: {fileID: 815613796493275530, guid: d505b02de9fb2b44b925a3d79fd6fcd4, type: 3}
   groupRadius: 6
   groupSize: {x: 1, y: 2}
   groups: 1

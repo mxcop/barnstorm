@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public List<GameObject> enemyPrefabs;
+    
 
     [Header("Wave")]
     public int waves;
@@ -15,6 +16,7 @@ public class EnemySpawner : MonoBehaviour
     public float spawnRadius;
 
     [Header("Group")]
+    public GameObject groupIndicator;
     public float groupRadius;
     public Vector2 groupSize;
 
@@ -34,7 +36,7 @@ public class EnemySpawner : MonoBehaviour
             for (int i = 0; i < groups; i++)
                 SpawnGroup();
 
-            waveDelay += 10;
+            waveDelay += 5;
             groupSize.x++;
             groupSize.y++;
             groups++;
@@ -48,8 +50,15 @@ public class EnemySpawner : MonoBehaviour
         int randomIndex = Random.Range(0, spawnAngles.Count);
         float angle = Random.Range(spawnAngles[randomIndex].x, spawnAngles[randomIndex].y);
 
-        // Generate vector from angle
-        Vector2 groupPoint = new Vector2(Mathf.Sin(angle * Mathf.PI / 180), Mathf.Cos(angle * Mathf.PI / 180)) * spawnRadius;
+        // Generate the direction from angle
+        Vector2 direction = new Vector2(Mathf.Sin(angle * Mathf.PI / 180), Mathf.Cos(angle * Mathf.PI / 180));
+
+        // Create Group Indicator from the direciton and face it towards the enemies
+        GameObject indicator = Instantiate(groupIndicator, direction * 7.5f, Quaternion.identity);
+        indicator.transform.rotation = Quaternion.FromToRotation(Vector3.down, direction);
+
+        // Calculate the groupPoint from the direction
+        Vector2 groupPoint = direction* spawnRadius;
 
         // Random group size
         int randomSize = Random.Range((int)groupSize.x, (int)groupSize.y);
