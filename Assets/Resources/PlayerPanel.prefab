@@ -166,6 +166,11 @@ MonoBehaviour:
   leftCell: {fileID: 7859334254068169171, guid: 11e8cdf63f3b74b4caddd02627970205, type: 3}
   multiCell: {fileID: 1523679852295866229, guid: bb72fa85f77b4fa4bb1fd353af93403f, type: 3}
   rightCell: {fileID: 4247973504126295133, guid: a986948a9b2a5194c888ac168d74a6dc, type: 3}
+  players:
+  - {fileID: 2192384948400609162, guid: f5582b5a642ad9a4798631f4921e49e6, type: 3}
+  - {fileID: -6857656769228258564, guid: f5582b5a642ad9a4798631f4921e49e6, type: 3}
+  - {fileID: -2647784610352950161, guid: f5582b5a642ad9a4798631f4921e49e6, type: 3}
+  - {fileID: -5862361606438442238, guid: f5582b5a642ad9a4798631f4921e49e6, type: 3}
   slotSize: 100
 --- !u!1 &4654510592554757634
 GameObject:

@@ -8,6 +8,7 @@ public class PlayerInventoryGUI : MonoBehaviour
     [Header("Prefabs")]
     [SerializeField] private GameObject singleCell;
     [SerializeField] private GameObject leftCell, multiCell, rightCell;
+    [SerializeField] private Sprite[] players;
 
     [Header("Config")]
     [SerializeField] private float slotSize = 136.5f;
@@ -45,6 +46,9 @@ public class PlayerInventoryGUI : MonoBehaviour
 
         // Get the selection arrow transform.
         selectArrow = transform.Find("Panel").Find("Select").GetComponent<RectTransform>();
+
+        // Set the player icon.
+        transform.Find("Panel").Find("Icon").GetComponent<Image>().sprite = players[LobbyManager.players.Count - 1];
 
         // Subscribe to the containers update event.
         container.OnUpdate += OnContainerUpdate;
