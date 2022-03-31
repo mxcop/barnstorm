@@ -62,7 +62,10 @@ public class PlayerTools : MonoBehaviour
                 if (_crop != null)
                 {
                     CropData crop = (CropData)_crop;
-                    plr.container.PushItem(crop.item, crop.amount);
+                    for (int j = 0; j < crop.amount; j++)
+                    {
+                        DroppedItem.DropOut(crop.item, 1, GetPlayerOffsetPos(lockedDirection), Random.insideUnitCircle.normalized * 0.5f);
+                    }
                 }
                 break;
         }
