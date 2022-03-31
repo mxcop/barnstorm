@@ -67,6 +67,7 @@ public class Player : PlayerInventory
 
     public void Move(CallbackContext input) { inputMove = input.ReadValue<Vector2>(); }
 
+    #region Interact
     public void ProcessInteract(CallbackContext input)
     {
         switch (input.phase)
@@ -102,7 +103,9 @@ public class Player : PlayerInventory
     {
         anim.SetBool("Tilling", false);
     }
+    #endregion
 
+    #region Interactables / Inventories
     /// <summary>
     /// Checks if there is an interactable within the players range.
     /// </summary>
@@ -143,8 +146,9 @@ public class Player : PlayerInventory
             currentInventory = null;
         }
     }
+    #endregion
 
-    #region Inventory Controls
+    #region Hotbar Controls
     /// <summary>
     /// Switches current hotbar slot to the given int
     /// </summary>
@@ -158,17 +162,19 @@ public class Player : PlayerInventory
     {
         if (c.phase == InputActionPhase.Performed)
         {
-            HotbarSwitch(Mathf.Clamp(selected + 1, 0, container.size - 1));
+            HotbarSwitch((selected + 1) % container.size);
         }
     }
     public void HotbarSwitchL(CallbackContext c)
     {
         if (c.phase == InputActionPhase.Performed)
         {
-            HotbarSwitch(Mathf.Clamp(selected - 1, 0, container.size - 1));
+            HotbarSwitch((selected - 1) % container.size);
         }
     }
+    #endregion
 
+    #region Hotbar item manipulation
     /// <summary>
     /// Swaps the currently held item with the item in single-inventory 
     /// In case of an inventory with the same item-type, first stack every item in the players inventory
@@ -216,6 +222,8 @@ public class Player : PlayerInventory
     }
     #endregion
 
+    //are called by the animator attached to this player, do not call these via code
+    #region Animation events
     public void Anim_TillEvent()
     {
         usingTool = false;
@@ -237,6 +245,7 @@ public class Player : PlayerInventory
 
 
     public void Anim_TillStart() => usingTool = true;
+    #endregion
 }
 
 public enum ButtonPromptType
