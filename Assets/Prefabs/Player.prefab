@@ -260,12 +260,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 3
   selected: 0
-  TEST_ITEM: {fileID: 0}
   starterItems:
   - item: {fileID: 3984615582560117230, guid: ce5b0580c9d6ee24aaa35305c1596a94, type: 3}
     amount: 1
   movementSpeed: 6
-  maxSpeed: 0.12
+  maxSpeed: 0.095
   friction: 14
   interactCheckRadius: 1.4
   cf:
@@ -282,20 +281,9 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  tillPoints:
-  - array:
-    - {fileID: 9056926766165095960}
-    - {fileID: 6165443536580688163}
-  - array:
-    - {fileID: 2113722133294127625}
-    - {fileID: 8819743599940656366}
-  - array:
-    - {fileID: 6375125325225327635}
-    - {fileID: 585199485514562072}
-  - array:
-    - {fileID: 1403113411778217190}
-    - {fileID: 6034518514494807075}
   buttonPromptType: 0
+  animDir: 2
+  playerToolsPrefab: {fileID: 5482722391119134417, guid: a81ffa6451ec4a8459dd08e831d59453, type: 3}
 --- !u!114 &9097193240834651908
 MonoBehaviour:
   m_ObjectHideFlags: 0
