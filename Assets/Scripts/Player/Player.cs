@@ -87,9 +87,12 @@ public class Player : PlayerInventory
     /// </summary>
     void InteractStart()
     {
-        BreakInteraction();        
-        anim.SetBool("Tilling", true);
-        tillDir = animDir;
+        BreakInteraction();
+        if (container.ContainsAt(typeof(Hoe), selected))
+        {
+            anim.SetBool("Tilling", true);
+            tillDir = animDir;
+        }
     }
 
     /// <summary>
