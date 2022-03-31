@@ -179,7 +179,7 @@
                     "id": "19bc9e7f-2d42-4ff7-b026-dfb4f36cd026",
                     "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "AxisDeadzone",
                     "groups": "",
                     "action": "Interact",
                     "isComposite": false,
@@ -221,7 +221,7 @@
                 {
                     "name": "",
                     "id": "e5c47955-60ce-446b-86f6-6f54f71696a5",
-                    "path": "<XInputController>/buttonWest",
+                    "path": "<XInputController>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -232,7 +232,7 @@
                 {
                     "name": "",
                     "id": "9d496d01-f674-4028-a900-29e69551bcd4",
-                    "path": "<DualShockGamepad>/buttonWest",
+                    "path": "<DualShockGamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -308,6 +308,17 @@
                 },
                 {
                     "name": "",
+                    "id": "71703918-fa36-4613-b3fd-ff0bb50dc1ca",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Drop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "b6f06ad7-7f4d-419c-aaf3-15a43f105008",
                     "path": "<Keyboard>/#(R)",
                     "interactions": "",
@@ -353,7 +364,18 @@
                 {
                     "name": "",
                     "id": "debeb849-d8cf-463b-89eb-83c8f2a9417d",
-                    "path": "<DualShockGamepad>/buttonEast",
+                    "path": "<DualShockGamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "InventorySwap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6fbdbfd4-8f93-414c-9c7c-60d129ac74ae",
+                    "path": "<XInputController>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -364,7 +386,7 @@
                 {
                     "name": "",
                     "id": "35768ade-1741-4e2a-8a35-c128ce189b71",
-                    "path": "<XInputController>/buttonEast",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -398,6 +420,17 @@
                     "name": "",
                     "id": "f2461982-0e9c-4fff-955e-c6c054d81d44",
                     "path": "<XInputController>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "InventorySplit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3fc809e7-2833-423d-a83b-a8488aa01fbf",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
