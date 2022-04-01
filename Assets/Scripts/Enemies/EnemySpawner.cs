@@ -33,25 +33,25 @@ public class EnemySpawner : MonoBehaviour
     IEnumerator WaveLoop()
     {
         while (true) {
-                currentWave++;
-                yield return new WaitForSeconds(waveDelay);
-                for (int i = 0; i < groups; i++)
-                    SpawnGroup();
+            currentWave++;
+            yield return new WaitForSeconds(waveDelay);
+            for (int i = 0; i < groups; i++)
+                SpawnGroup();
 
-                waveDelay += 4;
+            waveDelay += 4;
 
-                float v = 1.5f;
-                float t = 3.5f;
-                float p;
+            float v = 1.5f; 
+            float t = 3.5f;
+            float p;
 
-                groupSize.x = Mathf.RoundToInt(Mathf.Pow(Mathf.Sqrt(currentWave), 1.25f) / t) + 1;
-                groupSize.y = Mathf.RoundToInt(Mathf.Pow(Mathf.Sqrt(currentWave), 1.3f) / v) + 1;
+            groupSize.x = Mathf.RoundToInt(Mathf.Pow(Mathf.Sqrt(currentWave), 1.25f) / t) + 1;
+            groupSize.y = Mathf.RoundToInt(Mathf.Pow(Mathf.Sqrt(currentWave), 1.3f) / v) + 1;
 
-                v = 5000000f;
-                p = 2.7f;
-                t = 1600f;
+            v = 5000000f;
+            p = 2.7f;
+            t = 1600f;
 
-                groups = 1 + Mathf.RoundToInt((Mathf.Sqrt(currentWave * v) + Mathf.Pow(currentWave, 2f) * p) / t);
+            groups = 1 + Mathf.RoundToInt((Mathf.Sqrt(currentWave * v) + Mathf.Pow(currentWave, 2f) * p) / t);
         }
        
     }
