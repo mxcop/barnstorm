@@ -266,7 +266,7 @@ MonoBehaviour:
   movementSpeed: 6
   maxSpeed: 0.095
   friction: 14
-  interactCheckRadius: 1.4
+  interactCheckRadius: 0.5
   cf:
     useTriggers: 0
     useLayerMask: 1
@@ -282,6 +282,7 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   buttonPromptType: 0
+  isInteracting: 0
   animDir: 2
   playerToolsPrefab: {fileID: 5482722391119134417, guid: a81ffa6451ec4a8459dd08e831d59453, type: 3}
 --- !u!114 &9097193240834651908

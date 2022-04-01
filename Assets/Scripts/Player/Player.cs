@@ -1,4 +1,3 @@
-using Systems.Inventory;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
@@ -15,6 +14,7 @@ public class Player : PlayerInventory
     [SerializeField] ContactFilter2D cf;
 
     [HideInInspector] public ButtonPromptType buttonPromptType;
+    [HideInInspector] public bool isInteracting;
 
     private Animator anim;
     public PlayerAngle animDir;
@@ -37,6 +37,7 @@ public class Player : PlayerInventory
         tools = Instantiate(playerToolsPrefab).GetComponent<PlayerTools>();
         tools.plr = this;
         tools.playerAnim = anim;
+        isInteracting = false;
     }
 
     private void Update()
@@ -108,7 +109,7 @@ public class Player : PlayerInventory
         Collider2D[] colls = new Collider2D[3];
         Physics2D.OverlapCircle(transform.position, interactCheckRadius, cf, colls);
 
-        (Interactable, float) closest = (null,0);
+        (Interactable, float) closest = (null,Mathf.Infinity);
         for (int i = 0; i < colls.Length; i++)
         {
             if (colls[i] != null)
@@ -117,7 +118,7 @@ public class Player : PlayerInventory
                 if (c != null && !c.inUse)
                 {
                     float d = Vector2.Distance((c as MonoBehaviour).transform.position, transform.position);
-                    if (closest.Item2 < d) closest = (c, d);
+                    if (closest.Item2 > d) closest = (c, d);
                 }
             }
         }
@@ -135,6 +136,7 @@ public class Player : PlayerInventory
         if (currentInteraction != null)
         {
             currentInteraction.BreakInteraction();
+            isInteracting = false;
             currentInteraction = null;
             currentInventory = null;
         }
@@ -177,9 +179,10 @@ public class Player : PlayerInventory
     {
         if (input.phase != InputActionPhase.Performed) return;
 
-        if (CheckForInteractable())
+        if (isInteracting == false && CheckForInteractable())
         {
             currentInteraction.Interact();
+            isInteracting = true;
             currentInventory = currentInteraction as Inventory;
         }
         else if (currentInventory != null) currentInventory.QuickSwap(this, selected);
@@ -192,11 +195,12 @@ public class Player : PlayerInventory
     {
         if (input.phase != InputActionPhase.Performed) return;
 
-        if (currentInteraction == null)
+        if (currentInteraction == null && isInteracting == false)
         {
             if (CheckForInteractable())
             {
                 currentInteraction.Interact();
+                isInteracting = true;
                 currentInventory = currentInteraction as Inventory;
             }
         }
