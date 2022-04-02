@@ -3701,7 +3701,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &523508404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6057,6 +6057,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2371541005464566320, guid: bce6b2692af082849ae777e9af08a300, type: 3}
+      propertyPath: layerOffset
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2787295274450516753, guid: bce6b2692af082849ae777e9af08a300, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -6103,11 +6107,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2787295274450517225, guid: bce6b2692af082849ae777e9af08a300, type: 3}
       propertyPath: m_Name
-      value: delivery truck
+      value: Delivery truck
+      objectReference: {fileID: 0}
+    - target: {fileID: 5740372881089910243, guid: bce6b2692af082849ae777e9af08a300, type: 3}
+      propertyPath: layerOffset
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7646147874951610869, guid: bce6b2692af082849ae777e9af08a300, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8269403768741399450, guid: bce6b2692af082849ae777e9af08a300, type: 3}
+      propertyPath: layerOffset
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bce6b2692af082849ae777e9af08a300, type: 3}
