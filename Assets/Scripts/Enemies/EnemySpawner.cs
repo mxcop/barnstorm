@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [HideInInspector] public bool canSpawn;
     public List<GameObject> enemyPrefabs;
+
+    [SerializeField] private GameObject deliveryTruck;
+    private DeliveryTruck truckScript;
     
     [Header("Wave")]
     public int waves;
@@ -22,7 +24,7 @@ public class EnemySpawner : MonoBehaviour
 
     public int groups;
 
-    private int currentWave = 0;
+    private int currentWave = 99;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +36,14 @@ public class EnemySpawner : MonoBehaviour
     {
         while (true) {
             currentWave++;
+            // Every thenth wave we spawn the delivery truck and wait until its finished
+            Debug.Log("Wave modules: " + (currentWave % 10));
+            if (currentWave % 10 == 0) {
+                Debug.Log("Wait until finished");
+                truckScript = Instantiate(deliveryTruck).GetComponent<DeliveryTruck>();
+                yield return new WaitUntil(() => truckScript.isFinished == true);
+            }
+
             yield return new WaitForSeconds(waveDelay);
             for (int i = 0; i < groups; i++)
                 SpawnGroup();

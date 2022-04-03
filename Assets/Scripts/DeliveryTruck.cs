@@ -140,4 +140,9 @@ public class DeliveryTruck : MonoBehaviour
 
         return emptyCount >= crates.Length;
     }
+
+    public void Finish() {
+        isFinished = true;
+        Destroy(gameObject);
+    }
 }
