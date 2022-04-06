@@ -33,7 +33,7 @@ public class EnemySpawner : MonoBehaviour
 
     public int groups;
 
-    private int currentWave = 14;
+    private int currentWave = 0;
     [SerializeField] private float totalWeight = 0;
 
     // Start is called before the first frame update

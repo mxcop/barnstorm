@@ -49,6 +49,5 @@ MonoBehaviour:
   cropType: 3
   nutrition: 8
   speed: 3
-  hasSplash: 0
   projectile: {fileID: 7811857560452402360, guid: 2dae165fd4a998445b4a017d962363e0, type: 3}
-  destroyObject: {fileID: 0}
+  destroyObject: {fileID: 5577374176780847287, guid: df69e9b0beda81440a750b2ba022aef8, type: 3}
