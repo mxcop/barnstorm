@@ -75,34 +75,37 @@ public class PlayerTools : MonoBehaviour
     /// <param name="dir"></param>
     public void ToolAction()
     {
-        Item item;
-        if (GetHeldItem(out item))
+        if (!plr.isInBuilding)
         {
-            switch (item.useAction)
+            Item item;
+            if (GetHeldItem(out item))
             {
-                case ItemAction.Till:
+                switch (item.useAction)
+                {
+                    case ItemAction.Till:
 
-                    CropData? _crop = CropManager.current.Till(GetPlayerOffsetPos(lockedDirection));
-                    if (_crop != null)
-                    {
-                        CropData crop = (CropData)_crop;
-                        for (int j = 0; j < crop.amount; j++)
+                        CropData? _crop = CropManager.current.Till(GetPlayerOffsetPos(lockedDirection));
+                        if (_crop != null)
                         {
-                            DroppedItem.DropOut(crop.item, 1, GetPlayerOffsetPos(lockedDirection), Random.insideUnitCircle.normalized * 0.5f);
+                            CropData crop = (CropData)_crop;
+                            for (int j = 0; j < crop.amount; j++)
+                            {
+                                DroppedItem.DropOut(crop.item, 1, GetPlayerOffsetPos(lockedDirection), Random.insideUnitCircle.normalized * 0.5f);
+                            }
                         }
-                    }
-                    break;
+                        break;
 
-                case ItemAction.Plant:
-                    Vector2Int vec = GetPlayerOffsetPos(plr.animDir);
-                    if (CropManager.current.TileIsOfType(TileType.Tilled, vec.x, vec.y))
-                    {
-                        if (CropManager.current.PlaceCrop((item as Food).cropType, vec.x, vec.y))
+                    case ItemAction.Plant:
+                        Vector2Int vec = GetPlayerOffsetPos(plr.animDir);
+                        if (CropManager.current.TileIsOfType(TileType.Tilled, vec.x, vec.y))
                         {
-                            plr.container.RemoveItem(plr.selected, 1);
+                            if (CropManager.current.PlaceCrop((item as Food).cropType, vec.x, vec.y))
+                            {
+                                plr.container.RemoveItem(plr.selected, 1);
+                            }
                         }
-                    }
-                    break;
+                        break;
+                }
             }
         }
 

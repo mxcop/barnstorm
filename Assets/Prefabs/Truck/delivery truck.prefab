@@ -725,6 +725,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2787295274450516753}
     m_Modifications:
+    - target: {fileID: 1075919742, guid: 9501f2ed451b6aa4ca358a21ea263b33, type: 3}
+      propertyPath: layerOffset
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 443913376326917017, guid: 9501f2ed451b6aa4ca358a21ea263b33, type: 3}
       propertyPath: m_Name
       value: (INV) Crate (1)
@@ -810,6 +814,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2787295274450516753}
     m_Modifications:
+    - target: {fileID: 1075919742, guid: 9501f2ed451b6aa4ca358a21ea263b33, type: 3}
+      propertyPath: layerOffset
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 443913376326917017, guid: 9501f2ed451b6aa4ca358a21ea263b33, type: 3}
       propertyPath: m_Name
       value: (INV) Crate (2)
@@ -895,6 +903,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2787295274450516753}
     m_Modifications:
+    - target: {fileID: 1075919742, guid: 9501f2ed451b6aa4ca358a21ea263b33, type: 3}
+      propertyPath: layerOffset
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 443913376326917017, guid: 9501f2ed451b6aa4ca358a21ea263b33, type: 3}
       propertyPath: m_Name
       value: (INV) Crate
