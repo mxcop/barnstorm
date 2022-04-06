@@ -15,6 +15,7 @@ public class Player : PlayerInventory
 
     [HideInInspector] public ButtonPromptType buttonPromptType;
     [HideInInspector] public bool isInteracting;
+    [HideInInspector] public bool isInBuilding;
 
     private Animator anim;
     public PlayerAngle animDir;
@@ -88,7 +89,7 @@ public class Player : PlayerInventory
                 if (input.action.WasPerformedThisFrame())
                 {
                     BreakInteraction();
-                    tools.PlayerUse();
+                    if(!isInBuilding) tools.PlayerUse();
                 }
                 break;
 

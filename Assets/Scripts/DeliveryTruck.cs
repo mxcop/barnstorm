@@ -66,6 +66,7 @@ public class DeliveryTruck : MonoBehaviour
         if (collision.CompareTag("Player")) {
             collision.transform.SetParent(transform);
             players.Add(collision.gameObject);
+            SetPlayerInsideTruck(collision.gameObject, true);
         }
     }
 
@@ -73,6 +74,7 @@ public class DeliveryTruck : MonoBehaviour
         if (collision.CompareTag("Player")) {
             collision.transform.SetParent(null);
             players.Remove(collision.gameObject);
+            SetPlayerInsideTruck(collision.gameObject, false);
         }
     }
 
@@ -143,6 +145,15 @@ public class DeliveryTruck : MonoBehaviour
 
     public void Finish() {
         isFinished = true;
+        foreach(GameObject plr in players)
+        {
+            SetPlayerInsideTruck(plr, false);
+        }
         Destroy(gameObject);
+    }
+
+    void SetPlayerInsideTruck(GameObject player, bool val)
+    {
+        player.GetComponent<Player>().isInBuilding = val;
     }
 }
