@@ -1,22 +1,22 @@
 fileFormatVersion: 2
-guid: 3f95f37f9972532429b8d794af40f4cf
+guid: 2ce4381b19115d748b7661bd4116c9ca
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4924299300382404788
-    second: barn_full
+      213: -7720952373395277615
+    second: green-baby-cow-icon
   - first:
-      213: -8959997538820638052
-    second: barn_3
+      213: -8666001996695331278
+    second: brown-baby-cow-icon
   - first:
-      213: -8769382199329527302
-    second: barn_2
+      213: -534320321628689658
+    second: purple-baby-cow-icon
   - first:
-      213: 4189888586158973390
-    second: barn_3
+      213: -4546851876706451529
+    second: gui-panel
   - first:
-      213: 3424584162190279719
-    second: barn_empty
+      213: 6013734071268148755
+    second: wave-gui-panel
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -106,34 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: barn_full
+      name: green-baby-cow-icon
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 40
-        height: 57
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c4f800950ef59abb0800000000000000
-      internalID: -4924299300382404788
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: barn_3
-      rect:
-        serializedVersion: 2
-        x: 41
-        y: 0
-        width: 40
-        height: 57
+        x: 1
+        y: 28
+        width: 13
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,20 +120,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c9ab836e5b1b7a380800000000000000
-      internalID: -8959997538820638052
+      spriteID: 1d8b01849baa9d490800000000000000
+      internalID: -7720952373395277615
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: barn_2
+      name: brown-baby-cow-icon
       rect:
         serializedVersion: 2
-        x: 82
-        y: 0
-        width: 40
-        height: 57
+        x: 15
+        y: 28
+        width: 13
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,20 +141,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af964551a55ec4680800000000000000
-      internalID: -8769382199329527302
+      spriteID: 23e1624391d2cb780800000000000000
+      internalID: -8666001996695331278
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: barn_1
+      name: purple-baby-cow-icon
       rect:
         serializedVersion: 2
-        x: 123
-        y: 0
-        width: 40
-        height: 57
+        x: 29
+        y: 28
+        width: 13
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -183,20 +162,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec1287a5879752a30800000000000000
-      internalID: 4189888586158973390
+      spriteID: 60bac099f76b598f0800000000000000
+      internalID: -534320321628689658
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: barn_empty
+      name: gui-panel
       rect:
         serializedVersion: 2
-        x: 164
-        y: 0
-        width: 40
-        height: 57
+        x: 43
+        y: 27
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 3, y: 4, z: 3, w: 3}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bff792fe4656e0c0800000000000000
+      internalID: -4546851876706451529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wave-gui-panel
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
+        width: 49
+        height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -204,8 +204,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 724c7cab621968f20800000000000000
-      internalID: 3424584162190279719
+      spriteID: 3160a939643157350800000000000000
+      internalID: 6013734071268148755
       vertices: []
       indices: 
       edges: []

@@ -522,6 +522,7 @@ GameObject:
   - component: {fileID: 164480170}
   - component: {fileID: 164480169}
   - component: {fileID: 164480168}
+  - component: {fileID: 164480172}
   m_Layer: 0
   m_Name: Barn
   m_TagString: Barn
@@ -560,8 +561,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.5, y: 3.75}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 2.5, y: 3.5625}
+    newSize: {x: 2.5, y: 3.5625}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -609,12 +610,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3f95f37f9972532429b8d794af40f4cf, type: 3}
+  m_Sprite: {fileID: -4924299300382404788, guid: 3f95f37f9972532429b8d794af40f4cf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.5, y: 3.5625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -628,12 +629,31 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 164480167}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: -0.005, y: 0.531, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &164480172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164480167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7024b121690eb634e8df9dd272c24e49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  storedFood: 50
+  stages:
+  - {fileID: 3424584162190279719, guid: 3f95f37f9972532429b8d794af40f4cf, type: 3}
+  - {fileID: 8983273966603486333, guid: 3f95f37f9972532429b8d794af40f4cf, type: 3}
+  - {fileID: -8769382199329527302, guid: 3f95f37f9972532429b8d794af40f4cf, type: 3}
+  - {fileID: -8959997538820638052, guid: 3f95f37f9972532429b8d794af40f4cf, type: 3}
+  - {fileID: -4924299300382404788, guid: 3f95f37f9972532429b8d794af40f4cf, type: 3}
 --- !u!1001 &168779103
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3613,6 +3633,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 403b736918ef2b54d9c8c2c11e303332, type: 3}
+--- !u!1001 &388027884
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
+      propertyPath: m_Name
+      value: baby brown cow
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121955686671688591, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121955686671688591, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121955686671688591, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -10.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121955686671688591, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121955686671688591, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121955686671688591, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121955686671688591, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121955686671688591, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121955686671688591, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121955686671688591, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121955686671688591, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
 --- !u!1 &452872485
 GameObject:
   m_ObjectHideFlags: 0
@@ -3882,7 +3959,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &523508404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3895,18 +3972,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df39fcba4ce577f47bdee664f76e8fb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefabs:
-  - {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
+  enemies:
+  - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
+    startRound: 0
+    weight: 15
+    dropRange: {x: 0, y: 0}
+  - prefab: {fileID: 4120170886141080293, guid: 41363e8c54b9f42428cb01783712d6aa, type: 3}
+    startRound: 15
+    weight: 5
+    dropRange: {x: 0, y: 0}
+  - prefab: {fileID: 2872876722718246463, guid: 7fe20ad794615504883896125fbc71fc, type: 3}
+    startRound: 25
+    weight: 3
+    dropRange: {x: 0, y: 0}
   deliveryTruck: {fileID: 2787295274450517225, guid: bce6b2692af082849ae777e9af08a300, type: 3}
   waves: 64
-  waveDelay: 5
+  waveDelay: 10
   spawnAngles:
   - {x: 0, y: 360}
   spawnRadius: 20
   groupIndicator: {fileID: 815613796493275530, guid: d505b02de9fb2b44b925a3d79fd6fcd4, type: 3}
+  groupDelay: {x: 0.75, y: 4}
   groupRadius: 6
   groupSize: {x: 1, y: 2}
   groups: 1
+  totalWeight: 0
 --- !u!4 &523508405
 Transform:
   m_ObjectHideFlags: 0

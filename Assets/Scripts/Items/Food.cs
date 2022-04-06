@@ -7,7 +7,6 @@ public class Food : Item
     public CropType cropType;
     public float nutrition;
     public float speed;
-    public bool hasSplash;
     public GameObject projectile;
     public GameObject destroyObject;
     public virtual void Collision(Collider2D collider){}

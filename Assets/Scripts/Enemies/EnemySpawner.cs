@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public List<GameObject> enemyPrefabs;
+    [System.Serializable]
+    public class EnemySpawn {
+        public GameObject prefab;
+        public int startRound;
+        public float weight;
+        [HideInInspector] public Vector2 dropRange;
+    }
+
+    public List<EnemySpawn> enemies = new List<EnemySpawn>();
 
     [SerializeField] private GameObject deliveryTruck;
     private DeliveryTruck truckScript;
@@ -19,12 +27,15 @@ public class EnemySpawner : MonoBehaviour
 
     [Header("Group")]
     public GameObject groupIndicator;
+    public Vector2 groupDelay;
     public float groupRadius;
     public Vector2 groupSize;
 
     public int groups;
 
-    private int currentWave = 99;
+    private int currentWave = 0;
+    [SerializeField] private float totalWeight = 0;
+
 
     // Start is called before the first frame update
     void Start()
@@ -36,19 +47,33 @@ public class EnemySpawner : MonoBehaviour
     {
         while (true) {
             currentWave++;
+
+            // Create Spawn weights and assign it to the enemies
+            totalWeight = 0;
+            for (int i = 0; i < enemies.Count; i++) {
+                if (enemies[i].startRound <= currentWave) {
+                    enemies[i].dropRange.x = totalWeight;
+                    totalWeight += enemies[i].weight;
+                    enemies[i].dropRange.y = totalWeight;
+                }
+            }
+
             // Every thenth wave we spawn the delivery truck and wait until its finished
-            Debug.Log("Wave modules: " + (currentWave % 10));
             if (currentWave % 10 == 0) {
-                Debug.Log("Wait until finished");
                 truckScript = Instantiate(deliveryTruck).GetComponent<DeliveryTruck>();
                 yield return new WaitUntil(() => truckScript.isFinished == true);
             }
 
             yield return new WaitForSeconds(waveDelay);
-            for (int i = 0; i < groups; i++)
-                SpawnGroup();
 
-            waveDelay += 4;
+            // Spawn every group with a random delay
+            for (int i = 0; i < groups; i++) {
+                float delay = Random.Range(groupDelay.x, groupDelay.y);
+                SpawnGroup();
+                yield return new WaitForSeconds(delay);
+            }
+
+            waveDelay += 2;
 
             float v = 1.5f; 
             float t = 3.5f;
@@ -63,7 +88,6 @@ public class EnemySpawner : MonoBehaviour
 
             groups = 1 + Mathf.RoundToInt((Mathf.Sqrt(currentWave * v) + Mathf.Pow(currentWave, 2f) * p) / t);
         }
-       
     }
 
     void SpawnGroup()
@@ -88,7 +112,22 @@ public class EnemySpawner : MonoBehaviour
         // Spawn the generated Group
         for (int i = 0; i < randomSize; i++)
         {
-            Instantiate(enemyPrefabs[0], groupPoint + (Random.insideUnitCircle * Random.Range(0, groupRadius)), Quaternion.identity);
+            Instantiate(RandomEnemy().prefab, groupPoint + (Random.insideUnitCircle * Random.Range(0, groupRadius)), Quaternion.identity);
         }
+    }
+
+    private EnemySpawn RandomEnemy()
+    {
+        int index = -1;
+        float number = Random.Range(1, totalWeight);
+
+        // Loop over table to find match
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            if (number >= enemies[i].dropRange.x && number <= enemies[i].dropRange.y)
+                index = i;
+        }
+
+        return index < 0 ? null : enemies[index];
     }
 }

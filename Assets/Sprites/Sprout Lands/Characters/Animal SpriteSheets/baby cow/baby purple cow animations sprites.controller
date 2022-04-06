@@ -108,7 +108,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: baby brown cow animations sprites_2
+  m_Name: baby purple cow animations sprites
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Eat
