@@ -159,14 +159,14 @@ public class Player : PlayerInventory
     {
         if (c.phase == InputActionPhase.Performed)
         {
-            HotbarSwitch((selected + 1) % container.size);
+            HotbarSwitch((int)Mathf.Repeat(selected + 1, container.size));
         }
     }
     public void HotbarSwitchL(CallbackContext c)
     {
         if (c.phase == InputActionPhase.Performed)
         {
-            HotbarSwitch((selected - 1) % container.size);
+            HotbarSwitch((int)Mathf.Repeat(selected-1, container.size));
         }
     }
     #endregion
