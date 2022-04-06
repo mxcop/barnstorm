@@ -24,7 +24,7 @@ public class EnemySpawner : MonoBehaviour
 
     public int groups;
 
-    private int currentWave = 99;
+    private int currentWave = 0;
 
     // Start is called before the first frame update
     void Start()
