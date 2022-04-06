@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
+using Cinemachine;
 
 public class Player : PlayerInventory
 {
@@ -39,6 +40,8 @@ public class Player : PlayerInventory
         tools.plr = this;
         tools.playerAnim = anim;
         isInteracting = false;
+
+        FindObjectOfType<CinemachineTargetGroup>().AddMember(gameObject.transform, 1f, 0.75f);
     }
 
     private void Update()
