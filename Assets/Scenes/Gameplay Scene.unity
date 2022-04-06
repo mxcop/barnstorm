@@ -3714,18 +3714,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df39fcba4ce577f47bdee664f76e8fb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefabs:
-  - {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
+  enemies:
+  - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
+    startRound: 0
+    weight: 10
+    dropRange: {x: 0, y: 0}
+  - prefab: {fileID: 4120170886141080293, guid: 41363e8c54b9f42428cb01783712d6aa, type: 3}
+    startRound: 15
+    weight: 2
+    dropRange: {x: 0, y: 0}
   deliveryTruck: {fileID: 2787295274450517225, guid: bce6b2692af082849ae777e9af08a300, type: 3}
   waves: 64
-  waveDelay: 5
+  waveDelay: 10
   spawnAngles:
   - {x: 0, y: 360}
   spawnRadius: 20
   groupIndicator: {fileID: 815613796493275530, guid: d505b02de9fb2b44b925a3d79fd6fcd4, type: 3}
+  groupDelay: {x: 0.75, y: 4}
   groupRadius: 6
   groupSize: {x: 1, y: 2}
   groups: 1
+  totalWeight: 0
 --- !u!4 &523508405
 Transform:
   m_ObjectHideFlags: 0
