@@ -15,6 +15,7 @@ public class Player : PlayerInventory
 
     [HideInInspector] public ButtonPromptType buttonPromptType;
     [HideInInspector] public bool isInteracting;
+    [HideInInspector] public bool isInBuilding;
 
     private Animator anim;
     public PlayerAngle animDir;
@@ -88,7 +89,7 @@ public class Player : PlayerInventory
                 if (input.action.WasPerformedThisFrame())
                 {
                     BreakInteraction();
-                    tools.PlayerUse();
+                    if(!isInBuilding) tools.PlayerUse();
                 }
                 break;
 
@@ -158,14 +159,14 @@ public class Player : PlayerInventory
     {
         if (c.phase == InputActionPhase.Performed)
         {
-            HotbarSwitch((selected + 1) % container.size);
+            HotbarSwitch((int)Mathf.Repeat(selected + 1, container.size));
         }
     }
     public void HotbarSwitchL(CallbackContext c)
     {
         if (c.phase == InputActionPhase.Performed)
         {
-            HotbarSwitch((selected - 1) % container.size);
+            HotbarSwitch((int)Mathf.Repeat(selected-1, container.size));
         }
     }
     #endregion
