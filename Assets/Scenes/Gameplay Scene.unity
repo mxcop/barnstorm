@@ -342,6 +342,7 @@ GameObject:
   - component: {fileID: 164480170}
   - component: {fileID: 164480169}
   - component: {fileID: 164480168}
+  - component: {fileID: 164480172}
   m_Layer: 0
   m_Name: Barn
   m_TagString: Barn
@@ -454,6 +455,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &164480172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164480167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7024b121690eb634e8df9dd272c24e49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  storedFood: 50
+  stages:
+  - {fileID: 3424584162190279719, guid: 3f95f37f9972532429b8d794af40f4cf, type: 3}
+  - {fileID: 8983273966603486333, guid: 3f95f37f9972532429b8d794af40f4cf, type: 3}
+  - {fileID: -8769382199329527302, guid: 3f95f37f9972532429b8d794af40f4cf, type: 3}
+  - {fileID: -8959997538820638052, guid: 3f95f37f9972532429b8d794af40f4cf, type: 3}
+  - {fileID: -4924299300382404788, guid: 3f95f37f9972532429b8d794af40f4cf, type: 3}
 --- !u!1001 &168779103
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3566,7 +3586,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0

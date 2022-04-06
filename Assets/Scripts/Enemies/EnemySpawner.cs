@@ -36,6 +36,7 @@ public class EnemySpawner : MonoBehaviour
     private int currentWave = 0;
     [SerializeField] private float totalWeight = 0;
 
+
     // Start is called before the first frame update
     void Start()
     {

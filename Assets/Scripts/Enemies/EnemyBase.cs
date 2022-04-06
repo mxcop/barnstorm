@@ -30,7 +30,7 @@ public class EnemyBase : MonoBehaviour
     [HideInInspector] public Rigidbody2D rb;
     [SerializeField] private float maxHunger;
 
-    private float hunger;
+    [HideInInspector] public float hunger;
     private Transform target;
 
     public void Feed(Food food) { 
