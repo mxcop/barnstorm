@@ -50,18 +50,22 @@ MonoBehaviour:
     growthDelay: 4
     _item: {fileID: 3895952035281508092, guid: 29e3dfb59d94dd84a8f1f981c187a7f8, type: 3}
     amount: 1
+    scoreFromHarvest: 0
   - sprite: {fileID: 8796380703106566107, guid: 9f172822beda7d246a8fd39bc6f83168, type: 3}
     growthDelay: 12
     _item: {fileID: 3895952035281508092, guid: 29e3dfb59d94dd84a8f1f981c187a7f8, type: 3}
     amount: 1
+    scoreFromHarvest: 0
   - sprite: {fileID: -3098547097148736168, guid: 9f172822beda7d246a8fd39bc6f83168, type: 3}
     growthDelay: 12
     _item: {fileID: 3895952035281508092, guid: 29e3dfb59d94dd84a8f1f981c187a7f8, type: 3}
     amount: 1
+    scoreFromHarvest: 0
   - sprite: {fileID: 136203948458210870, guid: 9f172822beda7d246a8fd39bc6f83168, type: 3}
     growthDelay: 12
     _item: {fileID: 3895952035281508092, guid: 29e3dfb59d94dd84a8f1f981c187a7f8, type: 3}
-    amount: 2
+    amount: 12
+    scoreFromHarvest: 1000
   autoRespawn: 0
   growthDelayMultiplier: 1
   startingGrowth: 0

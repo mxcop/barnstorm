@@ -47,12 +47,15 @@ public class Crop : MonoBehaviour
         if (!isHarvested)
         {
             isHarvested = true;
+            
             if (!autoRespawn) Destroy(gameObject);
             else
             {
                 SetGrowthStage(0);
                 isHarvested = false;
             }
+            ScoreManager.current.AddScore(currentStageData.scoreFromHarvest, transform.position);
+
             return stageData[currentStage];
         }
         else return null;
@@ -68,4 +71,5 @@ public struct CropData
     [SerializeField] GameObject _item;
     public Item item => _item.GetComponent<Item>();
     public int amount;
+    public int scoreFromHarvest;
 }
