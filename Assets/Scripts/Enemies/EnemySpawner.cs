@@ -43,8 +43,8 @@ public class EnemySpawner : MonoBehaviour
         StartCoroutine(WaveLoop());
     }
 
-    IEnumerator WaveLoop()
-    {
+    IEnumerator WaveLoop() {
+        yield return new WaitForSeconds(5);
         while (true) {
             currentWave++;
 
@@ -64,6 +64,7 @@ public class EnemySpawner : MonoBehaviour
                 yield return new WaitUntil(() => truckScript.isFinished == true);
             }
 
+            // Add a small amount of delay between each Wave
             yield return new WaitForSeconds(waveDelay);
 
             // Spawn every group with a random delay
@@ -72,9 +73,11 @@ public class EnemySpawner : MonoBehaviour
                 SpawnGroup();
                 yield return new WaitForSeconds(delay);
             }
-
+            
+            // Add a small amount to the Wave delay
             waveDelay += 2;
 
+            // Group min and max size progression calculation
             float v = 1.5f; 
             float t = 3.5f;
             float p;
@@ -82,6 +85,7 @@ public class EnemySpawner : MonoBehaviour
             groupSize.x = Mathf.RoundToInt(Mathf.Pow(Mathf.Sqrt(currentWave), 1.25f) / t) + 1;
             groupSize.y = Mathf.RoundToInt(Mathf.Pow(Mathf.Sqrt(currentWave), 1.3f) / v) + 1;
 
+            // Group count progression calculation
             v = 5000000f;
             p = 2.7f;
             t = 1600f;
@@ -118,6 +122,7 @@ public class EnemySpawner : MonoBehaviour
 
     private EnemySpawn RandomEnemy()
     {
+        // Set default index and "Roll" number to get a match
         int index = -1;
         float number = Random.Range(1, totalWeight);
 
@@ -128,6 +133,7 @@ public class EnemySpawner : MonoBehaviour
                 index = i;
         }
 
+        // Return null or the correct enemy to spawn
         return index < 0 ? null : enemies[index];
     }
 }

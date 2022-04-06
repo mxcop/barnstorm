@@ -28,6 +28,7 @@ public class Player : PlayerInventory
 
     private Interactable currentInteraction;
     private Inventory currentInventory;
+    private GameObject barn;
 
     [SerializeField] GameObject playerToolsPrefab;
     PlayerTools tools;
@@ -41,6 +42,7 @@ public class Player : PlayerInventory
         tools.playerAnim = anim;
         isInteracting = false;
 
+        barn = GameObject.FindGameObjectWithTag("Barn");
         FindObjectOfType<CinemachineTargetGroup>().AddMember(gameObject.transform, 1f, 1.25f);
     }
 
@@ -73,6 +75,18 @@ public class Player : PlayerInventory
             HotbarSwitch(queuedHotbarSelect);
             queuedHotbarSelect = -1;
         }
+
+        // Check if the player is out of bounds
+        if(Vector2.Distance(transform.position, barn.transform.position) > 16f) {
+            // Animate the alpha of the player sprite.
+            LeanTween.value(gameObject, c => gameObject.GetComponent<SpriteRenderer>().color = c, new Color(1, 1, 1, 1), new Color(1, 1, 1, 0), 0.2f)
+                .setOnComplete(() => ReturnTween());
+        }
+    }
+
+    private void ReturnTween() {
+        transform.position = new Vector2(0, -1.5f);
+        LeanTween.value(gameObject, c => gameObject.GetComponent<SpriteRenderer>().color = c, new Color(1, 1, 1, 0), new Color(1, 1, 1, 1), 0.2f);
     }
 
     private void FixedUpdate()
