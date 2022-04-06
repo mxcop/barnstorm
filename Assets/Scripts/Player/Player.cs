@@ -41,7 +41,7 @@ public class Player : PlayerInventory
         tools.playerAnim = anim;
         isInteracting = false;
 
-        FindObjectOfType<CinemachineTargetGroup>().AddMember(gameObject.transform, 1f, 0.75f);
+        FindObjectOfType<CinemachineTargetGroup>().AddMember(gameObject.transform, 1f, 1.25f);
     }
 
     private void Update()
