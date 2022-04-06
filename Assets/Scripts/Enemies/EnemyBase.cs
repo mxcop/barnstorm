@@ -24,13 +24,12 @@ public class EnemyBase : MonoBehaviour
 
     private Animator anim;
     private SpriteRenderer sr;
-    private Collider2D coll;
     private bool isBouncing = false;
 
     [HideInInspector] public Rigidbody2D rb;
     [SerializeField] private float maxHunger;
 
-    private float hunger;
+    [HideInInspector] public float hunger;
     private Transform target;
 
     public void Feed(Food food) { 
@@ -46,7 +45,6 @@ public class EnemyBase : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
-        coll = GetComponent<Collider2D>();
         target = GameObject.FindGameObjectWithTag("Barn").transform;
         hunger = maxHunger;
     }
