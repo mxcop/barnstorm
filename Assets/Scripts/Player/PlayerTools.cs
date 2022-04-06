@@ -8,7 +8,12 @@ public class PlayerTools : MonoBehaviour
     [HideInInspector] public Animator playerAnim;
     [HideInInspector] public bool isUsing;
     [SerializeField] Vector2[] offsets;
+    [SerializeField] float lerpSpeed;
+    [SerializeField] SpriteRenderer spriteRenderer;
 
+    readonly Color half = new Color(1, 1, 1, 0.5f);
+
+    Vector3 targetPos;
     PlayerAngle lockedDirection;
     
     /// <summary>
@@ -45,9 +50,21 @@ public class PlayerTools : MonoBehaviour
         
     }
 
+    private void LateUpdate()
+    {
+        PlayerAngle ang;
+        if (isUsing) ang = lockedDirection;
+        else ang = plr.animDir;
+        Vector2Int v = GetPlayerOffsetPos(ang);
+
+        targetPos = new Vector3(v.x+0.5f,v.y+0.5f,0);
+        transform.position = Vector3.Lerp(transform.position, targetPos, lerpSpeed);
+    }
+
     public void PlayerStopUse()
     {
         playerAnim.SetBool("Tilling", false);
+        spriteRenderer.color = Color.white;
     }
 
     Vector2Int GetPlayerOffsetPos(PlayerAngle dir)
@@ -113,7 +130,11 @@ public class PlayerTools : MonoBehaviour
 
     }
 
-    public void Anim_ToolStart() => isUsing = true;
+    public void Anim_ToolStart()
+    {
+        isUsing = true;
+        spriteRenderer.color = Color.clear;
+    }
 
 }
 
