@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &9188833176126706524
+--- !u!1 &3428434863789201663
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,74 +8,74 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9188833176126706526}
-  - component: {fileID: 9188833176126706527}
-  - component: {fileID: 9188833176126706496}
-  - component: {fileID: 9188833176126706497}
+  - component: {fileID: 3428434863789201661}
+  - component: {fileID: 3428434863789201660}
+  - component: {fileID: 3428434863789201635}
+  - component: {fileID: 3428434863789201634}
   m_Layer: 0
-  m_Name: (CROP) Carrot
+  m_Name: (CROP) Pepper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &9188833176126706526
+--- !u!4 &3428434863789201661
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9188833176126706524}
+  m_GameObject: {fileID: 3428434863789201663}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.9, y: 3.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9188833176126706527
+--- !u!114 &3428434863789201660
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9188833176126706524}
+  m_GameObject: {fileID: 3428434863789201663}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b085e5cb14659b40ba7362df1f84190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   stageData:
-  - sprite: {fileID: 1116706725642825598, guid: 9f172822beda7d246a8fd39bc6f83168, type: 3}
+  - sprite: {fileID: -4343015011740814535, guid: 9f172822beda7d246a8fd39bc6f83168, type: 3}
     growthDelay: 4
-    _item: {fileID: 3895952035281508092, guid: 29e3dfb59d94dd84a8f1f981c187a7f8, type: 3}
+    _item: {fileID: 6121038885281453526, guid: a747899da4b852b409a82cc15dcae582, type: 3}
     amount: 1
     scoreFromHarvest: 0
-  - sprite: {fileID: 8796380703106566107, guid: 9f172822beda7d246a8fd39bc6f83168, type: 3}
+  - sprite: {fileID: 593002793200147421, guid: 9f172822beda7d246a8fd39bc6f83168, type: 3}
     growthDelay: 12
-    _item: {fileID: 3895952035281508092, guid: 29e3dfb59d94dd84a8f1f981c187a7f8, type: 3}
+    _item: {fileID: 6121038885281453526, guid: a747899da4b852b409a82cc15dcae582, type: 3}
     amount: 1
     scoreFromHarvest: 0
-  - sprite: {fileID: -3098547097148736168, guid: 9f172822beda7d246a8fd39bc6f83168, type: 3}
+  - sprite: {fileID: 3391927106950375280, guid: 9f172822beda7d246a8fd39bc6f83168, type: 3}
+    growthDelay: 20
+    _item: {fileID: 6121038885281453526, guid: a747899da4b852b409a82cc15dcae582, type: 3}
+    amount: 2
+    scoreFromHarvest: 10
+  - sprite: {fileID: -5420819059952913401, guid: 9f172822beda7d246a8fd39bc6f83168, type: 3}
     growthDelay: 12
-    _item: {fileID: 3895952035281508092, guid: 29e3dfb59d94dd84a8f1f981c187a7f8, type: 3}
-    amount: 1
-    scoreFromHarvest: 0
-  - sprite: {fileID: 136203948458210870, guid: 9f172822beda7d246a8fd39bc6f83168, type: 3}
-    growthDelay: 12
-    _item: {fileID: 3895952035281508092, guid: 29e3dfb59d94dd84a8f1f981c187a7f8, type: 3}
+    _item: {fileID: 6121038885281453526, guid: a747899da4b852b409a82cc15dcae582, type: 3}
     amount: 3
-    scoreFromHarvest: 12
+    scoreFromHarvest: 16
   autoRespawn: 0
   growthDelayMultiplier: 1
   startingGrowth: 0
---- !u!212 &9188833176126706496
+--- !u!212 &3428434863789201635
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9188833176126706524}
+  m_GameObject: {fileID: 3428434863789201663}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -109,7 +109,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1979382666408782389, guid: 3703f38d2ad9ca247bfd64177e9a999f, type: 3}
+  m_Sprite: {fileID: -7778967240658538108, guid: 3703f38d2ad9ca247bfd64177e9a999f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -120,13 +120,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &9188833176126706497
+--- !u!114 &3428434863789201634
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9188833176126706524}
+  m_GameObject: {fileID: 3428434863789201663}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7a8b64b028e29f4d89d4160b94f4dab, type: 3}

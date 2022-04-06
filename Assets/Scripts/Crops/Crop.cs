@@ -47,14 +47,14 @@ public class Crop : MonoBehaviour
         if (!isHarvested)
         {
             isHarvested = true;
-            
+
+            ScoreManager.current.AddScore(currentStageData.scoreFromHarvest, transform.position);
             if (!autoRespawn) Destroy(gameObject);
             else
             {
                 SetGrowthStage(0);
                 isHarvested = false;
             }
-            ScoreManager.current.AddScore(currentStageData.scoreFromHarvest, transform.position);
 
             return stageData[currentStage];
         }
