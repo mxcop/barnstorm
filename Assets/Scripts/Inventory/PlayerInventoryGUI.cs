@@ -79,7 +79,6 @@ public class PlayerInventoryGUI : MonoBehaviour
     {
         Image cell = itemGUI[slot];
         RectTransform panel = cell.transform.parent.Find("Panel").GetComponent<RectTransform>();
-        bool displayPanel = item != null && item.item.maximumStack > 1;
 
         if (item != null)
         {
@@ -114,7 +113,7 @@ public class PlayerInventoryGUI : MonoBehaviour
             });
         }
 
-        if (displayPanel)
+        if (item != null && item.item.maximumStack > 1)
         {
             // Animate the item amount panel to move in.
             if (panel.localScale.y != 1)

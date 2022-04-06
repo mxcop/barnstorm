@@ -214,7 +214,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 14e997a2beaed7c439c0a200e8e7685b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -283,6 +283,7 @@ MonoBehaviour:
     maxNormalAngle: 0
   buttonPromptType: 0
   isInteracting: 0
+  isInBuilding: 0
   animDir: 2
   playerToolsPrefab: {fileID: 5482722391119134417, guid: a81ffa6451ec4a8459dd08e831d59453, type: 3}
 --- !u!114 &9097193240834651908

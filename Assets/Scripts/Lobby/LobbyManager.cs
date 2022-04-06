@@ -6,6 +6,8 @@ public class LobbyManager : MonoBehaviour
 {
     public static List<Player> players;
 
+    [SerializeField] private Material[] playerMats;
+
     public void OnPlayerJoined(PlayerInput input)
     {
         Player player = input.GetComponent<Player>();
@@ -16,6 +18,7 @@ public class LobbyManager : MonoBehaviour
 
         if (players == null) players = new List<Player>();
         players.Add(player);
+        player.GetComponent<SpriteRenderer>().material = playerMats[players.Count - 1];
         Debug.Log("Player Joined");
 
         // TODO : Handle the joining with the UI.
