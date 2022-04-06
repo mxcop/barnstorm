@@ -6784,6 +6784,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e11c40a72d51d144bbbef18fd4290a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerMats:
+  - {fileID: 2100000, guid: 14e997a2beaed7c439c0a200e8e7685b, type: 2}
+  - {fileID: 2100000, guid: 6ec7ae46549255846a9ef941945dba00, type: 2}
+  - {fileID: 2100000, guid: 78cfe9f3b5fa2b244ac064f12e1a0aed, type: 2}
+  - {fileID: 2100000, guid: 5ab08e083aa0c29489fc11b1a3a6c824, type: 2}
 --- !u!1001 &1833244895
 PrefabInstance:
   m_ObjectHideFlags: 0
