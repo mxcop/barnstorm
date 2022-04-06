@@ -25,6 +25,7 @@ public class EnemyBase : MonoBehaviour
     private Animator anim;
     private SpriteRenderer sr;
     private bool isBouncing = false;
+    private bool isStunned = false;
 
     [HideInInspector] public Rigidbody2D rb;
     [SerializeField] private float maxHunger;
@@ -51,7 +52,7 @@ public class EnemyBase : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isBouncing)
+        if (isBouncing || isStunned)
             return;
 
         switch (state)
@@ -101,14 +102,26 @@ public class EnemyBase : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Untagged"))
-            StartCoroutine(Bounce(collision.transform, (collision.transform.position.x - transform.position.x > 0 ? true : false)));
+            StartCoroutine(Bounce(collision.transform, collision.collider));
     }
 
-    IEnumerator Bounce(Transform other, bool rightSide)
+    public void StartBounce(Transform other, Collider2D collision) => StartCoroutine(Bounce(other, collision));
+
+    public IEnumerator Bounce(Transform other, Collider2D collision)
     {
         isBouncing = true;
-        rb.AddForceAtPosition(-(other.transform.position - transform.position + (Vector3)(rightSide ? Vector2.right : Vector2.left) * 2).normalized * bounceStrength, other.transform.position);
+        rb.AddForceAtPosition(-(other.transform.position - transform.position + (Vector3)(collision.transform.position.x - transform.position.x > 0 ? Vector2.right : Vector2.left) * 2).normalized * bounceStrength, other.transform.position);
         yield return new WaitForSeconds(bounceTime);
         isBouncing = false;
     }
+
+    public void StartStun(float stunTime) => StartCoroutine(Stun(stunTime));
+
+    public IEnumerator Stun(float stunTime)
+    {
+        isStunned = true;
+        yield return new WaitForSeconds(stunTime);
+        isStunned = false;
+    }
+
 }

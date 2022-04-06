@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3253969603577634837}
   - component: {fileID: 2005797203371122819}
   m_Layer: 0
-  m_Name: CarrotDestroy
+  m_Name: PumpkinDestroy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 5577374176780847287}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1, y: 1.1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6467754452898688339}
   m_Father: {fileID: 0}
@@ -5031,8 +5031,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2.5
-      minScalar: 1.5
+      scalar: 3
+      minScalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -5084,8 +5084,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.8431373, g: 0.61960787, b: 0.3803922, a: 1}
-      maxColor: {r: 0.9490197, g: 0.8117648, b: 0.54901963, a: 1}
+      minColor: {r: 0.7294118, g: 0.48627454, b: 0.32941177, a: 1}
+      maxColor: {r: 0.9333334, g: 0.7294118, b: 0.4666667, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -5147,7 +5147,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.05
+      scalar: 0.075
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -5838,7 +5838,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 3
-        scalar: 20
+        scalar: 18
         minScalar: 10
         maxCurve:
           serializedVersion: 2

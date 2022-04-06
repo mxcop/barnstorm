@@ -113,7 +113,7 @@ public class TurretController : Inventory, Interactable
         Vector2 aimPoint = targetpos + targetEnemies[0].rb.velocity * travelTime;
 
         // Set the shoot angle to the intercepting point
-        shootAngle = AngleBetweenPoints(shootPoints[rotationState].position, aimPoint + Vector2.up * 0.2f);
+        shootAngle = AngleBetweenPoints(shootPoints[rotationState].position, aimPoint + Vector2.up * 0.1f);
 
         // Instantiate bullet and remove a item from the inventory
         GameObject proj = Instantiate(ammunition.projectile, shootPoints[rotationState].position, Quaternion.identity);

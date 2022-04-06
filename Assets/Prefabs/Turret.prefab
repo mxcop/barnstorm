@@ -237,7 +237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 3}
   size: 1
-  ammunition: {fileID: 7618592410482247493, guid: 3650e097378961f4ba8021e9ab27d9b8, type: 3}
+  ammunition: {fileID: 3009198062312784442, guid: a747899da4b852b409a82cc15dcae582, type: 3}
   sprite:
   - {fileID: 7721177293500312529, guid: ab27a14067f9fb342973209f1dd04a14, type: 3}
   - {fileID: 6930528599539336896, guid: ab27a14067f9fb342973209f1dd04a14, type: 3}
