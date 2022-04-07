@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class DeliveryTruck : MonoBehaviour
 {
-    class Loot
+    [System.Serializable] class Loot
     {
         public Item item;
         public float itemWeight;
 
         public Vector2 amountRange;
-        public float amountWeight;
+        [HideInInspector] public float amountWeight;
 
-        public Vector2 dropRange;
+        [HideInInspector] public Vector2 dropRange;
     }
 
     [HideInInspector] public bool isFinished = false;
@@ -23,8 +23,8 @@ public class DeliveryTruck : MonoBehaviour
     [SerializeField] private GameObject cover;
     private bool coverOn = true;
 
-    [SerializeField] private List<Item> items;
-    private List<Loot> lootTable = new List<Loot>();
+    //SerializeField] private List<Item> items;
+    [SerializeField] private List<Loot> lootTable = new List<Loot>();
     private float totalWeight = 0;
 
     private List<GameObject> players = new List<GameObject>();
@@ -33,7 +33,7 @@ public class DeliveryTruck : MonoBehaviour
     private void Start() {
         animator = GetComponent<Animator>();
 
-        GeneratedDefaultValues();
+        //GeneratedDefaultValues();
         AssignTableWeights();
 
         // Fill every crate with a random item
@@ -78,6 +78,7 @@ public class DeliveryTruck : MonoBehaviour
         }
     }
 
+    /*
     private void GeneratedDefaultValues() {
         for (int i = 0; i < items.Count; i++) {
             Loot item = new Loot();
@@ -110,6 +111,7 @@ public class DeliveryTruck : MonoBehaviour
             lootTable.Add(item);
         }
     }
+    */
 
     private void AssignTableWeights() {
         totalWeight = 0;
