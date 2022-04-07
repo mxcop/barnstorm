@@ -101,18 +101,16 @@ public class Inventory : MonoBehaviour
                 }
             }
         }
-        else
+        else if(invItemExists)
         {
             // Pull the item from the inventory and insert into the playerinventory
             int half = Mathf.CeilToInt(container.PeekAmount(slot) / 2.0f);
 
-            // Check if the item can be inserted:
-            container.Peek(slot, out Item peek);
-            if (player.container.CanPushItem(peek, half))
-            {
-                container.PullItem(slot, half, out ContainedItem<Item> item);
-                player.container.PushItem(item);
-            }
+            // THIS DOESN'T WORK!!! 
+            //container.PullItem(slot, half, out ContainedItem<Item> item);
+            //player.container.PushItem(item);
+
+            QuickSwap(player, slot);
         }
     }
 }

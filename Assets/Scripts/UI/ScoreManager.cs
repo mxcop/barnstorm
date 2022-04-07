@@ -36,7 +36,6 @@ public class ScoreManager : MonoBehaviour
         for(int i = 0; i < objectPoolSize; i++)
         {
             objectPool.Add(Instantiate(scoreGainPopup, canvas.transform).GetComponent<ScorePopup>());
-            Debug.Log(i);
         }
     }
 
