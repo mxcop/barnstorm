@@ -6,7 +6,8 @@ public class PlayerTools : MonoBehaviour
 {
     [HideInInspector] public Player plr;
     [HideInInspector] public Animator playerAnim;
-    [HideInInspector] public bool isUsing;
+    [HideInInspector] public bool isUsingTool;
+    bool autoToolReuse;
     [SerializeField] Vector2[] offsets;
     [SerializeField] float lerpSpeed;
     [SerializeField] SpriteRenderer spriteRenderer;
@@ -40,20 +41,26 @@ public class PlayerTools : MonoBehaviour
             case ItemAction.Till:
                 playerAnim.SetBool("Tilling", true);
                 lockedDirection = plr.animDir;
-                isUsing = true;
+                isUsingTool = true;
                 break;
 
             case ItemAction.Plant:
                 ToolAction();
+                autoToolReuse = true;
                 break;
         }
         
     }
 
+    private void Update()
+    {
+        if (autoToolReuse) ToolAction();
+    }
+
     private void LateUpdate()
     {
         PlayerAngle ang;
-        if (isUsing) ang = lockedDirection;
+        if (isUsingTool) ang = lockedDirection;
         else ang = plr.animDir;
         Vector2Int v = GetPlayerOffsetPos(ang);
 
@@ -65,6 +72,8 @@ public class PlayerTools : MonoBehaviour
     {
         playerAnim.SetBool("Tilling", false);
         spriteRenderer.color = Color.white;
+
+        autoToolReuse = false;
     }
 
     Vector2Int GetPlayerOffsetPos(PlayerAngle dir)
@@ -126,13 +135,13 @@ public class PlayerTools : MonoBehaviour
             }
         }
 
-        isUsing = false;
+        isUsingTool = false;
 
     }
 
     public void Anim_ToolStart()
     {
-        isUsing = true;
+        isUsingTool = true;
         spriteRenderer.color = Color.clear;
     }
 
