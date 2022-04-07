@@ -12,6 +12,12 @@ public class ProjectileBase : MonoBehaviour
     void Start(){
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = (transform.up.normalized * food.speed);
+        StartCoroutine(DestroyLoop());
+    }
+
+    IEnumerator DestroyLoop() {
+        yield return new WaitForSeconds(10f);
+        food.Destroy(gameObject, 99);
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
