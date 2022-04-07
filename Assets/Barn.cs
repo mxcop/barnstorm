@@ -1,8 +1,11 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Barn : MonoBehaviour
 {
+    [SerializeField] private GameObject gameoverPanel;
+
     [Header("Config")]
 
     [Tooltip("The hitpoints of the barn")]
@@ -19,6 +22,7 @@ public class Barn : MonoBehaviour
     {
         sp = GetComponent<SpriteRenderer>();
         startFood = storedFood;
+        gameoverPanel.SetActive(false);
     }
 
     private void OnCollisionEnter2D(Collision2D coll)
@@ -43,7 +47,9 @@ public class Barn : MonoBehaviour
     private void Gameover()
     {
         Debug.Log("!! GAME OVER !!");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        gameoverPanel.SetActive(true);
+        gameoverPanel.transform.Find("Panel").Find("Text (Score)").GetComponent<TextMeshProUGUI>().text = "Score : " + ScoreManager.current.Score.ToString();
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     /// <summary>
