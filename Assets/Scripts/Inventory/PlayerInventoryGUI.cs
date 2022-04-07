@@ -118,6 +118,7 @@ public class PlayerInventoryGUI : MonoBehaviour
             // Animate the item amount panel to move in.
             if (panel.localScale.y != 1)
             {
+                Debug.Log($"Panel Fadein ({ item.item.name })");
                 LeanTween.cancel(panel.gameObject);
                 LeanTween.value(panel.gameObject, v => panel.localScale = v, panel.localScale, Vector3.one, 0.2f).setEaseOutBack()
                     .setOnComplete(() => panel.localScale = Vector3.one);
@@ -130,6 +131,7 @@ public class PlayerInventoryGUI : MonoBehaviour
             // Animate the item amount panel to move out.
             if (panel.localScale.y != 0)
             {
+                Debug.Log($"Panel Fadeout");
                 LeanTween.cancel(panel.gameObject);
                 LeanTween.value(panel.gameObject, v => panel.localScale = v, panel.localScale, new Vector3(1, 0, 1), 0.2f).setEaseInBack()
                     .setOnComplete(() => panel.localScale = new Vector3(1, 0, 1));
