@@ -61,10 +61,7 @@ public class TurretController : Inventory, Interactable
         turretsr = turret.GetComponent<SpriteRenderer>();
         barn = GameObject.FindGameObjectWithTag("Barn").transform;
 
-        // ---------Temporary---------
-        //Open();
-        container.PushItem(ammunition, 10);
-        // ---------Temporary---------
+        container.PushItem(ammunition, 15);
     }
 
     void Update()
