@@ -24,10 +24,11 @@ public class PlayerTools : MonoBehaviour
     /// </summary>
     public void PlayerUse()
     {
-        Item item;
-        ItemAction act = ItemAction.None;
 
-        if (GetHeldItem(out item)) act = item.useAction;
+            Item item;
+            ItemAction act = ItemAction.None;
+
+            if (GetHeldItem(out item)) act = item.useAction;
 
         switch (act)
         {
@@ -51,6 +52,7 @@ public class PlayerTools : MonoBehaviour
                 autoToolReuse = true;
                 break;
         }
+        
         
     }
 
@@ -100,7 +102,7 @@ public class PlayerTools : MonoBehaviour
     /// <param name="dir"></param>
     public void ToolAction()
     {
-        if (!plr.isInBuilding)
+        if (!plr.isInBuilding && LobbyManager.hasStarted)
         {
             Item item;
             if (GetHeldItem(out item))

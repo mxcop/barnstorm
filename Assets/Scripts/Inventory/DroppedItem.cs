@@ -91,6 +91,7 @@ public class DroppedItem : MonoBehaviour
         {
             for (int i = 0; i < LobbyManager.players.Count; i++)
             {
+
                 // Check if the player is within pickup range:
                 Player player = LobbyManager.players[i];
                 if (Vector2.Distance(player.transform.position, transform.position) < 1.0f)
