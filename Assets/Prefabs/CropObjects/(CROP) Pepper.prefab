@@ -52,12 +52,12 @@ MonoBehaviour:
     amount: 1
     scoreFromHarvest: 0
   - sprite: {fileID: 593002793200147421, guid: 9f172822beda7d246a8fd39bc6f83168, type: 3}
-    growthDelay: 12
+    growthDelay: 16
     _item: {fileID: 6121038885281453526, guid: a747899da4b852b409a82cc15dcae582, type: 3}
     amount: 1
     scoreFromHarvest: 0
   - sprite: {fileID: 3391927106950375280, guid: 9f172822beda7d246a8fd39bc6f83168, type: 3}
-    growthDelay: 20
+    growthDelay: 24
     _item: {fileID: 6121038885281453526, guid: a747899da4b852b409a82cc15dcae582, type: 3}
     amount: 2
     scoreFromHarvest: 10

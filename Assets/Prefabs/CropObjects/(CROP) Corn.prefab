@@ -52,17 +52,17 @@ MonoBehaviour:
     amount: 1
     scoreFromHarvest: 0
   - sprite: {fileID: 736865317306615500, guid: 9f172822beda7d246a8fd39bc6f83168, type: 3}
-    growthDelay: 10
+    growthDelay: 16
     _item: {fileID: 2463005729711218515, guid: 45107cc5db4068c4d967f4c81f4a87d5, type: 3}
     amount: 1
     scoreFromHarvest: 0
   - sprite: {fileID: 3482569451149137530, guid: 9f172822beda7d246a8fd39bc6f83168, type: 3}
-    growthDelay: 10
+    growthDelay: 16
     _item: {fileID: 2463005729711218515, guid: 45107cc5db4068c4d967f4c81f4a87d5, type: 3}
     amount: 1
     scoreFromHarvest: 0
   - sprite: {fileID: -5784410927573482350, guid: 9f172822beda7d246a8fd39bc6f83168, type: 3}
-    growthDelay: 10
+    growthDelay: 16
     _item: {fileID: 2463005729711218515, guid: 45107cc5db4068c4d967f4c81f4a87d5, type: 3}
     amount: 1
     scoreFromHarvest: 0
