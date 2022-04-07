@@ -5,8 +5,12 @@ using UnityEngine.InputSystem;
 public class LobbyManager : MonoBehaviour
 {
     public static List<Player> players;
+    public static bool hasStarted;
 
     [SerializeField] private Material[] playerMats;
+
+    public delegate void OnGameStartEvent();
+    public static event OnGameStartEvent OnGameStart;
 
     public void OnPlayerJoined(PlayerInput input)
     {
@@ -27,6 +31,26 @@ public class LobbyManager : MonoBehaviour
     public void OnPlayerLeft(PlayerInput input)
     {
         // TODO : Handle the leaving with the UI.
+    }
+
+    /// <summary>
+    /// Check if all players are ready.
+    /// </summary>
+    public static void CheckForReady()
+    {
+        bool startGame = true;
+        for (int i = 0; i < players.Count; i++)
+        {
+            if (!players[i].isReady)
+                startGame = false;
+        }
+
+        if (startGame == true)
+        {
+            players.Clear();
+            hasStarted = true;
+            OnGameStart.Invoke();
+        }
     }
 
     /// <summary>

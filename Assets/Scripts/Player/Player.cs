@@ -49,6 +49,10 @@ public class Player : PlayerInventory
         FindObjectOfType<CinemachineTargetGroup>().AddMember(gameObject.transform, 1f, 1.25f);
 
         gui.SetReady(false);
+        LobbyManager.OnGameStart += () =>
+        {
+            gui.SetReady(false);
+        };
     }
 
     private void Update()
@@ -107,18 +111,7 @@ public class Player : PlayerInventory
             isReady = !isReady;
             gui.SetReady(isReady);
 
-            bool startGame = true;
-            for (int i = 0; i < LobbyManager.players.Count; i++) {
-                if (!LobbyManager.players[i].isReady)
-                    startGame = false;
-            }
-
-            if (startGame == true)
-            {
-                LobbyManager.players.Clear();
-                SceneManager.LoadScene(1);
-            }
-                
+            LobbyManager.CheckForReady();
         }       
     }
 

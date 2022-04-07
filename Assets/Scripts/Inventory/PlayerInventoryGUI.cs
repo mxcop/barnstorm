@@ -140,19 +140,24 @@ public class PlayerInventoryGUI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Set the player has ready or not.
+    /// </summary>
+    /// <param name="state">Whether they're ready.</param>
     public void SetReady(bool state)
     {
         GameObject ready = transform.Find("ReadyPanel").Find("ReadyImage").gameObject;
         GameObject notready = transform.Find("ReadyPanel").Find("NotReadyImage").gameObject;
 
-        if (SceneManager.GetActiveScene().name == "Gameplay Scene") {
+        if (LobbyManager.hasStarted) 
+        {
             ready.SetActive(false);
             notready.SetActive(false);
         }
-        else {
+        else 
+        {
             ready.SetActive(state);
             notready.SetActive(!state);
         }
-
     }
 }
