@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -44,8 +42,8 @@ public class Barn : MonoBehaviour
     /// </summary>
     private void Gameover()
     {
-        LobbyManager.hasStarted = false;
         Debug.Log("!! GAME OVER !!");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     /// <summary>
