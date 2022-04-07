@@ -10,6 +10,7 @@ public class Player : PlayerInventory
     [SerializeField] float movementSpeed;
     [SerializeField] float maxSpeed;
     [SerializeField] float friction;
+    [SerializeField] float outOfBoundsRadius;
     [Space]
     [Header("Interactions")]
     [SerializeField] float interactCheckRadius;
@@ -81,12 +82,8 @@ public class Player : PlayerInventory
             queuedHotbarSelect = -1;
         }
 
-        // Check if the player is out of bounds
-        if(Vector2.Distance(transform.position, barn.transform.position) > 16f) {
-            // Animate the alpha of the player sprite.
-            LeanTween.value(gameObject, c => gameObject.GetComponent<SpriteRenderer>().color = c, new Color(1, 1, 1, 1), new Color(1, 1, 1, 0), 0.2f)
-                .setOnComplete(() => ReturnTween());
-        }
+        // Prevent player out of bounds
+        transform.position = Vector2.ClampMagnitude(transform.position, outOfBoundsRadius);
     }
 
     private void ReturnTween() {
