@@ -55,6 +55,8 @@ public class Barn : MonoBehaviour
         gameoverPanel.transform.Find("Panel").Find("Text (Score)").GetComponent<TextMeshProUGUI>().text = "Score : " + ScoreManager.current.Score.ToString();
 
         gameIsOver = true;
+        LobbyManager.players.Clear();
+        LobbyManager.hasStarted = false;
     }
 
     /// <summary>
