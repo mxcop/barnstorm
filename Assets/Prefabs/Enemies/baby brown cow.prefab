@@ -147,7 +147,8 @@ MonoBehaviour:
   bounceStrength: 550
   bounceTime: 0.2
   rb: {fileID: 0}
-  maxHunger: 10
+  maxHunger: 9
+  hunger: 0
 --- !u!70 &3121955686671688586
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
