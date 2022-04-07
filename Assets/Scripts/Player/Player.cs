@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
+using UnityEngine.SceneManagement;
 using Cinemachine;
 
 public class Player : PlayerInventory
@@ -17,6 +18,8 @@ public class Player : PlayerInventory
     [HideInInspector] public ButtonPromptType buttonPromptType;
     [HideInInspector] public bool isInteracting;
     [HideInInspector] public bool isInBuilding;
+
+    [HideInInspector] public bool isReady = false;
 
     private Animator anim;
     public PlayerAngle animDir;
@@ -44,6 +47,8 @@ public class Player : PlayerInventory
 
         barn = GameObject.FindGameObjectWithTag("Barn");
         FindObjectOfType<CinemachineTargetGroup>().AddMember(gameObject.transform, 1f, 1.25f);
+
+        gui.SetReady(false);
     }
 
     private void Update()
@@ -95,6 +100,27 @@ public class Player : PlayerInventory
     }
 
     public void Move(CallbackContext input) { inputMove = input.ReadValue<Vector2>(); }
+
+    public void ReadyToggle(CallbackContext c)
+    {
+        if (c.phase == InputActionPhase.Performed) {
+            isReady = !isReady;
+            gui.SetReady(isReady);
+
+            bool startGame = true;
+            for (int i = 0; i < LobbyManager.players.Count; i++) {
+                if (!LobbyManager.players[i].isReady)
+                    startGame = false;
+            }
+
+            if (startGame == true)
+            {
+                LobbyManager.players.Clear();
+                SceneManager.LoadScene(1);
+            }
+                
+        }       
+    }
 
     #region Interact
     public void ProcessInteract(CallbackContext input)

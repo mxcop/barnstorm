@@ -12,7 +12,7 @@ public class PlayerInventory : MonoBehaviour
     [HideInInspector] public Container<Item> container;
     [HideInInspector] public int selected;
 
-    private PlayerInventoryGUI gui;
+    protected PlayerInventoryGUI gui;
 
     [SerializeField] private StarterItem[] starterItems;
 

@@ -2,6 +2,7 @@ using Systems.Inventory;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerInventoryGUI : MonoBehaviour
 {
@@ -137,5 +138,21 @@ public class PlayerInventoryGUI : MonoBehaviour
                     .setOnComplete(() => panel.localScale = new Vector3(1, 0, 1));
             }
         }
+    }
+
+    public void SetReady(bool state)
+    {
+        GameObject ready = transform.Find("ReadyPanel").Find("ReadyImage").gameObject;
+        GameObject notready = transform.Find("ReadyPanel").Find("NotReadyImage").gameObject;
+
+        if (SceneManager.GetActiveScene().name == "Gameplay Scene") {
+            ready.SetActive(false);
+            notready.SetActive(false);
+        }
+        else {
+            ready.SetActive(state);
+            notready.SetActive(!state);
+        }
+
     }
 }
