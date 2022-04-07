@@ -6785,10 +6785,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMats:
-  - {fileID: 2100000, guid: 14e997a2beaed7c439c0a200e8e7685b, type: 2}
-  - {fileID: 2100000, guid: 6ec7ae46549255846a9ef941945dba00, type: 2}
-  - {fileID: 2100000, guid: 78cfe9f3b5fa2b244ac064f12e1a0aed, type: 2}
-  - {fileID: 2100000, guid: 5ab08e083aa0c29489fc11b1a3a6c824, type: 2}
+  - {fileID: 2100000, guid: a789bb48b0ab85340aeee42293086d07, type: 2}
+  - {fileID: 2100000, guid: 5923b98925fc3c84c8d4ae23204b81b5, type: 2}
+  - {fileID: 2100000, guid: 82024cd225f0b5f46a76ef515211954f, type: 2}
+  - {fileID: 2100000, guid: 8e33a5619f4b5b445896840c469fd609, type: 2}
 --- !u!1001 &1833244895
 PrefabInstance:
   m_ObjectHideFlags: 0
