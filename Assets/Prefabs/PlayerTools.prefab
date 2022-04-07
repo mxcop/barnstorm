@@ -46,14 +46,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plr: {fileID: 0}
   playerAnim: {fileID: 0}
-  isUsing: 0
+  isUsingTool: 0
   offsets:
-  - {x: 0, y: 0.45}
-  - {x: -0.65, y: -0.43}
+  - {x: 0, y: 0.18}
+  - {x: -0.65, y: -0.4}
   - {x: 0, y: -0.8}
-  - {x: 0.65, y: -0.43}
+  - {x: 0.65, y: -0.4}
   lerpSpeed: 0.3
   spriteRenderer: {fileID: 7599179288647060967}
+  till_pushCf:
+    useTriggers: 0
+    useLayerMask: 1
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 896
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  till_pushRadius: 0.8
+  till_pushForce: 1600
 --- !u!212 &7599179288647060967
 SpriteRenderer:
   m_ObjectHideFlags: 0

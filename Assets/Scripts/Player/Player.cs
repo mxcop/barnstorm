@@ -49,7 +49,7 @@ public class Player : PlayerInventory
     private void Update()
     {
         float currentMaxSpeed = maxSpeed * lastInputMag;
-        if (inputMove != Vector2.zero && !tools.isUsing)
+        if (inputMove != Vector2.zero && !tools.isUsingTool)
             move = Vector2.ClampMagnitude(move + inputMove * movementSpeed * Time.deltaTime, currentMaxSpeed);
         else
             move = Vector2.Lerp(move, Vector2.zero, friction * Time.deltaTime);
@@ -168,7 +168,7 @@ public class Player : PlayerInventory
     /// <param name="slot"></param>
     public void HotbarSwitch(int slot)
     {
-        if (!tools.isUsing) SelectSlot(slot);
+        if (!tools.isUsingTool) SelectSlot(slot);
         else queuedHotbarSelect = slot;
     }
 

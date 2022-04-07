@@ -6,12 +6,15 @@ public class PlayerTools : MonoBehaviour
 {
     [HideInInspector] public Player plr;
     [HideInInspector] public Animator playerAnim;
-    [HideInInspector] public bool isUsing;
+    [HideInInspector] public bool isUsingTool;
+    bool autoToolReuse;
     [SerializeField] Vector2[] offsets;
     [SerializeField] float lerpSpeed;
     [SerializeField] SpriteRenderer spriteRenderer;
+    [Space]
+    [SerializeField] ContactFilter2D till_pushCf;
+    [SerializeField] float till_pushRadius, till_pushForce;
 
-    readonly Color half = new Color(1, 1, 1, 0.5f);
 
     Vector3 targetPos;
     PlayerAngle lockedDirection;
@@ -40,20 +43,26 @@ public class PlayerTools : MonoBehaviour
             case ItemAction.Till:
                 playerAnim.SetBool("Tilling", true);
                 lockedDirection = plr.animDir;
-                isUsing = true;
+                isUsingTool = true;
                 break;
 
             case ItemAction.Plant:
                 ToolAction();
+                autoToolReuse = true;
                 break;
         }
         
     }
 
+    private void Update()
+    {
+        if (autoToolReuse) ToolAction();
+    }
+
     private void LateUpdate()
     {
         PlayerAngle ang;
-        if (isUsing) ang = lockedDirection;
+        if (isUsingTool) ang = lockedDirection;
         else ang = plr.animDir;
         Vector2Int v = GetPlayerOffsetPos(ang);
 
@@ -65,6 +74,8 @@ public class PlayerTools : MonoBehaviour
     {
         playerAnim.SetBool("Tilling", false);
         spriteRenderer.color = Color.white;
+
+        autoToolReuse = false;
     }
 
     Vector2Int GetPlayerOffsetPos(PlayerAngle dir)
@@ -101,15 +112,30 @@ public class PlayerTools : MonoBehaviour
                 {
                     case ItemAction.Till:
 
-                        CropData? _crop = CropManager.current.Till(GetPlayerOffsetPos(lockedDirection));
+                        Vector2Int pos = GetPlayerOffsetPos(lockedDirection);
+
+                        // crop logic, tills only when on grass tiles, and not when hitting dirt
+                        CropData? _crop = CropManager.current.Till(pos);
                         if (_crop != null)
                         {
                             CropData crop = (CropData)_crop;
                             for (int j = 0; j < crop.amount; j++)
                             {
-                                DroppedItem.DropOut(crop.item, 1, GetPlayerOffsetPos(lockedDirection), Random.insideUnitCircle.normalized * 0.5f);
+                                DroppedItem.DropOut(crop.item, 1, pos, Random.insideUnitCircle.normalized * 0.5f);
                             }
                         }
+                        
+                        // push players and enemies away when hitting them with the hoe
+                        Collider2D[] colls = new Collider2D[3];
+                        if (Physics2D.OverlapCircle(pos, till_pushRadius, till_pushCf, colls) > 0)
+                        {
+                            for(int i = 0; i< colls.Length; i++)
+                            {
+                                Collider2D c = colls[i];
+                                if(c != null) c.GetComponent<Rigidbody2D>().AddForce((c.transform.position - plr.transform.position).normalized * till_pushForce);
+                            }
+                        }
+
                         break;
 
                     case ItemAction.Plant:
@@ -126,13 +152,13 @@ public class PlayerTools : MonoBehaviour
             }
         }
 
-        isUsing = false;
+        isUsingTool = false;
 
     }
 
     public void Anim_ToolStart()
     {
-        isUsing = true;
+        isUsingTool = true;
         spriteRenderer.color = Color.clear;
     }
 

@@ -52,7 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 3209407047380157918}
   fadeTime: 1
-  startColor: {r: 0.17749494, g: 0.191, b: 0.17363636, a: 1}
+  startColor: {r: 0.4901961, g: 0.3372549, b: 0.35686275, a: 1}
 --- !u!222 &3209407047380157917
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -90,7 +90,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 0
   m_fontColor: {r: 0, g: 0, b: 0, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
