@@ -57,13 +57,16 @@ public class Inventory : MonoBehaviour
     /// <param name="slot">The selected slot in the player inventory.</param>
     public void QuickSwap(PlayerInventory player, int slot)
     {
-        bool invItemExists = container.PullItem(0, out ContainedItem<Item> inventoryItem);
+        bool invHasItem = container.Peek(0, out Item _);
+        bool playerHasItem = player.container.Peek(slot, out Item _);
+
+        bool invItemExists = container.PullItem(0, out ContainedItem<Item> inventoryItem, !(invHasItem && playerHasItem));
 
         bool sameType = invItemExists && player.container.ContainsAt(inventoryItem.item.GetType(), slot);
 
         if (sameType == false)
         {
-            bool playerItemExists = player.container.PullItem(slot, out ContainedItem<Item> playerItem);
+            bool playerItemExists = player.container.PullItem(slot, out ContainedItem<Item> playerItem, !(invHasItem && playerHasItem));
 
             if (invItemExists) player.container.InsertItem(inventoryItem, slot);
             if (playerItemExists) container.InsertItem(playerItem, 0);

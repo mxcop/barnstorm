@@ -156,7 +156,7 @@ public class Container<T> where T : Item
             if (IsOpen(slot))
             {
                 data[slot] = item.Clone();
-                OnUpdate.Invoke(slot, item);
+                OnUpdate.Invoke(slot, data[slot]);
                 return true;
             }
             else if (data[slot].item.GetType() == item.item.GetType() && data[slot].HasSpaceFor(item.num))
@@ -221,13 +221,13 @@ public class Container<T> where T : Item
     /// <param name="slot">The index of the slot to pull from.</param>
     /// <param name="item">The item that has been pulled.</param>
     /// <returns>If the item exists.</returns>
-    public bool PullItem(int slot, out ContainedItem<T> item)
+    public bool PullItem(int slot, out ContainedItem<T> item, bool callUpdate = true)
     {
         if (Exists(slot) && IsOpen(slot) == false)
         {
             item = data[slot]; // Select the item.
             data[slot] = null; // Remove the item.
-            OnUpdate.Invoke(slot, null);
+            if (callUpdate) OnUpdate.Invoke(slot, null);
             return true;
         }
         item = null;
@@ -241,7 +241,7 @@ public class Container<T> where T : Item
     /// <param name="num">The number of items to pull out of the slot.</param>
     /// <param name="item">The item that has been pulled.</param>
     /// <returns>If the item exists and num is bigger than zero.</returns>
-    public bool PullItem(int slot, int num, out ContainedItem<T> item)
+    public bool PullItem(int slot, int num, out ContainedItem<T> item, bool callUpdate = true)
     {
         if (Exists(slot) && IsOpen(slot) == false && num > 0)
         {
@@ -249,13 +249,13 @@ public class Container<T> where T : Item
             {
                 item = data[slot]; // Select the item.
                 data[slot] = null; // Remove the item.
-                OnUpdate.Invoke(slot, null);
+                if (callUpdate) OnUpdate.Invoke(slot, null);
             } 
             else
             {
                 item = new ContainedItem<T>(data[slot].item, num); // Create new item with taken amount.
                 data[slot].num -= num; // Decrease the item with taken amount.
-                OnUpdate.Invoke(slot, data[slot]);
+                if (callUpdate) OnUpdate.Invoke(slot, data[slot]);
             }
             return true;
         }
