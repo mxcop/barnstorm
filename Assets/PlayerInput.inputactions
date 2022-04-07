@@ -173,6 +173,61 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "DPAD",
+                    "id": "ea374fdb-b4b2-4a40-8495-5de194ee3683",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "65e78b66-112d-4fa3-b1d8-e8b0d1b9eb2d",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "4cb0593d-2963-44ab-af22-e35ce927df3f",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "7954f33c-a814-424a-809d-79802f736791",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "e1e08a4c-7257-4f98-b210-a1c67ae96647",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
                     "id": "fa56bc1d-8001-4fc1-89c0-6fa66f46453f",
                     "path": "<Keyboard>/#(I)",
@@ -262,17 +317,6 @@
                 },
                 {
                     "name": "",
-                    "id": "b4e94b19-ae5c-4cc6-b576-abd76ee73400",
-                    "path": "<Gamepad>/dpad/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "HotbarSwitchR",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "dedb3385-d7a1-4099-bbd2-7f9809ca3317",
                     "path": "<Keyboard>/#(E)",
                     "interactions": "",
@@ -286,17 +330,6 @@
                     "name": "",
                     "id": "1fcf5843-c34e-4eea-b3aa-ac3c4d625fa5",
                     "path": "<Gamepad>/leftShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "HotbarSwitchL",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "802d4f27-ebb3-4c16-9336-d3785df68fa3",
-                    "path": "<Gamepad>/dpad/left",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
