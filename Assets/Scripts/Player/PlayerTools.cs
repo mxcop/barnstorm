@@ -11,8 +11,10 @@ public class PlayerTools : MonoBehaviour
     [SerializeField] Vector2[] offsets;
     [SerializeField] float lerpSpeed;
     [SerializeField] SpriteRenderer spriteRenderer;
+    [Space]
+    [SerializeField] ContactFilter2D till_pushCf;
+    [SerializeField] float till_pushRadius, till_pushForce;
 
-    readonly Color half = new Color(1, 1, 1, 0.5f);
 
     Vector3 targetPos;
     PlayerAngle lockedDirection;
@@ -110,15 +112,30 @@ public class PlayerTools : MonoBehaviour
                 {
                     case ItemAction.Till:
 
-                        CropData? _crop = CropManager.current.Till(GetPlayerOffsetPos(lockedDirection));
+                        Vector2Int pos = GetPlayerOffsetPos(lockedDirection);
+
+                        // crop logic, tills only when on grass tiles, and not when hitting dirt
+                        CropData? _crop = CropManager.current.Till(pos);
                         if (_crop != null)
                         {
                             CropData crop = (CropData)_crop;
                             for (int j = 0; j < crop.amount; j++)
                             {
-                                DroppedItem.DropOut(crop.item, 1, GetPlayerOffsetPos(lockedDirection), Random.insideUnitCircle.normalized * 0.5f);
+                                DroppedItem.DropOut(crop.item, 1, pos, Random.insideUnitCircle.normalized * 0.5f);
                             }
                         }
+                        
+                        // push players and enemies away when hitting them with the hoe
+                        Collider2D[] colls = new Collider2D[3];
+                        if (Physics2D.OverlapCircle(pos, till_pushRadius, till_pushCf, colls) > 0)
+                        {
+                            for(int i = 0; i< colls.Length; i++)
+                            {
+                                Collider2D c = colls[i];
+                                if(c != null) c.GetComponent<Rigidbody2D>().AddForce((c.transform.position - plr.transform.position).normalized * till_pushForce);
+                            }
+                        }
+
                         break;
 
                     case ItemAction.Plant:

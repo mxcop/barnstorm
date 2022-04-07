@@ -46,3 +46,19 @@ MonoBehaviour:
   sprite: {fileID: -6326554769541213105, guid: 3703f38d2ad9ca247bfd64177e9a999f, type: 3}
   useAction: 2
   maximumStack: 1
+  pushLayer:
+    useTriggers: 0
+    useLayerMask: 1
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 896
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  pushRadius: 10
+  pushForce: 10
