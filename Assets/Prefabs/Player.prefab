@@ -264,7 +264,7 @@ MonoBehaviour:
   - item: {fileID: 3984615582560117230, guid: ce5b0580c9d6ee24aaa35305c1596a94, type: 3}
     amount: 1
   movementSpeed: 6
-  maxSpeed: 0.095
+  maxSpeed: 0.091
   friction: 14
   interactCheckRadius: 0.5
   cf:

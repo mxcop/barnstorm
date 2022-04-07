@@ -49,9 +49,9 @@ MonoBehaviour:
   isUsing: 0
   offsets:
   - {x: 0, y: 0.45}
-  - {x: -0.65, y: -0.43}
+  - {x: -0.65, y: -0.4}
   - {x: 0, y: -0.8}
-  - {x: 0.65, y: -0.43}
+  - {x: 0.65, y: -0.4}
   lerpSpeed: 0.3
   spriteRenderer: {fileID: 7599179288647060967}
 --- !u!212 &7599179288647060967
