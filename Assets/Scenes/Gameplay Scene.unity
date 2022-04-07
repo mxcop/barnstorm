@@ -5502,7 +5502,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7.8125
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -5526,7 +5526,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 460451428}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.005, y: 0.531, z: -16.25}
+  m_LocalPosition: {x: -0.005, y: 0.531, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5817,6 +5817,7 @@ MonoBehaviour:
     startRound: 25
     weight: 3
     dropRange: {x: 0, y: 0}
+  deliveryTruckWave: 7
   deliveryTruck: {fileID: 2787295274450517225, guid: bce6b2692af082849ae777e9af08a300, type: 3}
   waves: 64
   waveDelay: 10
@@ -35112,7 +35113,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1349214132}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.005, y: 0.531, z: -16.25}
+  m_LocalPosition: {x: -0.005, y: 0.531, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 471800230}

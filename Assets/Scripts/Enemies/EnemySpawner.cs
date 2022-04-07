@@ -14,6 +14,8 @@ public class EnemySpawner : MonoBehaviour
 
     public List<EnemySpawn> enemies = new List<EnemySpawn>();
 
+    [SerializeField] int deliveryTruckWave;
+
     [SerializeField] private GameObject deliveryTruck;
     private DeliveryTruck truckScript;
     
@@ -59,7 +61,7 @@ public class EnemySpawner : MonoBehaviour
             }
 
             // Every thenth wave we spawn the delivery truck and wait until its finished
-            if (currentWave % 10 == 0) {
+            if (currentWave % deliveryTruckWave == 0) {
                 yield return new WaitForSeconds(8f);
                 truckScript = Instantiate(deliveryTruck).GetComponent<DeliveryTruck>();
                 yield return new WaitUntil(() => truckScript.isFinished == true);

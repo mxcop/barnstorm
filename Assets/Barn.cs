@@ -46,7 +46,7 @@ public class Barn : MonoBehaviour
     {
         LobbyManager.players.Clear();
         SceneManager.LoadScene(0);
-        Debug.LogError("!! GAME OVER !!");
+        Debug.Log("!! GAME OVER !!");
     }
 
     /// <summary>
