@@ -54,6 +54,7 @@ public class Crop : MonoBehaviour
             {
                 SetGrowthStage(0);
                 isHarvested = false;
+                SFXManager.PlayClip("till");
             }
 
             return stageData[currentStage];

@@ -99,6 +99,7 @@ public class DroppedItem : MonoBehaviour
                     if (player.container.PushItem(item, num))
                     {
                         AnimatePickup();
+                        SFXManager.PlayClip("collect");
                         dropped = false;
                     }
                 }

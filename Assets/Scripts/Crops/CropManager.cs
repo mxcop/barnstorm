@@ -75,6 +75,7 @@ public class CropManager : MonoBehaviour
 
             case TileType.Tilled:
                 tilledMap.SetTile(new Vector3Int(x, y, 0), tilled);
+                SFXManager.PlayClip("till");
                 break;
         }
     }

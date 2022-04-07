@@ -35271,7 +35271,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 71017ab5b75bff6418bb87b83aa2eb3d, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -35368,7 +35368,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   volume: 1
-  audioLibrary: []
+  audioLibrary:
+  - name: collect
+    clip: {fileID: 8300000, guid: d68784cfbe80b4a4e85abd2678f38184, type: 3}
+  - name: till
+    clip: {fileID: 8300000, guid: ddc5b340f82722544b9b4c87c78a325c, type: 3}
+  - name: shoot
+    clip: {fileID: 8300000, guid: 95900ef249308a540895d6a999ce90b0, type: 3}
 --- !u!4 &1541392370
 Transform:
   m_ObjectHideFlags: 0

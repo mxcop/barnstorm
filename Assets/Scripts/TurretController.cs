@@ -117,6 +117,9 @@ public class TurretController : Inventory, Interactable
         proj.transform.localRotation = Quaternion.Euler(0,0, shootAngle - 90);
         container.PullItem(0, 1, out ContainedItem<Item> _);
 
+        //noise
+        SFXManager.PlayClip("shoot");
+
         // Apply shoot delay adn set shooting false so we can shoot again
         yield return new WaitForSeconds(reloadTime);
         shooting = false;
