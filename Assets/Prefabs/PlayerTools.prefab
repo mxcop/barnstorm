@@ -68,7 +68,7 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  till_pushRadius: 0.8
+  till_pushRadius: 0.4
   till_pushForce: 1600
 --- !u!212 &7599179288647060967
 SpriteRenderer:

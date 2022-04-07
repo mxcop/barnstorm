@@ -56,7 +56,7 @@ public class LobbyManager : MonoBehaviour
 
         if (startGame == true)
         {
-            players.Clear();
+            //players.Clear();
             hasStarted = true;
             OnGameStart.Invoke();
         }
