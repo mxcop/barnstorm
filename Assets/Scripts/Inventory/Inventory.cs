@@ -57,13 +57,16 @@ public class Inventory : MonoBehaviour
     /// <param name="slot">The selected slot in the player inventory.</param>
     public void QuickSwap(PlayerInventory player, int slot)
     {
-        bool invItemExists = container.PullItem(0, out ContainedItem<Item> inventoryItem);
+        bool invHasItem = container.Peek(0, out Item invItem);
+        bool playerHasItem = player.container.Peek(slot, out Item _);
+
+        bool invItemExists = container.PullItem(0, out ContainedItem<Item> inventoryItem, !(invHasItem && playerHasItem) || player.container.ContainsAt(invItem.GetType(), slot));
 
         bool sameType = invItemExists && player.container.ContainsAt(inventoryItem.item.GetType(), slot);
 
         if (sameType == false)
         {
-            bool playerItemExists = player.container.PullItem(slot, out ContainedItem<Item> playerItem);
+            bool playerItemExists = player.container.PullItem(slot, out ContainedItem<Item> playerItem, !(invHasItem && playerHasItem));
 
             if (invItemExists) player.container.InsertItem(inventoryItem, slot);
             if (playerItemExists) container.InsertItem(playerItem, 0);
@@ -104,13 +107,11 @@ public class Inventory : MonoBehaviour
         else if(invItemExists)
         {
             // Pull the item from the inventory and insert into the playerinventory
-            int half = Mathf.CeilToInt(container.PeekAmount(slot) / 2.0f);
+            int half = Mathf.CeilToInt(container.PeekAmount(0) / 2.0f);
 
-            // THIS DOESN'T WORK!!! 
-            //container.PullItem(slot, half, out ContainedItem<Item> item);
-            //player.container.PushItem(item);
-
-            QuickSwap(player, slot);
+            // THIS DOES WORK!!! 
+            container.PullItem(0, half, out ContainedItem<Item> item);
+            player.container.InsertItem(item, slot);
         }
     }
 }
