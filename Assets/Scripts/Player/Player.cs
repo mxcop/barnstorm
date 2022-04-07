@@ -115,21 +115,25 @@ public class Player : PlayerInventory
     #region Interact
     public void ProcessInteract(CallbackContext input)
     {
-        switch (input.phase)
+        if (!Barn.gameIsOver)
         {
-            case InputActionPhase.Started:
-            case InputActionPhase.Performed:
-                if (input.action.WasPerformedThisFrame())
-                {
-                    BreakInteraction();
-                    if(!isInBuilding) tools.PlayerUse();
-                }
-                break;
+            switch (input.phase)
+            {
+                case InputActionPhase.Started:
+                case InputActionPhase.Performed:
+                    if (input.action.WasPerformedThisFrame())
+                    {
+                        BreakInteraction();
+                        if (!isInBuilding) tools.PlayerUse();
+                    }
+                    break;
 
-            case InputActionPhase.Canceled:
-                tools.PlayerStopUse();
-                break;
+                case InputActionPhase.Canceled:
+                    tools.PlayerStopUse();
+                    break;
+            }
         }
+        else if (input.performed) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     #endregion
 
