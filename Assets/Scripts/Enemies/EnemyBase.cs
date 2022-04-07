@@ -110,7 +110,7 @@ public class EnemyBase : MonoBehaviour
     public IEnumerator Bounce(Transform other, Collider2D collision)
     {
         isBouncing = true;
-        rb.AddForceAtPosition(-(other.transform.position - transform.position + (Vector3)(collision.transform.position.x - transform.position.x > 0 ? Vector2.right : Vector2.left) * 2).normalized * bounceStrength, other.transform.position);
+        rb.AddForceAtPosition(((Vector2)transform.position -collision.ClosestPoint(transform.position))  * bounceStrength, other.transform.position);
         yield return new WaitForSeconds(bounceTime);
         isBouncing = false;
     }
