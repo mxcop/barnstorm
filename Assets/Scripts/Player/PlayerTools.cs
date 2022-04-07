@@ -54,11 +54,6 @@ public class PlayerTools : MonoBehaviour
         
     }
 
-    private void Update()
-    {
-        if (autoToolReuse) ToolAction();
-    }
-
     private void LateUpdate()
     {
         PlayerAngle ang;
@@ -68,6 +63,8 @@ public class PlayerTools : MonoBehaviour
 
         targetPos = new Vector3(v.x+0.5f,v.y+0.5f,0);
         transform.position = Vector3.Lerp(transform.position, targetPos, lerpSpeed);
+
+        if (autoToolReuse) ToolAction();
     }
 
     public void PlayerStopUse()
