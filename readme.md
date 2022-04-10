@@ -1,7 +1,11 @@
 # Barnstorm
-Feed all the hungry animals before they destroy the farm!<br>
-Barnstorm is a co-op game in which you have to feed the hungry animals before they destroy your farm.<br>
+``CO-OP`` ``Tower Defense`` ``Farming``<br>
+Barnstorm is a co-op game where in you have to feed hungry animals before they destroy your farm.<br>
 You can do this by planting and harvesting crops used as ammunition for your silo turrets.<br>
 
 ## Tools
 Unity ``2020.3.28f1``<br>
+
+## Copyright
+``Barnstorm``  Copyright (C) 2022  ``Max Coppen`` ``Milan Bonten`` ``Bram van der Cruijsen``<br>
+License  ``GPLv3`` + ``Common Clause``
