@@ -544,7 +544,7 @@ MonoBehaviour:
   collisionLayer:
     serializedVersion: 2
     m_Bits: 1
-  resolution: 1
+  stepSize: 4
   collisionRange: 30
 --- !u!4 &1871193857
 Transform:
