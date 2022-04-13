@@ -13,16 +13,87 @@ public class EnemyPathFinding : MonoBehaviour
     [SerializeField] private Transform end;
 
     [Header("Collision Map")]
-    [SerializeField] [Tooltip("The collison layer that the enemies will avoid")] private LayerMask collisionLayer;
-    [SerializeField] private int stepSize;
-    [SerializeField] [Tooltip("The radius the algorithm will work with from 0,0")] private int collisionRange;
+    [SerializeField] [Tooltip("The collison layer that the enemies will avoid")] static LayerMask collisionLayer = 1;
+    [SerializeField] [Tooltip("The amount of times 1 tile will be itterated uppon")] static int stepSize = 2;
+    [SerializeField] [Tooltip("The radius the algorithm will work with from 0,0")] static int collisionRange = 30;
 
-    private int[][] collisionMap;
+    static int[][] collisionMap;
+    static int[][] map;
+
+    /// <summary>Generates a path with Astar pathfinding</summary>
+    /// <param name="start">The position the pathfinding starts from</param>
+    /// <param name="end">The position the pathfinding ends on</param>
+    /// <param name="radius">The extra border radius on the collision map</param>
+    /// <returns>Returns a scaled and acurate list with all the positions to make a path from the start to the end</returns>
+    public static List<Vector2> GeneratePathList(Vector2 start, Vector2 end, int radius = 1)
+    {
+        map = copyMap(collisionMap);
+
+        // Loop the amount of times the extra radius needs to be aplied
+        for (int t = 0; t < radius; t++) {
+            int[][] oldMap = copyMap(map);
+            // Add a extra border radius to the collision map
+            for (int i = 0; i < oldMap.Length; i++){
+                for (int j = 0; j < oldMap[i].Length; j++) {
+                    // Check if we are on a collision point
+                    if (oldMap[i][j] == 1) {
+                        // If we are not on a Vertical border
+                        if (i != 0 && i != oldMap.Length - 1) {
+                            // Add a extra collision point with a vertical offset
+                            map[i - 1][j] = 1;
+                            map[i + 1][j] = 1;
+                        }
+
+                        // If we are not on a Horizontal border
+                        if (j != 0 && j != oldMap.Length - 1) {
+                            // Add a extra collision point with a Horizontal offset
+                            map[i][j - 1] = 1;
+                            map[i][j + 1] = 1;
+                        }
+                    }
+                }
+            }
+        }
+
+        // Generate unscaled Path using Astar
+        List<Vector2Int> resultInt = new Astar(Astar.ConvertToBoolArray(map), 
+            new Vector2Int((int)(start.x * stepSize + collisionRange * stepSize), (int)(start.y * stepSize + collisionRange * stepSize)), 
+            new Vector2Int((int)(end.x * stepSize + collisionRange * stepSize), (int)(end.y * stepSize + collisionRange * stepSize)), 
+            Astar.Type.DiagonalFree).Result;
+
+        // Scale and convert Path to List<Vector2>
+        List<Vector2> result = new List<Vector2>();
+        for (int i = 0; i < resultInt.Count; i++) {
+            result.Insert(0, new Vector2((float)(resultInt[i].x / (float)stepSize - collisionRange), (float)(resultInt[i].y / (float)stepSize - collisionRange)));
+        }
+
+        result.Reverse();
+
+        return result;
+    }
+
+    /// <summary>Makes it simple to create 2d int arrays and copy them</summary>
+    /// <param name="m">The map that you want to copy</param>
+    /// <returns>The copied map</returns>
+    private static int[][] copyMap(int[][] m)
+    {
+        int[][] nm = new int[m.Length][];
+        for (int i = 0; i < m.Length; i++)
+        {
+            nm[i] = new int[m[i].Length];
+            for (int j = 0; j < m[i].Length; j++)
+            {
+                nm[i][j] = m[i][j];
+            }
+        }
+
+        return nm;
+    }
 
     /// <summary>
     /// This method creates and updates the collision map in the form of a 2d int array
     /// </summary>
-    void PopulateCollisionMap() {
+    public static void PopulateCollisionMap() {
         int rangeScale = collisionRange * 2 * stepSize;
         // Initialize the First dimension of the array and loop over it
         collisionMap = new int[rangeScale][];
@@ -42,11 +113,11 @@ public class EnemyPathFinding : MonoBehaviour
     /// </summary>
     void DisplayMap() {
         // Loop over 2d int array
-        for (int i = 0; i < collisionMap.Length; i++) {
-            for (int j = 0; j < collisionMap[i].Length; j++) {
+        for (int i = 0; i < map.Length; i++) {
+            for (int j = 0; j < map[i].Length; j++) {
 
                 // If it is a obstacle spawn the inactive object else spawn the active object
-                if (collisionMap[i][j] == 1) {
+                if (map[i][j] == 1) {
                     Instantiate(obstacleObj, new Vector2((float)(j / (float)stepSize - collisionRange), (float)(i / (float)stepSize - collisionRange)), Quaternion.identity);
                 } 
                 else {
@@ -61,27 +132,11 @@ public class EnemyPathFinding : MonoBehaviour
     /// </summary>
     void DisplayResults(List<Vector2Int> result) {
         for (int i = 0; i < result.Count; i++) {
-            //Instantiate(resultObj, new Vector2((float)(result[i].x - collisionRange) / stepSize, (float)(result[i].y - collisionRange) / stepSize), Quaternion.identity);
             Instantiate(resultObj, new Vector2((float)(result[i].x / (float)stepSize - collisionRange) , (float)(result[i].y / (float)stepSize - collisionRange)), Quaternion.identity);
         }
     }
 
-    void Start() {
-        StartCoroutine(UpdateLoop());
-    }
-
-    /// <summary>
-    /// A temporary interface to update the map and path
-    /// </summary>
-    IEnumerator UpdateLoop() {
-        yield return new WaitForSeconds(1f);
-        GameObject[] objects = GameObject.FindGameObjectsWithTag("Enemy");
-        for (int i = 0; i < objects.Length; i++) {
-            Destroy(objects[i]);
-        }
-        PopulateCollisionMap();
-        DisplayMap();
-        DisplayResults(new Astar(Astar.ConvertToBoolArray(collisionMap), new Vector2Int((int)(start.position.x * stepSize + collisionRange * stepSize), (int)(start.position.y * stepSize + collisionRange * stepSize)), new Vector2Int((int)(end.position.x * stepSize + collisionRange * stepSize), (int)(end.position.y * stepSize + collisionRange * stepSize)), Astar.Type.DiagonalFree).Result);
-        StartCoroutine(UpdateLoop());
+    void Awake() {
+       PopulateCollisionMap();
     }
 }
