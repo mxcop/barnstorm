@@ -48,7 +48,7 @@ MonoBehaviour:
   maximumStack: 999
   cropType: 2
   nutrition: 3
-  speed: 3.5
+  speed: 7
   projectile: {fileID: 4525391680973343743, guid: 7081dffd2ca65d24caa56bf5b32aa230, type: 3}
   destroyObject: {fileID: 5577374176780847287, guid: d9b01ef5fd0da9e4393929b793cbcb82, type: 3}
   blastRadius: 2

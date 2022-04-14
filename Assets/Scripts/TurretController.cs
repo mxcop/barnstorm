@@ -13,7 +13,7 @@ public class TurretController : Inventory, Interactable
     [SerializeField] private GameObject turret;
     [SerializeField] private float reloadTime;
 
-    public List<EnemyBase> targetEnemies = new List<EnemyBase>();
+    public List<CowEnemy> targetEnemies = new List<CowEnemy>();
     private SpriteRenderer turretsr;
     private Transform barn;
     private int rotationState = 0;
@@ -51,7 +51,7 @@ public class TurretController : Inventory, Interactable
         turretsr = turret.GetComponent<SpriteRenderer>();
         barn = GameObject.FindGameObjectWithTag("Barn").transform;
 
-        container.PushItem(ammunition, 15);
+        container.PushItem(ammunition, 99);
     }
 
     void Update()
@@ -61,7 +61,7 @@ public class TurretController : Inventory, Interactable
             return;
 
         // Sort enemies if current target is defeated
-        if (targetEnemies[0].state == EnemyBase.EnemyState.eating)
+        if (targetEnemies[0].state == CowEnemy.EnemyState.eating)
         {
             targetEnemies.RemoveAt(0);
             SortTargets();
@@ -78,7 +78,7 @@ public class TurretController : Inventory, Interactable
 
         // If we are not shooting, the enemy is in a "attackable" state and we have more than 0 food in our turret we start the shooting coroutine
         if (!shooting && 
-            (targetEnemies[0].state != EnemyBase.EnemyState.eating && targetEnemies[0].state != EnemyBase.EnemyState.retreating) &&
+            (targetEnemies[0].state != CowEnemy.EnemyState.eating && targetEnemies[0].state != CowEnemy.EnemyState.retreating) &&
             container.Peek(0, out Item item)) {
             if(item is Food food)
             {
@@ -97,7 +97,7 @@ public class TurretController : Inventory, Interactable
         Vector2 targetpos = targetEnemies[0].transform.position;
         float distance = Vector2.Distance(shootPoints[rotationState].position, targetpos);  //distance in between in meters
         float travelTime = distance / ammunition.speed;                                     //time in seconds the shot would need to arrive at the target
-        Vector2 aimPoint = targetpos + targetEnemies[0].rb.velocity * travelTime;
+        Vector2 aimPoint = targetpos + targetEnemies[0].velocity * travelTime;
 
         // Set the shoot angle to the intercepting point
         shootAngle = AngleBetweenPoints(shootPoints[rotationState].position, aimPoint + Vector2.up * 0.1f);
@@ -120,7 +120,7 @@ public class TurretController : Inventory, Interactable
 
         // Remove all defeated enemies
         for (int i = targetEnemies.Count - 1; i >= 0; i--) {
-            if (targetEnemies[i].state == EnemyBase.EnemyState.eating)
+            if (targetEnemies[i].state ==  CowEnemy.EnemyState.eating)
                 targetEnemies.RemoveAt(i);
         }
 
@@ -129,12 +129,12 @@ public class TurretController : Inventory, Interactable
             return;
 
         // Default the closest enemy to not exist
-        EnemyBase closest = null;
+        CowEnemy closest = null;
         float closestDist = 99;
 
         // Loop over every Enemy and set it to the closest if it is the closest to the barn
-        foreach (EnemyBase script in targetEnemies){
-            if (script.state != EnemyBase.EnemyState.eating) {
+        foreach (CowEnemy script in targetEnemies){
+            if (script.state != CowEnemy.EnemyState.eating) {
                 float dist = Vector2.Distance(script.transform.position, barn.position);
                 if (dist < closestDist) {
                     closest = script;
@@ -153,7 +153,7 @@ public class TurretController : Inventory, Interactable
         if (!coll.CompareTag("Enemy"))
             return;
 
-        targetEnemies.Add(coll.gameObject.GetComponent<EnemyBase>());
+        targetEnemies.Add(coll.gameObject.GetComponent<CowEnemy>());
         SortTargets();
     }
 
@@ -162,7 +162,7 @@ public class TurretController : Inventory, Interactable
         if (!coll.CompareTag("Enemy"))
             return;
 
-        targetEnemies.Remove(coll.gameObject.GetComponent<EnemyBase>());
+        targetEnemies.Remove(coll.gameObject.GetComponent<CowEnemy>());
         SortTargets();
     }
 
