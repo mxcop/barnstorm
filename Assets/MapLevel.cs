@@ -3,13 +3,14 @@ using UnityEngine;
 
 public class MapLevel : MonoBehaviour
 {
+    public LevelSettings levelSettings;
     public bool isPassthrough = false;
     public Surroundings surroundings;
     // TODO : Add level settings object as public
 
     public void StartLevel()
     {
-        throw new NotImplementedException("Start level function hasn't been implemented yet!");
+        LevelLoader.main.EnterLevel(levelSettings);
     }
 
     [Serializable]

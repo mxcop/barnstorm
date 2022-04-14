@@ -679,6 +679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6177703740dae4439ccdd7198c486c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelSettings: {fileID: 11400000, guid: f88ba2434b2db5a48b7dc121b282df95, type: 2}
   isPassthrough: 1
   surroundings:
     top: {fileID: 2057308458}
@@ -898,9 +899,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6177703740dae4439ccdd7198c486c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelSettings: {fileID: 11400000, guid: f88ba2434b2db5a48b7dc121b282df95, type: 2}
   isPassthrough: 1
   surroundings:
-    top: {fileID: 1556643930}
+    top: {fileID: 0}
     right: {fileID: 1022315905}
     bottom: {fileID: 0}
     left: {fileID: 0}
@@ -1224,6 +1226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6177703740dae4439ccdd7198c486c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelSettings: {fileID: 11400000, guid: f88ba2434b2db5a48b7dc121b282df95, type: 2}
   isPassthrough: 1
   surroundings:
     top: {fileID: 0}
@@ -1340,6 +1343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6177703740dae4439ccdd7198c486c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelSettings: {fileID: 11400000, guid: f88ba2434b2db5a48b7dc121b282df95, type: 2}
   isPassthrough: 1
   surroundings:
     top: {fileID: 1022315905}
@@ -1625,7 +1629,6 @@ RectTransform:
   - {fileID: 1288801896}
   - {fileID: 1022315904}
   - {fileID: 735884607}
-  - {fileID: 1556643929}
   m_Father: {fileID: 538002174}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1682,6 +1685,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6177703740dae4439ccdd7198c486c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelSettings: {fileID: 11400000, guid: f88ba2434b2db5a48b7dc121b282df95, type: 2}
   isPassthrough: 0
   surroundings:
     top: {fileID: 1081853765}
@@ -2228,6 +2232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6177703740dae4439ccdd7198c486c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelSettings: {fileID: 11400000, guid: f88ba2434b2db5a48b7dc121b282df95, type: 2}
   isPassthrough: 0
   surroundings:
     top: {fileID: 0}
@@ -2388,5 +2393,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
