@@ -116,25 +116,4 @@ public class EnemyPathFinding : MonoBehaviour
             Instantiate(resultObj, new Vector2((float)(result[i].x / (float)stepSize - collisionRange), (float)(result[i].y / (float)stepSize - collisionRange)), Quaternion.identity);
         }
     }
-
-    /// <summary>
-    /// A temporary method to display the obstacles and walkeble areas in the scene
-    /// </summary>
-    /*
-    void DisplayMap() {
-        // Loop over 2d int array
-        for (int i = 0; i < map.Length; i++) {
-            for (int j = 0; j < map[i].Length; j++) {
-
-                // If it is a obstacle spawn the inactive object else spawn the active object
-                if (map[i][j] == 1) {
-                    Instantiate(obstacleObj, new Vector2((float)(j / (float)stepSize - collisionRange), (float)(i / (float)stepSize - collisionRange)), Quaternion.identity);
-                } 
-                else {
-                    Instantiate(activeObj, new Vector2((float)(j / (float)stepSize - collisionRange), (float)(i / (float)stepSize - collisionRange)), Quaternion.identity);
-                }     
-            }
-        }
-    }
-    */
 }

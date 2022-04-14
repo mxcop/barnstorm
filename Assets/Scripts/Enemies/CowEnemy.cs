@@ -12,7 +12,7 @@ public class CowEnemy : AstarEnemy
     [HideInInspector] public bool doneEating;
     [HideInInspector] public bool isStunned;
 
-    [HideInInspector] public EnemyState state = EnemyState.running;
+    public EnemyState state = EnemyState.running;
     public enum EnemyState
     {
         running,
@@ -33,7 +33,7 @@ public class CowEnemy : AstarEnemy
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
 
-        target = GameObject.FindGameObjectWithTag("Barn").transform;
+        target = GameObject.FindGameObjectWithTag("Barn").transform.position;
         hunger = maxHunger;
 
         base.Start();
@@ -44,6 +44,9 @@ public class CowEnemy : AstarEnemy
         // Don't go to the state machine if we are stunned
         if (isStunned)
             return;
+
+        if (transform.position.x - target.x > 0) sr.flipX = true;
+        else sr.flipX = false;
 
         // Basic State Machine
         switch (state) {
@@ -60,8 +63,8 @@ public class CowEnemy : AstarEnemy
                     anim.SetTrigger("Eat");
                 }
                 if (doneEating) {
-                    state = EnemyState.retreating;
                     ChangeToRetreatPath();
+                    state = EnemyState.retreating;
                 }   
                 break;
             case EnemyState.retreating:

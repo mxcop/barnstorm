@@ -67,7 +67,7 @@ public class TurretController : Inventory, Interactable
         turretsr = turret.GetComponent<SpriteRenderer>();
         barn = GameObject.FindGameObjectWithTag("Barn").transform;
 
-        container.PushItem(ammunition, 15);
+        container.PushItem(ammunition, 99);
     }
 
     void Update()
@@ -113,7 +113,7 @@ public class TurretController : Inventory, Interactable
         Vector2 targetpos = targetEnemies[0].transform.position;
         float distance = Vector2.Distance(shootPoints[rotationState].position, targetpos);  //distance in between in meters
         float travelTime = distance / ammunition.speed;                                     //time in seconds the shot would need to arrive at the target
-        Vector2 aimPoint = targetpos + targetEnemies[0].rb.velocity * travelTime;
+        Vector2 aimPoint = targetpos + targetEnemies[0].velocity * travelTime;
 
         // Set the shoot angle to the intercepting point
         shootAngle = AngleBetweenPoints(shootPoints[rotationState].position, aimPoint + Vector2.up * 0.1f);

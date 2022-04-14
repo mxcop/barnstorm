@@ -8,8 +8,10 @@ public class AstarEnemy : MonoBehaviour
     [SerializeField] protected int collisionSize;
     [SerializeField] protected float movementSpeed;
 
-    protected Transform target;
+    protected Vector2 target;
     protected Vector2 spawnPosition;
+
+    [HideInInspector] public Vector2 velocity;
 
     protected float nextWaypointDistance = 1f;
     protected int currentWaypoint;
@@ -19,7 +21,7 @@ public class AstarEnemy : MonoBehaviour
 
     protected virtual void Start() {
         // Get a generated path from the EnemyPathfinding script
-        pathList = EnemyPathFinding.GeneratePathList(transform.position, target.position, collisionSize);
+        pathList = EnemyPathFinding.GeneratePathList(transform.position, target, collisionSize);
     }
 
     /// <summary>
@@ -53,7 +55,7 @@ public class AstarEnemy : MonoBehaviour
         Vector2 dir = (pathList[currentWaypoint] - (Vector2)transform.position).normalized;
 
         // Applies the direction and smooting with the movementspeed
-        Vector2 velocity = dir * movementSpeed * speedFactor;
+        velocity = dir * movementSpeed * speedFactor;
 
         // Moves the enemy
         transform.position += (Vector3)velocity * Time.deltaTime;
@@ -64,6 +66,7 @@ public class AstarEnemy : MonoBehaviour
     /// </summary>
     protected void ChangeToRetreatPath() {
         // Get a new generated path from the EnemyPathfinding script with the spawnposition as target and reset the current waypoint
+        target = spawnPosition;
         pathList = EnemyPathFinding.GeneratePathList(transform.position, spawnPosition, collisionSize);
         currentWaypoint = 0;
     }

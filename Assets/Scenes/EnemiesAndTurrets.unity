@@ -1122,7 +1122,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2202435709512695900}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.25, y: -7.5, z: 0}
+  m_LocalPosition: {x: -6.5, y: -6.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1207,6 +1207,7 @@ MonoBehaviour:
   doneEating: 0
   isStunned: 0
   state: 0
+  rb: {fileID: 0}
 --- !u!114 &3874210292849911747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1301,6 +1302,7 @@ MonoBehaviour:
   offset: {x: 0, y: 3}
   size: 1
   ammunition: {fileID: 7618592410482247493, guid: 3650e097378961f4ba8021e9ab27d9b8, type: 3}
+  hint: {fileID: 0}
   sprite:
   - {fileID: 7721177293500312529, guid: ab27a14067f9fb342973209f1dd04a14, type: 3}
   - {fileID: 6930528599539336896, guid: ab27a14067f9fb342973209f1dd04a14, type: 3}
