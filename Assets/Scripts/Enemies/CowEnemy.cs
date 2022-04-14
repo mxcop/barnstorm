@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class CowEnemy : AstarEnemy
 {
-    [SerializeField] private GameObject particle;
     [SerializeField] private float maxHunger;
     [HideInInspector] public float hunger;
+    [SerializeField] private GameObject particle;
 
     [HideInInspector] public bool inAnimation;
     [HideInInspector] public bool doneEating;
     [HideInInspector] public bool isStunned;
 
-    public EnemyState state = EnemyState.running;
+    [HideInInspector] public EnemyState state = EnemyState.running;
     public enum EnemyState
     {
         running,

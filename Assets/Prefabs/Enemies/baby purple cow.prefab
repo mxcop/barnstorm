@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 2872876722718246449}
   - component: {fileID: 2872876722718246462}
   - component: {fileID: 2872876722718246450}
-  - component: {fileID: 2872876722718246451}
   - component: {fileID: 2872876722718246453}
   - component: {fileID: 904634253529375136}
+  - component: {fileID: 4778977331923105905}
   m_Layer: 8
   m_Name: baby purple cow
   m_TagString: Enemy
@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2872876722718246463}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.25, y: -7.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -127,27 +127,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &2872876722718246451
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2872876722718246463}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1c88b34eff1686438c97a4f4e22cc1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inAnimation: 0
-  doneEating: 0
-  state: 0
-  particle: {fileID: 1608683506982260623, guid: cd7c3a00f47d9e7478a327ad3872990b, type: 3}
-  speed: 1.3
-  bounceStrength: 550
-  bounceTime: 0.2
-  rb: {fileID: 0}
-  maxHunger: 18
 --- !u!70 &2872876722718246453
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -178,3 +157,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStatic: 0
   layerOffset: 0
+--- !u!114 &4778977331923105905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2872876722718246463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b11e24e0e0793b14a95c818e98d5e3c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionSize: 1
+  movementSpeed: 1.25
+  velocity: {x: 0, y: 0}
+  pathList: []
+  maxHunger: 18
+  hunger: 0
+  particle: {fileID: 1608683506982260623, guid: cd7c3a00f47d9e7478a327ad3872990b, type: 3}
+  inAnimation: 0
+  doneEating: 0
+  isStunned: 0
+  state: 0
+  rb: {fileID: 0}
