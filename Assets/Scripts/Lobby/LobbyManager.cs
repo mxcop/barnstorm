@@ -7,19 +7,10 @@ public class LobbyManager : MonoBehaviour
     public static List<Player> players;
     public static bool hasStarted;
 
-    [SerializeField] private GameObject waitingPanel;
     [SerializeField] private Material[] playerMats;
 
     public delegate void OnGameStartEvent();
     public static event OnGameStartEvent OnGameStart;
-
-    private void Awake()
-    {
-        OnGameStart += () =>
-        {
-            waitingPanel.SetActive(false);
-        };
-    }
 
     public void OnPlayerJoined(PlayerInput input)
     {

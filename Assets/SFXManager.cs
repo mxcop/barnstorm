@@ -15,15 +15,10 @@ public class SFXManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance is null)
-        {
-            DontDestroyOnLoad(gameObject);
-            instance = this;
-            source = GetComponent<AudioSource>();
+        instance = this;
+        source = GetComponent<AudioSource>();
 
-            PopulateLibrary();
-        }
-        else Destroy(gameObject);
+        PopulateLibrary();
     }
 
     /// <summary>

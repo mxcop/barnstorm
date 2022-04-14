@@ -24,7 +24,7 @@ public class Barn : MonoBehaviour
     {
         sp = GetComponent<SpriteRenderer>();
         startFood = storedFood;
-        gameoverPanel.SetActive(false);
+        if(gameoverPanel != null) gameoverPanel.SetActive(false);
 
         gameIsOver = false;
     }
