@@ -4,29 +4,36 @@ using UnityEngine;
 
 public class AstarEnemy : MonoBehaviour
 {
-    [SerializeField] private float movementSpeed;
-    [SerializeField] private GameObject targetObject;
+    [Header("Astar")]
+    [SerializeField] protected int collisionSize;
+    [SerializeField] protected float movementSpeed;
 
-    float nextWaypointDistance = 1f;
-    int currentWaypoint;
-    bool reachedEndOfPath = false;
+    protected Transform target;
+    protected Vector2 spawnPosition;
 
-    Rigidbody2D rb;
-    [SerializeField] List<Vector2> pathList = new List<Vector2>();
+    protected float nextWaypointDistance = 1f;
+    protected int currentWaypoint;
+    protected bool reachedEndOfPath = false;
 
-    void Start() {
-        rb = GetComponent<Rigidbody2D>();
-        pathList = EnemyPathFinding.GeneratePathList(transform.position, targetObject.transform.position, Mathf.CeilToInt(transform.localScale.x));
+    public List<Vector2> pathList = new List<Vector2>();
+
+    protected virtual void Start() {
+        // Get a generated path from the EnemyPathfinding script
+        pathList = EnemyPathFinding.GeneratePathList(transform.position, target.position, collisionSize);
     }
 
-    private void Update()
-    {
+    /// <summary>
+    /// Moves the enemy towards the targetObject with the generated pathlist
+    /// </summary>
+    protected void FollowPath() {
         reachedEndOfPath = false;
-
         float distanceToWaypoint;
+
         while (true) {
+            // Check if we are following the correct waypoint
             distanceToWaypoint = Vector2.Distance(transform.position, pathList[currentWaypoint]);
             if (distanceToWaypoint < nextWaypointDistance) {
+                // Go to the next waypoint if we can otherwise we reached the end
                 if (currentWaypoint + 1 < pathList.Count) {
                     currentWaypoint++;
                 }
@@ -39,9 +46,25 @@ public class AstarEnemy : MonoBehaviour
                 break;
         }
 
-        var speedFactor = reachedEndOfPath ? Mathf.Sqrt(distanceToWaypoint / nextWaypointDistance) : 1f;
+        // Makes it so we smoothly go from and to waypoints
+        float speedFactor = reachedEndOfPath ? Mathf.Sqrt(distanceToWaypoint / nextWaypointDistance) : 1f;
+
+        // Gets the direction to the current waypoint
         Vector2 dir = (pathList[currentWaypoint] - (Vector2)transform.position).normalized;
+
+        // Applies the direction and smooting with the movementspeed
         Vector2 velocity = dir * movementSpeed * speedFactor;
+
+        // Moves the enemy
         transform.position += (Vector3)velocity * Time.deltaTime;
+    }
+
+    /// <summary>
+    /// Update the pathList but instead of the targetObject being the target, the spawnPosition is the target
+    /// </summary>
+    protected void ChangeToRetreatPath() {
+        // Get a new generated path from the EnemyPathfinding script with the spawnposition as target and reset the current waypoint
+        pathList = EnemyPathFinding.GeneratePathList(transform.position, spawnPosition, collisionSize);
+        currentWaypoint = 0;
     }
 }

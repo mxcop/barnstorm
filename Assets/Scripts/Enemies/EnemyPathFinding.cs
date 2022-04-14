@@ -18,22 +18,24 @@ public class EnemyPathFinding : MonoBehaviour
     [SerializeField] [Tooltip("The radius the algorithm will work with from 0,0")] static int collisionRange = 30;
 
     static int[][] collisionMap;
-    static int[][] map;
+
+    void Awake() {
+        PopulateCollisionMap();
+    }
 
     /// <summary>Generates a path with Astar pathfinding</summary>
     /// <param name="start">The position the pathfinding starts from</param>
     /// <param name="end">The position the pathfinding ends on</param>
     /// <param name="radius">The extra border radius on the collision map</param>
     /// <returns>Returns a scaled and acurate list with all the positions to make a path from the start to the end</returns>
-    public static List<Vector2> GeneratePathList(Vector2 start, Vector2 end, int radius = 1)
-    {
-        map = copyMap(collisionMap);
+    public static List<Vector2> GeneratePathList(Vector2 start, Vector2 end, int radius = 1) {
+        int[][] map = copyMap(collisionMap);
 
         // Loop the amount of times the extra radius needs to be aplied
         for (int t = 0; t < radius; t++) {
             int[][] oldMap = copyMap(map);
             // Add a extra border radius to the collision map
-            for (int i = 0; i < oldMap.Length; i++){
+            for (int i = 0; i < oldMap.Length; i++) {
                 for (int j = 0; j < oldMap[i].Length; j++) {
                     // Check if we are on a collision point
                     if (oldMap[i][j] == 1) {
@@ -75,14 +77,11 @@ public class EnemyPathFinding : MonoBehaviour
     /// <summary>Makes it simple to create 2d int arrays and copy them</summary>
     /// <param name="m">The map that you want to copy</param>
     /// <returns>The copied map</returns>
-    private static int[][] copyMap(int[][] m)
-    {
+    private static int[][] copyMap(int[][] m) {
         int[][] nm = new int[m.Length][];
-        for (int i = 0; i < m.Length; i++)
-        {
+        for (int i = 0; i < m.Length; i++) {
             nm[i] = new int[m[i].Length];
-            for (int j = 0; j < m[i].Length; j++)
-            {
+            for (int j = 0; j < m[i].Length; j++) {
                 nm[i][j] = m[i][j];
             }
         }
@@ -109,8 +108,19 @@ public class EnemyPathFinding : MonoBehaviour
     }
 
     /// <summary>
+    /// A temporary method to display the A* path in the scene
+    /// </summary>
+    void DisplayResults(List<Vector2Int> result) {
+        for (int i = 0; i < result.Count; i++)
+        {
+            Instantiate(resultObj, new Vector2((float)(result[i].x / (float)stepSize - collisionRange), (float)(result[i].y / (float)stepSize - collisionRange)), Quaternion.identity);
+        }
+    }
+
+    /// <summary>
     /// A temporary method to display the obstacles and walkeble areas in the scene
     /// </summary>
+    /*
     void DisplayMap() {
         // Loop over 2d int array
         for (int i = 0; i < map.Length; i++) {
@@ -126,17 +136,5 @@ public class EnemyPathFinding : MonoBehaviour
             }
         }
     }
-
-    /// <summary>
-    /// A temporary method to display the A* path in the scene
-    /// </summary>
-    void DisplayResults(List<Vector2Int> result) {
-        for (int i = 0; i < result.Count; i++) {
-            Instantiate(resultObj, new Vector2((float)(result[i].x / (float)stepSize - collisionRange) , (float)(result[i].y / (float)stepSize - collisionRange)), Quaternion.identity);
-        }
-    }
-
-    void Awake() {
-       PopulateCollisionMap();
-    }
+    */
 }
