@@ -4,6 +4,7 @@ using UnityEngine;
 public class Crate : Inventory, Interactable
 {
     [Header("Static Config")]
+    [SerializeField] private GameObject hint;
     [SerializeField] private Sprite[] crates;
     [SerializeField] private Sprite lid;
     [SerializeField] private ItemSprite[] items;
@@ -39,6 +40,11 @@ public class Crate : Inventory, Interactable
     {
         Close();
         inUse = false;
+    }
+
+    public void Hint()
+    {
+
     }
 
     /// <summary> Select a random sprite for the crate. </summary>
