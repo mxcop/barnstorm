@@ -1122,7 +1122,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2202435709512695900}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.5, y: -6.5, z: 0}
+  m_LocalPosition: {x: -7.75, y: -4.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1199,10 +1199,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionSize: 1
   movementSpeed: 2
+  velocity: {x: 0, y: 0}
   pathList: []
-  particle: {fileID: 1608683506982260623, guid: cd7c3a00f47d9e7478a327ad3872990b, type: 3}
   maxHunger: 9
   hunger: 0
+  particle: {fileID: 1608683506982260623, guid: cd7c3a00f47d9e7478a327ad3872990b, type: 3}
   inAnimation: 0
   doneEating: 0
   isStunned: 0
