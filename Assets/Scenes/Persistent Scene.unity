@@ -150,14 +150,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 23918777}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e11c40a72d51d144bbbef18fd4290a1, type: 3}
+  m_Script: {fileID: 11500000, guid: 0544b7736c9e418478178548f1af1019, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMats:
-  - {fileID: 2100000, guid: a789bb48b0ab85340aeee42293086d07, type: 2}
-  - {fileID: 2100000, guid: 5923b98925fc3c84c8d4ae23204b81b5, type: 2}
-  - {fileID: 2100000, guid: 82024cd225f0b5f46a76ef515211954f, type: 2}
-  - {fileID: 2100000, guid: 8e33a5619f4b5b445896840c469fd609, type: 2}
 --- !u!114 &23918779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,7 +173,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 23918778}
-        m_TargetAssemblyTypeName: LobbyManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: PersistentPlayerManager, Assembly-CSharp
         m_MethodName: OnPlayerJoined
         m_Mode: 0
         m_Arguments:
@@ -193,7 +188,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 23918778}
-        m_TargetAssemblyTypeName: LobbyManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: PersistentPlayerManager, Assembly-CSharp
         m_MethodName: OnPlayerLeft
         m_Mode: 0
         m_Arguments:
@@ -216,7 +211,7 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 0}
-  m_PlayerPrefab: {fileID: 5912038434941331331, guid: 80c7018ce29a9104891e3f479e988c76, type: 3}
+  m_PlayerPrefab: {fileID: 6942606650548017375, guid: b3335ffd2bb0d0a43a1f83e762048a20, type: 3}
   m_SplitScreen: 0
   m_MaintainAspectRatioInSplitScreen: 0
   m_FixedNumberOfSplitScreens: -1
@@ -269,6 +264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7188af9fee169e74197031695d220ba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelSelectSceneName: Lobby Scene
 --- !u!4 &1166955066
 Transform:
   m_ObjectHideFlags: 0

@@ -49,7 +49,7 @@ public class PlayerInventoryGUI : MonoBehaviour
         selectArrow = transform.Find("Panel").Find("Select").GetComponent<RectTransform>();
 
         // Set the player icon.
-        transform.Find("Panel").Find("Icon").GetComponent<Image>().sprite = players[LobbyManager.players.Count - 1];
+        transform.Find("Panel").Find("Icon").GetComponent<Image>().sprite = players[PersistentPlayerManager.main.PlayerCount - 1];
 
         // Subscribe to the containers update event.
         container.OnUpdate += OnContainerUpdate;

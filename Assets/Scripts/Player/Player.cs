@@ -4,8 +4,12 @@ using static UnityEngine.InputSystem.InputAction;
 using UnityEngine.SceneManagement;
 using Cinemachine;
 
-public class Player : PlayerInventory
+public class Player : PlayerInventory, IPlayerInputActions
 {
+    bool isBeingControlled;
+    [SerializeField] int playerID;
+    [SerializeField] bool deleteIfNotControlled;
+
     [Header("Movement")]
     [SerializeField] float movementSpeed;
     [SerializeField] float maxSpeed;
@@ -36,16 +40,23 @@ public class Player : PlayerInventory
     [SerializeField] GameObject playerToolsPrefab;
     PlayerTools tools;
 
+    // do not add base.Awake to this, this is to stop the base awake code from being ran immediately
     protected override void Awake()
     {
-        base.Awake();
         anim = GetComponent<Animator>();
+    }
+
+    public void Initialize()
+    {
+        isBeingControlled = true;
+
+        base.Awake();
         tools = Instantiate(playerToolsPrefab).GetComponent<PlayerTools>();
         tools.plr = this;
         tools.playerAnim = anim;
         isInteracting = false;
 
-        FindObjectOfType<CinemachineTargetGroup>().AddMember(gameObject.transform, 1f, 1.25f);
+        FindObjectOfType<CinemachineTargetGroup>()?.AddMember(gameObject.transform, 1f, 1.25f);
 
         gui.SetReady(false);
         LobbyManager.OnGameStart += () =>
@@ -54,8 +65,23 @@ public class Player : PlayerInventory
         };
     }
 
+    private void Start()
+    {
+        if (deleteIfNotControlled && !isBeingControlled) Destroy(gameObject);
+    }
+
     private void Update()
     {
+        //go no further if not being controlled, but try to get the player
+        if (!isBeingControlled)
+        {
+            if (PersistentPlayerManager.main.TryGetPlayer(playerID, out PersistentPlayer p))
+            {
+                p.SetCurrentlyControlling(this);                
+            }
+            else return;
+        }
+
         float currentMaxSpeed = maxSpeed * lastInputMag;
         if (inputMove != Vector2.zero && !tools.isUsingTool)
             move = Vector2.ClampMagnitude(move + inputMove * movementSpeed * Time.deltaTime, currentMaxSpeed);
@@ -93,42 +119,11 @@ public class Player : PlayerInventory
         transform.Translate(move);
     }
 
-    public void Move(CallbackContext input) { inputMove = input.ReadValue<Vector2>(); }
-
-    public void ReadyToggle(CallbackContext c)
+    public void HotbarSwitch(int slot)
     {
-        if (c.phase == InputActionPhase.Performed) {
-            isReady = !isReady;
-            gui.SetReady(isReady);
-
-            LobbyManager.CheckForReady();
-        }       
+        if (!tools.isUsingTool) SelectSlot(slot);
+        else queuedHotbarSelect = slot;
     }
-
-    #region Interact
-    public void ProcessInteract(CallbackContext input)
-    {
-        if (!Barn.gameIsOver)
-        {
-            switch (input.phase)
-            {
-                case InputActionPhase.Started:
-                case InputActionPhase.Performed:
-                    if (input.action.WasPerformedThisFrame())
-                    {
-                        BreakInteraction();
-                        if (!isInBuilding) tools.PlayerUse();
-                    }
-                    break;
-
-                case InputActionPhase.Canceled:
-                    tools.PlayerStopUse();
-                    break;
-            }
-        }
-        else if (input.performed) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-    #endregion
 
     #region Interactables / Inventories
     /// <summary>
@@ -174,57 +169,33 @@ public class Player : PlayerInventory
     }
     #endregion
 
-    #region Hotbar Controls
-    /// <summary>
-    /// Switches current hotbar slot to the given int
-    /// </summary>
-    /// <param name="slot"></param>
-    public void HotbarSwitch(int slot)
+    //are called by the animator attached to this player, do not call these via code
+    #region Animation events
+    public void Anim_ToolAction() => tools.ToolAction();
+
+    public void Anim_ToolStart() => tools.Anim_ToolStart();
+
+
+    #endregion
+
+    //Input call territory
+    #region Joysticks
+
+    public void Input_LStick(CallbackContext c)
     {
-        if (!tools.isUsingTool) SelectSlot(slot);
-        else queuedHotbarSelect = slot;
+        inputMove = c.ReadValue<Vector2>();
     }
 
-    public void HotbarSwitchR(CallbackContext c)
+    public void Input_RStick(CallbackContext c)
     {
-        if (c.phase == InputActionPhase.Performed)
-        {
-            HotbarSwitch((int)Mathf.Repeat(selected + 1, container.size));
-        }
-    }
-    public void HotbarSwitchL(CallbackContext c)
-    {
-        if (c.phase == InputActionPhase.Performed)
-        {
-            HotbarSwitch((int)Mathf.Repeat(selected-1, container.size));
-        }
+        throw new System.NotImplementedException();
     }
     #endregion
 
-    #region Hotbar item manipulation
-    /// <summary>
-    /// Swaps the currently held item with the item in single-inventory 
-    /// In case of an inventory with the same item-type, first stack every item in the players inventory
-    /// </summary>
-    public void InventorySwap(CallbackContext input)
+    #region Buttons
+    public void Input_BNorth(CallbackContext c)
     {
-        if (input.phase != InputActionPhase.Performed) return;
-
-        if (isInteracting == false && CheckForInteractable())
-        {
-            currentInteraction.Interact();
-            isInteracting = true;
-            currentInventory = currentInteraction as Inventory;
-        }
-        else if (currentInventory != null) currentInventory.QuickSwap(this, selected);
-    }
-
-    /// <summary>
-    /// Gives half of currently held item to opened inventories
-    /// </summary>
-    public void InventorySplit(CallbackContext input)
-    {
-        if (input.phase != InputActionPhase.Performed) return;
+        if (c.phase != InputActionPhase.Performed) return;
 
         if (currentInteraction == null && isInteracting == false)
         {
@@ -241,25 +212,96 @@ public class Player : PlayerInventory
         }
     }
 
-    /// <summary>
-    /// Called every frame when held down
-    /// </summary>
-    /// <param name="input"></param>
-    public void DropItem(CallbackContext input)
+    public void Input_BEast(CallbackContext c)
     {
-        if (input.phase != InputActionPhase.Performed) return;
+        if (c.phase != InputActionPhase.Performed) return;
 
         if (container.PullItem(selected, out var item))
         {
             DroppedItem.DropUp(item.item, item.num, transform.position);
         }
     }
+
+    // also known as the Interact button
+    public void Input_BSouth(CallbackContext c)
+    {
+        if (!Barn.gameIsOver)
+        {
+            switch (c.phase)
+            {
+                case InputActionPhase.Started:
+                case InputActionPhase.Performed:
+                    if (c.action.WasPerformedThisFrame())
+                    {
+                        BreakInteraction();
+                        if (!isInBuilding) tools.PlayerUse();
+                    }
+                    break;
+
+                case InputActionPhase.Canceled:
+                    tools.PlayerStopUse();
+                    break;
+            }
+        }
+        else if (c.performed) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void Input_BWest(CallbackContext c)
+    {
+        if (c.phase != InputActionPhase.Performed) return;
+
+        if (isInteracting == false && CheckForInteractable())
+        {
+            currentInteraction.Interact();
+            isInteracting = true;
+            currentInventory = currentInteraction as Inventory;
+        }
+        else if (currentInventory != null) currentInventory.QuickSwap(this, selected);
+    }
     #endregion
 
-    //are called by the animator attached to this player, do not call these via code
-    #region Animation events
-    public void Anim_ToolAction() => tools.ToolAction();
+    #region DPad inputs
+    public void Input_DNorth(CallbackContext c)
+    {
+        throw new System.NotImplementedException();
+    }
 
-    public void Anim_ToolStart() => tools.Anim_ToolStart();
+    public void Input_DEast(CallbackContext c)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void Input_DSouth(CallbackContext c)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void Input_DWest(CallbackContext c)
+    {
+        throw new System.NotImplementedException();
+    }
     #endregion
+
+    #region Shoulder buttons
+    public void Input_ShoulderR(CallbackContext c)
+    {
+        if (c.phase == InputActionPhase.Performed)
+        {
+            Input_NumberSelect((int)Mathf.Repeat(selected + 1, container.size));
+        }
+    }
+
+    public void Input_ShoulderL(CallbackContext c)
+    {
+        if (c.phase == InputActionPhase.Performed)
+        {
+            Input_NumberSelect((int)Mathf.Repeat(selected - 1, container.size));
+        }
+    }
+    #endregion
+
+    public void Input_NumberSelect(int num)
+    {
+        HotbarSwitch(num);
+    }
 }

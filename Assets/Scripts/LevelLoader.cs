@@ -19,6 +19,7 @@ public class LevelLoader : MonoBehaviour
     public void EnterLevel(LevelSettings settings)
     {
         currentLevel = settings;
+        Debug.Log("Loading level: " + currentLevel.l_sceneName);
 
         SceneManager.UnloadSceneAsync(levelSelectSceneName);
         SceneManager.LoadSceneAsync(currentLevel.l_sceneName);
@@ -26,6 +27,7 @@ public class LevelLoader : MonoBehaviour
 
     public void ExitLevel()
     {
+        Debug.Log("Unloading level: " + currentLevel.l_sceneName);
         SceneManager.UnloadSceneAsync(currentLevel.l_sceneName);
 
         currentLevel = null;
@@ -34,11 +36,13 @@ public class LevelLoader : MonoBehaviour
 
     void LoadLevelSelect()
     {
+        Debug.Log("Loading level select scene");
         SceneManager.LoadSceneAsync(levelSelectSceneName, LoadSceneMode.Additive);
     }
 
     public void RestartLevel()
     {
+        Debug.Log("Restarting level: " + currentLevel.l_sceneName);
         SceneManager.UnloadSceneAsync(currentLevel.l_sceneName).completed += (a) => SceneManager.LoadSceneAsync(currentLevel.l_sceneName);
     }
 }
