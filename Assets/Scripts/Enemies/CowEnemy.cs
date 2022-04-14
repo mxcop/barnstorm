@@ -21,7 +21,8 @@ public class CowEnemy : AstarEnemy
         retreating,
     }
 
-    private Rigidbody2D rb;   
+    [HideInInspector]
+    public Rigidbody2D rb;   
     private SpriteRenderer sr;
     private Animator anim;
 

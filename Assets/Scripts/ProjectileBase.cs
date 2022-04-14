@@ -25,7 +25,7 @@ public class ProjectileBase : MonoBehaviour
 
         if (collision.CompareTag("Enemy")){
             hitCount++;
-            collision.gameObject.GetComponent<EnemyBase>().Feed(food);
+            collision.gameObject.GetComponent<CowEnemy>().Feed(food);
             food.Destroy(gameObject, hitCount);
         }   
     }
