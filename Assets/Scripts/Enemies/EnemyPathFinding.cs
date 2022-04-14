@@ -4,18 +4,10 @@ using UnityEngine;
 
 public class EnemyPathFinding : MonoBehaviour
 {
-    [Header("Testing")]
-    [SerializeField] private GameObject resultObj;
-    [SerializeField] private GameObject activeObj;
-    [SerializeField] private GameObject obstacleObj;
-
-    [SerializeField] private Transform start;
-    [SerializeField] private Transform end;
-
     [Header("Collision Map")]
     [SerializeField] [Tooltip("The collison layer that the enemies will avoid")] static LayerMask collisionLayer = 1;
     [SerializeField] [Tooltip("The amount of times 1 tile will be itterated uppon")] static int stepSize = 2;
-    [SerializeField] [Tooltip("The radius the algorithm will work with from 0,0")] static int collisionRange = 35;
+    [SerializeField] [Tooltip("The radius the algorithm will work with from 0,0")] static int collisionRange = 42;
 
     static int[][] collisionMap;
 
@@ -104,16 +96,6 @@ public class EnemyPathFinding : MonoBehaviour
                 // If we detect a collision the collisionMap[i][j] = 1 otherwise its 0
                 collisionMap[i][j] = Physics2D.OverlapCircle(new Vector2(j / (float)stepSize - collisionRange, i / (float)stepSize - collisionRange), 0.49f / stepSize, collisionLayer) ? 1 : 0;
             }
-        }
-    }
-
-    /// <summary>
-    /// A temporary method to display the A* path in the scene
-    /// </summary>
-    void DisplayResults(List<Vector2Int> result) {
-        for (int i = 0; i < result.Count; i++)
-        {
-            Instantiate(resultObj, new Vector2((float)(result[i].x / (float)stepSize - collisionRange), (float)(result[i].y / (float)stepSize - collisionRange)), Quaternion.identity);
         }
     }
 }
