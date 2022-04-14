@@ -9,6 +9,7 @@ public class TurretController : Inventory, Interactable
 {
     public Food ammunition;
 
+    [SerializeField] private GameObject hint;
     [SerializeField] private Sprite[] sprite;
     [SerializeField] private Transform[] shootPoints;
     [SerializeField] private GameObject turret;
@@ -34,6 +35,11 @@ public class TurretController : Inventory, Interactable
     {
         Close();
         inUse = false;
+    }
+
+    public void Hint()
+    {
+
     }
 
     public void SplitAction()

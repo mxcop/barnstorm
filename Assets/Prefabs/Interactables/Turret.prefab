@@ -238,6 +238,7 @@ MonoBehaviour:
   offset: {x: 0, y: 3}
   size: 1
   ammunition: {fileID: 7618592410482247493, guid: 3650e097378961f4ba8021e9ab27d9b8, type: 3}
+  hint: {fileID: 1701879774061417641, guid: f3031dda4929b7044aec94ba5054815b, type: 3}
   sprite:
   - {fileID: 7721177293500312529, guid: ab27a14067f9fb342973209f1dd04a14, type: 3}
   - {fileID: 6930528599539336896, guid: ab27a14067f9fb342973209f1dd04a14, type: 3}

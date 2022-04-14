@@ -6681,7 +6681,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7.8125
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -6705,7 +6705,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 460451428}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.005, y: 0.531, z: -16.25}
+  m_LocalPosition: {x: -0.005, y: 0.531, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -33995,7 +33995,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UiScaleMode: 1
-  m_ReferencePixelsPerUnit: 16
+  m_ReferencePixelsPerUnit: 1
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
@@ -34003,7 +34003,7 @@ MonoBehaviour:
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
+  m_DynamicPixelsPerUnit: 16
   m_PresetInfoIsWorld: 1
 --- !u!223 &912515107
 Canvas:
@@ -35213,7 +35213,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 7
+      m_TileSpriteIndex: 17
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -35488,7 +35488,7 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 5
     m_Data: {fileID: -7764787270828114143, guid: 079fe75302258dd47b2a37e554368643, type: 3}
-  - m_RefCount: 3
+  - m_RefCount: 2
     m_Data: {fileID: 5051519786585870037, guid: 079fe75302258dd47b2a37e554368643, type: 3}
   - m_RefCount: 5
     m_Data: {fileID: 6405104754742413534, guid: 079fe75302258dd47b2a37e554368643, type: 3}
@@ -35508,7 +35508,7 @@ Tilemap:
     m_Data: {fileID: 5686462626700485141, guid: 079fe75302258dd47b2a37e554368643, type: 3}
   - m_RefCount: 7
     m_Data: {fileID: -3734366039108750731, guid: 079fe75302258dd47b2a37e554368643, type: 3}
-  - m_RefCount: 4
+  - m_RefCount: 5
     m_Data: {fileID: 1011471083097744320, guid: 079fe75302258dd47b2a37e554368643, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -4610091967180760600, guid: 079fe75302258dd47b2a37e554368643, type: 3}
@@ -35709,7 +35709,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1349214132}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.005, y: 0.531, z: -16.25}
+  m_LocalPosition: {x: -0.005, y: 0.531, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 471800230}
