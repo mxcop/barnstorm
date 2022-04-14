@@ -1,9 +1,7 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using Systems.Inventory;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class TurretController : Inventory, Interactable
 {
@@ -22,8 +20,9 @@ public class TurretController : Inventory, Interactable
     private bool shooting = false;
     private float shootAngle;
 
-    [HideInInspector]
-    public bool inUse { get; set; }
+    private GameObject indicator;
+
+    [HideInInspector] public bool inUse { get; set; }
 
     public void Interact()
     {
@@ -35,21 +34,6 @@ public class TurretController : Inventory, Interactable
     {
         Close();
         inUse = false;
-    }
-
-    public void Hint()
-    {
-
-    }
-
-    public void SplitAction()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void SwapAction()
-    {
-        throw new System.NotImplementedException();
     }
 
     /// <summary>

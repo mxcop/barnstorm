@@ -26,7 +26,7 @@ public class LobbyManager : MonoBehaviour
         Player player = input.GetComponent<Player>();
         if (input.devices.Count > 0)
         {
-            player.buttonPromptType = ButtonPromptParse(input.devices[0].displayName);
+            player.profile = GetProfile(input.devices[0].displayName);
         }
 
         if (players == null) players = new List<Player>();
@@ -63,22 +63,25 @@ public class LobbyManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Parses a device name to a button prompt type.
+    /// Get the correct profile for this device.
     /// </summary>
     /// <param name="deviceName">The name of the device.</param>
-    private ButtonPromptType ButtonPromptParse(string deviceName)
+    private ControlsProfile GetProfile(string deviceName)
     {
+        string profileName;
+
         switch (deviceName)
         {
-            case "Keyboard":
-                return ButtonPromptType.PC;
-            case "Xbox Controller":
-                return ButtonPromptType.Xbox;
-            case "Playstation Controller":
-                return ButtonPromptType.Playstation;
+            case "Keyboard": profileName = "Keyboard Profile"; break;
+            case "Xbox Controller": profileName = "Xbox Profile"; break;
+            case "Playstation Controller": profileName = "Playstation Profile"; break;
             default:
                 Debug.LogError($"Unknown device detected ({ deviceName })");
-                return ButtonPromptType.Unknown;
+                profileName = "Keyboard Profile";
+                break;
         }
+
+        // Fetch the controller profile from the resources folder.
+        return Resources.Load<ControlsProfile>("Controller Profiles/" + profileName);
     }
 }

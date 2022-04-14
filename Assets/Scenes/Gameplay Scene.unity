@@ -6681,7 +6681,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8
+  orthographic size: 7.8125
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -6705,7 +6705,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 460451428}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.005, y: 0.531, z: -10}
+  m_LocalPosition: {x: -0.005, y: 0.531, z: -16.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -33958,6 +33958,7 @@ GameObject:
   - component: {fileID: 912515107}
   - component: {fileID: 912515106}
   - component: {fileID: 912515105}
+  - component: {fileID: 912515109}
   m_Layer: 5
   m_Name: World Canvas
   m_TagString: WorldCanvas
@@ -34045,6 +34046,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &912515109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912515104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a40a21121f910c44d80835b1566c0d49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  indicator: {fileID: 1701879774061417641, guid: f3031dda4929b7044aec94ba5054815b, type: 3}
 --- !u!1 &999567670
 GameObject:
   m_ObjectHideFlags: 0
@@ -35709,7 +35723,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1349214132}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.005, y: 0.531, z: -10}
+  m_LocalPosition: {x: -0.005, y: 0.531, z: -16.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 471800230}
@@ -35868,7 +35882,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 71017ab5b75bff6418bb87b83aa2eb3d, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 0
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -35964,7 +35978,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eca97bb051a18004a87cf346bcfd5e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volume: 1
+  volume: 0
   audioLibrary:
   - name: collect
     clip: {fileID: 8300000, guid: d68784cfbe80b4a4e85abd2678f38184, type: 3}

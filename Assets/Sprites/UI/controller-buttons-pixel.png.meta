@@ -47,6 +47,24 @@ TextureImporter:
   - first:
       213: 7649185731059610546
     second: arrow
+  - first:
+      213: -3197669148681578984
+    second: keys-i
+  - first:
+      213: 7628829267857303679
+    second: keys-o
+  - first:
+      213: -4111991437322912139
+    second: keys-p
+  - first:
+      213: 3048009235645644779
+    second: keys-q
+  - first:
+      213: -7594305466604371914
+    second: keys-arrows
+  - first:
+      213: 2907886171295009232
+    second: keys-r
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -438,7 +456,7 @@ TextureImporter:
         width: 6
         height: 6
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -446,6 +464,132 @@ TextureImporter:
       bones: []
       spriteID: 2b37bc035ed572a60800000000000000
       internalID: 7649185731059610546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys-i
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 48
+        width: 15
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 816db9be9d89f93d0800000000000000
+      internalID: -3197669148681578984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys-o
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 48
+        width: 15
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f78ecb2cccb0fd960800000000000000
+      internalID: 7628829267857303679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys-p
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 48
+        width: 15
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57e7be2f2954fe6c0800000000000000
+      internalID: -4111991437322912139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys-q
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 48
+        width: 15
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: befb4c23044bc4a20800000000000000
+      internalID: 3048009235645644779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys-arrows
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 27
+        width: 32
+        height: 21
+      alignment: 9
+      pivot: {x: 0.515625, y: 0.3809524}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6304d3b1a6b9b9690800000000000000
+      internalID: -7594305466604371914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys-r
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 32
+        width: 15
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d94f4fe013ea5820800000000000000
+      internalID: 2907886171295009232
       vertices: []
       indices: 
       edges: []

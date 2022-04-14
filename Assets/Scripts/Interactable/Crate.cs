@@ -42,11 +42,6 @@ public class Crate : Inventory, Interactable
         inUse = false;
     }
 
-    public void Hint()
-    {
-
-    }
-
     /// <summary> Select a random sprite for the crate. </summary>
     private void RandomCrate() => crate.sprite = crates[Random.Range(0, crates.Length)];
 

@@ -16,7 +16,7 @@ public class Player : PlayerInventory
     [SerializeField] float interactCheckRadius;
     [SerializeField] ContactFilter2D cf;
 
-    [HideInInspector] public ButtonPromptType buttonPromptType;
+    [HideInInspector] public ControlsProfile profile;
     [HideInInspector] public bool isInteracting;
     [HideInInspector] public bool isInBuilding;
 
@@ -32,7 +32,6 @@ public class Player : PlayerInventory
 
     private Interactable currentInteraction;
     private Inventory currentInventory;
-    private GameObject barn;
 
     [SerializeField] GameObject playerToolsPrefab;
     PlayerTools tools;
@@ -46,7 +45,6 @@ public class Player : PlayerInventory
         tools.playerAnim = anim;
         isInteracting = false;
 
-        barn = GameObject.FindGameObjectWithTag("Barn");
         FindObjectOfType<CinemachineTargetGroup>().AddMember(gameObject.transform, 1f, 1.25f);
 
         gui.SetReady(false);
@@ -90,14 +88,9 @@ public class Player : PlayerInventory
         transform.position = Vector2.ClampMagnitude(transform.position, outOfBoundsRadius);
     }
 
-    private void ReturnTween() {
-        transform.position = new Vector2(0, -1.5f);
-        LeanTween.value(gameObject, c => gameObject.GetComponent<SpriteRenderer>().color = c, new Color(1, 1, 1, 0), new Color(1, 1, 1, 1), 0.2f);
-    }
-
     private void FixedUpdate()
     {
-        transform.Translate(move);        
+        transform.Translate(move);
     }
 
     public void Move(CallbackContext input) { inputMove = input.ReadValue<Vector2>(); }
@@ -269,9 +262,4 @@ public class Player : PlayerInventory
 
     public void Anim_ToolStart() => tools.Anim_ToolStart();
     #endregion
-}
-
-public enum ButtonPromptType
-{
-    Unknown, Playstation, Xbox, PC
 }
