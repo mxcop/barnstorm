@@ -34,36 +34,30 @@ public class WaveManager : MonoBehaviour
     private float totalWeight = 0;
 
     
-    void Start()
-    {
+    void Start() {
         LobbyManager.OnGameStart += OnGameStarted;
     }
 
-    void OnGameStarted()
-    {
+    void OnGameStarted() {
         StartCoroutine(WaveLoop());
     }
 
-    IEnumerator WaveLoop()
-    {
+    IEnumerator WaveLoop() {
         // Delay Before the first round starts
         yield return new WaitForSeconds(5);
 
         // Loop until the last round
-        while (currentWaveIndex != waves.Count)
-        {
+        while (currentWaveIndex != waves.Count) {
             // Create Spawn weights and assign it to the enemies
             totalWeight = 0;
-            for (int i = 0; i < currentWave.enemies.Count; i++)
-            {
+            for (int i = 0; i < currentWave.enemies.Count; i++) {
                 currentWave.enemies[i].dropRange.x = totalWeight;
                 totalWeight += currentWave.enemies[i].weight;
                 currentWave.enemies[i].dropRange.y = totalWeight;
             }
 
             // Spawn The deliveryTruck if the wave has it enabled
-            if (currentWave.hasDelivery)
-            {
+            if (currentWave.hasDelivery) {
                 yield return new WaitForSeconds(8f);
                 //truckScript = Instantiate(deliveryTruck).GetComponent<DeliveryTruck>();
                 //yield return new WaitUntil(() => truckScript.isFinished == true);
@@ -73,8 +67,7 @@ public class WaveManager : MonoBehaviour
             yield return new WaitForSeconds(currentWave.waveDelay);
 
             // Spawn every group with a random delay
-            for (int i = 0; i < currentWave.groups; i++)
-            {
+            for (int i = 0; i < currentWave.groups; i++) {
                 float delay = Random.Range(currentWave.groupDelay.x, currentWave.groupDelay.y);
                 SpawnGroup();
                 yield return new WaitForSeconds(delay);
@@ -84,8 +77,7 @@ public class WaveManager : MonoBehaviour
         }
     }
 
-    void SpawnGroup()
-    {
+    void SpawnGroup() {
         // Random Angle
         float angle = Random.Range(0, 360);
 
@@ -103,21 +95,18 @@ public class WaveManager : MonoBehaviour
         int randomSize = Random.Range((int)currentWave.groupSize.x, (int)currentWave.groupSize.y);
 
         // Spawn the generated Group
-        for (int i = 0; i < randomSize; i++)
-        {
+        for (int i = 0; i < randomSize; i++) {
             Instantiate(RandomEnemy().prefab, groupPoint + (Random.insideUnitCircle * Random.Range(0, groupRadius)), Quaternion.identity);
         }
     }
 
-    private Enemy RandomEnemy()
-    {
+    private Enemy RandomEnemy() {
         // Set default index and "Roll" number to get a match
         int index = -1;
         float number = Random.Range(1, totalWeight);
 
         // Loop over table to find match
-        for (int i = 0; i < currentWave.enemies.Count; i++)
-        {
+        for (int i = 0; i < currentWave.enemies.Count; i++) {
             if (number >= currentWave.enemies[i].dropRange.x && number <= currentWave.enemies[i].dropRange.y)
                 index = i;
         }
