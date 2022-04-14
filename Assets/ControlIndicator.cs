@@ -12,6 +12,8 @@ public class ControlIndicator : MonoBehaviour
     private bool showingHint = false;
     private GameObject indicator;
 
+    private Interactable interactable;
+
     private static ContactFilter2D filter;
 
     private void Awake()
@@ -24,6 +26,8 @@ public class ControlIndicator : MonoBehaviour
                 layerMask = LayerMask.GetMask("Player")
             };
         }
+
+        interactable = GetComponent<Interactable>();
     }
 
     private void Update()
@@ -66,6 +70,12 @@ public class ControlIndicator : MonoBehaviour
     /// </summary>
     private void CheckForPlayers()
     {
+        if (interactable != null && interactable.inUse)
+        {
+            ChangeState(false, null);
+            return;
+        }
+
         List<Collider2D> res = new List<Collider2D>();
         Physics2D.OverlapCircle(transform.position, showRadius, filter, res);
 
