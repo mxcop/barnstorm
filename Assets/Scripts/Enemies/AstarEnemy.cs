@@ -17,7 +17,7 @@ public class AstarEnemy : MonoBehaviour
     protected int currentWaypoint;
     protected bool reachedEndOfPath = false;
 
-    [HideInInspector] public List<Vector2> pathList = new List<Vector2>();
+    public List<Vector2> pathList = new List<Vector2>();
 
     protected virtual void Start() {
         // Get a generated path from the EnemyPathfinding script

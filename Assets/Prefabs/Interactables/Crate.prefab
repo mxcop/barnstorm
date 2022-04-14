@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 443913376326917021}
   - component: {fileID: 443913376326917018}
   - component: {fileID: 443913376326917019}
+  - component: {fileID: 121660962877514051}
   - component: {fileID: 443913376326917016}
   - component: {fileID: 443913376326917020}
   m_Layer: 6
@@ -197,6 +198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 1.75}
   size: 1
+  hint: {fileID: 0}
   crates:
   - {fileID: 2958523863171369250, guid: 442aa78916c3f9845ab57843e67a1156, type: 3}
   - {fileID: -3013053334650348085, guid: 442aa78916c3f9845ab57843e67a1156, type: 3}
@@ -218,6 +220,21 @@ MonoBehaviour:
     sprite: {fileID: 6259028901605723704, guid: 442aa78916c3f9845ab57843e67a1156, type: 3}
   - name: SpudCannon
     sprite: {fileID: 7707518973635841299, guid: 442aa78916c3f9845ab57843e67a1156, type: 3}
+--- !u!114 &121660962877514051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443913376326917017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 115c7b27dd771cd4186631f1d836c4b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: 0
+  showRadius: 0.75
+  offset: {x: 0, y: 0.75}
 --- !u!61 &443913376326917016
 BoxCollider2D:
   m_ObjectHideFlags: 0
