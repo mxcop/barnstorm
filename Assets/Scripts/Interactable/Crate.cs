@@ -30,7 +30,7 @@ public class Crate : Inventory, Interactable
         }
     }
 
-    public void Interact()
+    public void Interact(int playerID)
     {
         Open();
         inUse = true;

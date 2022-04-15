@@ -7,7 +7,7 @@ using Cinemachine;
 public class Player : PlayerInventory, IPlayerInputActions
 {
     bool isBeingControlled;
-    [SerializeField] int playerID;
+    public int playerID;
     [SerializeField] bool deleteIfNotControlled;
 
     [Header("Movement")]
@@ -77,7 +77,7 @@ public class Player : PlayerInventory, IPlayerInputActions
         {
             if (PersistentPlayerManager.main.TryGetPlayer(playerID, out PersistentPlayer p))
             {
-                p.SetCurrentlyControlling(this);                
+                p.SetControlLayer(this, 0);                
             }
             else return;
         }
@@ -201,7 +201,7 @@ public class Player : PlayerInventory, IPlayerInputActions
         {
             if (CheckForInteractable())
             {
-                currentInteraction.Interact();
+                currentInteraction.Interact(playerID);
                 isInteracting = true;
                 currentInventory = currentInteraction as Inventory;
             }
@@ -252,7 +252,7 @@ public class Player : PlayerInventory, IPlayerInputActions
 
         if (isInteracting == false && CheckForInteractable())
         {
-            currentInteraction.Interact();
+            currentInteraction.Interact(playerID);
             isInteracting = true;
             currentInventory = currentInteraction as Inventory;
         }

@@ -270,7 +270,7 @@ MonoBehaviour:
   outOfBoundsRadius: 16
   interactCheckRadius: 0.65
   cf:
-    useTriggers: 0
+    useTriggers: 1
     useLayerMask: 1
     useDepth: 0
     useOutsideDepth: 0

@@ -12,24 +12,6 @@ public class MapNavigator : MonoBehaviour
     private void Start()
     {
         mapCam.transform.position = selectedLevel.transform.position;
-
-        StartCoroutine(nameof(Test));
-    }
-
-    IEnumerator Test()
-    {
-        float delay = 2;
-
-        for (int i = 0; i < 100; i++)
-        {
-            yield return new WaitForSeconds(delay);
-
-            Direction direction = (Direction)Random.Range(0, 4);
-
-            delay = Navigate(direction);
-
-            Debug.Log("Tried to move " + direction.ToString());
-        }
     }
 
     public float Navigate(Direction dir)
