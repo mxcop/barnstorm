@@ -4,36 +4,13 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
-    [System.Serializable] public class Enemy {
-        [Tooltip("The Prefab of this enemy instance")] public GameObject prefab;
-        [Tooltip("The Chance this enemy will be spawned, higher number is higher chance")] public float weight;
-        [HideInInspector] public Vector2 dropRange;
-    }
-
-    [System.Serializable] public class Wave {
-        [Header("Enemy Types")]
-        [Tooltip("All the enemies that can spawn in this wave")] public List<Enemy> enemies;
-
-        [Header("Group Settings")]
-        [Tooltip("The amount of times a group will spawn inside a wave")] public int groups;
-        [Tooltip("The radius all the enemies in that group will spawn inside of")] public Vector2 groupSize;
-        [Tooltip("The minimum (x) and maximum (y) amount of time between every group spawns")] public Vector2 groupDelay;
-        [Tooltip("The radius all the enemies in that group will spawn inside of")] public float groupRadius;
-
-        [Header("Extra's")]
-        [Tooltip("The amount of time before the next wave starts")] public float waveDelay;
-        [Tooltip("If the DeliveryTruck will spawn this wave")] public bool hasDelivery;
-    }
-
-    Wave currentWave { get { return waves[currentWaveIndex]; } }
-    public List<Wave> waves = new List<Wave>();
-
-    public int currentWaveIndex = 0;
+    [SerializeField] private LevelSettings level;
+    private LevelSettings.Wave currentWave { get { return level.waves[currentWaveIndex]; } }
+    private int currentWaveIndex = 0;
 
     private const float groupRadius = 40;
     private float totalWeight = 0;
 
-    
     void Start() {
         LobbyManager.OnGameStart += OnGameStarted;
     }
@@ -47,7 +24,7 @@ public class WaveManager : MonoBehaviour
         yield return new WaitForSeconds(5);
 
         // Loop until the last round
-        while (currentWaveIndex != waves.Count) {
+        while (currentWaveIndex != level.waves.Count) {
             // Create Spawn weights and assign it to the enemies
             totalWeight = 0;
             for (int i = 0; i < currentWave.enemies.Count; i++) {
@@ -57,11 +34,11 @@ public class WaveManager : MonoBehaviour
             }
 
             // Spawn The deliveryTruck if the wave has it enabled
-            if (currentWave.hasDelivery) {
-                yield return new WaitForSeconds(8f);
+            //if (currentWave.hasDelivery) {
+                //yield return new WaitForSeconds(8f);
                 //truckScript = Instantiate(deliveryTruck).GetComponent<DeliveryTruck>();
                 //yield return new WaitUntil(() => truckScript.isFinished == true);
-            }
+            //}
 
             // Add a small amount of delay between each Wave
             yield return new WaitForSeconds(currentWave.waveDelay);
@@ -100,7 +77,7 @@ public class WaveManager : MonoBehaviour
         }
     }
 
-    private Enemy RandomEnemy() {
+    private LevelSettings.Enemy RandomEnemy() {
         // Set default index and "Roll" number to get a match
         int index = -1;
         float number = Random.Range(1, totalWeight);

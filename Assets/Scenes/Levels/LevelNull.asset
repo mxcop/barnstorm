@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: LevelNull
   m_EditorClassIdentifier: 
   l_sceneName: LevelTemplate
+  waves: []
