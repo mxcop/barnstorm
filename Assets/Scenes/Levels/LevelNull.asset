@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: LevelNull
   m_EditorClassIdentifier: 
   l_sceneName: LevelTemplate
+  l_displayName: Empty Fields
+  l_description: nederland
   waves: []

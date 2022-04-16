@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LobbyTruck : MonoBehaviour
 {
     [SerializeField] private GameObject cover;
     private bool coverOn = true;
     private List<GameObject> players = new List<GameObject>();
+    public UnityEvent OnAllPlayersReady;
+
 
     private void FixedUpdate()
     {
@@ -21,6 +24,25 @@ public class LobbyTruck : MonoBehaviour
             // Fade in
             LeanTween.alpha(cover, 1f, 0.15f);
             coverOn = true;
+        }
+    }
+
+    private void Update()
+    {
+        if(players.Count > 0)
+        {            
+
+            if(players.Count >= PersistentPlayerManager.main.PlayerCount)
+            {
+                // start fast countdown
+
+                //do it instantly for now
+                OnAllPlayersReady?.Invoke();
+            }
+            else
+            {
+                // start slow countdown
+            }
         }
     }
 

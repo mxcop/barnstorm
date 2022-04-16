@@ -48,7 +48,7 @@ public class Crop : MonoBehaviour
         {
             isHarvested = true;
 
-            ScoreManager.current.AddScore(currentStageData.scoreFromHarvest, transform.position);
+            ScoreManager.current?.AddScore(currentStageData.scoreFromHarvest, transform.position);
             if (!autoRespawn) Destroy(gameObject);
             else
             {

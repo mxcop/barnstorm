@@ -36,6 +36,11 @@ public class PersistentPlayer : MonoBehaviour, IPlayerInputActions
         InitializeTopLevel();
     }
 
+    public void ClearControlLayers()
+    {
+        controlLayers.Clear();
+    }
+
     void InitializeTopLevel()
     {
         currentlyControlling = GetHighestLayer();

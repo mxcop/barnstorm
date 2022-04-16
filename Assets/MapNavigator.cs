@@ -38,4 +38,9 @@ public class MapNavigator : MonoBehaviour
         return Vector2.Distance(mapCam.transform.position, selectedLevel.transform.position) / 3.0f;
         //mapCam.transform.position = selectedLevel.transform.position;
     }
+
+    public void StartLevel()
+    {
+        selectedLevel.StartLevel();
+    }
 }

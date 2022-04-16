@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PersistentPlayerManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class PersistentPlayerManager : MonoBehaviour
     private void Awake()
     {
         main = this;
+        SceneManager.sceneUnloaded += (s) => ClearAllControlLayers();
     }
 
     public void OnPlayerJoined(PlayerInput input)
@@ -26,6 +28,14 @@ public class PersistentPlayerManager : MonoBehaviour
     {
         PersistentPlayer p = input.GetComponent<PersistentPlayer>();
         playerList.Remove(p.playerID);
+    }
+
+    public void ClearAllControlLayers()
+    {
+        foreach(PersistentPlayer p in playerList.Values)
+        {
+            p.ClearControlLayers();
+        }
     }
 
     int GetLowestAvailablePlayerID()

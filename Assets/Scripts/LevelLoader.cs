@@ -16,13 +16,29 @@ public class LevelLoader : MonoBehaviour
         LoadLevelSelect();
     }
 
+    AsyncOperation LoadNewActiveScene(string n)
+    {
+
+        AsyncOperation a = SceneManager.LoadSceneAsync(n, LoadSceneMode.Additive);
+        a.completed += (s) =>
+        {
+            Scene scene = SceneManager.GetSceneByName(n);
+            SceneManager.SetActiveScene(scene);
+        };
+
+        return a;
+    }
+
     public void EnterLevel(LevelSettings settings)
     {
         currentLevel = settings;
         Debug.Log("Loading level: " + currentLevel.l_sceneName);
 
         SceneManager.UnloadSceneAsync(levelSelectSceneName);
-        SceneManager.LoadSceneAsync(currentLevel.l_sceneName);
+
+        LoadNewActiveScene(currentLevel.l_sceneName);
+
+
     }
 
     public void ExitLevel()
@@ -37,12 +53,12 @@ public class LevelLoader : MonoBehaviour
     void LoadLevelSelect()
     {
         Debug.Log("Loading level select scene");
-        SceneManager.LoadSceneAsync(levelSelectSceneName, LoadSceneMode.Additive);
+        LoadNewActiveScene(levelSelectSceneName);
     }
 
     public void RestartLevel()
     {
         Debug.Log("Restarting level: " + currentLevel.l_sceneName);
-        SceneManager.UnloadSceneAsync(currentLevel.l_sceneName).completed += (a) => SceneManager.LoadSceneAsync(currentLevel.l_sceneName);
+        SceneManager.UnloadSceneAsync(currentLevel.l_sceneName).completed += (a) => LoadNewActiveScene(currentLevel.l_sceneName);
     }
 }
