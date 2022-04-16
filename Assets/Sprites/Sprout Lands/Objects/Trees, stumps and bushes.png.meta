@@ -1,7 +1,16 @@
 fileFormatVersion: 2
 guid: df0b0ab7186e3dd4da55e1c0e127a6d1
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -5579743417611397328
+    second: Tree-Basic-0
+  - first:
+      213: 8743770235792392289
+    second: Tree-Basic-1
+  - first:
+      213: 672647409237720618
+    second: Tree-Basic-2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -89,7 +98,70 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Tree-Basic-0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 83
+        width: 14
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 037d277ace4c092b0800000000000000
+      internalID: -5579743417611397328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tree-Basic-1
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 82
+        width: 24
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1600a06f3bc185970800000000000000
+      internalID: 8743770235792392289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tree-Basic-2
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 17
+        width: 44
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2e73be3149b55900800000000000000
+      internalID: 672647409237720618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

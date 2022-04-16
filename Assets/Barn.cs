@@ -32,10 +32,10 @@ public class Barn : MonoBehaviour
         if (!(coll.gameObject is null) && coll.gameObject.CompareTag("Enemy"))
         {
             // Get the enemy and subtract their hunger.
-            EnemyBase enemy = coll.gameObject.GetComponent<EnemyBase>();
+            CowEnemy enemy = coll.gameObject.GetComponent<CowEnemy>();
             storedFood -= Mathf.FloorToInt(enemy.hunger);
             enemy.hunger = 0;
-            enemy.state = EnemyBase.EnemyState.eating;
+            enemy.state = CowEnemy.EnemyState.eating;
             //UpdateSprite();
 
             // Gameover.
