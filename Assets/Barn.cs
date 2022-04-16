@@ -4,8 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class Barn : MonoBehaviour
 {
-    [SerializeField] private GameObject gameoverPanel;
-
     [Header("Config")]
 
     [Tooltip("The hitpoints of the barn")]
@@ -24,7 +22,7 @@ public class Barn : MonoBehaviour
     {
         sp = GetComponent<SpriteRenderer>();
         startFood = storedFood;
-        if(gameoverPanel != null) gameoverPanel.SetActive(false);
+        //if(gameoverPanel != null) gameoverPanel.SetActive(false);
 
         gameIsOver = false;
     }
@@ -51,8 +49,8 @@ public class Barn : MonoBehaviour
     private void Gameover()
     {
         Debug.Log("!! GAME OVER !!");
-        gameoverPanel.SetActive(true);
-        gameoverPanel.transform.Find("Panel").Find("Text (Score)").GetComponent<TextMeshProUGUI>().text = "Score : " + ScoreManager.current.Score.ToString();
+        //gameoverPanel.SetActive(true);
+        //gameoverPanel.transform.Find("Panel").Find("Text (Score)").GetComponent<TextMeshProUGUI>().text = "Score : " + ScoreManager.current.Score.ToString();
 
         gameIsOver = true;
         LobbyManager.players.Clear();
