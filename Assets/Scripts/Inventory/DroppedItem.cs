@@ -85,26 +85,13 @@ public class DroppedItem : MonoBehaviour
         StartCoroutine(AnimateDropOut(pos, dir));
     }
 
-    private void FixedUpdate()
+    public void AttemptPickup(Container<Item> container)
     {
-        if (dropped)
+        if (dropped && container.PushItem(item, num))
         {
-            for (int i = 0; i < LobbyManager.players.Count; i++)
-            {
-
-                // Check if the player is within pickup range:
-                Player player = LobbyManager.players[i];
-                if (Vector2.Distance(player.transform.position, transform.position) < 1.0f)
-                {
-                    // Push the item if possible:
-                    if (player.container.PushItem(item, num))
-                    {
-                        AnimatePickup();
-                        SFXManager.PlayClip("collect");
-                        dropped = false;
-                    }
-                }
-            }
+            AnimatePickup();
+            SFXManager.PlayClip("collect");
+            dropped = false;
         }
     }
 
