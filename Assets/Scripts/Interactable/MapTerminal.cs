@@ -19,11 +19,22 @@ public class MapTerminal : MonoBehaviour, Interactable, IPlayerInputActions
     public void Interact(int playerID)
     {
         inUse = true;
-        if(PersistentPlayerManager.main.TryGetPlayer(playerID, out currentController))
+        if(PersistentPlayerManager.main.TryGetPlayer(playerID, out PersistentPlayer _c))
         {
+            currentController = _c;
             currentController.SetControlLayer(this, controlLayer);
         }
         
+    }
+
+    void RelinquishControl()
+    {
+        if (currentController != null)
+        {
+            currentController.BreakControlLayer(controlLayer);
+            currentController = null;
+            Debug.Log("Relinquished control of mapterminal");
+        }
     }
 
     #region IPlayerInputActions
@@ -32,16 +43,29 @@ public class MapTerminal : MonoBehaviour, Interactable, IPlayerInputActions
         Debug.Log("Player " + currentController.playerID + " Opened the map terminal");
     }
 
-    public void Input_BEast(InputAction.CallbackContext c) { }
+    public void DeInitialize()
+    {
 
-    public void Input_BNorth(InputAction.CallbackContext c) { }
+    }
 
-    public void Input_BSouth(InputAction.CallbackContext c) { }
+    public void Input_BEast(InputAction.CallbackContext c)
+    {
+        if (c.performed) RelinquishControl();
+    }
+
+    public void Input_BNorth(InputAction.CallbackContext c)
+    {
+        if (c.performed) RelinquishControl();
+    }
+
+    public void Input_BSouth(InputAction.CallbackContext c)
+    {
+        if (c.performed) RelinquishControl();
+    }
 
     public void Input_BWest(InputAction.CallbackContext c)
     {
-        currentController.BreakControlLayer(controlLayer);
-        currentController = null;
+        if (c.performed) RelinquishControl();
     }
 
     public void Input_DEast(InputAction.CallbackContext c) { }

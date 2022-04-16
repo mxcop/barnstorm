@@ -6,6 +6,8 @@ using Cinemachine;
 
 public class Player : PlayerInventory, IPlayerInputActions
 {
+    bool isInitialized;
+
     bool isBeingControlled;
     public int playerID;
     [SerializeField] bool deleteIfNotControlled;
@@ -50,19 +52,29 @@ public class Player : PlayerInventory, IPlayerInputActions
     {
         isBeingControlled = true;
 
-        base.Awake();
-        tools = Instantiate(playerToolsPrefab).GetComponent<PlayerTools>();
-        tools.plr = this;
-        tools.playerAnim = anim;
-        isInteracting = false;
-
-        FindObjectOfType<CinemachineTargetGroup>()?.AddMember(gameObject.transform, 1f, 1.25f);
-
-        gui.SetReady(false);
-        LobbyManager.OnGameStart += () =>
+        if (!isInitialized)
         {
+            isInitialized = true;
+
+            base.Awake();
+            tools = Instantiate(playerToolsPrefab).GetComponent<PlayerTools>();
+            tools.plr = this;
+            tools.playerAnim = anim;
+            isInteracting = false;
+
+            FindObjectOfType<CinemachineTargetGroup>()?.AddMember(gameObject.transform, 1f, 1.25f);
+
             gui.SetReady(false);
-        };
+            LobbyManager.OnGameStart += () =>
+            {
+                gui.SetReady(false);
+            };
+        }
+    }
+
+    public void DeInitialize()
+    {
+        inputMove = Vector2.zero;
     }
 
     private void Start()

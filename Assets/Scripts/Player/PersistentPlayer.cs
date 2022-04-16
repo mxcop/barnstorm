@@ -21,8 +21,7 @@ public class PersistentPlayer : MonoBehaviour, IPlayerInputActions
     {
         controlLayers.Add(layer, p);
 
-        currentlyControlling = GetHighestLayer();
-        currentlyControlling.Initialize();
+        InitializeTopLevel();
     }
 
     /// <summary>
@@ -31,12 +30,26 @@ public class PersistentPlayer : MonoBehaviour, IPlayerInputActions
     /// <param name="layer"></param>
     public void BreakControlLayer(byte layer)
     {
+        controlLayers[layer].DeInitialize();
         controlLayers.Remove(layer);
+
+        InitializeTopLevel();
+    }
+
+    void InitializeTopLevel()
+    {
+        currentlyControlling = GetHighestLayer();
+        currentlyControlling.Initialize();
+
+        foreach (IPlayerInputActions i in controlLayers.Values)
+        {
+            if (i != currentlyControlling) i.DeInitialize();
+        }
     }
 
     IPlayerInputActions GetHighestLayer()
     {
-        return controlLayers[controlLayers.Keys.Max()];
+        return controlLayers[controlLayers.Keys.LastOrDefault()];
     }
 
     #region Input rerouting
@@ -108,6 +121,11 @@ public class PersistentPlayer : MonoBehaviour, IPlayerInputActions
     public void Initialize()
     {
         // should not be initialized
+    }
+
+    public void DeInitialize()
+    {
+
     }
     #endregion
 }
