@@ -33,6 +33,7 @@ public class MapNavigator : MonoBehaviour
             default: break;
         }
 
+		LeanTween.cancel(mapCam.gameObject);
         LeanTween.move(mapCam.gameObject, selectedLevel.transform.position, Vector2.Distance(mapCam.transform.position, selectedLevel.transform.position) / 3.0f);
         return Vector2.Distance(mapCam.transform.position, selectedLevel.transform.position) / 3.0f;
         //mapCam.transform.position = selectedLevel.transform.position;
