@@ -66,11 +66,12 @@ public class EnemySpawner : MonoBehaviour
             }
 
             // Every thenth wave we spawn the delivery truck and wait until its finished
+            /*
             if (currentWave % deliveryTruckWave == 0) {
                 yield return new WaitForSeconds(8f);
                 truckScript = Instantiate(deliveryTruck).GetComponent<DeliveryTruck>();
                 yield return new WaitUntil(() => truckScript.isFinished == true);
-            }
+            }*/
 
             // Add a small amount of delay between each Wave
             yield return new WaitForSeconds(waveDelay);
