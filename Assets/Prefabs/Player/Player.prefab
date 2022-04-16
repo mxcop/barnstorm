@@ -268,9 +268,9 @@ MonoBehaviour:
   maxSpeed: 0.091
   friction: 14
   outOfBoundsRadius: 16
-  interactCheckRadius: 0.65
+  interactCheckRadius: 0.8
   cf:
-    useTriggers: 0
+    useTriggers: 1
     useLayerMask: 1
     useDepth: 0
     useOutsideDepth: 0

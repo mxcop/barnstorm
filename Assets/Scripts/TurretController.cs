@@ -24,7 +24,7 @@ public class TurretController : Inventory, Interactable
 
     [HideInInspector] public bool inUse { get; set; }
 
-    public void Interact()
+    public void Interact(int playerID)
     {
         Open();
         inUse = true;

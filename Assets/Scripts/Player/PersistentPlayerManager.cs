@@ -18,6 +18,7 @@ public class PersistentPlayerManager : MonoBehaviour
     {
         PersistentPlayer p = input.GetComponent<PersistentPlayer>();
         p.playerID = GetLowestAvailablePlayerID();
+        p.controlsProfile = GetProfile(input.devices[0].displayName);
         playerList.Add(p.playerID, p);
     }
 
@@ -51,5 +52,24 @@ public class PersistentPlayerManager : MonoBehaviour
             player = null;
             return false;
         }
+    }
+
+    private ControlsProfile GetProfile(string deviceName)
+    {
+        string profileName;
+
+        switch (deviceName)
+        {
+            case "Keyboard": profileName = "Keyboard Profile"; break;
+            case "Xbox Controller": profileName = "Xbox Profile"; break;
+            case "Playstation Controller": profileName = "Playstation Profile"; break;
+            default:
+                Debug.LogError($"Unknown device detected ({ deviceName })");
+                profileName = "Keyboard Profile";
+                break;
+        }
+
+        // Fetch the controller profile from the resources folder.
+        return Resources.Load<ControlsProfile>("Controller Profiles/" + profileName);
     }
 }

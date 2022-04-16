@@ -6,8 +6,10 @@ using Cinemachine;
 
 public class Player : PlayerInventory, IPlayerInputActions
 {
+    bool isInitialized;
+
     bool isBeingControlled;
-    [SerializeField] int playerID;
+    public int playerID;
     [SerializeField] bool deleteIfNotControlled;
 
     [Header("Movement")]
@@ -50,19 +52,29 @@ public class Player : PlayerInventory, IPlayerInputActions
     {
         isBeingControlled = true;
 
-        base.Awake();
-        tools = Instantiate(playerToolsPrefab).GetComponent<PlayerTools>();
-        tools.plr = this;
-        tools.playerAnim = anim;
-        isInteracting = false;
-
-        FindObjectOfType<CinemachineTargetGroup>()?.AddMember(gameObject.transform, 1f, 1.25f);
-
-        gui.SetReady(false);
-        LobbyManager.OnGameStart += () =>
+        if (!isInitialized)
         {
+            isInitialized = true;
+
+            base.Awake();
+            tools = Instantiate(playerToolsPrefab).GetComponent<PlayerTools>();
+            tools.plr = this;
+            tools.playerAnim = anim;
+            isInteracting = false;
+
+            FindObjectOfType<CinemachineTargetGroup>()?.AddMember(gameObject.transform, 1f, 1.25f);
+
             gui.SetReady(false);
-        };
+            LobbyManager.OnGameStart += () =>
+            {
+                gui.SetReady(false);
+            };
+        }
+    }
+
+    public void DeInitialize()
+    {
+        inputMove = Vector2.zero;
     }
 
     private void Start()
@@ -77,7 +89,7 @@ public class Player : PlayerInventory, IPlayerInputActions
         {
             if (PersistentPlayerManager.main.TryGetPlayer(playerID, out PersistentPlayer p))
             {
-                p.SetCurrentlyControlling(this);                
+                p.SetControlLayer(this, 0);                
             }
             else return;
         }
@@ -201,7 +213,7 @@ public class Player : PlayerInventory, IPlayerInputActions
         {
             if (CheckForInteractable())
             {
-                currentInteraction.Interact();
+                currentInteraction.Interact(playerID);
                 isInteracting = true;
                 currentInventory = currentInteraction as Inventory;
             }
@@ -252,7 +264,7 @@ public class Player : PlayerInventory, IPlayerInputActions
 
         if (isInteracting == false && CheckForInteractable())
         {
-            currentInteraction.Interact();
+            currentInteraction.Interact(playerID);
             isInteracting = true;
             currentInventory = currentInteraction as Inventory;
         }

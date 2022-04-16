@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public interface IPlayerInputActions
 {
     public void Initialize();
+    public void DeInitialize();
 
     // Stick
     public void Input_LStick(InputAction.CallbackContext c);

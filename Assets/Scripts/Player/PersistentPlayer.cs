@@ -2,16 +2,54 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Linq;
 
 public class PersistentPlayer : MonoBehaviour, IPlayerInputActions
 {
     public int playerID;
     public IPlayerInputActions currentlyControlling { get; private set; }
+    SortedDictionary<byte, IPlayerInputActions> controlLayers = new SortedDictionary<byte, IPlayerInputActions>();
 
-    public void SetCurrentlyControlling(IPlayerInputActions p)
+    public ControlsProfile controlsProfile;
+
+    /// <summary>
+    /// Sets the specific control layer to the given IPlayerInputActions interface
+    /// </summary>
+    /// <param name="p"></param>
+    /// <param name="layer"></param>
+    public void SetControlLayer(IPlayerInputActions p, byte layer)
     {
-        currentlyControlling = p;
-        p.Initialize();
+        controlLayers.Add(layer, p);
+
+        InitializeTopLevel();
+    }
+
+    /// <summary>
+    /// Removes control from the IPlayerInputActions on this layer
+    /// </summary>
+    /// <param name="layer"></param>
+    public void BreakControlLayer(byte layer)
+    {
+        controlLayers[layer].DeInitialize();
+        controlLayers.Remove(layer);
+
+        InitializeTopLevel();
+    }
+
+    void InitializeTopLevel()
+    {
+        currentlyControlling = GetHighestLayer();
+        currentlyControlling.Initialize();
+
+        foreach (IPlayerInputActions i in controlLayers.Values)
+        {
+            if (i != currentlyControlling) i.DeInitialize();
+        }
+    }
+
+    IPlayerInputActions GetHighestLayer()
+    {
+        return controlLayers[controlLayers.Keys.LastOrDefault()];
     }
 
     #region Input rerouting
@@ -83,6 +121,11 @@ public class PersistentPlayer : MonoBehaviour, IPlayerInputActions
     public void Initialize()
     {
         // should not be initialized
+    }
+
+    public void DeInitialize()
+    {
+
     }
     #endregion
 }

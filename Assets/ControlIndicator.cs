@@ -41,16 +41,17 @@ public class ControlIndicator : MonoBehaviour
     /// <param name="state">The state to change to.</param>
     /// <param name="player">The player who is changing it.</param>
     public void ChangeState(bool state, Player player)
-    {
-        if (showingHint == false && state == true)
+    {        
+
+        if (showingHint == false && state == true && PersistentPlayerManager.main.TryGetPlayer(player.playerID, out PersistentPlayer p))
         {
             Sprite sprite = button switch
             {
-                ButtonProfile.Open => player.profile.open,
-                ButtonProfile.Interact => player.profile.interact,
-                ButtonProfile.Drop => player.profile.drop,
-                ButtonProfile.Swap => player.profile.swap,
-                ButtonProfile.Split => player.profile.split,
+                ButtonProfile.Open => p.controlsProfile.open,
+                ButtonProfile.Interact => p.controlsProfile.interact,
+                ButtonProfile.Drop => p.controlsProfile.drop,
+                ButtonProfile.Swap => p.controlsProfile.swap,
+                ButtonProfile.Split => p.controlsProfile.split,
                 _ => null
             };
 
