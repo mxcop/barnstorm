@@ -8,11 +8,16 @@ public class StageManager : MonoBehaviour
     public static StageManager current;
     public LevelSettings currentSettings { get; private set; }
 
-    public UnityEvent OnStartGameplay;
+    public UnityEvent<LevelSettings> OnStartGameplay;
 
     private void Awake()
     {
         current = this;
+    }
+
+    private void Start()
+    {
+        StartGameplay();
     }
 
     public void Setup(LevelSettings settings)
@@ -23,6 +28,7 @@ public class StageManager : MonoBehaviour
 
     public void StartGameplay()
     {
-        OnStartGameplay?.Invoke();
+        Debug.Log("Started gameplay of level " + currentSettings.l_displayName);
+        OnStartGameplay?.Invoke(currentSettings);
     }
 }

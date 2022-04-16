@@ -11,13 +11,9 @@ public class WaveManager : MonoBehaviour
     private const float groupRadius = 30;
     private float totalWeight = 0;
 
-    void Start() {
-        //LobbyManager.OnGameStart += OnGameStarted;
-        OnGameStarted();
-    }
-
-    void OnGameStarted() {
-        StartCoroutine(WaveLoop());
+    public void StartWaves(LevelSettings l)
+    {
+        level = l;
     }
 
     IEnumerator WaveLoop() {
