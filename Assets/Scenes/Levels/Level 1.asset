@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcdf5f51e3c561d4f8a374e4b1c1ada7, type: 3}
+  m_Name: Level 1
+  m_EditorClassIdentifier: 
+  l_sceneName: Level 1
+  waves:
+  - enemies:
+    - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
+      weight: 10
+      dropRange: {x: 0, y: 0}
+    groups: 2
+    groupSize: {x: 1, y: 2}
+    groupDelay: {x: 1, y: 2}
+    groupRadius: 2
+    waveDelay: 2
+  - enemies:
+    - prefab: {fileID: 4120170886141080293, guid: 41363e8c54b9f42428cb01783712d6aa, type: 3}
+      weight: 10
+      dropRange: {x: 0, y: 0}
+    groups: 2
+    groupSize: {x: 1, y: 2}
+    groupDelay: {x: 1, y: 2}
+    groupRadius: 2
+    waveDelay: 2
+  - enemies:
+    - prefab: {fileID: 2872876722718246463, guid: 7fe20ad794615504883896125fbc71fc, type: 3}
+      weight: 10
+      dropRange: {x: 0, y: 0}
+    groups: 2
+    groupSize: {x: 1, y: 2}
+    groupDelay: {x: 1, y: 2}
+    groupRadius: 2
+    waveDelay: 2

@@ -31,10 +31,10 @@ public class DeliveryTruck : MonoBehaviour
     private Animator animator;
 
     private void Start() {
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
 
-        //GeneratedDefaultValues();
-        AssignTableWeights();
+        //GeneratedDefaultValues(); 
+       // AssignTableWeights();
 
         // Fill every crate with a random item
         for (int i = 0; i < crates.Length; i++) {
@@ -55,10 +55,10 @@ public class DeliveryTruck : MonoBehaviour
             coverOn = true;
 
             // If all the crates are empty start leaving
-            if (AllCratesEmpty()) {
-                animator.SetTrigger("Leave");
-                colliderObject.SetActive(true);
-            }
+           // if (AllCratesEmpty()) {
+           //     animator.SetTrigger("Leave");
+           //     colliderObject.SetActive(true);
+           // }
         }
     }
 
