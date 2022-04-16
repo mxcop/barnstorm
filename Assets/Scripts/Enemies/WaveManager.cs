@@ -8,11 +8,12 @@ public class WaveManager : MonoBehaviour
     private LevelSettings.Wave currentWave { get { return level.waves[currentWaveIndex]; } }
     private int currentWaveIndex = 0;
 
-    private const float groupRadius = 40;
+    private const float groupRadius = 30;
     private float totalWeight = 0;
 
     void Start() {
-        LobbyManager.OnGameStart += OnGameStarted;
+        //LobbyManager.OnGameStart += OnGameStarted;
+        OnGameStarted();
     }
 
     void OnGameStarted() {
@@ -32,13 +33,6 @@ public class WaveManager : MonoBehaviour
                 totalWeight += currentWave.enemies[i].weight;
                 currentWave.enemies[i].dropRange.y = totalWeight;
             }
-
-            // Spawn The deliveryTruck if the wave has it enabled
-            //if (currentWave.hasDelivery) {
-                //yield return new WaitForSeconds(8f);
-                //truckScript = Instantiate(deliveryTruck).GetComponent<DeliveryTruck>();
-                //yield return new WaitUntil(() => truckScript.isFinished == true);
-            //}
 
             // Add a small amount of delay between each Wave
             yield return new WaitForSeconds(currentWave.waveDelay);
@@ -66,14 +60,14 @@ public class WaveManager : MonoBehaviour
         // indicator.transform.rotation = Quaternion.FromToRotation(Vector3.down, direction);
 
         // Calculate the groupPoint from the direction
-        Vector2 groupPoint = direction * groupRadius;
+        Vector2 groupPoint = direction.normalized * groupRadius;
 
         // Random group size
         int randomSize = Random.Range((int)currentWave.groupSize.x, (int)currentWave.groupSize.y);
 
         // Spawn the generated Group
         for (int i = 0; i < randomSize; i++) {
-            Instantiate(RandomEnemy().prefab, groupPoint + (Random.insideUnitCircle * Random.Range(0, groupRadius)), Quaternion.identity);
+            Instantiate(RandomEnemy().prefab, groupPoint + (Random.insideUnitCircle * Random.Range(0, 3)), Quaternion.identity);
         }
     }
 

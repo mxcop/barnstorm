@@ -7,7 +7,7 @@ public class EnemyPathFinding : MonoBehaviour
     [Header("Collision Map")]
     [SerializeField] [Tooltip("The collison layer that the enemies will avoid")] static LayerMask collisionLayer = 1;
     [SerializeField] [Tooltip("The amount of times 1 tile will be itterated uppon")] static int stepSize = 2;
-    [SerializeField] [Tooltip("The radius the algorithm will work with from 0,0")] static int collisionRange = 42;
+    [SerializeField] [Tooltip("The radius the algorithm will work with from 0,0")] static int collisionRange = 40;
 
     static int[][] collisionMap;
 

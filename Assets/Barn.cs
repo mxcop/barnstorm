@@ -38,7 +38,7 @@ public class Barn : MonoBehaviour
             storedFood -= Mathf.FloorToInt(enemy.hunger);
             enemy.hunger = 0;
             enemy.state = EnemyBase.EnemyState.eating;
-            UpdateSprite();
+            //UpdateSprite();
 
             // Gameover.
             if (storedFood <= 0) Gameover();
