@@ -161,6 +161,7 @@ GameObject:
   - component: {fileID: 5912038434941331341}
   - component: {fileID: 5912038434941331340}
   - component: {fileID: 5937598165091585514}
+  - component: {fileID: 2263295406709109754}
   - component: {fileID: 3704382430957394812}
   - component: {fileID: -743486783931585977}
   - component: {fileID: 6498774868101192897}
@@ -289,6 +290,36 @@ MonoBehaviour:
   isReady: 0
   animDir: 2
   playerToolsPrefab: {fileID: 5482722391119134417, guid: a81ffa6451ec4a8459dd08e831d59453, type: 3}
+--- !u!114 &2263295406709109754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5912038434941331331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79c22f040828a3e4bbb4b2a336f89d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  containerToUse: 0
+  playerInventory: {fileID: 5937598165091585514}
+  inventory: {fileID: 0}
+  cf:
+    useTriggers: 1
+    useLayerMask: 1
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 2048
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  range: 1.2
 --- !u!95 &3704382430957394812
 Animator:
   serializedVersion: 3
