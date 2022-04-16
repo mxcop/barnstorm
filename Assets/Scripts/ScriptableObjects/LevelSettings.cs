@@ -5,8 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/LevelSettings", order = 1)]
 public class LevelSettings : ScriptableObject
 {
-    [Header("Load settings")]
+    [Header("Level select settings")]
     public string l_sceneName;
+    public string l_displayName;
+    public string l_description;
 
     //[Header("Level goals")]
 
