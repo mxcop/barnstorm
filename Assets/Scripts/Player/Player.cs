@@ -203,22 +203,27 @@ public class Player : PlayerInventory, IPlayerInputActions
         {
             if (CheckForInteractable())
             {
-                currentInteraction.Interact(playerID);
                 isInteracting = true;
                 currentInventory = currentInteraction as Inventory;
             }
         }
         else if (currentInventory != null)
         {
-            currentInventory.QuickSplit(this, selected);
+            currentInventory.QuickSplit(this, slot);
         }
+
+        if(currentInteraction != null)
+        {
+            currentInteraction.Interact(this);
+        }
+        
     }
 
     public void Input_BEast(CallbackContext c)
     {
         if (c.phase != InputActionPhase.Performed) return;
 
-        if (container.PullItem(selected, out var item))
+        if (container.PullItem(slot, out var item))
         {
             DroppedItem.DropUp(item.item, item.num, transform.position);
         }
@@ -254,11 +259,16 @@ public class Player : PlayerInventory, IPlayerInputActions
 
         if (isInteracting == false && CheckForInteractable())
         {
-            currentInteraction.Interact(playerID);
+            currentInteraction.Interact(this);
             isInteracting = true;
             currentInventory = currentInteraction as Inventory;
         }
-        else if (currentInventory != null) currentInventory.QuickSwap(this, selected);
+        else if (currentInventory != null) currentInventory.QuickSwap(this, slot);
+
+        if (currentInteraction != null)
+        {
+            currentInteraction.Interact(this);
+        }
     }
     #endregion
 
@@ -289,7 +299,7 @@ public class Player : PlayerInventory, IPlayerInputActions
     {
         if (c.phase == InputActionPhase.Performed)
         {
-            Input_NumberSelect((int)Mathf.Repeat(selected + 1, container.size));
+            Input_NumberSelect((int)Mathf.Repeat(slot + 1, container.size));
         }
     }
 
@@ -297,7 +307,7 @@ public class Player : PlayerInventory, IPlayerInputActions
     {
         if (c.phase == InputActionPhase.Performed)
         {
-            Input_NumberSelect((int)Mathf.Repeat(selected - 1, container.size));
+            Input_NumberSelect((int)Mathf.Repeat(slot - 1, container.size));
         }
     }
     #endregion

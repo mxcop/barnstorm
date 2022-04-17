@@ -16,12 +16,12 @@ public class MapTerminal : MonoBehaviour, Interactable, IPlayerInputActions
         inUse = false;
     }
 
-    public void Interact(int playerID)
+    public void Interact(Player player)
     {
         if (currentController == null)
         {
             inUse = true;
-            if (PersistentPlayerManager.main.TryGetPlayer(playerID, out PersistentPlayer _c))
+            if (PersistentPlayerManager.main.TryGetPlayer(player.playerID, out PersistentPlayer _c))
             {
                 currentController = _c;
                 currentController.SetControlLayer(this, controlLayer);

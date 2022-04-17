@@ -88,7 +88,7 @@ public class PlayerTools : MonoBehaviour
         //if (plr.container.ContainsAt(typeof(Hoe), plr.selected)) return ItemAction.Till;
         //else return ItemAction.None;
 
-        if (plr.container.Peek(plr.selected, out it))
+        if (plr.container.Peek(plr.slot, out it))
         {
             return true;
         }
@@ -143,7 +143,7 @@ public class PlayerTools : MonoBehaviour
                         {
                             if (CropManager.current.PlaceCrop(item.useAction_cropType, vec.x, vec.y))
                             {
-                                plr.container.RemoveItem(plr.selected, 1);
+                                plr.container.RemoveItem(plr.slot, 1);
                             }
                         }
                         break;

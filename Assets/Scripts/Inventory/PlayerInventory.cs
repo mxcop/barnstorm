@@ -10,7 +10,7 @@ public class PlayerInventory : MonoBehaviour
     [Space]
 
     [HideInInspector] public Container<Item> container;
-    [HideInInspector] public int selected;
+    [HideInInspector] public int slot;
 
     protected PlayerInventoryGUI gui;
 
@@ -47,7 +47,7 @@ public class PlayerInventory : MonoBehaviour
     /// <param name="slot">The slot to select.</param>
     public void SelectSlot(int slot)
     {
-        selected = slot;
+        this.slot = slot;
         gui.UpdateSelection(slot);
     }
 }
