@@ -19,90 +19,198 @@ MonoBehaviour:
   - enemies:
     - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
       weight: 10
-      dropRange: {x: 0, y: 0}
+      dropRange: {x: 0, y: 10}
     groups: 2
     groupSize: {x: 1, y: 2}
     groupDelay: {x: 1, y: 2}
     groupRadius: 2
-    waveDelay: 2
+    waveDelay: 7
   - enemies:
     - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
       weight: 10
-      dropRange: {x: 0, y: 0}
+      dropRange: {x: 0, y: 10}
     groups: 2
     groupSize: {x: 1, y: 3}
     groupDelay: {x: 1, y: 2}
     groupRadius: 2
-    waveDelay: 2
+    waveDelay: 7
   - enemies:
     - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
       weight: 10
-      dropRange: {x: 0, y: 0}
+      dropRange: {x: 0, y: 10}
     groups: 2
     groupSize: {x: 1, y: 3}
     groupDelay: {x: 1, y: 2}
     groupRadius: 2
-    waveDelay: 3
-  - enemies:
-    - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
-      weight: 10
-      dropRange: {x: 0, y: 0}
-    groups: 2
-    groupSize: {x: 2, y: 3}
-    groupDelay: {x: 1, y: 2}
-    groupRadius: 2
-    waveDelay: 3
-  - enemies:
-    - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
-      weight: 10
-      dropRange: {x: 0, y: 0}
-    groups: 3
-    groupSize: {x: 1, y: 3}
-    groupDelay: {x: 1, y: 2}
-    groupRadius: 2
-    waveDelay: 4
-  - enemies:
-    - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
-      weight: 10
-      dropRange: {x: 0, y: 0}
-    groups: 3
-    groupSize: {x: 2, y: 3}
-    groupDelay: {x: 1, y: 3}
-    groupRadius: 2
-    waveDelay: 4
-  - enemies:
-    - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
-      weight: 10
-      dropRange: {x: 0, y: 0}
-    groups: 4
-    groupSize: {x: 2, y: 3}
-    groupDelay: {x: 2, y: 3}
-    groupRadius: 2.5
-    waveDelay: 5
-  - enemies:
-    - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
-      weight: 10
-      dropRange: {x: 0, y: 0}
-    groups: 4
-    groupSize: {x: 3, y: 4}
-    groupDelay: {x: 2, y: 3}
-    groupRadius: 2.5
-    waveDelay: 6
-  - enemies:
-    - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
-      weight: 10
-      dropRange: {x: 0, y: 0}
-    groups: 5
-    groupSize: {x: 3, y: 4}
-    groupDelay: {x: 2, y: 3}
-    groupRadius: 2.5
-    waveDelay: 7.5
-  - enemies:
-    - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
-      weight: 10
-      dropRange: {x: 0, y: 0}
-    groups: 5
-    groupSize: {x: 3, y: 4}
-    groupDelay: {x: 1, y: 3}
-    groupRadius: 2.5
     waveDelay: 8
+  - enemies:
+    - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
+      weight: 10
+      dropRange: {x: 0, y: 10}
+    groups: 2
+    groupSize: {x: 2, y: 3}
+    groupDelay: {x: 1, y: 2}
+    groupRadius: 2
+    waveDelay: 8
+  - enemies:
+    - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
+      weight: 10
+      dropRange: {x: 0, y: 10}
+    groups: 3
+    groupSize: {x: 1, y: 3}
+    groupDelay: {x: 1, y: 2}
+    groupRadius: 2
+    waveDelay: 9
+  - enemies:
+    - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
+      weight: 10
+      dropRange: {x: 0, y: 10}
+    groups: 3
+    groupSize: {x: 2, y: 3}
+    groupDelay: {x: 1, y: 3}
+    groupRadius: 2
+    waveDelay: 9
+  - enemies:
+    - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
+      weight: 10
+      dropRange: {x: 0, y: 10}
+    groups: 4
+    groupSize: {x: 2, y: 3}
+    groupDelay: {x: 2, y: 3}
+    groupRadius: 2.5
+    waveDelay: 10
+  - enemies:
+    - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
+      weight: 10
+      dropRange: {x: 0, y: 10}
+    groups: 4
+    groupSize: {x: 3, y: 4}
+    groupDelay: {x: 2, y: 3}
+    groupRadius: 2.5
+    waveDelay: 11
+  - enemies:
+    - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
+      weight: 10
+      dropRange: {x: 0, y: 10}
+    groups: 5
+    groupSize: {x: 3, y: 4}
+    groupDelay: {x: 2, y: 3}
+    groupRadius: 2.5
+    waveDelay: 12.5
+  - enemies:
+    - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
+      weight: 10
+      dropRange: {x: 0, y: 10}
+    groups: 5
+    groupSize: {x: 3, y: 4}
+    groupDelay: {x: 1, y: 3}
+    groupRadius: 3
+    waveDelay: 13
+  - enemies:
+    - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
+      weight: 10
+      dropRange: {x: 0, y: 10}
+    groups: 6
+    groupSize: {x: 2, y: 4}
+    groupDelay: {x: 2, y: 4}
+    groupRadius: 3
+    waveDelay: 15
+  - enemies:
+    - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
+      weight: 10
+      dropRange: {x: 0, y: 10}
+    groups: 6
+    groupSize: {x: 2, y: 4}
+    groupDelay: {x: 2, y: 4}
+    groupRadius: 3
+    waveDelay: 16
+  - enemies:
+    - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
+      weight: 10
+      dropRange: {x: 0, y: 10}
+    groups: 6
+    groupSize: {x: 3, y: 4}
+    groupDelay: {x: 3, y: 4}
+    groupRadius: 3
+    waveDelay: 16
+  - enemies:
+    - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
+      weight: 10
+      dropRange: {x: 0, y: 10}
+    groups: 5
+    groupSize: {x: 4, y: 5}
+    groupDelay: {x: 4, y: 5}
+    groupRadius: 4
+    waveDelay: 16
+  - enemies:
+    - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
+      weight: 100
+      dropRange: {x: 0, y: 10}
+    - prefab: {fileID: 4120170886141080293, guid: 41363e8c54b9f42428cb01783712d6aa, type: 3}
+      weight: 15
+      dropRange: {x: 0, y: 10}
+    groups: 4
+    groupSize: {x: 4, y: 5}
+    groupDelay: {x: 4, y: 5}
+    groupRadius: 4
+    waveDelay: 15
+  - enemies:
+    - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
+      weight: 100
+      dropRange: {x: 0, y: 10}
+    - prefab: {fileID: 4120170886141080293, guid: 41363e8c54b9f42428cb01783712d6aa, type: 3}
+      weight: 15
+      dropRange: {x: 0, y: 10}
+    groups: 5
+    groupSize: {x: 3, y: 5}
+    groupDelay: {x: 3, y: 5}
+    groupRadius: 4
+    waveDelay: 15
+  - enemies:
+    - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
+      weight: 100
+      dropRange: {x: 0, y: 10}
+    - prefab: {fileID: 4120170886141080293, guid: 41363e8c54b9f42428cb01783712d6aa, type: 3}
+      weight: 20
+      dropRange: {x: 0, y: 10}
+    groups: 5
+    groupSize: {x: 3, y: 5}
+    groupDelay: {x: 3, y: 5}
+    groupRadius: 4
+    waveDelay: 15
+  - enemies:
+    - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
+      weight: 100
+      dropRange: {x: 0, y: 10}
+    - prefab: {fileID: 4120170886141080293, guid: 41363e8c54b9f42428cb01783712d6aa, type: 3}
+      weight: 25
+      dropRange: {x: 0, y: 10}
+    groups: 6
+    groupSize: {x: 3, y: 4}
+    groupDelay: {x: 3, y: 5}
+    groupRadius: 4
+    waveDelay: 15
+  - enemies:
+    - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
+      weight: 100
+      dropRange: {x: 0, y: 10}
+    - prefab: {fileID: 4120170886141080293, guid: 41363e8c54b9f42428cb01783712d6aa, type: 3}
+      weight: 25
+      dropRange: {x: 0, y: 10}
+    groups: 6
+    groupSize: {x: 3, y: 5}
+    groupDelay: {x: 3, y: 5}
+    groupRadius: 4
+    waveDelay: 15
+  - enemies:
+    - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
+      weight: 100
+      dropRange: {x: 0, y: 10}
+    - prefab: {fileID: 4120170886141080293, guid: 41363e8c54b9f42428cb01783712d6aa, type: 3}
+      weight: 30
+      dropRange: {x: 0, y: 10}
+    groups: 7
+    groupSize: {x: 2, y: 5}
+    groupDelay: {x: 2, y: 5}
+    groupRadius: 4
+    waveDelay: 15

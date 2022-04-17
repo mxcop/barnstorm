@@ -268,7 +268,7 @@ MonoBehaviour:
   movementSpeed: 6
   maxSpeed: 0.091
   friction: 14
-  outOfBoundsRadius: 16
+  outOfBoundsRadius: 26
   interactCheckRadius: 0.8
   cf:
     useTriggers: 1
