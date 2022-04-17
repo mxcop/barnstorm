@@ -46,6 +46,7 @@ public class Player : PlayerInventory, IPlayerInputActions
     protected override void Awake()
     {
         anim = GetComponent<Animator>();
+        transform.localScale = Vector2.zero;
     }
 
     public void Initialize()
@@ -55,6 +56,7 @@ public class Player : PlayerInventory, IPlayerInputActions
         if (!isInitialized)
         {
             isInitialized = true;
+            gameObject.LeanScale(Vector3.one, 0.6f).setEaseOutBounce();
 
             base.Awake();
             tools = Instantiate(playerToolsPrefab).GetComponent<PlayerTools>();
@@ -75,11 +77,6 @@ public class Player : PlayerInventory, IPlayerInputActions
     public void DeInitialize()
     {
         inputMove = Vector2.zero;
-    }
-
-    private void Start()
-    {
-        if (deleteIfNotControlled && !isBeingControlled) Destroy(gameObject);
     }
 
     private void Update()

@@ -10,10 +10,14 @@ public class PersistentPlayerManager : MonoBehaviour
     Dictionary<int, PersistentPlayer> playerList = new Dictionary<int, PersistentPlayer>();
     public int PlayerCount => playerList.Count;
 
+    Scene persistentScene;
+
     private void Awake()
     {
         main = this;
         SceneManager.sceneUnloaded += (s) => ClearAllControlLayers();
+
+        persistentScene = SceneManager.GetSceneByName("Persistent Scene");
     }
 
     public void OnPlayerJoined(PlayerInput input)
@@ -22,6 +26,8 @@ public class PersistentPlayerManager : MonoBehaviour
         p.playerID = GetLowestAvailablePlayerID();
         p.controlsProfile = GetProfile(input.devices[0].displayName);
         playerList.Add(p.playerID, p);
+
+        SceneManager.MoveGameObjectToScene(p.gameObject, persistentScene);
     }
 
     public void OnPlayerLeft(PlayerInput input)
