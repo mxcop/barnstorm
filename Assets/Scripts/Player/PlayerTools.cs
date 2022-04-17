@@ -102,7 +102,7 @@ public class PlayerTools : MonoBehaviour
     /// <param name="dir"></param>
     public void ToolAction()
     {
-        if (!plr.isInBuilding && LobbyManager.hasStarted)
+        if (!plr.isInBuilding)
         {
             Item item;
             if (GetHeldItem(out item))
@@ -125,7 +125,7 @@ public class PlayerTools : MonoBehaviour
                         }
                         
                         // push players and enemies away when hitting them with the hoe
-                        Collider2D[] colls = new Collider2D[3];
+                        /*Collider2D[] colls = new Collider2D[3];
                         if (Physics2D.OverlapCircle(pos, till_pushRadius, till_pushCf, colls) > 0)
                         {
                             for(int i = 0; i< colls.Length; i++)
@@ -133,7 +133,7 @@ public class PlayerTools : MonoBehaviour
                                 Collider2D c = colls[i];
                                 if(c != null) c.GetComponent<Rigidbody2D>().AddForce((c.transform.position - plr.transform.position).normalized * till_pushForce);
                             }
-                        }
+                        }*/
 
                         break;
 
@@ -141,7 +141,7 @@ public class PlayerTools : MonoBehaviour
                         Vector2Int vec = GetPlayerOffsetPos(plr.animDir);
                         if (CropManager.current.TileIsOfType(TileType.Tilled, vec.x, vec.y))
                         {
-                            if (CropManager.current.PlaceCrop((item as Food).cropType, vec.x, vec.y))
+                            if (CropManager.current.PlaceCrop(item.useAction_cropType, vec.x, vec.y))
                             {
                                 plr.container.RemoveItem(plr.selected, 1);
                             }

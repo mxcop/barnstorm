@@ -13,22 +13,22 @@ TextureImporter:
     second: Hoe
   - first:
       213: -123238161473367849
-    second: All items_3
+    second: Corn_seeds
   - first:
       213: 9124856216509703372
-    second: All items_4
+    second: Carrot_seeds
   - first:
       213: -1648857455878751160
-    second: All items_5
+    second: Pumpkin_seeds
   - first:
       213: -3900414357838514297
     second: Corn
   - first:
       213: -3736146023192578149
-    second: All items_7
+    second: Pepper_seeds
   - first:
       213: 2952979881545722372
-    second: All items_8
+    second: Potato_seeds
   - first:
       213: 5115550639011725568
     second: All items_9
@@ -474,7 +474,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -482,6 +482,111 @@ TextureImporter:
       bones: []
       spriteID: 481b525628e8b0490800000000000000
       internalID: -7778967240658538108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Corn_seeds
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d09b9a8b8b2a4ef0800000000000000
+      internalID: -123238161473367849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Carrot_seeds
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc46393226002ae70800000000000000
+      internalID: 9124856216509703372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pumpkin_seeds
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84cb71141e41e19e0800000000000000
+      internalID: -1648857455878751160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pepper_seeds
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b973e92acfa862cc0800000000000000
+      internalID: -3736146023192578149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Potato_seeds
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40a68648e871bf820800000000000000
+      internalID: 2952979881545722372
       vertices: []
       indices: 
       edges: []

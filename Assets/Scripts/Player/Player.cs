@@ -10,7 +10,6 @@ public class Player : PlayerInventory, IPlayerInputActions
 
     bool isBeingControlled;
     public int playerID;
-    [SerializeField] bool deleteIfNotControlled;
 
     [Header("Movement")]
     [SerializeField] float movementSpeed;
@@ -25,8 +24,6 @@ public class Player : PlayerInventory, IPlayerInputActions
     [HideInInspector] public ControlsProfile profile;
     [HideInInspector] public bool isInteracting;
     [HideInInspector] public bool isInBuilding;
-
-    [HideInInspector] public bool isReady = false;
 
     private Animator anim;
     public PlayerAngle animDir;
@@ -66,11 +63,7 @@ public class Player : PlayerInventory, IPlayerInputActions
 
             FindObjectOfType<CinemachineTargetGroup>()?.AddMember(gameObject.transform, 1f, 1.25f);
 
-            gui.SetReady(false);
-            LobbyManager.OnGameStart += () =>
-            {
-                gui.SetReady(false);
-            };
+            //gui.SetReady(false);
         }
     }
 
@@ -120,7 +113,7 @@ public class Player : PlayerInventory, IPlayerInputActions
         }
 
         // Prevent player out of bounds
-        transform.position = Vector2.ClampMagnitude(transform.position, outOfBoundsRadius);
+        transform.localPosition = Vector2.ClampMagnitude(transform.localPosition, outOfBoundsRadius);
     }
 
     private void FixedUpdate()
