@@ -264,7 +264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7188af9fee169e74197031695d220ba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelSelectSceneName: Level 1
+  levelSelectSceneName: Lobby scene
 --- !u!4 &1166955066
 Transform:
   m_ObjectHideFlags: 0

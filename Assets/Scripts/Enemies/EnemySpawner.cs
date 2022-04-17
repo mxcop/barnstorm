@@ -42,7 +42,6 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LobbyManager.OnGameStart += OnGameStarted;
     }
 
     void OnGameStarted()

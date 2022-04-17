@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7983447279410139019
+--- !u!1 &2463005729711218515
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7515837015069401751}
-  - component: {fileID: 7618592410482247493}
+  - component: {fileID: 2641678219489391183}
+  - component: {fileID: 676892169659703518}
   m_Layer: 0
-  m_Name: Potato
+  m_Name: CornSeeds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7515837015069401751
+--- !u!4 &2641678219489391183
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7983447279410139019}
+  m_GameObject: {fileID: 2463005729711218515}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,23 +31,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7618592410482247493
+--- !u!114 &676892169659703518
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7983447279410139019}
+  m_GameObject: {fileID: 2463005729711218515}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e94a4d26b6b08644949b55959a16663, type: 3}
+  m_Script: {fileID: 11500000, guid: ebce074be953d5448961083531d827d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite: {fileID: 6689160971107792810, guid: 3703f38d2ad9ca247bfd64177e9a999f, type: 3}
+  sprite: {fileID: -123238161473367849, guid: 3703f38d2ad9ca247bfd64177e9a999f, type: 3}
   useAction: 1
+  useAction_cropType: 2
   maximumStack: 999
-  cropType: 0
-  nutrition: 3
-  speed: 8.4
-  projectile: {fileID: 7069016472490964998, guid: 6a778cf308bf6ed438a162a2539f8b6e, type: 3}
-  destroyObject: {fileID: 5577374176780847287, guid: ba950cf03fb3b4e41baa60afcc127fec, type: 3}

@@ -14,6 +14,7 @@ public class WaveManager : MonoBehaviour
     public void StartWaves(LevelSettings l)
     {
         level = l;
+        StartCoroutine(WaveLoop());
     }
 
     IEnumerator WaveLoop() {

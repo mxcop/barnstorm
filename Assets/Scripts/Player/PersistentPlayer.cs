@@ -19,7 +19,7 @@ public class PersistentPlayer : MonoBehaviour, IPlayerInputActions
     /// <param name="layer"></param>
     public void SetControlLayer(IPlayerInputActions p, byte layer)
     {
-        controlLayers.Add(layer, p);
+        if (!controlLayers.ContainsKey(layer)) controlLayers.Add(layer, p);
 
         InitializeTopLevel();
     }
@@ -30,10 +30,13 @@ public class PersistentPlayer : MonoBehaviour, IPlayerInputActions
     /// <param name="layer"></param>
     public void BreakControlLayer(byte layer)
     {
-        controlLayers[layer].DeInitialize();
-        controlLayers.Remove(layer);
+        if (controlLayers.ContainsKey(layer))
+        {
+            controlLayers[layer].DeInitialize();
+            controlLayers.Remove(layer);
 
-        InitializeTopLevel();
+            InitializeTopLevel();
+        }
     }
 
     public void ClearControlLayers()

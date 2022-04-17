@@ -144,7 +144,7 @@ public class PlayerInventoryGUI : MonoBehaviour
     /// Set the player has ready or not.
     /// </summary>
     /// <param name="state">Whether they're ready.</param>
-    public void SetReady(bool state)
+    /*public void SetReady(bool state)
     {
         GameObject ready = transform.Find("ReadyPanel").Find("ReadyImage").gameObject;
         GameObject notready = transform.Find("ReadyPanel").Find("NotReadyImage").gameObject;
@@ -159,5 +159,5 @@ public class PlayerInventoryGUI : MonoBehaviour
             ready.SetActive(state);
             notready.SetActive(!state);
         }
-    }
+    }*/
 }

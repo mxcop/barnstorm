@@ -17,6 +17,10 @@ public class DeliveryTruck : MonoBehaviour
     private void Start() {
         animator = GetComponent<Animator>();
         players.AddRange(GameObject.FindGameObjectsWithTag("Player"));
+
+        for (int i = 0; i < players.Count; i++) {
+            players[i].transform.SetParent(transform);
+        }
     }
 
     private void FixedUpdate() {
