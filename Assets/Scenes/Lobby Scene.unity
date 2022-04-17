@@ -795,61 +795,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 497493124}
   m_CullTransparentMesh: 1
---- !u!1 &497495078
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 497495079}
-  - component: {fileID: 497495080}
-  m_Layer: 5
-  m_Name: Rivertown -> Old Tower
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &497495079
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 497495078}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1280568109}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.341, y: 0.529}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &497495080
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 497495078}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6177703740dae4439ccdd7198c486c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levelSettings: {fileID: 11400000, guid: f88ba2434b2db5a48b7dc121b282df95, type: 2}
-  isPassthrough: 1
-  surroundings:
-    top: {fileID: 2057308458}
-    right: {fileID: 0}
-    bottom: {fileID: 0}
-    left: {fileID: 1081853765}
 --- !u!1 &538002173
 GameObject:
   m_ObjectHideFlags: 0
@@ -1076,61 +1021,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80c7018ce29a9104891e3f479e988c76, type: 3}
---- !u!1 &735884606
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 735884607}
-  - component: {fileID: 735884608}
-  m_Layer: 5
-  m_Name: Old Tower -> Darkwood
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &735884607
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 735884606}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1280568109}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4.8438983, y: 1.779}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &735884608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 735884606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6177703740dae4439ccdd7198c486c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levelSettings: {fileID: 11400000, guid: f88ba2434b2db5a48b7dc121b282df95, type: 2}
-  isPassthrough: 1
-  surroundings:
-    top: {fileID: 0}
-    right: {fileID: 1022315905}
-    bottom: {fileID: 0}
-    left: {fileID: 0}
 --- !u!1 &858965298
 GameObject:
   m_ObjectHideFlags: 0
@@ -1491,61 +1381,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 13.3125, y: 0.30949688}
   m_EdgeRadius: 0
---- !u!1 &1022315903
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1022315904}
-  - component: {fileID: 1022315905}
-  m_Layer: 5
-  m_Name: Old Tower -> Darkwood
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1022315904
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1022315903}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1280568109}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.909, y: 1.779}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1022315905
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1022315903}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6177703740dae4439ccdd7198c486c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levelSettings: {fileID: 11400000, guid: f88ba2434b2db5a48b7dc121b282df95, type: 2}
-  isPassthrough: 1
-  surroundings:
-    top: {fileID: 0}
-    right: {fileID: 0}
-    bottom: {fileID: 1081853765}
-    left: {fileID: 735884608}
 --- !u!1 &1026421541
 GameObject:
   m_ObjectHideFlags: 0
@@ -1608,61 +1443,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!1 &1081853763
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1081853764}
-  - component: {fileID: 1081853765}
-  m_Layer: 5
-  m_Name: Old Tower Junction
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1081853764
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1081853763}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1280568109}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.909, y: 0.529}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1081853765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1081853763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6177703740dae4439ccdd7198c486c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levelSettings: {fileID: 11400000, guid: f88ba2434b2db5a48b7dc121b282df95, type: 2}
-  isPassthrough: 1
-  surroundings:
-    top: {fileID: 1022315905}
-    right: {fileID: 497495080}
-    bottom: {fileID: 1288801897}
-    left: {fileID: 0}
 --- !u!1 &1084047565
 GameObject:
   m_ObjectHideFlags: 0
@@ -2052,11 +1832,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2057308457}
-  - {fileID: 497495079}
-  - {fileID: 1081853764}
-  - {fileID: 1288801896}
-  - {fileID: 1022315904}
-  - {fileID: 735884607}
   m_Father: {fileID: 538002174}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2065,61 +1840,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1288801895
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1288801896}
-  - component: {fileID: 1288801897}
-  m_Layer: 5
-  m_Name: Old Tower
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1288801896
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1288801895}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1280568109}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.909, y: -0.22100002}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1288801897
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1288801895}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6177703740dae4439ccdd7198c486c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levelSettings: {fileID: 11400000, guid: f88ba2434b2db5a48b7dc121b282df95, type: 2}
-  isPassthrough: 0
-  surroundings:
-    top: {fileID: 1081853765}
-    right: {fileID: 0}
-    bottom: {fileID: 0}
-    left: {fileID: 0}
 --- !u!1 &1340939251
 GameObject:
   m_ObjectHideFlags: 0
@@ -2263,8 +1983,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -5, y: -2.78125}
-  m_SizeDelta: {x: 12.5, y: 5.5625}
+  m_AnchoredPosition: {x: -3, y: -2.78125}
+  m_SizeDelta: {x: 5.8125, y: 3.9375}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1357637485
 MonoBehaviour:
@@ -2779,7 +2499,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.341, y: 0.779}
+  m_AnchoredPosition: {x: -0.095, y: 2}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2057308458
@@ -2794,12 +2514,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6177703740dae4439ccdd7198c486c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelSettings: {fileID: 11400000, guid: f88ba2434b2db5a48b7dc121b282df95, type: 2}
+  levelSettings: {fileID: 11400000, guid: 9f1a6856ff435b149b20f5d41d6b0fa5, type: 2}
   isPassthrough: 0
   surroundings:
     top: {fileID: 0}
     right: {fileID: 0}
-    bottom: {fileID: 497495080}
+    bottom: {fileID: 0}
     left: {fileID: 0}
 --- !u!1 &2123962231
 GameObject:
@@ -3142,7 +2862,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -3774541597547798147, guid: 2a22a86cdb7f9c046880ec1787a17301, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

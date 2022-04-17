@@ -81,6 +81,8 @@ public class MapTerminal : MonoBehaviour, Interactable, IPlayerInputActions
 
     public void Input_LStick(InputAction.CallbackContext c)
     {
+        if (c.phase != InputActionPhase.Performed) return;
+
         Vector2 norm = c.ReadValue<Vector2>().normalized;
         Direction? d = null;
 
