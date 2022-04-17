@@ -20,6 +20,10 @@ public class StageManager : MonoBehaviour
         StartGameplay();
     }
 
+    /// <summary>
+    /// Called by the LevelLoader after it has finished loading the scene
+    /// </summary>
+    /// <param name="settings"></param>
     public void Setup(LevelSettings settings)
     {
         Debug.Log("Loaded level: " + settings.l_displayName);
