@@ -73,6 +73,7 @@ public class PersistentPlayerManager : MonoBehaviour
             case "Keyboard": profileName = "Keyboard Profile"; break;
             case "Xbox Controller": profileName = "Xbox Profile"; break;
             case "Playstation Controller": profileName = "Playstation Profile"; break;
+            case "Pro Controller": profileName = "Xbox Profile"; break;
             default:
                 Debug.LogError($"Unknown device detected ({ deviceName })");
                 profileName = "Keyboard Profile";
