@@ -2514,7 +2514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6177703740dae4439ccdd7198c486c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelSettings: {fileID: 11400000, guid: f88ba2434b2db5a48b7dc121b282df95, type: 2}
+  levelSettings: {fileID: 11400000, guid: 9f1a6856ff435b149b20f5d41d6b0fa5, type: 2}
   isPassthrough: 0
   surroundings:
     top: {fileID: 0}

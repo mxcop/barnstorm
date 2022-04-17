@@ -12,6 +12,7 @@ public class TurretController : Inventory, Interactable
     [SerializeField] private Transform[] shootPoints;
     [SerializeField] private GameObject turret;
     [SerializeField] private float reloadTime;
+    [SerializeField] int startingAmmuntion;
 
     public List<CowEnemy> targetEnemies = new List<CowEnemy>();
     private SpriteRenderer turretsr;
@@ -51,7 +52,7 @@ public class TurretController : Inventory, Interactable
         turretsr = turret.GetComponent<SpriteRenderer>();
         barn = GameObject.FindGameObjectWithTag("Barn").transform;
 
-        container.PushItem(ammunition, 99);
+        container.PushItem(ammunition, startingAmmuntion);
     }
 
     void Update()
