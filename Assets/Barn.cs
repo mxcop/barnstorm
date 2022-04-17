@@ -16,15 +16,11 @@ public class Barn : MonoBehaviour
     private SpriteRenderer sp;
     private int startFood;
 
-    public static bool gameIsOver;
-
     private void Awake()
     {
         sp = GetComponent<SpriteRenderer>();
         startFood = storedFood;
         //if(gameoverPanel != null) gameoverPanel.SetActive(false);
-
-        gameIsOver = false;
     }
 
     private void OnCollisionEnter2D(Collision2D coll)
@@ -51,8 +47,6 @@ public class Barn : MonoBehaviour
         Debug.Log("!! GAME OVER !!");
         //gameoverPanel.SetActive(true);
         //gameoverPanel.transform.Find("Panel").Find("Text (Score)").GetComponent<TextMeshProUGUI>().text = "Score : " + ScoreManager.current.Score.ToString();
-
-        gameIsOver = true;
     }
 
     /// <summary>

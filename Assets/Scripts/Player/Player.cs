@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
-using UnityEngine.SceneManagement;
 using Cinemachine;
 
 public class Player : PlayerInventory, IPlayerInputActions
@@ -232,25 +231,22 @@ public class Player : PlayerInventory, IPlayerInputActions
     // also known as the Interact button
     public void Input_BSouth(CallbackContext c)
     {
-        if (!Barn.gameIsOver)
+        switch (c.phase)
         {
-            switch (c.phase)
-            {
-                case InputActionPhase.Started:
-                case InputActionPhase.Performed:
-                    if (c.action.WasPerformedThisFrame())
-                    {
-                        BreakInteraction();
-                        if (!isInBuilding) tools.PlayerUse();
-                    }
-                    break;
+            case InputActionPhase.Started:
+            case InputActionPhase.Performed:
+                if (c.action.WasPerformedThisFrame())
+                {
+                    BreakInteraction();
+                    if (!isInBuilding) tools.PlayerUse();
+                }
+                break;
 
-                case InputActionPhase.Canceled:
-                    tools.PlayerStopUse();
-                    break;
-            }
+            case InputActionPhase.Canceled:
+                tools.PlayerStopUse();
+                break;
         }
-        else if (c.performed) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
     }
 
     public void Input_BWest(CallbackContext c)
