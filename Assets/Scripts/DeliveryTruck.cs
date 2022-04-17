@@ -8,35 +8,28 @@ public class DeliveryTruck : MonoBehaviour
 {
     [SerializeField] private GameObject colliderObject;
     [SerializeField] private GameObject cover;
-    private bool coverOn = true;
+    private bool coverOn = false;
     private bool arrived = false;
 
-    private List<GameObject> players = new List<GameObject>();
+    [SerializeField] private List<GameObject> players = new List<GameObject>();
     private Animator animator;
 
     private void Start() {
         animator = GetComponent<Animator>();
-        players.AddRange(GameObject.FindGameObjectsWithTag("Player"));
-
-        for (int i = 0; i < players.Count; i++) {
-            players[i].transform.SetParent(transform);
-        }
     }
 
     private void FixedUpdate() {
-        if (arrived) {
-            if (players.Count > 0 && coverOn)
-            {
-                // Fade out
-                LeanTween.alpha(cover, 0f, 0.15f);
-                coverOn = false;
-            }
-            else if (players.Count <= 0 && !coverOn)
-            {
-                // Fade in
-                LeanTween.alpha(cover, 1f, 0.15f);
-                coverOn = true;
-            }
+        if (players.Count > 0 && coverOn)
+        {
+            // Fade out
+            LeanTween.alpha(cover, 0f, 0.15f);
+            coverOn = false;
+        }
+        else if (players.Count <= 0 && !coverOn)
+{
+            // Fade in
+            LeanTween.alpha(cover, 1f, 0.15f);
+            coverOn = true;
         }
     }
 
