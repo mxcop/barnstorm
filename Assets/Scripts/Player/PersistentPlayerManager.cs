@@ -24,7 +24,7 @@ public class PersistentPlayerManager : MonoBehaviour
     {
         PersistentPlayer p = input.GetComponent<PersistentPlayer>();
         p.playerID = GetLowestAvailablePlayerID();
-        p.controlsProfile = GetProfile(input.devices[0].displayName);
+        p.controlsProfile = GetProfile(input.devices[0].layout);
         playerList.Add(p.playerID, p);
 
         SceneManager.MoveGameObjectToScene(p.gameObject, persistentScene);
@@ -74,17 +74,12 @@ public class PersistentPlayerManager : MonoBehaviour
     {
         string profileName;
 
-        switch (deviceName)
-        {
-            case "Keyboard": profileName = "Keyboard Profile"; break;
-            case "Xbox Controller": profileName = "Xbox Profile"; break;
-            case "Playstation Controller": profileName = "Playstation Profile"; break;
-            case "Pro Controller": profileName = "Xbox Profile"; break;
-            default:
-                Debug.LogError($"Unknown device detected ({ deviceName })");
-                profileName = "Keyboard Profile";
-                break;
-        }
+        if (deviceName.StartsWith("Xbox")) profileName = "Xbox Profile";
+        else if (deviceName.StartsWith("DualShock")) profileName = "Playstation Profile";
+        else if(deviceName.StartsWith("Keyboard")) profileName = "Keyboard Profile";
+        else profileName = "Xbox Profile";
+
+        Debug.Log($"Player connected: {deviceName}, uses {profileName}");
 
         // Fetch the controller profile from the resources folder.
         return Resources.Load<ControlsProfile>("Controller Profiles/" + profileName);

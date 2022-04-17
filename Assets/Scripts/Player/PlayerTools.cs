@@ -111,16 +111,19 @@ public class PlayerTools : MonoBehaviour
                 {
                     case ItemAction.Till:
 
-                        Vector2Int pos = GetPlayerOffsetPos(lockedDirection);
-
-                        // crop logic, tills only when on grass tiles, and not when hitting dirt
-                        CropData? _crop = CropManager.current.Till(pos);
-                        if (_crop != null)
+                        if (CropManager.current != null)
                         {
-                            CropData crop = (CropData)_crop;
-                            for (int j = 0; j < crop.amount; j++)
+                            Vector2Int pos = GetPlayerOffsetPos(lockedDirection);
+
+                            // crop logic, tills only when on grass tiles, and not when hitting dirt
+                            CropData? _crop = CropManager.current.Till(pos);
+                            if (_crop != null)
                             {
-                                DroppedItem.DropOut(crop.item, 1, pos, Random.insideUnitCircle.normalized * 0.5f);
+                                CropData crop = (CropData)_crop;
+                                for (int j = 0; j < crop.amount; j++)
+                                {
+                                    DroppedItem.DropOut(crop.item, 1, pos, Random.insideUnitCircle.normalized * 0.5f);
+                                }
                             }
                         }
                         
@@ -138,12 +141,15 @@ public class PlayerTools : MonoBehaviour
                         break;
 
                     case ItemAction.Plant:
-                        Vector2Int vec = GetPlayerOffsetPos(plr.animDir);
-                        if (CropManager.current.TileIsOfType(TileType.Tilled, vec.x, vec.y))
+                        if (CropManager.current != null)
                         {
-                            if (CropManager.current.PlaceCrop(item.useAction_cropType, vec.x, vec.y))
+                            Vector2Int vec = GetPlayerOffsetPos(plr.animDir);
+                            if (CropManager.current.TileIsOfType(TileType.Tilled, vec.x, vec.y))
                             {
-                                plr.container.RemoveItem(plr.slot, 1);
+                                if (CropManager.current.PlaceCrop(item.useAction_cropType, vec.x, vec.y))
+                                {
+                                    plr.container.RemoveItem(plr.slot, 1);
+                                }
                             }
                         }
                         break;
