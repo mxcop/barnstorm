@@ -4,6 +4,7 @@ using UnityEngine;
 
 public interface Interactable
 {
+    public ButtonProfile interactButton { get; set; }
     public bool inUse { get; set; }
 
     /// <summary>
@@ -14,3 +15,5 @@ public interface Interactable
     public abstract bool Interact(Player player);
     public abstract void BreakInteraction();
 }
+
+public enum ButtonProfile { West, North, East, South}

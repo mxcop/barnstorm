@@ -24,6 +24,7 @@ public class TurretController : Inventory, Interactable
     private GameObject indicator;
 
     public bool inUse { get; set; }
+    public ButtonProfile interactButton { get; set; }
 
     public bool Interact(Player player)
     {

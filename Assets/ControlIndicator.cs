@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ButtonProfile { Open, Interact, Drop, Swap, Split }
 
 public class ControlIndicator : MonoBehaviour
 {
@@ -47,11 +46,10 @@ public class ControlIndicator : MonoBehaviour
         {
             Sprite sprite = button switch
             {
-                ButtonProfile.Open => p.controlsProfile.open,
-                ButtonProfile.Interact => p.controlsProfile.interact,
-                ButtonProfile.Drop => p.controlsProfile.drop,
-                ButtonProfile.Swap => p.controlsProfile.swap,
-                ButtonProfile.Split => p.controlsProfile.split,
+                ButtonProfile.North => p.controlsProfile.North,
+                ButtonProfile.East => p.controlsProfile.East,
+                ButtonProfile.South => p.controlsProfile.South,
+                ButtonProfile.West => p.controlsProfile.West,
                 _ => null
             };
 

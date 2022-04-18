@@ -10,6 +10,7 @@ public class MapTerminal : MonoBehaviour, Interactable, IPlayerInputActions
     PersistentPlayer currentController;
 
     public bool inUse { get; set; }
+    public ButtonProfile interactButton { get; set; }
 
     public void BreakInteraction()
     {

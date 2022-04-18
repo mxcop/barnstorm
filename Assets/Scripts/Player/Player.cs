@@ -20,7 +20,7 @@ public class Player : PlayerInventory, IPlayerInputActions
     [SerializeField] float interactCheckRadius;
     [SerializeField] ContactFilter2D cf;
 
-    [HideInInspector] public ControlsProfile profile;
+    [HideInInspector] public DeviceProfileSprites profile;
     [HideInInspector] public bool isInteracting;
     [HideInInspector] public bool isInBuilding;
 
