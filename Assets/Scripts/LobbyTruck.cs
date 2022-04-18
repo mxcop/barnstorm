@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using TMPro;
 
 public class LobbyTruck : MonoBehaviour
 {
     [SerializeField] private int startTimer;
-    [SerializeField] private Text timerText;
+    [SerializeField] private TextMeshProUGUI timerText;
     private bool inCountdown;
 
     [SerializeField] private GameObject cover;

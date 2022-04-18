@@ -24,7 +24,9 @@ public class MapTerminal : MonoBehaviour, Interactable, IPlayerInputActions
 
     [SerializeField] byte controlLayer;
     [SerializeField] MapNavigator nav;
+
     PersistentPlayer currentController;
+    DeviceProfileSprites currentDeviceProfile;
 
     public InteractButton interactButton { get => InteractButton.South; }
     public bool inUse { get; set; }
@@ -145,6 +147,21 @@ public class MapTerminal : MonoBehaviour, Interactable, IPlayerInputActions
     }
 
     /// <summary>
+    /// Update the button hint to match the current device profile.
+    /// </summary>
+    private void UpdateButtonHint()
+    {
+        if (!(currentDeviceProfile is null))
+        {
+            Image buttonHint = levelInfoPanel.Find("Button").Find("Hint").GetComponent<Image>();
+            if (currentDeviceProfile.CompactWest == null)
+                buttonHint.sprite = currentDeviceProfile.West;
+            else
+                buttonHint.sprite = currentDeviceProfile.CompactWest;
+        }
+    }
+
+    /// <summary>
     /// Make the button hint bop.
     /// </summary>
     private void ButtonHintBop()
@@ -165,6 +182,10 @@ public class MapTerminal : MonoBehaviour, Interactable, IPlayerInputActions
             {
                 currentController = _c;
                 currentController.SetControlLayer(this, controlLayer);
+
+                currentDeviceProfile = player.profile;
+                UpdateButtonHint();
+
                 inUse = true;
                 return true;
             }
@@ -206,14 +227,14 @@ public class MapTerminal : MonoBehaviour, Interactable, IPlayerInputActions
 
     public void Input_BSouth(InputAction.CallbackContext c)
     {
-        //if (c.performed) RelinquishControl();
-
-        if (c.performed) ToggleCurrentLevel();
+        if (c.performed) RelinquishControl();       
     }
 
     public void Input_BWest(InputAction.CallbackContext c)
     {
-        if (c.performed) RelinquishControl();
+        // if (c.performed) RelinquishControl();
+
+        if (c.performed) ToggleCurrentLevel();
     }
 
     public void Input_DEast(InputAction.CallbackContext c) { }

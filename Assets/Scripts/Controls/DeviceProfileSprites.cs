@@ -8,4 +8,9 @@ public class DeviceProfileSprites : ScriptableObject
     public Sprite East;
     public Sprite South;
     public Sprite West;
+    [Space(10)]
+    public Sprite CompactNorth;
+    public Sprite CompactEast;
+    public Sprite CompactSouth;
+    public Sprite CompactWest;
 }

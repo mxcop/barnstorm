@@ -76,7 +76,16 @@ TextureImporter:
     second: mini-ps-cross
   - first:
       213: 4720145097970100184
-    second: mini-keys-return
+    second: mini-keys-i
+  - first:
+      213: 6450405204483712234
+    second: mini-keys-o
+  - first:
+      213: 9220728151368250985
+    second: mini-keys-p
+  - first:
+      213: 2448351447940118862
+    second: mini-keys-r
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -610,12 +619,12 @@ TextureImporter:
       name: mini-xbox-a
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
+        x: 129
+        y: 28
         width: 10
         height: 11
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -631,12 +640,12 @@ TextureImporter:
       name: mini-xbox-x
       rect:
         serializedVersion: 2
-        x: 75
-        y: 0
+        x: 140
+        y: 28
         width: 10
         height: 11
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -652,12 +661,12 @@ TextureImporter:
       name: mini-xbox-y
       rect:
         serializedVersion: 2
-        x: 86
-        y: 0
+        x: 151
+        y: 28
         width: 10
         height: 11
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -673,12 +682,12 @@ TextureImporter:
       name: mini-xbox-b
       rect:
         serializedVersion: 2
-        x: 97
-        y: 0
+        x: 162
+        y: 28
         width: 10
         height: 11
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -694,12 +703,12 @@ TextureImporter:
       name: mini-ps-circle
       rect:
         serializedVersion: 2
-        x: 64
-        y: 12
+        x: 129
+        y: 40
         width: 10
         height: 11
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -715,12 +724,12 @@ TextureImporter:
       name: mini-ps-triangle
       rect:
         serializedVersion: 2
-        x: 75
-        y: 12
+        x: 140
+        y: 40
         width: 10
         height: 11
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -736,12 +745,12 @@ TextureImporter:
       name: mini-ps-square
       rect:
         serializedVersion: 2
-        x: 86
-        y: 12
+        x: 151
+        y: 40
         width: 10
         height: 11
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -757,12 +766,12 @@ TextureImporter:
       name: mini-ps-cross
       rect:
         serializedVersion: 2
-        x: 97
-        y: 12
+        x: 162
+        y: 40
         width: 10
         height: 11
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -775,15 +784,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mini-keys-return
+      name: mini-keys-i
       rect:
         serializedVersion: 2
-        x: 109
-        y: 12
+        x: 129
+        y: 52
         width: 10
         height: 11
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -791,6 +800,69 @@ TextureImporter:
       bones: []
       spriteID: 8d72fcc45f2518140800000000000000
       internalID: 4720145097970100184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mini-keys-o
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 52
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae425969b51748950800000000000000
+      internalID: 6450405204483712234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mini-keys-p
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 52
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 966bfb0766b96ff70800000000000000
+      internalID: 9220728151368250985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mini-keys-r
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 52
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e49b8c38baa4af120800000000000000
+      internalID: 2448351447940118862
       vertices: []
       indices: 
       edges: []

@@ -78,7 +78,8 @@ public class Player : PlayerInventory, IPlayerInputActions
         {
             if (PersistentPlayerManager.main.TryGetPlayer(playerID, out PersistentPlayer p))
             {
-                p.SetControlLayer(this, 0);                
+                p.SetControlLayer(this, 0);
+                profile = p.controlsProfile;
             }
             else return;
         }

@@ -16,3 +16,7 @@ MonoBehaviour:
   East: {fileID: 2907886171295009232, guid: e3558054f6ab1df4ea310b71cf2c85c9, type: 3}
   South: {fileID: -3197669148681578984, guid: e3558054f6ab1df4ea310b71cf2c85c9, type: 3}
   West: {fileID: 7628829267857303679, guid: e3558054f6ab1df4ea310b71cf2c85c9, type: 3}
+  CompactNorth: {fileID: 9220728151368250985, guid: e3558054f6ab1df4ea310b71cf2c85c9, type: 3}
+  CompactEast: {fileID: 2448351447940118862, guid: e3558054f6ab1df4ea310b71cf2c85c9, type: 3}
+  CompactSouth: {fileID: 4720145097970100184, guid: e3558054f6ab1df4ea310b71cf2c85c9, type: 3}
+  CompactWest: {fileID: 6450405204483712234, guid: e3558054f6ab1df4ea310b71cf2c85c9, type: 3}
