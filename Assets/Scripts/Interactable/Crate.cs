@@ -12,7 +12,7 @@ public class Crate : Inventory, Interactable
     private SpriteRenderer crate;
     private SpriteRenderer overlay;
 
-    [HideInInspector] public bool inUse { get; set; }
+    public bool inUse { get; set; }
 
     private void Start()
     {
@@ -30,10 +30,15 @@ public class Crate : Inventory, Interactable
         }
     }
 
-    public void Interact(Player _)
+    public bool Interact(Player _)
     {
-        Open();
-        inUse = true;
+        if (!inUse)
+        {
+            Open();
+            inUse = true;
+            return true;
+        }
+        else return false;
     }
 
     public void BreakInteraction()
