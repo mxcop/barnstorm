@@ -12,12 +12,20 @@ public class PersistentPlayerManager : MonoBehaviour
 
     Scene persistentScene;
 
+    [SerializeField] DeviceProfileLibElement[] _controlProfiles;
+    Dictionary<DeviceProfile, DeviceProfileSprites> controlProfiles = new Dictionary<DeviceProfile, DeviceProfileSprites>();
+
     private void Awake()
     {
         main = this;
         SceneManager.sceneUnloaded += (s) => ClearAllControlLayers();
 
         persistentScene = SceneManager.GetSceneByName("Persistent Scene");
+
+        foreach(DeviceProfileLibElement d in _controlProfiles)
+        {
+            controlProfiles.Add(d.profile, d.sprites);
+        }
     }
 
     public void OnPlayerJoined(PlayerInput input)
@@ -70,18 +78,35 @@ public class PersistentPlayerManager : MonoBehaviour
         }
     }
 
-    private ControlsProfile GetProfile(string deviceName)
+    #region Button Profiles
+
+    private DeviceProfileSprites GetProfile(string deviceName)
     {
-        string profileName;
+        DeviceProfileSprites output;
 
-        if (deviceName.StartsWith("Xbox")) profileName = "Xbox Profile";
-        else if (deviceName.StartsWith("DualShock")) profileName = "Playstation Profile";
-        else if(deviceName.StartsWith("Keyboard")) profileName = "Keyboard Profile";
-        else profileName = "Xbox Profile";
+        if (deviceName.StartsWith("Xbox")) output = controlProfiles[DeviceProfile.Xbox];
+        else if (deviceName.StartsWith("DualShock")) output = controlProfiles[DeviceProfile.Playstation];
+        else if (deviceName.StartsWith("Keyboard")) output = controlProfiles[DeviceProfile.Keyboard];
+        else output = controlProfiles[DeviceProfile.Default];
 
-        Debug.Log($"Player connected: {deviceName}, uses {profileName}");
+        Debug.Log($"Player connected: {deviceName}, uses {output.ToString()} controls profile");
 
-        // Fetch the controller profile from the resources folder.
-        return Resources.Load<ControlsProfile>("Controller Profiles/" + profileName);
+        return output;
     }
+
+    enum DeviceProfile
+    {
+        Default,
+        Xbox,
+        Playstation,
+        Keyboard
+    }
+
+    [System.Serializable]
+    struct DeviceProfileLibElement
+    {
+        public DeviceProfile profile;
+        public DeviceProfileSprites sprites;
+    }
+    #endregion
 }

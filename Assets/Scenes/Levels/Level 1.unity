@@ -3759,8 +3759,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7a8b64b028e29f4d89d4160b94f4dab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isStatic: 0
-  layerOffset: 2
+  isStatic: 1
+  layerOffset: 1
 --- !u!212 &284538686
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3856,7 +3856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7a8b64b028e29f4d89d4160b94f4dab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isStatic: 0
+  isStatic: 1
   layerOffset: -1
 --- !u!212 &307561264
 SpriteRenderer:
@@ -4152,7 +4152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7a8b64b028e29f4d89d4160b94f4dab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isStatic: 0
+  isStatic: 1
   layerOffset: 0
 --- !u!212 &422725072
 SpriteRenderer:
@@ -4964,7 +4964,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 100
+  m_SortingOrder: 4
   m_Sprite: {fileID: 5472239184900341239, guid: 2a22a86cdb7f9c046880ec1787a17301, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
@@ -57717,7 +57717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7a8b64b028e29f4d89d4160b94f4dab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isStatic: 0
+  isStatic: 1
   layerOffset: -1
 --- !u!212 &1282217186
 SpriteRenderer:
@@ -58263,7 +58263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7024b121690eb634e8df9dd272c24e49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  storedFood: 100
+  storedFood: 50
   stages: []
 --- !u!114 &1683880340
 MonoBehaviour:

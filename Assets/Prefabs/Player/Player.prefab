@@ -259,17 +259,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 3
-  selected: 0
+  slot: 0
   starterItems:
   - item: {fileID: 3984615582560117230, guid: ce5b0580c9d6ee24aaa35305c1596a94, type: 3}
     amount: 1
   playerID: 0
-  deleteIfNotControlled: 0
   movementSpeed: 6
   maxSpeed: 0.091
   friction: 14
   outOfBoundsRadius: 26
-  interactCheckRadius: 0.8
+  interactCheckRadius: 1
   cf:
     useTriggers: 1
     useLayerMask: 1
@@ -287,7 +286,6 @@ MonoBehaviour:
   profile: {fileID: 0}
   isInteracting: 0
   isInBuilding: 0
-  isReady: 0
   animDir: 2
   playerToolsPrefab: {fileID: 5482722391119134417, guid: a81ffa6451ec4a8459dd08e831d59453, type: 3}
 --- !u!114 &2263295406709109754

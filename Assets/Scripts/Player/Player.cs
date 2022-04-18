@@ -20,7 +20,7 @@ public class Player : PlayerInventory, IPlayerInputActions
     [SerializeField] float interactCheckRadius;
     [SerializeField] ContactFilter2D cf;
 
-    [HideInInspector] public ControlsProfile profile;
+    [HideInInspector] public DeviceProfileSprites profile;
     [HideInInspector] public bool isInteracting;
     [HideInInspector] public bool isInBuilding;
 
@@ -142,7 +142,7 @@ public class Player : PlayerInventory, IPlayerInputActions
             if (colls[i] != null)
             {
                 Interactable c = colls[i].gameObject.GetComponent<Interactable>();
-                if (c != null && !c.inUse)
+                if (c != null)
                 {
                     float d = Vector2.Distance((c as MonoBehaviour).transform.position, transform.position);
                     if (closest.Item2 > d) closest = (c, d);
@@ -167,6 +167,21 @@ public class Player : PlayerInventory, IPlayerInputActions
             currentInteraction = null;
             currentInventory = null;
         }
+    }
+
+    bool InteractWithSelected(InteractButton usedButton)
+    {
+        if (currentInteraction is null || currentInteraction.interactButton != usedButton) return false;
+
+        currentInventory = currentInteraction as Inventory;
+        isInteracting = true;
+
+        if (!currentInteraction.Interact(this))
+        {
+            // put animation for denied access here
+        }
+
+        return true;
     }
     #endregion
 
@@ -198,22 +213,11 @@ public class Player : PlayerInventory, IPlayerInputActions
     {
         if (c.phase != InputActionPhase.Performed) return;
 
-        if (currentInteraction == null && isInteracting == false)
-        {
-            if (CheckForInteractable())
-            {
-                isInteracting = true;
-                currentInventory = currentInteraction as Inventory;
-            }
-        }
-        else if (currentInventory != null)
+        if (CheckForInteractable()) InteractWithSelected(InteractButton.North);
+
+        if (currentInventory != null)
         {
             currentInventory.QuickSplit(this, slot);
-        }
-
-        if(currentInteraction != null)
-        {
-            currentInteraction.Interact(this);
         }
         
     }
@@ -222,9 +226,23 @@ public class Player : PlayerInventory, IPlayerInputActions
     {
         if (c.phase != InputActionPhase.Performed) return;
 
-        if (container.PullItem(slot, out var item))
+        bool shouldDropItem = true;
+
+        if (CheckForInteractable())
         {
-            DroppedItem.DropUp(item.item, item.num, transform.position);
+            if (InteractWithSelected(InteractButton.East))
+            {                
+                shouldDropItem = false;
+            }
+        }        
+
+        if(shouldDropItem)
+        {
+            BreakInteraction();
+            if (container.PullItem(slot, out var item))
+            {
+                DroppedItem.DropUp(item.item, item.num, transform.position);
+            }
         }
     }
 
@@ -237,7 +255,6 @@ public class Player : PlayerInventory, IPlayerInputActions
             case InputActionPhase.Performed:
                 if (c.action.WasPerformedThisFrame())
                 {
-                    BreakInteraction();
                     if (!isInBuilding) tools.PlayerUse();
                 }
                 break;
@@ -247,23 +264,19 @@ public class Player : PlayerInventory, IPlayerInputActions
                 break;
         }
 
+        if (CheckForInteractable()) InteractWithSelected(InteractButton.South);
+
     }
 
     public void Input_BWest(CallbackContext c)
     {
         if (c.phase != InputActionPhase.Performed) return;
 
-        if (isInteracting == false && CheckForInteractable())
-        {
-            currentInteraction.Interact(this);
-            isInteracting = true;
-            currentInventory = currentInteraction as Inventory;
-        }
-        else if (currentInventory != null) currentInventory.QuickSwap(this, slot);
+        if (CheckForInteractable()) InteractWithSelected(InteractButton.West);
 
-        if (currentInteraction != null)
+        if (currentInventory != null)
         {
-            currentInteraction.Interact(this);
+            currentInventory.QuickSwap(this, slot);
         }
     }
     #endregion

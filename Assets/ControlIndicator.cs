@@ -1,11 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ButtonProfile { Open, Interact, Drop, Swap, Split }
 
 public class ControlIndicator : MonoBehaviour
 {
-    [SerializeField] private ButtonProfile button;
     [SerializeField] private float showRadius = 2.0f;
     [SerializeField] private Vector2 offset;
 
@@ -45,13 +43,12 @@ public class ControlIndicator : MonoBehaviour
 
         if (showingHint == false && state == true && PersistentPlayerManager.main.TryGetPlayer(player.playerID, out PersistentPlayer p))
         {
-            Sprite sprite = button switch
+            Sprite sprite = interactable.interactButton switch
             {
-                ButtonProfile.Open => p.controlsProfile.open,
-                ButtonProfile.Interact => p.controlsProfile.interact,
-                ButtonProfile.Drop => p.controlsProfile.drop,
-                ButtonProfile.Swap => p.controlsProfile.swap,
-                ButtonProfile.Split => p.controlsProfile.split,
+                InteractButton.North => p.controlsProfile.North,
+                InteractButton.East => p.controlsProfile.East,
+                InteractButton.South => p.controlsProfile.South,
+                InteractButton.West => p.controlsProfile.West,
                 _ => null
             };
 

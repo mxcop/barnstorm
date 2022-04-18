@@ -26,6 +26,7 @@ public class MapTerminal : MonoBehaviour, Interactable, IPlayerInputActions
     [SerializeField] MapNavigator nav;
     PersistentPlayer currentController;
 
+    public InteractButton interactButton { get => InteractButton.South; }
     public bool inUse { get; set; }
     private bool isHidden = true;
     public static bool hasSelected = false;
@@ -34,7 +35,7 @@ public class MapTerminal : MonoBehaviour, Interactable, IPlayerInputActions
     {
         // Make the terminal 0 wide and 6 pixels tall.
         terminal.sizeDelta = new Vector2(0, 6.0f / 16.0f);
-
+    
         // Hide the level info panel on start.
         CanvasGroup group = levelInfoPanel.GetComponent<CanvasGroup>();
         levelInfoPanel.localScale = Vector3.zero;
@@ -164,8 +165,12 @@ public class MapTerminal : MonoBehaviour, Interactable, IPlayerInputActions
             {
                 currentController = _c;
                 currentController.SetControlLayer(this, controlLayer);
+                inUse = true;
+                return true;
             }
         }
+
+        return false;        
     }
 
     private void RelinquishControl()

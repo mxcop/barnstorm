@@ -23,12 +23,18 @@ public class TurretController : Inventory, Interactable
 
     private GameObject indicator;
 
-    [HideInInspector] public bool inUse { get; set; }
+    public bool inUse { get; set; }
+    public InteractButton interactButton { get => InteractButton.West; }
 
-    public void Interact(Player player)
+    public bool Interact(Player player)
     {
-        Open();
-        inUse = true;
+        if (!inUse)
+        {
+            Open();
+            inUse = true;
+            return true;
+        }
+        else return false;
     }
 
     public void BreakInteraction()

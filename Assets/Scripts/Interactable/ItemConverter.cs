@@ -8,6 +8,7 @@ public class ItemConverter : MonoBehaviour, Interactable
     Dictionary<Item, ItemConversion> conversionTable = new Dictionary<Item, ItemConversion>();
 
     public bool inUse { get; set; }
+    public InteractButton interactButton { get => InteractButton.East; }
 
     private void Awake()
     {
@@ -22,7 +23,7 @@ public class ItemConverter : MonoBehaviour, Interactable
         // do nothing
     }
 
-    public void Interact(Player player)
+    public bool Interact(Player player)
     {
         if(player.container.Peek(player.slot, out Item item))
         {
@@ -32,8 +33,12 @@ public class ItemConverter : MonoBehaviour, Interactable
                 DroppedItem.DropOut(conv.output, conv.exchangeRate, transform.position, Vector2.up);
 
                 player.container.PullItem(player.slot, 1, out var _);
+
+                return true;
             }
         }
+
+        return false;
     }
 
     [System.Serializable]

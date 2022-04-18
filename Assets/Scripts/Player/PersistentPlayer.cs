@@ -10,7 +10,7 @@ public class PersistentPlayer : MonoBehaviour, IPlayerInputActions
     public IPlayerInputActions currentlyControlling { get; private set; }
     SortedDictionary<byte, IPlayerInputActions> controlLayers = new SortedDictionary<byte, IPlayerInputActions>();
 
-    public ControlsProfile controlsProfile;
+    public DeviceProfileSprites controlsProfile;
 
     /// <summary>
     /// Sets the specific control layer to the given IPlayerInputActions interface

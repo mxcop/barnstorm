@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStatic: 1
-  layerOffset: 3
+  layerOffset: 5
 --- !u!1 &8553758799931233679
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,6 +276,7 @@ MonoBehaviour:
   - {fileID: 8553758800934422139}
   turret: {fileID: 8553758799851338835}
   reloadTime: 0.5
+  startingAmmuntion: 0
   targetEnemies: []
 --- !u!114 &470106913
 MonoBehaviour:
@@ -601,7 +602,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStatic: 1
-  layerOffset: 0
+  layerOffset: 2
 --- !u!70 &2117127439025622446
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -153,6 +153,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0544b7736c9e418478178548f1af1019, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _controlProfiles:
+  - profile: 0
+    sprites: {fileID: 11400000, guid: 91c3872427d2a634582bfffd46e36c8c, type: 2}
+  - profile: 1
+    sprites: {fileID: 11400000, guid: 91c3872427d2a634582bfffd46e36c8c, type: 2}
+  - profile: 2
+    sprites: {fileID: 11400000, guid: d067959a91712a949bc8289b7e739b40, type: 2}
+  - profile: 3
+    sprites: {fileID: 11400000, guid: 62bc8defda4c7dc49a26e5080b5895f0, type: 2}
 --- !u!114 &23918779
 MonoBehaviour:
   m_ObjectHideFlags: 0
