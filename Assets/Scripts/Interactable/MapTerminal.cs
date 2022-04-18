@@ -217,24 +217,24 @@ public class MapTerminal : MonoBehaviour, Interactable, IPlayerInputActions
 
     public void Input_BEast(InputAction.CallbackContext c)
     {
-        if (c.performed) RelinquishControl();
+        //if (c.canceled) RelinquishControl();
     }
 
     public void Input_BNorth(InputAction.CallbackContext c)
     {
-        if (c.performed) RelinquishControl();
+        //if (c.canceled) RelinquishControl();
     }
 
     public void Input_BSouth(InputAction.CallbackContext c)
     {
-        if (c.performed) RelinquishControl();       
+        if (c.canceled) RelinquishControl();
     }
 
     public void Input_BWest(InputAction.CallbackContext c)
     {
         // if (c.performed) RelinquishControl();
 
-        if (c.performed) ToggleCurrentLevel();
+        if (c.canceled) ToggleCurrentLevel();
     }
 
     public void Input_DEast(InputAction.CallbackContext c) { }
