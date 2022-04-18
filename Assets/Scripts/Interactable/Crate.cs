@@ -13,7 +13,7 @@ public class Crate : Inventory, Interactable
     private SpriteRenderer overlay;
 
     public bool inUse { get; set; }
-    public ButtonProfile interactButton { get; set; }
+    public InteractButton interactButton { get => InteractButton.West; }
 
     private void Start()
     {

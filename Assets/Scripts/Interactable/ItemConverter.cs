@@ -8,7 +8,7 @@ public class ItemConverter : MonoBehaviour, Interactable
     Dictionary<Item, ItemConversion> conversionTable = new Dictionary<Item, ItemConversion>();
 
     public bool inUse { get; set; }
-    public ButtonProfile interactButton { get; set; }
+    public InteractButton interactButton { get => InteractButton.East; }
 
     private void Awake()
     {

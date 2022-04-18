@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ControlIndicator : MonoBehaviour
 {
-    [SerializeField] private ButtonProfile button;
     [SerializeField] private float showRadius = 2.0f;
     [SerializeField] private Vector2 offset;
 
@@ -44,12 +43,12 @@ public class ControlIndicator : MonoBehaviour
 
         if (showingHint == false && state == true && PersistentPlayerManager.main.TryGetPlayer(player.playerID, out PersistentPlayer p))
         {
-            Sprite sprite = button switch
+            Sprite sprite = interactable.interactButton switch
             {
-                ButtonProfile.North => p.controlsProfile.North,
-                ButtonProfile.East => p.controlsProfile.East,
-                ButtonProfile.South => p.controlsProfile.South,
-                ButtonProfile.West => p.controlsProfile.West,
+                InteractButton.North => p.controlsProfile.North,
+                InteractButton.East => p.controlsProfile.East,
+                InteractButton.South => p.controlsProfile.South,
+                InteractButton.West => p.controlsProfile.West,
                 _ => null
             };
 

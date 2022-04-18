@@ -169,9 +169,10 @@ public class Player : PlayerInventory, IPlayerInputActions
         }
     }
 
-    void InteractWithSelected()
+    bool InteractWithSelected(InteractButton usedButton)
     {
-        if (currentInteraction is null) return;
+        if (currentInteraction is null || currentInteraction.interactButton != usedButton) return false;
+
         currentInventory = currentInteraction as Inventory;
         isInteracting = true;
 
@@ -180,6 +181,7 @@ public class Player : PlayerInventory, IPlayerInputActions
             // put animation for denied access here
         }
 
+        return true;
     }
     #endregion
 
@@ -211,10 +213,7 @@ public class Player : PlayerInventory, IPlayerInputActions
     {
         if (c.phase != InputActionPhase.Performed) return;
 
-        if (CheckForInteractable())
-        {
-            InteractWithSelected();
-        }
+        if (CheckForInteractable()) InteractWithSelected(InteractButton.North);
 
         if (currentInventory != null)
         {
@@ -227,9 +226,23 @@ public class Player : PlayerInventory, IPlayerInputActions
     {
         if (c.phase != InputActionPhase.Performed) return;
 
-        if (container.PullItem(slot, out var item))
+        bool shouldDropItem = true;
+
+        if (CheckForInteractable())
         {
-            DroppedItem.DropUp(item.item, item.num, transform.position);
+            if (InteractWithSelected(InteractButton.East))
+            {                
+                shouldDropItem = false;
+            }
+        }        
+
+        if(shouldDropItem)
+        {
+            BreakInteraction();
+            if (container.PullItem(slot, out var item))
+            {
+                DroppedItem.DropUp(item.item, item.num, transform.position);
+            }
         }
     }
 
@@ -242,7 +255,6 @@ public class Player : PlayerInventory, IPlayerInputActions
             case InputActionPhase.Performed:
                 if (c.action.WasPerformedThisFrame())
                 {
-                    BreakInteraction();
                     if (!isInBuilding) tools.PlayerUse();
                 }
                 break;
@@ -252,16 +264,15 @@ public class Player : PlayerInventory, IPlayerInputActions
                 break;
         }
 
+        if (CheckForInteractable()) InteractWithSelected(InteractButton.South);
+
     }
 
     public void Input_BWest(CallbackContext c)
     {
         if (c.phase != InputActionPhase.Performed) return;
 
-        if (CheckForInteractable())
-        {
-            InteractWithSelected();
-        }
+        if (CheckForInteractable()) InteractWithSelected(InteractButton.West);
 
         if (currentInventory != null)
         {
