@@ -59,7 +59,10 @@ public class MapTerminal : MonoBehaviour, Interactable, IPlayerInputActions
         LeanTween.value(terminal.gameObject, w => terminal.sizeDelta = new Vector2(w, terminal.sizeDelta.y), terminal.sizeDelta.x, width, 0.3f).setEaseOutBack().setOnComplete(() =>
         {
             // Scale the height of the terminal window afterwards.
-            LeanTween.value(terminal.gameObject, h => terminal.sizeDelta = new Vector2(terminal.sizeDelta.x, h), terminal.sizeDelta.y, height, 0.6f).setEaseOutBack();
+            LeanTween.value(terminal.gameObject, h => terminal.sizeDelta = new Vector2(terminal.sizeDelta.x, h), terminal.sizeDelta.y, height, 0.6f).setEaseOutBack().setOnComplete(() => 
+            {
+                ShowLevelInfo(MapNavigator.instance.selectedLevel);
+            });
         });
 
         isHidden = false;

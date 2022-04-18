@@ -9,13 +9,17 @@ public class MapNavigator : MonoBehaviour
 {
     [SerializeField] private Camera mapCam;
     [SerializeField] private Vector3 camOffset;
-    [SerializeField] private MapLevel selectedLevel;
+    public MapLevel selectedLevel;
 
     public static event Action OnNavigate;
     public static event Action<MapLevel> OnDestination;
 
+    public static MapNavigator instance;
+
     private void Start()
     {
+        instance = this;
+
         mapCam.transform.position = selectedLevel.transform.position + camOffset;
 
         OnNavigate = () => { };
