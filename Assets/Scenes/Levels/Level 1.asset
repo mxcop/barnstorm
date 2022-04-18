@@ -13,8 +13,14 @@ MonoBehaviour:
   m_Name: Level 1
   m_EditorClassIdentifier: 
   l_sceneName: Level 1
-  l_displayName: 
+  l_displayName: Rocky Crossing
   l_description: 
+  l_objectives:
+  - icon: {fileID: 8562434753320100141, guid: 0c47ca714b3917f498f553c6d396f2f1, type: 3}
+    quantity: 128
+    isSecondary: 0
+  l_animals:
+  - icon: {fileID: -4812597023553090158, guid: 0c47ca714b3917f498f553c6d396f2f1, type: 3}
   waves:
   - enemies:
     - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}

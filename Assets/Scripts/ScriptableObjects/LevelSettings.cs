@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +9,26 @@ public class LevelSettings : ScriptableObject
     public string l_displayName;
     public string l_description;
 
-    //[Header("Level goals")]
+    [Header("Level goals")]
+    public Objective[] l_objectives;
+
+    [System.Serializable]
+    public class Objective
+    {
+        [Header("!! ALWAYS PUT THE SECONDARY OBJECTIVES AT THE BOTTOM OF THE LIST !!")]
+        [Tooltip("An icon representing this goal (A crop icon or wave depending on the goal)")] public Sprite icon;
+        [Tooltip("The quantity of the objective, e.g. number of crops to farm")] public int quantity = 999;
+        [Tooltip("Whether this objective is optional for completing the level")] public bool isSecondary = false;
+    }
+
+    [Header("Level animals")]
+    public Animal[] l_animals;
+
+    [System.Serializable]
+    public class Animal
+    {
+        [Tooltip("An icon representing this animal")] public Sprite icon;
+    }
 
     //[Header("World map unlock requirements")]
 

@@ -32,7 +32,7 @@ public class LobbyTruck : MonoBehaviour
         if(players.Count > 0)
         {            
 
-            if(players.Count >= PersistentPlayerManager.main.PlayerCount)
+            if(MapTerminal.hasSelected && players.Count >= PersistentPlayerManager.main.PlayerCount)
             {
                 // start fast countdown
 

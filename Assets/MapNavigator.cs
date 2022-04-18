@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,15 +8,28 @@ public enum Direction { Up, Right, Down, Left }
 public class MapNavigator : MonoBehaviour
 {
     [SerializeField] private Camera mapCam;
+    [SerializeField] private Vector3 camOffset;
     [SerializeField] private MapLevel selectedLevel;
+
+    public static event Action OnNavigate;
+    public static event Action<MapLevel> OnDestination;
 
     private void Start()
     {
-        mapCam.transform.position = selectedLevel.transform.position;
+        mapCam.transform.position = selectedLevel.transform.position + camOffset;
+
+        OnNavigate = () => { };
+        OnDestination = (MapLevel _) => { };
     }
 
+    /// <summary>
+    /// Navigate in a given direction.
+    /// </summary>
+    /// <returns>The time the animation will take.</returns>
     public float Navigate(Direction dir)
     {
+        OnNavigate.Invoke();
+
         switch (dir)
         {
             case Direction.Up:
@@ -33,10 +47,15 @@ public class MapNavigator : MonoBehaviour
             default: break;
         }
 
-		LeanTween.cancel(mapCam.gameObject);
-        LeanTween.move(mapCam.gameObject, selectedLevel.transform.position, Vector2.Distance(mapCam.transform.position, selectedLevel.transform.position) / 3.0f);
-        return Vector2.Distance(mapCam.transform.position, selectedLevel.transform.position) / 3.0f;
-        //mapCam.transform.position = selectedLevel.transform.position;
+        // Animation:
+        LeanTween.cancel(mapCam.gameObject);
+        LeanTween.move(
+            mapCam.gameObject, 
+            selectedLevel.transform.position + camOffset, 
+            Vector2.Distance(mapCam.transform.position, selectedLevel.transform.position) / 6.0f)
+        .setOnComplete(() => OnDestination.Invoke(selectedLevel));
+
+        return Vector2.Distance(mapCam.transform.position, selectedLevel.transform.position + camOffset) / 6.0f;
     }
 
     public void StartLevel()
