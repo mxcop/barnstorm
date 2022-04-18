@@ -155,7 +155,7 @@ public class MapTerminal : MonoBehaviour, Interactable, IPlayerInputActions
 
     public void BreakInteraction() => inUse = false;
 
-    public void Interact(Player player)
+    public bool Interact(Player player)
     {
         if (currentController == null)
         {
