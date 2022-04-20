@@ -22,16 +22,22 @@ public class PlayerInventory : MonoBehaviour
         container = new Container<Item>(size);
 
         // Load the resources.
-        GUI = Resources.Load<GameObject>("PlayerPanel");
+        GUI = Resources.Load<GameObject>("Player Inventory");
 
         // Create the GUI of the inventory.
-        gui = Instantiate(GUI, GameObject.FindWithTag("MainCanvas").transform.Find("Lobby Panel")).GetComponent<PlayerInventoryGUI>();
-        gui.Initialize(size, ref container);
+        gui = Instantiate(GUI, GameObject.FindWithTag("WorldCanvas").transform).GetComponent<PlayerInventoryGUI>();
+        gui.Setup(ref container);
 
         for (int i = 0; i < starterItems.Length; i++)
             container.PushItem(starterItems[i].item, starterItems[i].amount);
 
-        SelectSlot(0);
+        gui.Initialize(size, ref container);
+    }
+
+    private void LateUpdate()
+    {
+        if (!(gui is null))
+            gui.transform.position = transform.position + Vector3.up;
     }
 
     [System.Serializable]
@@ -44,10 +50,14 @@ public class PlayerInventory : MonoBehaviour
     /// <summary>
     /// Set the selected slot of the player inventory.
     /// </summary>
-    /// <param name="slot">The slot to select.</param>
-    public void SelectSlot(int slot)
+    public void RotateRight()
     {
-        this.slot = slot;
-        gui.UpdateSelection(slot);
+        //this.slot = slot;
+        gui.RotateRight();
+    }
+
+    public void RotateLeft()
+    {
+        gui.RotateLeft();
     }
 }

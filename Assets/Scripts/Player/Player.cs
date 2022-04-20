@@ -106,11 +106,11 @@ public class Player : PlayerInventory, IPlayerInputActions
         if (currentInteraction != null && Vector2.Distance((currentInteraction as MonoBehaviour).transform.position, transform.position) -0.5f > interactCheckRadius) BreakInteraction();
 
         // Switched to queued hotbar slot
-        if(queuedHotbarSelect >= 0)
-        {
-            HotbarSwitch(queuedHotbarSelect);
-            queuedHotbarSelect = -1;
-        }
+        //if(queuedHotbarSelect >= 0)
+        //{
+        //    HotbarSwitch(queuedHotbarSelect);
+        //    queuedHotbarSelect = -1;
+        //}
 
         // Prevent player out of bounds
         transform.localPosition = Vector2.ClampMagnitude(transform.localPosition, outOfBoundsRadius);
@@ -119,12 +119,6 @@ public class Player : PlayerInventory, IPlayerInputActions
     private void FixedUpdate()
     {
         transform.Translate(move);
-    }
-
-    public void HotbarSwitch(int slot)
-    {
-        if (!tools.isUsingTool) SelectSlot(slot);
-        else queuedHotbarSelect = slot;
     }
 
     #region Interactables / Inventories
@@ -309,7 +303,7 @@ public class Player : PlayerInventory, IPlayerInputActions
     {
         if (c.phase == InputActionPhase.Performed)
         {
-            Input_NumberSelect((int)Mathf.Repeat(slot + 1, container.size));
+            RotateRight();
         }
     }
 
@@ -317,13 +311,13 @@ public class Player : PlayerInventory, IPlayerInputActions
     {
         if (c.phase == InputActionPhase.Performed)
         {
-            Input_NumberSelect((int)Mathf.Repeat(slot - 1, container.size));
+            RotateLeft();
         }
     }
-    #endregion
 
     public void Input_NumberSelect(int num)
     {
-        HotbarSwitch(num);
+        Debug.Log("This is depracated");
     }
+    #endregion
 }
