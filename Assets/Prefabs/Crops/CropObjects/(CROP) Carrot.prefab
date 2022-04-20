@@ -49,22 +49,22 @@ MonoBehaviour:
   - sprite: {fileID: 1116706725642825598, guid: 9f172822beda7d246a8fd39bc6f83168, type: 3}
     growthDelay: 4
     _item: {fileID: 3895952035281508092, guid: c3d66b8deace9da4dbb22ee99b0572a7, type: 3}
-    amount: 1
+    amount: {x: 1, y: 1}
     scoreFromHarvest: 0
   - sprite: {fileID: 8796380703106566107, guid: 9f172822beda7d246a8fd39bc6f83168, type: 3}
     growthDelay: 12
     _item: {fileID: 3895952035281508092, guid: c3d66b8deace9da4dbb22ee99b0572a7, type: 3}
-    amount: 1
+    amount: {x: 1, y: 1}
     scoreFromHarvest: 0
   - sprite: {fileID: -3098547097148736168, guid: 9f172822beda7d246a8fd39bc6f83168, type: 3}
     growthDelay: 12
     _item: {fileID: 3895952035281508092, guid: c3d66b8deace9da4dbb22ee99b0572a7, type: 3}
-    amount: 1
+    amount: {x: 1, y: 1}
     scoreFromHarvest: 0
   - sprite: {fileID: 136203948458210870, guid: 9f172822beda7d246a8fd39bc6f83168, type: 3}
     growthDelay: 0
     _item: {fileID: 3895952035281508092, guid: 29e3dfb59d94dd84a8f1f981c187a7f8, type: 3}
-    amount: 1
+    amount: {x: 2, y: 3}
     scoreFromHarvest: 12
   autoRespawn: 0
   growthDelayMultiplier: 1

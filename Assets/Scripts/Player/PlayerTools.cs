@@ -120,7 +120,8 @@ public class PlayerTools : MonoBehaviour
                             if (_crop != null)
                             {
                                 CropData crop = (CropData)_crop;
-                                for (int j = 0; j < crop.amount; j++)
+                                int a = Random.Range((int)crop.amount.x, (int)crop.amount.y + 1);
+                                for (int j = 0; j < a; j++)
                                 {
                                     DroppedItem.DropOut(crop.item, 1, pos, Random.insideUnitCircle.normalized * 0.5f);
                                 }
