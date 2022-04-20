@@ -10,7 +10,7 @@ public class PlayerInventory : MonoBehaviour
     [Space]
 
     [HideInInspector] public Container<Item> container;
-    [HideInInspector] public int slot;
+    [HideInInspector] public int slot { get => gui.rotation; }
 
     protected PlayerInventoryGUI gui;
 
@@ -50,14 +50,20 @@ public class PlayerInventory : MonoBehaviour
     /// <summary>
     /// Set the selected slot of the player inventory.
     /// </summary>
+    public void HotbarSwitch(int slot) {
+        gui.RotateTo(slot);
+        //this.slot = (int)Mathf.Repeat(slot, size);
+    }
+
     public void RotateRight()
     {
-        //this.slot = slot;
-        gui.RotateRight();
+        gui.RotateTo(slot + 1, false);
+        //slot = (int)Mathf.Repeat(slot + 1, size);
     }
 
     public void RotateLeft()
     {
-        gui.RotateLeft();
+        gui.RotateTo(slot - 1, true);
+        //slot = (int)Mathf.Repeat(slot - 1, size);
     }
 }

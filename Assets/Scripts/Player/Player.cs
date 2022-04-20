@@ -317,7 +317,10 @@ public class Player : PlayerInventory, IPlayerInputActions
 
     public void Input_NumberSelect(int num)
     {
-        Debug.Log("This is depracated");
+        Debug.Log(num);
+        if (num == 0) RotateLeft();
+        if (num == 2) RotateRight();
+        //HotbarSwitch(num);
     }
     #endregion
 }

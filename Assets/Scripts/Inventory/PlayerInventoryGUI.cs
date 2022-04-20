@@ -1,8 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using Systems.Inventory;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class PlayerInventoryGUI : MonoBehaviour
 {
@@ -12,13 +12,16 @@ public class PlayerInventoryGUI : MonoBehaviour
 
     private RectTransform[] GUI { get => GUIBasedOnRotation(); }
     private Container<Item> container;
+    private Queue<RotationQueueEntry> rotationQueue;
     private int containerSize;
-    private int rotation;
+    public int rotation;
 
     private bool initialized = false;
+    private bool isAnimating = false;
 
     public void Setup(ref Container<Item> container)
     {
+        rotationQueue = new Queue<RotationQueueEntry>();
         // Subscribe to the containers update event.
         container.OnUpdate += OnContainerUpdate;
     }
@@ -65,26 +68,162 @@ public class PlayerInventoryGUI : MonoBehaviour
             // Update the sprites of the GUI.
             for (int i = 0; i < size; i++)
             {
-                Image image = GUI[i].GetComponent<Image>();
-                image.enabled = true;
-                if (IsRendered(i) && container.Peek(i, out Item item))
-                    image.sprite = item.sprite;
-                else
-                    image.enabled = false;
+                // GUI array is a complete mind **** but it works
+                SetItemSprite(GUI[i], i, true);
             }
         }
 
         initialized = true;
     }
 
-    public void RotateLeft()
+    /// <summary>
+    /// Set the image sprite of an item in the GUI.
+    /// </summary>
+    private void SetItemSprite(RectTransform itemUI, int slot, bool hasToBeRendered = false, float alpha = -1.0f) 
     {
-        rotation--;
+        Image image = itemUI.GetComponent<Image>();
+        
+        if ((!hasToBeRendered || IsRendered(slot)) && container.Peek(slot, out Item item)) 
+        {
+            image.enabled = true;
+            if (alpha != -1.0f) image.color = new Color(image.color.r, image.color.g, image.color.b, alpha);
+            image.sprite = item.sprite;
+        }
+        else image.enabled = false;
     }
 
-    public void RotateRight()
+    /// <summary>
+    /// Will rotate towards the goal slot, isLeft dicates the direction of the animation.
+    /// </summary>
+    public void RotateTo(int slot, bool isLeft = false) 
     {
-        rotation++;
+        // Make sure the slot is within range.
+        slot = (int)Mathf.Repeat(slot, containerSize);
+
+        // Figure out the distance between the current rotation and the goal.
+        int distance = 0;
+        int current = rotation;
+        do {
+            distance++;
+            current = (int)Mathf.Repeat(isLeft ? current - 1 : current + 1, containerSize);
+        } while (current != slot);
+
+        // Enqueue the rotation.
+        if (rotationQueue.Count > 0) rotationQueue.Dequeue();
+        rotationQueue.Enqueue(new RotationQueueEntry(isLeft, distance));
+
+        if (isAnimating == false) 
+            StartCoroutine(nameof(Rotate));
+    }
+
+    /// <summary>
+    /// Massive animation method for rotating the inventory GUI.
+    /// </summary>
+    public IEnumerator Rotate()
+    {
+        isAnimating = true;
+
+        while (rotationQueue.Count > 0)
+        {
+            RotationQueueEntry entry = rotationQueue.Dequeue();
+
+            for (int i = 0; i < entry.distance; i++)
+            {
+                if (entry.isLeft)
+                {
+                    // Animate the movement ...
+                    Vector3 outPos = leftItem.localPosition - new Vector3(centerItem.localPosition.x, centerItem.localPosition.y);
+                    outPos.x = -outPos.x;
+
+                    Vector3 leftPos = leftItem.localPosition;
+                    Vector3 centerPos = centerItem.localPosition;
+                    Vector3 rightPos = rightItem.localPosition;
+
+                    // Setup the cycle item.
+                    cycleItem.gameObject.SetActive(true);
+                    outPos.y = -outPos.y;
+                    cycleItem.position = leftItem.position - outPos;
+                    outPos.y = -outPos.y;
+                    if (container.Peek((int)Mathf.Repeat(rotation - 2, containerSize), out Item item)) 
+                    {
+                        Image cycleImage = cycleItem.GetComponent<Image>();
+                        cycleImage.color = new Color(1, 1, 1, 0);
+                        cycleImage.sprite = item.sprite;
+                    }
+
+                    // Tween the items.
+                    LeanTween.alpha(cycleItem, 0.5f, 0.2f);
+                    LeanTween.moveLocal(cycleItem.gameObject, leftPos, 0.2f).setEaseInOutCubic();
+                    LeanTween.alpha(leftItem, 1.0f, 0.2f);
+                    LeanTween.moveLocal(leftItem.gameObject, centerPos, 0.2f).setEaseInOutCubic();
+                    LeanTween.alpha(centerItem, 0.5f, 0.2f);
+                    LeanTween.moveLocal(centerItem.gameObject, rightPos, 0.2f).setEaseInOutCubic();
+                    LeanTween.alpha(rightItem, 0.0f, 0.2f);
+                    LeanTween.moveLocal(rightItem.gameObject, rightPos + outPos, 0.2f).setEaseInOutCubic();
+
+                    yield return new WaitForSeconds(0.2f);
+
+                    // Move Left
+                    rotation = (int)Mathf.Repeat(rotation - 1, containerSize);
+
+                    // Reset the items positons and swap their sprites.
+                    leftItem.localPosition = leftPos;
+                    SetItemSprite(leftItem, (int)Mathf.Repeat(rotation - 1, containerSize), false, 0.5f);
+                    centerItem.localPosition = centerPos;
+                    SetItemSprite(centerItem, (int)Mathf.Repeat(rotation, containerSize), false, 1.0f);
+                    rightItem.localPosition = rightPos;
+                    SetItemSprite(rightItem, (int)Mathf.Repeat(rotation + 1, containerSize), false, 0.5f);
+                    cycleItem.gameObject.SetActive(false);
+                }
+                else 
+                {
+                    // Animate the movement ...
+                    Vector3 outPos = leftItem.localPosition - new Vector3(centerItem.localPosition.x, centerItem.localPosition.y);
+                    outPos.x = -outPos.x;
+
+                    Vector3 leftPos = leftItem.localPosition;
+                    Vector3 centerPos = centerItem.localPosition;
+                    Vector3 rightPos = rightItem.localPosition;
+
+                    // Setup the cycle item.
+                    cycleItem.gameObject.SetActive(true);
+                    cycleItem.position = rightItem.position + outPos;
+                    outPos.y = -outPos.y;
+                    if (container.Peek((int)Mathf.Repeat(rotation + 2, containerSize), out Item item)) 
+                    {
+                        Image cycleImage = cycleItem.GetComponent<Image>();
+                        cycleImage.color = new Color(1, 1, 1, 0);
+                        cycleImage.sprite = item.sprite;
+                    }
+
+                    // Tween the items.
+                    LeanTween.alpha(cycleItem, 0.5f, 0.2f);
+                    LeanTween.moveLocal(cycleItem.gameObject, rightPos, 0.2f).setEaseInOutCubic();
+                    LeanTween.alpha(rightItem, 1.0f, 0.2f);
+                    LeanTween.moveLocal(rightItem.gameObject, centerPos, 0.2f).setEaseInOutCubic();
+                    LeanTween.alpha(centerItem, 0.5f, 0.2f);
+                    LeanTween.moveLocal(centerItem.gameObject, leftPos, 0.2f).setEaseInOutCubic();
+                    LeanTween.alpha(leftItem, 0.0f, 0.2f);
+                    LeanTween.moveLocal(leftItem.gameObject, leftPos - outPos, 0.2f).setEaseInOutCubic();
+
+                    yield return new WaitForSeconds(0.2f);
+
+                    // Move Right
+                    rotation = (int)Mathf.Repeat(rotation + 1, containerSize);
+
+                    // Reset the items positons and swap their sprites.
+                    leftItem.localPosition = leftPos;
+                    SetItemSprite(leftItem, (int)Mathf.Repeat(rotation - 1, containerSize), false, 0.5f);
+                    centerItem.localPosition = centerPos;
+                    SetItemSprite(centerItem, (int)Mathf.Repeat(rotation, containerSize), false, 1.0f);
+                    rightItem.localPosition = rightPos;
+                    SetItemSprite(rightItem, (int)Mathf.Repeat(rotation + 1, containerSize), false, 0.5f);
+                    cycleItem.gameObject.SetActive(false);
+                }
+            }
+        }
+
+        isAnimating = false;
     }
 
     /// <summary>
@@ -104,6 +243,17 @@ public class PlayerInventoryGUI : MonoBehaviour
                 else
                     image.enabled = false;
             }
+        }
+    }
+
+    private struct RotationQueueEntry 
+    {
+        public bool isLeft;
+        public int distance;
+
+        public RotationQueueEntry(bool isLeft, int distance) {
+            this.isLeft = isLeft;
+            this.distance = distance;
         }
     }
 }

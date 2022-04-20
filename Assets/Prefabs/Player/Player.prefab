@@ -261,6 +261,10 @@ MonoBehaviour:
   size: 3
   slot: 0
   starterItems:
+  - item: {fileID: 7234941643276740707, guid: 55529b8a9fc69a64f8b99bee52eef01b, type: 3}
+    amount: 1
+  - item: {fileID: 7618592410482247493, guid: 3650e097378961f4ba8021e9ab27d9b8, type: 3}
+    amount: 1
   - item: {fileID: 3984615582560117230, guid: ce5b0580c9d6ee24aaa35305c1596a94, type: 3}
     amount: 1
   playerID: 0
