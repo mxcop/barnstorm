@@ -108,7 +108,7 @@ public class PlayerInventoryGUI : MonoBehaviour
             current = (int)Mathf.Repeat(isLeft ? current - 1 : current + 1, containerSize);
         } while (current != slot);
 
-        // Enqueue the rotation.
+        // Enqueue the rotation (Only one queued rotation is allowed).
         if (rotationQueue.Count > 0) rotationQueue.Dequeue();
         rotationQueue.Enqueue(new RotationQueueEntry(isLeft, distance));
 
