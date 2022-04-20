@@ -71,6 +71,6 @@ public struct CropData
     [Space]
     [SerializeField] GameObject _item;
     public Item item => _item.GetComponent<Item>();
-    public int amount;
+    public Vector2 amount;
     public int scoreFromHarvest;
 }
