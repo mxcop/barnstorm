@@ -9,12 +9,13 @@ public class PlayerInventoryGUI : MonoBehaviour
     [Header("References")]
     [SerializeField] private RectTransform cycleItem;
     [SerializeField] private RectTransform leftItem, centerItem, rightItem;
+    [SerializeField] private Sprite emptySlot;
 
     private RectTransform[] GUI { get => GUIBasedOnRotation(); }
     private Container<Item> container;
     private Queue<RotationQueueEntry> rotationQueue;
     private int containerSize;
-    public int rotation;
+    [HideInInspector] public int rotation;
 
     private bool initialized = false;
     private bool isAnimating = false;
@@ -82,14 +83,18 @@ public class PlayerInventoryGUI : MonoBehaviour
     private void SetItemSprite(RectTransform itemUI, int slot, bool hasToBeRendered = false, float alpha = -1.0f) 
     {
         Image image = itemUI.GetComponent<Image>();
-        
+        image.enabled = true;
+
         if ((!hasToBeRendered || IsRendered(slot)) && container.Peek(slot, out Item item)) 
         {
-            image.enabled = true;
             if (alpha != -1.0f) image.color = new Color(image.color.r, image.color.g, image.color.b, alpha);
             image.sprite = item.sprite;
         }
-        else image.enabled = false;
+        else
+        {
+            if (alpha != -1.0f) image.color = new Color(image.color.r, image.color.g, image.color.b, alpha);
+            image.sprite = emptySlot;
+        }
     }
 
     /// <summary>
@@ -140,7 +145,6 @@ public class PlayerInventoryGUI : MonoBehaviour
                     Vector3 rightPos = rightItem.localPosition;
 
                     // Setup the cycle item.
-                    cycleItem.gameObject.SetActive(true);
                     outPos.y = -outPos.y;
                     cycleItem.position = leftItem.position - outPos;
                     outPos.y = -outPos.y;
@@ -149,17 +153,18 @@ public class PlayerInventoryGUI : MonoBehaviour
                         Image cycleImage = cycleItem.GetComponent<Image>();
                         cycleImage.color = new Color(1, 1, 1, 0);
                         cycleImage.sprite = item.sprite;
-                    }
+                        cycleItem.gameObject.SetActive(true);
+                    } else cycleItem.gameObject.SetActive(false);
 
                     // Tween the items.
                     LeanTween.alpha(cycleItem, 0.5f, 0.2f);
-                    LeanTween.moveLocal(cycleItem.gameObject, leftPos, 0.2f).setEaseInOutCubic();
+                    LeanTween.moveLocal(cycleItem.gameObject, leftPos, 0.2f);
                     LeanTween.alpha(leftItem, 1.0f, 0.2f);
-                    LeanTween.moveLocal(leftItem.gameObject, centerPos, 0.2f).setEaseInOutCubic();
+                    LeanTween.moveLocal(leftItem.gameObject, centerPos, 0.2f);
                     LeanTween.alpha(centerItem, 0.5f, 0.2f);
-                    LeanTween.moveLocal(centerItem.gameObject, rightPos, 0.2f).setEaseInOutCubic();
+                    LeanTween.moveLocal(centerItem.gameObject, rightPos, 0.2f);
                     LeanTween.alpha(rightItem, 0.0f, 0.2f);
-                    LeanTween.moveLocal(rightItem.gameObject, rightPos + outPos, 0.2f).setEaseInOutCubic();
+                    LeanTween.moveLocal(rightItem.gameObject, rightPos + outPos, 0.2f);
 
                     yield return new WaitForSeconds(0.2f);
 
@@ -186,7 +191,6 @@ public class PlayerInventoryGUI : MonoBehaviour
                     Vector3 rightPos = rightItem.localPosition;
 
                     // Setup the cycle item.
-                    cycleItem.gameObject.SetActive(true);
                     cycleItem.position = rightItem.position + outPos;
                     outPos.y = -outPos.y;
                     if (container.Peek((int)Mathf.Repeat(rotation + 2, containerSize), out Item item)) 
@@ -194,17 +198,18 @@ public class PlayerInventoryGUI : MonoBehaviour
                         Image cycleImage = cycleItem.GetComponent<Image>();
                         cycleImage.color = new Color(1, 1, 1, 0);
                         cycleImage.sprite = item.sprite;
-                    }
+                        cycleItem.gameObject.SetActive(true);
+                    } else cycleItem.gameObject.SetActive(false);
 
                     // Tween the items.
                     LeanTween.alpha(cycleItem, 0.5f, 0.2f);
-                    LeanTween.moveLocal(cycleItem.gameObject, rightPos, 0.2f).setEaseInOutCubic();
+                    LeanTween.moveLocal(cycleItem.gameObject, rightPos, 0.2f);
                     LeanTween.alpha(rightItem, 1.0f, 0.2f);
-                    LeanTween.moveLocal(rightItem.gameObject, centerPos, 0.2f).setEaseInOutCubic();
+                    LeanTween.moveLocal(rightItem.gameObject, centerPos, 0.2f);
                     LeanTween.alpha(centerItem, 0.5f, 0.2f);
-                    LeanTween.moveLocal(centerItem.gameObject, leftPos, 0.2f).setEaseInOutCubic();
+                    LeanTween.moveLocal(centerItem.gameObject, leftPos, 0.2f);
                     LeanTween.alpha(leftItem, 0.0f, 0.2f);
-                    LeanTween.moveLocal(leftItem.gameObject, leftPos - outPos, 0.2f).setEaseInOutCubic();
+                    LeanTween.moveLocal(leftItem.gameObject, leftPos - outPos, 0.2f);
 
                     yield return new WaitForSeconds(0.2f);
 
@@ -236,12 +241,8 @@ public class PlayerInventoryGUI : MonoBehaviour
             // Update the sprites of the GUI.
             for (int i = 0; i < containerSize; i++)
             {
-                Image image = GUI[i].GetComponent<Image>();
-                image.enabled = true;
-                if (IsRendered(i) && container.Peek(i, out Item _item))
-                    image.sprite = _item.sprite;
-                else
-                    image.enabled = false;
+                // GUI array is a complete mind **** but it works
+                SetItemSprite(GUI[i], i, true);
             }
         }
     }

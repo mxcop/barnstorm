@@ -35,6 +35,9 @@ TextureImporter:
   - first:
       213: 6549238662781419482
     second: inv-num-panel
+  - first:
+      213: -5563202553919396195
+    second: empty-slot
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -362,6 +365,27 @@ TextureImporter:
       bones: []
       spriteID: adf375c4dd193ea50800000000000000
       internalID: 6549238662781419482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: empty-slot
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 5
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d96a61890c88bc2b0800000000000000
+      internalID: -5563202553919396195
       vertices: []
       indices: 
       edges: []

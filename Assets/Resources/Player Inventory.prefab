@@ -128,6 +128,8 @@ MonoBehaviour:
   leftItem: {fileID: 5405938446537141446}
   centerItem: {fileID: 5405938447927641311}
   rightItem: {fileID: 5405938447389962161}
+  emptySlot: {fileID: -5563202553919396195, guid: 7c47a30f655cd634ab1c763af0fa64cb, type: 3}
+  rotation: 0
 --- !u!1 &5405938447389962174
 GameObject:
   m_ObjectHideFlags: 0
