@@ -85,16 +85,13 @@ public class PlayerInventoryGUI : MonoBehaviour
         Image image = itemUI.GetComponent<Image>();
         image.enabled = true;
 
-        if ((!hasToBeRendered || IsRendered(slot)) && container.Peek(slot, out Item item)) 
-        {
-            if (alpha != -1.0f) image.color = new Color(image.color.r, image.color.g, image.color.b, alpha);
+        // Update the alpha of the image.
+        if (alpha != -1.0f) image.color = new Color(image.color.r, image.color.g, image.color.b, alpha);
+
+        // Check whether the slot is empty.
+        if ((!hasToBeRendered || IsRendered(slot)) && container.Peek(slot, out Item item))
             image.sprite = item.sprite;
-        }
-        else
-        {
-            if (alpha != -1.0f) image.color = new Color(image.color.r, image.color.g, image.color.b, alpha);
-            image.sprite = emptySlot;
-        }
+        else image.sprite = emptySlot;
     }
 
     /// <summary>
@@ -243,6 +240,15 @@ public class PlayerInventoryGUI : MonoBehaviour
             {
                 // GUI array is a complete mind **** but it works
                 SetItemSprite(GUI[i], i, true);
+
+                if (i == slot && item != null)
+                {
+                    int ii = i;
+                    LeanTween.scale(GUI[ii], Vector3.one * 1.4f, 0.2f).setEaseInBack().setOnComplete(() => 
+                    {
+                        LeanTween.scale(GUI[ii], Vector3.one, 0.1f);
+                    });
+                }
             }
         }
     }
