@@ -40,20 +40,20 @@ public class SceneSwitchEditor : Editor
     static void ModeChanged(PlayModeStateChange playModeState)
     {
         Debug.Log("Mode Change:" + playModeState);
-        Debug.Log(PlayerPrefs.GetString("PreviousScene"));
+        Debug.Log(EditorPrefs.GetString("PreviousScene"));
         if (playModeState == PlayModeStateChange.EnteredEditMode &&
-             PlayerPrefs.HasKey("PreviousScene"))
+             EditorPrefs.HasKey("PreviousScene"))
         {
             Debug.Log("Exiting");
-            EditorSceneManager.OpenScene(PlayerPrefs.GetString("PreviousScene"), OpenSceneMode.Single);
-            PlayerPrefs.DeleteKey("PreviousScene");
+            EditorSceneManager.OpenScene(EditorPrefs.GetString("PreviousScene"), OpenSceneMode.Single);
+            EditorPrefs.DeleteKey("PreviousScene");
         }
     }
 
     static void PlayPersistentScene()
     {
         if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo()) {
-            PlayerPrefs.SetString("PreviousScene", EditorSceneManager.GetActiveScene().path);
+            EditorPrefs.SetString("PreviousScene", EditorSceneManager.GetActiveScene().path);
             EditorSceneManager.OpenScene("Assets/Scenes/Persistent Scene.unity", OpenSceneMode.Single);
             EditorApplication.EnterPlaymode();
         }
