@@ -44,7 +44,8 @@ public class CowEnemy : AstarEnemy
         // Don't go to the state machine if we are stunned
         if (isStunned)
             return;
-
+        
+        // Flip the sprite based on target position
         if (transform.position.x - target.x > 0) sr.flipX = true;
         else sr.flipX = false;
 

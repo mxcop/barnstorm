@@ -91,7 +91,7 @@ public class CropManager : MonoBehaviour
                 return (grassMap.GetTile(new Vector3Int(x, y, 0)) != null && ambientMap.GetTile(new Vector3Int(x, y, 0)) == null);
 
             case TileType.Tilled:
-                Debug.Log((tilledMap.GetTile(new Vector3Int(x, y, 0)) != null));
+               // Debug.Log((tilledMap.GetTile(new Vector3Int(x, y, 0)) != null));
                 return (tilledMap.GetTile(new Vector3Int(x, y, 0)) != null);
         }
         

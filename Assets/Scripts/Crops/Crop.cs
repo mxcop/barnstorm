@@ -9,6 +9,8 @@ public class Crop : MonoBehaviour
     int currentStage;
     float lastGrowthT;
 
+    [SerializeField] private GameObject particlePrefab;
+
     [Header("Settings")]
     [SerializeField] bool autoRespawn;
     [SerializeField] float growthDelayMultiplier;
@@ -40,6 +42,9 @@ public class Crop : MonoBehaviour
         currentStage = Mathf.Clamp(i, 0, stageData.Length - 1);
         currentStageData = stageData[currentStage];
         spr.sprite = currentStageData.sprite;
+
+        // Bitch
+        Instantiate(particlePrefab, transform.position, Quaternion.identity);     
     }
 
     public CropData? Harvest()
