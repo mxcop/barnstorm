@@ -5,6 +5,7 @@ public class PlayerInventory : MonoBehaviour
     private GameObject GUI;
 
     [Header("Inventory Config")]
+    [SerializeField] private GameObject UIPrefab;
     [SerializeField] private int size = 3;
 
     [Space]
@@ -21,11 +22,8 @@ public class PlayerInventory : MonoBehaviour
         // Initialize the container of the inventory.
         container = new Container<Item>(size);
 
-        // Load the resources.
-        GUI = Resources.Load<GameObject>("Player Inventory");
-
         // Create the GUI of the inventory.
-        gui = Instantiate(GUI, GameObject.FindWithTag("WorldCanvas").transform).GetComponent<PlayerInventoryGUI>();
+        gui = Instantiate(UIPrefab, GameObject.FindWithTag("WorldCanvas").transform).GetComponent<PlayerInventoryGUI>();
         gui.Setup(ref container);
 
         for (int i = 0; i < starterItems.Length; i++)

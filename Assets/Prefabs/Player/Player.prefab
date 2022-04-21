@@ -258,6 +258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dde3c1554600824bade552025ffb5c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UIPrefab: {fileID: 5405938446953835466, guid: 009cc6ed57a6b3547871a1b42f2d321f, type: 3}
   size: 3
   starterItems:
   - item: {fileID: 3984615582560117230, guid: ce5b0580c9d6ee24aaa35305c1596a94, type: 3}
