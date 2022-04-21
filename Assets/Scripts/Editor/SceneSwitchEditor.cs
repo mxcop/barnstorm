@@ -17,7 +17,8 @@ public class SceneSwitchEditor : Editor
                 fontSize = 16,
                 alignment = TextAnchor.MiddleCenter,
                 imagePosition = ImagePosition.ImageAbove,
-                fontStyle = FontStyle.Bold
+                fontStyle = FontStyle.Bold,
+                padding = new RectOffset(3, 3, 3, 3),
             };
         }
     }
@@ -26,10 +27,11 @@ public class SceneSwitchEditor : Editor
     {
         GUILayout.FlexibleSpace();
 
-        if (GUILayout.Button(new GUIContent(Resources.Load("play-button") as Texture, "Play Persistent"), ToolbarStyles.commandButtonStyle)) {
+        if (GUILayout.Button(new GUIContent(Resources.Load("Editor/play-button") as Texture, "Play Persistent"), ToolbarStyles.commandButtonStyle)) {
             PlayPersistentScene();
         }
     }
+
     static SceneSwitchEditor() {
         ToolbarExtender.LeftToolbarGUI.Add(OnToolbarGUI);
         EditorApplication.playModeStateChanged += ModeChanged;
