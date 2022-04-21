@@ -61,8 +61,6 @@ public class Player : PlayerInventory, IPlayerInputActions
             isInteracting = false;
 
             FindObjectOfType<CinemachineTargetGroup>()?.AddMember(gameObject.transform, 1f, 1.25f);
-
-            //gui.SetReady(false);
         }
     }
 
@@ -106,11 +104,11 @@ public class Player : PlayerInventory, IPlayerInputActions
         if (currentInteraction != null && Vector2.Distance((currentInteraction as MonoBehaviour).transform.position, transform.position) -0.5f > interactCheckRadius) BreakInteraction();
 
         // Switched to queued hotbar slot
-        //if(queuedHotbarSelect >= 0)
-        //{
-        //    HotbarSwitch(queuedHotbarSelect);
-        //    queuedHotbarSelect = -1;
-        //}
+        if (queuedHotbarSelect >= 0)
+        {
+            HotbarSwitch(queuedHotbarSelect);
+            queuedHotbarSelect = -1;
+        }
 
         // Prevent player out of bounds
         transform.localPosition = Vector2.ClampMagnitude(transform.localPosition, outOfBoundsRadius);

@@ -52,7 +52,7 @@ MonoBehaviour:
   - {x: -0.65, y: -0.4}
   - {x: 0, y: -0.8}
   - {x: 0.65, y: -0.4}
-  lerpSpeed: 0.3
+  lerpSpeed: 0.1
   spriteRenderer: {fileID: 7599179288647060967}
   till_pushCf:
     useTriggers: 0
