@@ -258,13 +258,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dde3c1554600824bade552025ffb5c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UIPrefab: {fileID: 5405938446953835466, guid: 009cc6ed57a6b3547871a1b42f2d321f, type: 3}
   size: 3
-  slot: 0
   starterItems:
-  - item: {fileID: 7234941643276740707, guid: 55529b8a9fc69a64f8b99bee52eef01b, type: 3}
-    amount: 1
-  - item: {fileID: 7618592410482247493, guid: 3650e097378961f4ba8021e9ab27d9b8, type: 3}
-    amount: 1
   - item: {fileID: 3984615582560117230, guid: ce5b0580c9d6ee24aaa35305c1596a94, type: 3}
     amount: 1
   playerID: 0
