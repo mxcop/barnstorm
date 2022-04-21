@@ -1,11 +1,37 @@
 using UnityEditor.SceneManagement;
 using UnityEditor;
 using UnityEngine;
+using UnityToolbarExtender;
 
 [InitializeOnLoad]
 public class SceneSwitchEditor : Editor
 {
+    static class ToolbarStyles
+    {
+        public static readonly GUIStyle commandButtonStyle;
+
+        static ToolbarStyles()
+        {
+            commandButtonStyle = new GUIStyle("Command")
+            {
+                fontSize = 16,
+                alignment = TextAnchor.MiddleCenter,
+                imagePosition = ImagePosition.ImageAbove,
+                fontStyle = FontStyle.Bold
+            };
+        }
+    }
+
+    static void OnToolbarGUI()
+    {
+        GUILayout.FlexibleSpace();
+
+        if (GUILayout.Button(new GUIContent(Resources.Load("play-button") as Texture, "Play Persistent"), ToolbarStyles.commandButtonStyle)) {
+            PlayPersistentScene();
+        }
+    }
     static SceneSwitchEditor() {
+        ToolbarExtender.LeftToolbarGUI.Add(OnToolbarGUI);
         EditorApplication.playModeStateChanged += ModeChanged;
     }
 
@@ -22,15 +48,6 @@ public class SceneSwitchEditor : Editor
         }
     }
 
-    [MenuItem("Scenes Tools/Open Persistent Scene")]
-    static void PersistentScene()
-    {
-        if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo()) {
-            EditorSceneManager.OpenScene("Assets/Scenes/Persistent Scene.unity", OpenSceneMode.Single);
-        }
-    }
-
-    [MenuItem("Scenes Tools/Play Persistent Scene")]
     static void PlayPersistentScene()
     {
         if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo()) {
