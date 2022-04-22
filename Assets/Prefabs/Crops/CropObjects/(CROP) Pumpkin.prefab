@@ -49,23 +49,24 @@ MonoBehaviour:
   - sprite: {fileID: 9113586584930331469, guid: 9f172822beda7d246a8fd39bc6f83168, type: 3}
     growthDelay: 10
     _item: {fileID: 2879155815688516714, guid: b05f01f65c1801448a0ccfd621cea43c, type: 3}
-    amount: 1
+    amount: {x: 0, y: 0}
     scoreFromHarvest: 0
   - sprite: {fileID: -972495551902887074, guid: 9f172822beda7d246a8fd39bc6f83168, type: 3}
     growthDelay: 24
     _item: {fileID: 2879155815688516714, guid: b05f01f65c1801448a0ccfd621cea43c, type: 3}
-    amount: 1
+    amount: {x: 0, y: 0}
     scoreFromHarvest: 0
   - sprite: {fileID: 6849194982135307561, guid: 9f172822beda7d246a8fd39bc6f83168, type: 3}
     growthDelay: 24
     _item: {fileID: 2879155815688516714, guid: 50cc0a3c0abc7f042b806023f0b3b31a, type: 3}
-    amount: 1
+    amount: {x: 0, y: 0}
     scoreFromHarvest: 16
   - sprite: {fileID: -7057375707926749745, guid: 9f172822beda7d246a8fd39bc6f83168, type: 3}
     growthDelay: 0
     _item: {fileID: 2879155815688516714, guid: 50cc0a3c0abc7f042b806023f0b3b31a, type: 3}
-    amount: 2
+    amount: {x: 0, y: 0}
     scoreFromHarvest: 24
+  particlePrefab: {fileID: 1881814833480232357, guid: 411c792445f49ea43a7c60b6ecf8b985, type: 3}
   autoRespawn: 0
   growthDelayMultiplier: 1
   startingGrowth: 0

@@ -440,7 +440,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7024b121690eb634e8df9dd272c24e49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameoverPanel: {fileID: 1166389086}
   storedFood: 50
   stages:
   - {fileID: 3424584162190279719, guid: 3f95f37f9972532429b8d794af40f4cf, type: 3}
@@ -6498,7 +6497,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7.8125
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -6522,7 +6521,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 460451428}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.005, y: 0.531, z: -16.25}
+  m_LocalPosition: {x: -0.005, y: 0.531, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -35219,7 +35218,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1349214132}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.005, y: 0.531, z: -16.25}
+  m_LocalPosition: {x: -0.005, y: 0.531, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 471800230}
@@ -35670,6 +35669,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderObject: {fileID: 7712892274171142842}
   cover: {fileID: 3663438668199762417}
+  storedFood: 0
 --- !u!4 &2649569681998025559
 Transform:
   m_ObjectHideFlags: 0
@@ -36463,7 +36463,6 @@ GameObject:
   - component: {fileID: 6070317904535708135}
   - component: {fileID: 1191251560556396067}
   - component: {fileID: 1696769800849069798}
-  - component: {fileID: 9107899937984357614}
   m_Layer: 7
   m_Name: delivery truck
   m_TagString: Barn
@@ -36471,18 +36470,3 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &9107899937984357614
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9107899937984357613}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7024b121690eb634e8df9dd272c24e49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameoverPanel: {fileID: 1166389086}
-  storedFood: 100
-  stages: []

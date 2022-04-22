@@ -39,12 +39,9 @@ public class SceneSwitchEditor : Editor
 
     static void ModeChanged(PlayModeStateChange playModeState)
     {
-        Debug.Log("Mode Change:" + playModeState);
-        Debug.Log(EditorPrefs.GetString("PreviousScene"));
         if (playModeState == PlayModeStateChange.EnteredEditMode &&
              EditorPrefs.HasKey("PreviousScene"))
         {
-            Debug.Log("Exiting");
             EditorSceneManager.OpenScene(EditorPrefs.GetString("PreviousScene"), OpenSceneMode.Single);
             EditorPrefs.DeleteKey("PreviousScene");
         }

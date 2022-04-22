@@ -8,14 +8,20 @@ public class DeliveryTruck : MonoBehaviour
 {
     [SerializeField] private GameObject colliderObject;
     [SerializeField] private GameObject cover;
+    [SerializeField] private float bounceStrength;
+
+    [SerializeField] private int storedFood;
+    private int startFood;
+
     private bool coverOn = false;
     private bool arrived = false;
 
-    [SerializeField] private List<GameObject> players = new List<GameObject>();
+    private List<GameObject> players = new List<GameObject>();
     private Animator animator;
 
     private void Start() {
         animator = GetComponent<Animator>();
+        startFood = storedFood;
     }
 
     private void FixedUpdate() {
@@ -46,6 +52,23 @@ public class DeliveryTruck : MonoBehaviour
             collision.transform.SetParent(null);
             players.Remove(collision.gameObject);
             SetPlayerInsideTruck(collision.gameObject, false);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy")) {
+            GameObject collObj = collision.gameObject;
+
+            Debug.Log(collision.contacts[0].point);
+            collObj.GetComponent<Rigidbody2D>().AddForceAtPosition(((Vector2)collision.transform.position - collision.contacts[0].point).normalized * bounceStrength, collision.contacts[0].point);
+            CowEnemy enemy = collObj.GetComponent<CowEnemy>();
+            storedFood -= Mathf.FloorToInt(enemy.hunger);
+
+            //Leantwean Shake truck
+
+            // Gameover.
+            if (storedFood <= 0) Debug.Log("GameOver!");
         }
     }
 
