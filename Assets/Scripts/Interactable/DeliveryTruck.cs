@@ -61,11 +61,11 @@ public class DeliveryTruck : MonoBehaviour
             GameObject collObj = collision.gameObject;
 
             Debug.Log(collision.contacts[0].point);
-            collObj.GetComponent<Rigidbody2D>().AddForceAtPosition(((Vector2)collision.transform.position - collision.contacts[0].point).normalized * bounceStrength, collision.contacts[0].point);
+            collObj.GetComponent<Rigidbody2D>().AddForceAtPosition((collision.transform.position - transform.position).normalized * bounceStrength, collision.contacts[0].point);
             CowEnemy enemy = collObj.GetComponent<CowEnemy>();
             storedFood -= Mathf.FloorToInt(enemy.hunger);
 
-            //Leantwean Shake truck
+            // TODO: Leantwean Shake truck
 
             // Gameover.
             if (storedFood <= 0) Debug.Log("GameOver!");

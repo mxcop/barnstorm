@@ -18,6 +18,7 @@ public class Crop : MonoBehaviour
 
     SpriteRenderer spr;
     bool isHarvested;
+    bool hasSpawnedParticle;
 
     private void Start()
     {
@@ -43,8 +44,12 @@ public class Crop : MonoBehaviour
         currentStageData = stageData[currentStage];
         spr.sprite = currentStageData.sprite;
 
-        // Bitch
-        Instantiate(particlePrefab, transform.position, Quaternion.identity);     
+        // Bitch, Deze shit is kut
+        if (!hasSpawnedParticle && currentStage == stageData.Length - 1) {
+            Instantiate(particlePrefab, transform.position, Quaternion.identity);
+            hasSpawnedParticle = true;
+        }
+            
     }
 
     public CropData? Harvest()
