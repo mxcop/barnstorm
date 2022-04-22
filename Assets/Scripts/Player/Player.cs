@@ -60,7 +60,7 @@ public class Player : PlayerInventory, IPlayerInputActions
             tools.playerAnim = anim;
             isInteracting = false;
 
-            FindObjectOfType<CinemachineTargetGroup>()?.AddMember(gameObject.transform, 1f, 1.25f);
+            FindObjectOfType<CinemachineTargetGroup>()?.AddMember(gameObject.transform, 1f, 6.25f);
         }
     }
 
