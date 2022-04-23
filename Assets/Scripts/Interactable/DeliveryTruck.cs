@@ -65,7 +65,9 @@ public class DeliveryTruck : MonoBehaviour
             CowEnemy enemy = collObj.GetComponent<CowEnemy>();
             storedFood -= Mathf.FloorToInt(enemy.hunger);
 
-            // TODO: Leantwean Shake truck
+            // Truck shake
+            LeanTween.cancel(gameObject);
+            LeanTween.rotateZ(gameObject, Random.Range(-3.5f, 3.5f), 0.1f).setRepeat(4).setOnComplete(() => transform.rotation = Quaternion.identity);
 
             // Gameover.
             if (storedFood <= 0) Debug.Log("GameOver!");
