@@ -51,19 +51,19 @@ MonoBehaviour:
   _conversionTable:
   - input: {fileID: 3813922953985300109, guid: 29e3dfb59d94dd84a8f1f981c187a7f8, type: 3}
     output: {fileID: 4600207537282672053, guid: c3d66b8deace9da4dbb22ee99b0572a7, type: 3}
-    exchangeRate: 2
+    exchangeRate: 1
   - input: {fileID: 1678087594518494807, guid: 45107cc5db4068c4d967f4c81f4a87d5, type: 3}
     output: {fileID: 676892169659703518, guid: 7311c41d7c5b6404fb390292c9e7f465, type: 3}
-    exchangeRate: 2
+    exchangeRate: 1
   - input: {fileID: 3009198062312784442, guid: a747899da4b852b409a82cc15dcae582, type: 3}
     output: {fileID: -2085850183269274590, guid: a8adefb3024577e47bbf5b581dc952c3, type: 3}
-    exchangeRate: 2
+    exchangeRate: 1
   - input: {fileID: 7618592410482247493, guid: 3650e097378961f4ba8021e9ab27d9b8, type: 3}
     output: {fileID: 7234941643276740707, guid: 55529b8a9fc69a64f8b99bee52eef01b, type: 3}
-    exchangeRate: 3
+    exchangeRate: 1
   - input: {fileID: 5279258075028222489, guid: 50cc0a3c0abc7f042b806023f0b3b31a, type: 3}
     output: {fileID: -6891696604715876398, guid: b05f01f65c1801448a0ccfd621cea43c, type: 3}
-    exchangeRate: 2
+    exchangeRate: 1
 --- !u!212 &3999271708323607144
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -131,8 +131,8 @@ BoxCollider2D:
   m_Offset: {x: -0.0025930405, y: -0.40451348}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.75, y: 1.3125}
+    pivot: {x: 0.5, y: 0.45}
+    oldSize: {x: 0.75, y: 1.4375}
     newSize: {x: 0.75, y: 1.3125}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
