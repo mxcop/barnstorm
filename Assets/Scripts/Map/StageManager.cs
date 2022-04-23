@@ -31,6 +31,9 @@ public class StageManager : MonoBehaviour
     {
         Debug.Log("Loaded level: " + settings.l_displayName);
         currentSettings = settings;
+
+        // Initialize the objectives panel.
+        ObjectivesPanel.InitUI(settings.l_objectives);
     }
 
     public void StartGameplay()
@@ -43,6 +46,12 @@ public class StageManager : MonoBehaviour
     {
         for (int i = 0; i < currentSettings.l_objectives.Length; i++)
         {
+            // If this objective matches the updated item.
+            if (currentSettings.l_objectives[i].goal == LevelSettings.GoalType.Item && currentSettings.l_objectives[i].item == item.item)
+            {
+                ObjectivesPanel.UpdateUI(i, currentSettings.l_objectives[i], item.num);
+            }
+
             if(currentSettings.l_objectives[i].goal == LevelSettings.GoalType.Item &&
                currentSettings.l_objectives[i].item == item.item &&
                currentSettings.l_objectives[i].quantity <= item.num)
@@ -51,6 +60,5 @@ public class StageManager : MonoBehaviour
                 // Idk what to do next
             }
         }
-        
     }
 }
