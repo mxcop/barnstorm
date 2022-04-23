@@ -82,6 +82,9 @@ public class DeliveryTruck : MonoBehaviour
         player.GetComponent<Player>().isInBuilding = val;
     }
 
+    /// <summary>
+    /// Called from the animator when the truck has arrived.
+    /// </summary>
     public void Arrived() {
         crate.enabled = true;
         arrived = true;
