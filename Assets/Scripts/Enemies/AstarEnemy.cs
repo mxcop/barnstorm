@@ -15,7 +15,8 @@ public class AstarEnemy : MonoBehaviour
 
     protected float nextWaypointDistance = 1f;
     protected int currentWaypoint;
-    protected bool reachedEndOfPath = false;
+    protected bool reachedEndOfPath;
+    private bool onRetreatPath;
 
     public List<Vector2> pathList = new List<Vector2>();
 
@@ -59,6 +60,10 @@ public class AstarEnemy : MonoBehaviour
 
         // Moves the enemy
         transform.position += (Vector3)velocity * Time.deltaTime;
+
+        // When on the end of the retreat path detroy self
+        if (onRetreatPath && reachedEndOfPath)
+            Destroy(gameObject);
     }
 
     /// <summary>
@@ -67,6 +72,8 @@ public class AstarEnemy : MonoBehaviour
     protected void ChangeToRetreatPath() {
         // Get a new generated path from the EnemyPathfinding script with the spawnposition as target and reset the current waypoint
         target = spawnPosition;
+        reachedEndOfPath = false;
+        onRetreatPath = true;
         pathList = EnemyPathFinding.GeneratePathList(transform.position, spawnPosition, collisionSize);
         currentWaypoint = 0;
     }
