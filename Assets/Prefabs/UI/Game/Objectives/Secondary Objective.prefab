@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 3112553523778054324}
   - component: {fileID: 3112553523778054325}
   m_Layer: 5
-  m_Name: Current
+  m_Name: Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 3112553524243773552}
   - component: {fileID: 3112553524243773553}
   m_Layer: 5
-  m_Name: Target
+  m_Name: Current
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

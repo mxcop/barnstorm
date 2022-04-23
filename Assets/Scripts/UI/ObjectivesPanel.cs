@@ -8,6 +8,9 @@ public class ObjectivesPanel : MonoBehaviour
     [SerializeField] private GameObject primaryObjective;
     [SerializeField] private GameObject secondaryObjective;
 
+    [Header("References")]
+    [SerializeField] private RectTransform objectivesGrid;
+
     private Transform[] objectives;
 
     private static ObjectivesPanel instance;
@@ -29,9 +32,9 @@ public class ObjectivesPanel : MonoBehaviour
             // Instantiate the correct object.
             Transform objective;
             if (objs[i].isSecondary == false) {
-                objective = Instantiate(instance.primaryObjective).transform;
+                objective = Instantiate(instance.primaryObjective, instance.objectivesGrid).transform;
             } else {
-                objective = Instantiate(instance.secondaryObjective).transform;
+                objective = Instantiate(instance.secondaryObjective, instance.objectivesGrid).transform;
             }
 
             // Set the icon and values.
