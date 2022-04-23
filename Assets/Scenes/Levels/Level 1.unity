@@ -58879,6 +58879,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 452872489}
     m_Modifications:
+    - target: {fileID: 2160836981212058948, guid: bd34403c6372d5247b679fe25d9467a9, type: 3}
+      propertyPath: objectivesGrid
+      value: 
+      objectReference: {fileID: 4054608561048345296}
     - target: {fileID: 2160836981212058949, guid: bd34403c6372d5247b679fe25d9467a9, type: 3}
       propertyPath: m_Name
       value: Level Objectives
@@ -58969,3 +58973,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd34403c6372d5247b679fe25d9467a9, type: 3}
+--- !u!224 &4054608561048345296 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2160836982233300949, guid: bd34403c6372d5247b679fe25d9467a9, type: 3}
+  m_PrefabInstance: {fileID: 4054608561048345295}
+  m_PrefabAsset: {fileID: 0}
