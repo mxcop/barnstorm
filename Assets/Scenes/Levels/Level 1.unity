@@ -113541,6 +113541,7 @@ MonoBehaviour:
   colliderObject: {fileID: 653812804}
   cover: {fileID: 595761457}
   bounceStrength: 3000
+  crate: {fileID: 121660962257277212}
   storedFood: 10
 --- !u!61 &1683880341
 BoxCollider2D:

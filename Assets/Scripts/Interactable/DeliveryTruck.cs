@@ -9,6 +9,7 @@ public class DeliveryTruck : MonoBehaviour
     [SerializeField] private GameObject colliderObject;
     [SerializeField] private GameObject cover;
     [SerializeField] private float bounceStrength;
+    [SerializeField] private ControlIndicator crate;
 
     [SerializeField] private int storedFood;
     private int startFood;
@@ -20,6 +21,7 @@ public class DeliveryTruck : MonoBehaviour
     private Animator animator;
 
     private void Start() {
+        crate.enabled = false;
         animator = GetComponent<Animator>();
         startFood = storedFood;
     }
@@ -32,7 +34,7 @@ public class DeliveryTruck : MonoBehaviour
             coverOn = false;
         }
         else if (players.Count <= 0 && !coverOn)
-{
+        {
             // Fade in
             LeanTween.alpha(cover, 1f, 0.15f);
             coverOn = true;
@@ -80,7 +82,8 @@ public class DeliveryTruck : MonoBehaviour
         player.GetComponent<Player>().isInBuilding = val;
     }
 
-    public void HasArived() {
+    public void Arrived() {
+        crate.enabled = true;
         arrived = true;
         colliderObject.SetActive(false);
     }
