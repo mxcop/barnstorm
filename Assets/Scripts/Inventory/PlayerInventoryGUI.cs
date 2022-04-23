@@ -313,7 +313,8 @@ public class PlayerInventoryGUI : MonoBehaviour
                 if (i == slot && item != null)
                 {
                     int ii = i;
-                    LeanTween.scale(GUI[ii], Vector3.one * 1.4f, 0.2f).setEaseInBack().setOnComplete(() => 
+                    LeanTween.cancel(GUI[ii]);
+                    LeanTween.scale(GUI[ii], Vector3.one * 1.2f, 0.2f).setEaseOutBack().setOnComplete(() => 
                     {
                         LeanTween.scale(GUI[ii], Vector3.one, 0.1f);
                     });
