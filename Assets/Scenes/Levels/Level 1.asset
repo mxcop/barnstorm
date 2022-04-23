@@ -17,6 +17,8 @@ MonoBehaviour:
   l_description: 
   l_objectives:
   - icon: {fileID: 8562434753320100141, guid: 0c47ca714b3917f498f553c6d396f2f1, type: 3}
+    goal: 0
+    item: {fileID: 7618592410482247493, guid: 3650e097378961f4ba8021e9ab27d9b8, type: 3}
     quantity: 128
     isSecondary: 0
   l_animals:

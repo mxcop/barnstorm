@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Systems.Inventory;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,6 +10,8 @@ public class StageManager : MonoBehaviour
     public LevelSettings currentSettings { get; private set; }
 
     public UnityEvent<LevelSettings> OnStartGameplay;
+
+    public bool finishedObjecive;
 
     private void Awake()
     {
@@ -34,5 +37,18 @@ public class StageManager : MonoBehaviour
     {
         Debug.Log("Started gameplay of level " + currentSettings.l_displayName);
         OnStartGameplay?.Invoke(currentSettings);
+    }
+
+    public void UpdateObjective(ContainedItem<Item> item)
+    {
+        for (int i = 0; i < currentSettings.l_objectives.Length; i++)
+        {
+            if(currentSettings.l_objectives[i].goal == LevelSettings.GoalType.Item &&
+               currentSettings.l_objectives[i].item == item.item)
+            {
+                // Idk what to do next
+            }
+        }
+        
     }
 }
