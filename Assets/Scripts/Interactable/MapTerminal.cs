@@ -230,14 +230,14 @@ public class MapTerminal : MonoBehaviour, Interactable, IPlayerInputActions
 
     public void Input_BSouth(InputAction.CallbackContext c)
     {
-        if (c.canceled) RelinquishControl();
+        if (c.performed) RelinquishControl();
     }
 
     public void Input_BWest(InputAction.CallbackContext c)
     {
         // if (c.performed) RelinquishControl();
 
-        if (c.canceled) ToggleCurrentLevel();
+        if (c.performed) ToggleCurrentLevel();
     }
 
     public void Input_DEast(InputAction.CallbackContext c) { }

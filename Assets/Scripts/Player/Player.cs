@@ -6,8 +6,6 @@ using Cinemachine;
 public class Player : PlayerInventory, IPlayerInputActions
 {
     bool isInitialized;
-
-    bool isBeingControlled;
     public int playerID;
 
     [Header("Movement")]
@@ -46,9 +44,7 @@ public class Player : PlayerInventory, IPlayerInputActions
     }
 
     public void Initialize()
-    {
-        isBeingControlled = true;
-
+    {        
         if (!isInitialized)
         {
             isInitialized = true;
@@ -72,7 +68,7 @@ public class Player : PlayerInventory, IPlayerInputActions
     private void Update()
     {
         //go no further if not being controlled, but try to get the player
-        if (!isBeingControlled)
+        if (!isInitialized)
         {
             if (PersistentPlayerManager.main.TryGetPlayer(playerID, out PersistentPlayer p))
             {
@@ -206,13 +202,12 @@ public class Player : PlayerInventory, IPlayerInputActions
     {
         if (c.phase != InputActionPhase.Performed) return;
 
-        if (CheckForInteractable()) InteractWithSelected(InteractButton.North);
-
         if (currentInventory != null)
         {
             currentInventory.QuickSplit(this, slot);
         }
-        
+
+        if (CheckForInteractable()) InteractWithSelected(InteractButton.North);        
     }
 
     public void Input_BEast(CallbackContext c)
@@ -244,12 +239,15 @@ public class Player : PlayerInventory, IPlayerInputActions
     {
         switch (c.phase)
         {
-            case InputActionPhase.Started:
             case InputActionPhase.Performed:
-                if (c.action.WasPerformedThisFrame())
+                bool interactableExists = false;
+                interactableExists = CheckForInteractable();
+                if (InteractWithSelected(InteractButton.South))
                 {
-                    if (!isInBuilding) tools.PlayerUse();
+
                 }
+                else if (!isInBuilding) tools.PlayerUse();
+
                 break;
 
             case InputActionPhase.Canceled:
@@ -257,7 +255,6 @@ public class Player : PlayerInventory, IPlayerInputActions
                 break;
         }
 
-        if (CheckForInteractable()) InteractWithSelected(InteractButton.South);
 
     }
 
@@ -265,12 +262,12 @@ public class Player : PlayerInventory, IPlayerInputActions
     {
         if (c.phase != InputActionPhase.Performed) return;
 
-        if (CheckForInteractable()) InteractWithSelected(InteractButton.West);
 
         if (currentInventory != null)
         {
             currentInventory.QuickSwap(this, slot);
         }
+        if (CheckForInteractable()) InteractWithSelected(InteractButton.West);
     }
     #endregion
 
