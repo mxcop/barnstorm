@@ -13,28 +13,27 @@ public class Player : PlayerInventory, IPlayerInputActions
     [SerializeField] float maxSpeed;
     [SerializeField] float friction;
     [SerializeField] float outOfBoundsRadius;
+    private Vector2 inputMove;
+    private float lastInputMag;
+    private Vector2 move;
     [Space]
     [Header("Interactions")]
     [SerializeField] float interactCheckRadius;
     [SerializeField] ContactFilter2D cf;
+    private Interactable currentInteraction;
+    private Inventory currentInventory;
 
     [HideInInspector] public DeviceProfileSprites profile;
     [HideInInspector] public bool isInteracting;
     [HideInInspector] public bool isInBuilding;
-
     private Animator anim;
     public PlayerAngle animDir;
-
-    private Vector2 inputMove;
-    private float lastInputMag;
-    private Vector2 move;
     private int queuedHotbarSelect = -1;
-
-    private Interactable currentInteraction;
-    private Inventory currentInventory;
-
     [SerializeField] GameObject playerToolsPrefab;
     PlayerTools tools;
+
+    private Vector2 inputShoot;
+    float lastShootInput = Mathf.NegativeInfinity;
 
     // do not add base.Awake to this, this is to stop the base awake code from being ran immediately
     protected override void Awake()
@@ -115,6 +114,11 @@ public class Player : PlayerInventory, IPlayerInputActions
         transform.Translate(move);
     }
 
+    void ThrowItem(Systems.Inventory.ContainedItem<Item> item)
+    {
+        DroppedItem.DropOut(item.item, item.num, transform.position, inputShoot.normalized, inputShoot.magnitude * 4f);
+    }
+
     #region Interactables / Inventories
     /// <summary>
     /// Checks if there is an interactable within the players range.
@@ -193,7 +197,7 @@ public class Player : PlayerInventory, IPlayerInputActions
 
     public void Input_RStick(CallbackContext c)
     {
-        throw new System.NotImplementedException();
+        inputShoot = c.ReadValue<Vector2>();
     }
     #endregion
 
@@ -227,9 +231,10 @@ public class Player : PlayerInventory, IPlayerInputActions
         if(shouldDropItem)
         {
             BreakInteraction();
-            if (container.PullItem(slot, out var item))
+            if (container.PullItem(slot, out Systems.Inventory.ContainedItem<Item> item))
             {
-                DroppedItem.DropUp(item.item, item.num, transform.position);
+                if (inputShoot == Vector2.zero) DroppedItem.DropUp(item.item, item.num, transform.position);
+                else ThrowItem(item);
             }
         }
     }
@@ -271,28 +276,6 @@ public class Player : PlayerInventory, IPlayerInputActions
     }
     #endregion
 
-    #region DPad inputs
-    public void Input_DNorth(CallbackContext c)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void Input_DEast(CallbackContext c)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void Input_DSouth(CallbackContext c)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void Input_DWest(CallbackContext c)
-    {
-        throw new System.NotImplementedException();
-    }
-    #endregion
-
     #region Shoulder buttons
     public void Input_ShoulderR(CallbackContext c)
     {
@@ -309,6 +292,27 @@ public class Player : PlayerInventory, IPlayerInputActions
             RotateLeft();
         }
     }
+    #endregion
+
+    #region Trigger Buttons
+    public void Input_TriggerR(CallbackContext c)
+    {
+        Input_TriggerL(c);
+    }
+
+    public void Input_TriggerL(CallbackContext c)
+    {
+        float pressure = c.ReadValue<float>();
+        if(lastShootInput + (1-pressure) < Time.time)
+        {
+            lastShootInput = Time.time;
+            if (container.PullItem(slot, out Systems.Inventory.ContainedItem<Item> item))
+            {
+                ThrowItem(item);
+            }
+        }
+    }
+    #endregion
 
     public void Input_NumberSelect(int num)
     {
@@ -317,5 +321,4 @@ public class Player : PlayerInventory, IPlayerInputActions
         if (num == 2) RotateRight();
         //HotbarSwitch(num);
     }
-    #endregion
 }

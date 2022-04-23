@@ -87,30 +87,6 @@ public class PersistentPlayer : MonoBehaviour, IPlayerInputActions
         dontSendInput = false;
     }
 
-    public void Input_DEast(InputAction.CallbackContext c)
-    {
-        if (!dontSendInput) currentlyControlling?.Input_DEast(c);
-        dontSendInput = false;
-    }
-
-    public void Input_DNorth(InputAction.CallbackContext c)
-    {
-        if (!dontSendInput) currentlyControlling?.Input_DNorth(c);
-        dontSendInput = false;
-    }
-
-    public void Input_DSouth(InputAction.CallbackContext c)
-    {
-        if (!dontSendInput) currentlyControlling?.Input_DSouth(c);
-        dontSendInput = false;
-    }
-
-    public void Input_DWest(InputAction.CallbackContext c)
-    {
-        if (!dontSendInput) currentlyControlling?.Input_DWest(c);
-        dontSendInput = false;
-    }
-
     public void Input_LStick(InputAction.CallbackContext c)
     {
         if (!dontSendInput) currentlyControlling?.Input_LStick(c);
@@ -138,6 +114,18 @@ public class PersistentPlayer : MonoBehaviour, IPlayerInputActions
     public void Input_ShoulderR(InputAction.CallbackContext c)
     {
         if (!dontSendInput) currentlyControlling?.Input_ShoulderR(c);
+        dontSendInput = false;
+    }
+
+    public void Input_TriggerL(InputAction.CallbackContext c)
+    {
+        if (!dontSendInput) currentlyControlling?.Input_TriggerL(c);
+        dontSendInput = false;
+    }
+
+    public void Input_TriggerR(InputAction.CallbackContext c)
+    {
+        if (!dontSendInput) currentlyControlling?.Input_TriggerR(c);
         dontSendInput = false;
     }
 

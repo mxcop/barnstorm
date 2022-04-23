@@ -13,34 +13,18 @@ public class DroppedItem : MonoBehaviour
     /// </summary>
     public static void DropUp(Item item, int num, Vector2 pos)
     {
-        GameObject prefab = Resources.Load<GameObject>("DroppedItem");
-
-        DroppedItem instance = Instantiate(prefab, pos, Quaternion.identity).GetComponent<DroppedItem>();
-
-        // Setup the instance:
-        instance.dropped = false;
-        instance.item = item;
-        instance.num = num;
-
-        SpriteRenderer renderer = instance.GetComponent<SpriteRenderer>();
-        renderer.sprite = instance.item.sprite;
-        renderer.color = new Color(1, 1, 1, 0);
-
-        if (num > 1)
-        {
-            SpriteRenderer stacked = instance.transform.GetChild(0).GetComponent<SpriteRenderer>();
-            stacked.sprite = instance.item.sprite;
-            stacked.color = new Color(1, 1, 1, 0);
-        }
-
-        // Start the animation.
-        instance.StartDropUp(pos);
+        DropLogic(item, num, pos).StartDropUp(pos);
     }
 
     /// <summary>
     /// Drop the item with an animation.
     /// </summary>
-    public static void DropOut(Item item, int num, Vector2 pos, Vector2 dir)
+    public static void DropOut(Item item, int num, Vector2 pos, Vector2 dir, float velocity = 1)
+    {
+        DropLogic(item, num, pos).StartDropOut(pos, dir, velocity);
+    }
+
+    static DroppedItem DropLogic(Item item, int num, Vector2 pos)
     {
         GameObject prefab = Resources.Load<GameObject>("DroppedItem");
 
@@ -62,8 +46,7 @@ public class DroppedItem : MonoBehaviour
             stacked.color = new Color(1, 1, 1, 0);
         }
 
-        // Start the animation.
-        instance.StartDropOut(pos, dir);
+        return instance;
     }
 
     /// <summary>
@@ -80,9 +63,9 @@ public class DroppedItem : MonoBehaviour
     /// </summary>
     /// <param name="pos">The position of the animation.</param>
     /// <param name="dir">The direction of the animation.</param>
-    private void StartDropOut(Vector2 pos, Vector2 dir)
+    private void StartDropOut(Vector2 pos, Vector2 dir, float velocity)
     {
-        StartCoroutine(AnimateDropOut(pos, dir));
+        StartCoroutine(AnimateDropOut(pos, dir, velocity));
     }
 
     public void AttemptPickup(Container<Item> container)
@@ -131,7 +114,7 @@ public class DroppedItem : MonoBehaviour
     /// <summary>
     /// Animate the drop of the item.
     /// </summary>
-    private IEnumerator AnimateDropOut(Vector2 pos, Vector2 dir)
+    private IEnumerator AnimateDropOut(Vector2 pos, Vector2 dir, float velocity)
     {
         SpriteRenderer renderer = GetComponent<SpriteRenderer>();
         transform.position = pos;
@@ -143,7 +126,7 @@ public class DroppedItem : MonoBehaviour
         // Make the item bounce.
         transform.localScale = Vector3.one * 0.4f;
         LeanTween.scale(gameObject, Vector3.one, 0.5f).setEaseOutBack();
-        LeanTween.move(gameObject, pos + dir * 2.0f, 0.7f).setEaseInOutSine();
+        LeanTween.move(gameObject, pos + dir * velocity, 0.7f).setEaseOutSine();
 
         yield return new WaitForSeconds(0.65f);
 

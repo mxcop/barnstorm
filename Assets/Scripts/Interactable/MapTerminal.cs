@@ -240,14 +240,6 @@ public class MapTerminal : MonoBehaviour, Interactable, IPlayerInputActions
         if (c.performed) ToggleCurrentLevel();
     }
 
-    public void Input_DEast(InputAction.CallbackContext c) { }
-
-    public void Input_DNorth(InputAction.CallbackContext c) { }
-
-    public void Input_DSouth(InputAction.CallbackContext c) { }
-
-    public void Input_DWest(InputAction.CallbackContext c) { }
-
     public void Input_LStick(InputAction.CallbackContext c)
     {
         if (c.phase != InputActionPhase.Performed) return;
@@ -279,6 +271,14 @@ public class MapTerminal : MonoBehaviour, Interactable, IPlayerInputActions
     }
 
     public void Input_ShoulderR(InputAction.CallbackContext c)
+    {
+    }
+
+    public void Input_TriggerR(InputAction.CallbackContext c)
+    {
+    }
+
+    public void Input_TriggerL(InputAction.CallbackContext c)
     {
     }
     #endregion
