@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+  using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/LevelSettings", order = 1)]
@@ -12,11 +12,20 @@ public class LevelSettings : ScriptableObject
     [Header("Level goals")]
     public Objective[] l_objectives;
 
+    public enum GoalType
+    {
+        Item,
+        FarmGoal,
+        Other
+    }
+
     [System.Serializable]
     public class Objective
     {
         [Header("!! ALWAYS PUT THE SECONDARY OBJECTIVES AT THE BOTTOM OF THE LIST !!")]
         [Tooltip("An icon representing this goal (A crop icon or wave depending on the goal)")] public Sprite icon;
+        [Tooltip("The goal type this objective is")] public GoalType goal;
+        [Tooltip("The item that this goal needs (is only needed with a Item Goal)")] public Item item;
         [Tooltip("The quantity of the objective, e.g. number of crops to farm")] public int quantity = 999;
         [Tooltip("Whether this objective is optional for completing the level")] public bool isSecondary = false;
     }
