@@ -113519,7 +113519,7 @@ GameObject:
   - component: {fileID: 1683880342}
   - component: {fileID: 1683880341}
   - component: {fileID: 1683880340}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: delivery truck
   m_TagString: Barn
   m_Icon: {fileID: 0}
