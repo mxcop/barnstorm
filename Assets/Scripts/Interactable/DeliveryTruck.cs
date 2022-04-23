@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
-using Systems.Inventory;
-using UnityEngine.SceneManagement;
+using System.Linq;
 using UnityEngine;
 
 public class DeliveryTruck : MonoBehaviour
@@ -16,6 +14,7 @@ public class DeliveryTruck : MonoBehaviour
 
     private bool coverOn = false;
     private bool arrived = false;
+    private bool gameoverTrigged = false;
 
     private List<GameObject> players = new List<GameObject>();
     private Animator animator;
@@ -24,6 +23,9 @@ public class DeliveryTruck : MonoBehaviour
         crate.enabled = false;
         animator = GetComponent<Animator>();
         startFood = storedFood;
+
+        // Transition in.
+        CameraTransitions.CircleTransitionIn(transform);
     }
 
     private void FixedUpdate() {
@@ -73,7 +75,13 @@ public class DeliveryTruck : MonoBehaviour
             LeanTween.rotateZ(gameObject, Random.Range(-3.5f, 3.5f), 0.1f).setRepeat(4).setOnComplete(() => transform.rotation = Quaternion.identity);
 
             // Gameover.
-            if (storedFood <= 0) Debug.Log("GameOver!");
+            if (storedFood <= 0 && !gameoverTrigged) {
+                gameoverTrigged = true;
+                Transform[] players = GameObject.FindGameObjectsWithTag("Player").Select(p => p.transform).ToArray();
+                CameraTransitions.CircleTransitionOut(players).setOnComplete(() => {
+                    LevelLoader.main.ExitLevel();
+                });
+            }
         }
     }
 
