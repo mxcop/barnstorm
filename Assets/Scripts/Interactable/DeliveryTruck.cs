@@ -52,6 +52,7 @@ public class DeliveryTruck : MonoBehaviour
             collision.transform.SetParent(null);
             players.Remove(collision.gameObject);
             SetPlayerInsideTruck(collision.gameObject, false);
+            collision.transform.rotation = Quaternion.identity;
         }
     }
 
