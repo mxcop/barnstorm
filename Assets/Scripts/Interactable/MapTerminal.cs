@@ -245,7 +245,7 @@ public class MapTerminal : MonoBehaviour, Interactable, IPlayerInputActions
         if (c.phase != InputActionPhase.Performed) return;
 
         // Indicate to the player that they first have to cancel the level.
-        if (hasSelected == true) { ButtonHintBop(); return; }
+        //if (hasSelected == true) { ButtonHintBop(); return; }
 
         Vector2 norm = c.ReadValue<Vector2>().normalized;
         Direction? d = null;

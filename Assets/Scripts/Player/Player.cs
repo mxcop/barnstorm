@@ -168,10 +168,10 @@ public class Player : PlayerInventory, IPlayerInputActions
         if (currentInteraction != null)
         {
             currentInteraction.BreakInteraction();
-            isInteracting = false;
-            currentInteraction = null;
-            currentInventory = null;
         }
+        isInteracting = false;
+        currentInteraction = null;
+        currentInventory = null;
     }
 
     bool InteractWithSelected(InteractButton usedButton)

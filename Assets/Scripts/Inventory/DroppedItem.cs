@@ -128,7 +128,7 @@ public class DroppedItem : MonoBehaviour
         LeanTween.scale(gameObject, Vector3.one, 0.5f).setEaseOutBack();
         LeanTween.move(gameObject, pos + dir * velocity, 0.7f).setEaseOutSine();
 
-        yield return new WaitForSeconds(0.65f);
+        yield return new WaitForSeconds(0.50f);
 
         dropped = true;
     }
