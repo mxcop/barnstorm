@@ -948,7 +948,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapCam: {fileID: 2137144626}
-  camOffset: {x: 0, y: -4, z: 0}
+  camOffset: {x: 0, y: -2, z: 0}
   selectedLevel: {fileID: 2057308458}
 --- !u!1 &643986590
 GameObject:
@@ -1974,7 +1974,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1337667506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2750,7 +2750,7 @@ MonoBehaviour:
   isPassthrough: 0
   surroundings:
     top: {fileID: 0}
-    right: {fileID: 1337667506}
+    right: {fileID: 0}
     bottom: {fileID: 0}
     left: {fileID: 0}
 --- !u!1 &2123962231

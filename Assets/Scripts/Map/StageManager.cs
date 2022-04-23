@@ -46,18 +46,18 @@ public class StageManager : MonoBehaviour
     {
         for (int i = 0; i < currentSettings.l_objectives.Length; i++)
         {
+            if (item == null) {
+                ObjectivesPanel.UpdateUI(i, currentSettings.l_objectives[i], 0);
+                return;
+            }
             // If this objective matches the updated item.
-            if (currentSettings.l_objectives[i].goal == LevelSettings.GoalType.Item && currentSettings.l_objectives[i].item == item.item)
+            if (currentSettings.l_objectives[i].goal == LevelSettings.GoalType.Item &&
+                currentSettings.l_objectives[i].item == item.item)
             {
                 ObjectivesPanel.UpdateUI(i, currentSettings.l_objectives[i], item.num);
-            }
 
-            if(currentSettings.l_objectives[i].goal == LevelSettings.GoalType.Item &&
-               currentSettings.l_objectives[i].item == item.item &&
-               currentSettings.l_objectives[i].quantity <= item.num)
-            {
-                finishedObjecive = true;
-                // Idk what to do next
+                if (currentSettings.l_objectives[i].quantity <= item.num)
+                    finishedObjecive = true;
             }
         }
     }
