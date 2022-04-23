@@ -34,6 +34,7 @@ public class Player : PlayerInventory, IPlayerInputActions
 
     private Vector2 inputShoot;
     float lastShootInput = Mathf.NegativeInfinity;
+    float lastShootPressure;
 
     // do not add base.Awake to this, this is to stop the base awake code from being ran immediately
     protected override void Awake()
@@ -107,6 +108,17 @@ public class Player : PlayerInventory, IPlayerInputActions
 
         // Prevent player out of bounds
         transform.localPosition = Vector2.ClampMagnitude(transform.localPosition, outOfBoundsRadius);
+
+        // Player continuous shooting
+        if (lastShootPressure > 0.3f && lastShootInput + (1.1f - lastShootPressure) < Time.time)
+        {
+            lastShootInput = Time.time;
+            if (container.PullItem(slot, 1, out Systems.Inventory.ContainedItem<Item> item))
+            {
+                if(inputShoot != Vector2.zero) ThrowItem(item);
+                else DroppedItem.DropUp(item.item, item.num, transform.position);
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -233,8 +245,7 @@ public class Player : PlayerInventory, IPlayerInputActions
             BreakInteraction();
             if (container.PullItem(slot, out Systems.Inventory.ContainedItem<Item> item))
             {
-                if (inputShoot == Vector2.zero) DroppedItem.DropUp(item.item, item.num, transform.position);
-                else ThrowItem(item);
+                DroppedItem.DropUp(item.item, item.num, transform.position);
             }
         }
     }
@@ -297,20 +308,11 @@ public class Player : PlayerInventory, IPlayerInputActions
     #region Trigger Buttons
     public void Input_TriggerR(CallbackContext c)
     {
-        Input_TriggerL(c);
     }
 
     public void Input_TriggerL(CallbackContext c)
     {
-        float pressure = c.ReadValue<float>();
-        if(lastShootInput + (1-pressure) < Time.time)
-        {
-            lastShootInput = Time.time;
-            if (container.PullItem(slot, out Systems.Inventory.ContainedItem<Item> item))
-            {
-                ThrowItem(item);
-            }
-        }
+        lastShootPressure= c.ReadValue<float>();        
     }
     #endregion
 
