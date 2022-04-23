@@ -25,13 +25,16 @@ TextureImporter:
     second: unknown-animal
   - first:
       213: 8562434753320100141
-    second: potato-crop-icon
+    second: mini-potato-crop-icon
   - first:
       213: -7726235406196258661
     second: rounded-panel-border
   - first:
       213: -4812597023553090158
     second: brown-baby-cow-animal
+  - first:
+      213: 5015236468121193402
+    second: mini-carrot-crop-icon
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -268,7 +271,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: potato-crop-icon
+      name: mini-potato-crop-icon
       rect:
         serializedVersion: 2
         x: 106
@@ -326,6 +329,27 @@ TextureImporter:
       bones: []
       spriteID: 29d040c5188363db0800000000000000
       internalID: -4812597023553090158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mini-carrot-crop-icon
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 116
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abbc2f2fef2b99540800000000000000
+      internalID: 5015236468121193402
       vertices: []
       indices: 
       edges: []
