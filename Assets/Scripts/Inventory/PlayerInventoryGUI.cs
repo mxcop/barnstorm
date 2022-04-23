@@ -3,13 +3,20 @@ using System.Collections.Generic;
 using Systems.Inventory;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerInventoryGUI : MonoBehaviour
 {
+    [Header("Config")]
+    [Tooltip("The time it takes for the inventory to fade out after having been used.")]
+    [SerializeField] private float inventoryMuteDelay = 1.0f;
+
     [Header("References")]
     [SerializeField] private RectTransform cycleItem;
     [SerializeField] private RectTransform leftItem, centerItem, rightItem;
     [SerializeField] private Sprite emptySlot;
+    [SerializeField] private CanvasGroup amountGroup;
+    [SerializeField] private TextMeshProUGUI amountText, amountShadowText;
 
     private RectTransform[] GUI { get => GUIBasedOnRotation(); }
     private Container<Item> container;
@@ -74,6 +81,12 @@ public class PlayerInventoryGUI : MonoBehaviour
             }
         }
 
+        // Setup the inventory amount.
+        SetItemAmount(rotation, 0.0f);
+
+        // Start the mute delay.
+        StartCoroutine(nameof(MuteDelay));
+
         initialized = true;
     }
 
@@ -92,6 +105,23 @@ public class PlayerInventoryGUI : MonoBehaviour
         if ((!hasToBeRendered || IsRendered(slot)) && container.Peek(slot, out Item item))
             image.sprite = item.sprite;
         else image.sprite = emptySlot;
+    }
+
+    /// <summary>
+    /// Set the item amount GUI.
+    /// </summary>
+    private void SetItemAmount(int slot, float animationTime = 0.1f) 
+    {
+        // Peek at the amount of items in the selected slot.
+        int amount = container.PeekAmount((int)Mathf.Repeat(slot, containerSize));
+        if (amount > 1) {
+            // Update the text and animate in.
+            amountText.text = amount.ToString();
+            amountShadowText.text = amount.ToString();
+            LeanTween.value(amountGroup.gameObject, a => amountGroup.alpha = a, amountGroup.alpha, 1, animationTime);
+        } else {
+            LeanTween.value(amountGroup.gameObject, a => amountGroup.alpha = a, amountGroup.alpha, 0, animationTime);
+        }
     }
 
     /// <summary>
@@ -127,6 +157,10 @@ public class PlayerInventoryGUI : MonoBehaviour
 
         while (rotationQueue.Count > 0)
         {
+            // Restart the mute delay.
+            StopCoroutine(nameof(MuteDelay));
+            StartCoroutine(nameof(MuteDelay));
+
             RotationQueueEntry entry = rotationQueue.Dequeue();
 
             for (int i = 0; i < entry.distance; i++)
@@ -154,14 +188,21 @@ public class PlayerInventoryGUI : MonoBehaviour
                     } else cycleItem.gameObject.SetActive(false);
 
                     // Tween the items.
+                    LeanTween.cancel(cycleItem);
                     LeanTween.alpha(cycleItem, 0.5f, 0.2f);
                     LeanTween.moveLocal(cycleItem.gameObject, leftPos, 0.2f);
+                    LeanTween.cancel(leftItem);
                     LeanTween.alpha(leftItem, 1.0f, 0.2f);
                     LeanTween.moveLocal(leftItem.gameObject, centerPos, 0.2f);
+                    LeanTween.cancel(centerItem);
                     LeanTween.alpha(centerItem, 0.5f, 0.2f);
                     LeanTween.moveLocal(centerItem.gameObject, rightPos, 0.2f);
+                    LeanTween.cancel(rightItem);
                     LeanTween.alpha(rightItem, 0.0f, 0.2f);
                     LeanTween.moveLocal(rightItem.gameObject, rightPos + outPos, 0.2f);
+
+                    // Update the item amount text.
+                    SetItemAmount(rotation - 1);
 
                     yield return new WaitForSeconds(0.2f);
 
@@ -199,14 +240,21 @@ public class PlayerInventoryGUI : MonoBehaviour
                     } else cycleItem.gameObject.SetActive(false);
 
                     // Tween the items.
+                    LeanTween.cancel(cycleItem);
                     LeanTween.alpha(cycleItem, 0.5f, 0.2f);
                     LeanTween.moveLocal(cycleItem.gameObject, rightPos, 0.2f);
+                    LeanTween.cancel(rightItem);
                     LeanTween.alpha(rightItem, 1.0f, 0.2f);
                     LeanTween.moveLocal(rightItem.gameObject, centerPos, 0.2f);
+                    LeanTween.cancel(centerItem);
                     LeanTween.alpha(centerItem, 0.5f, 0.2f);
                     LeanTween.moveLocal(centerItem.gameObject, leftPos, 0.2f);
+                    LeanTween.cancel(leftItem);
                     LeanTween.alpha(leftItem, 0.0f, 0.2f);
                     LeanTween.moveLocal(leftItem.gameObject, leftPos - outPos, 0.2f);
+
+                    // Update the item amount text.
+                    SetItemAmount(rotation + 1);
 
                     yield return new WaitForSeconds(0.2f);
 
@@ -229,12 +277,33 @@ public class PlayerInventoryGUI : MonoBehaviour
     }
 
     /// <summary>
+    /// Called and reset each time the inventory is updated.
+    /// </summary>
+    private IEnumerator MuteDelay() 
+    {
+        yield return new WaitForSeconds(inventoryMuteDelay);
+
+        LeanTween.alpha(leftItem, 0.2f, 0.4f);
+        LeanTween.alpha(centerItem, 0.5f, 0.4f);
+        LeanTween.alpha(rightItem, 0.2f, 0.4f);
+    }
+
+    /// <summary>
     /// Called whenever the container has an update.
     /// </summary>
     private void OnContainerUpdate(int slot, ContainedItem<Item> item)
     {
         if (initialized)
         {
+            // Restart the mute delay.
+            StopCoroutine(nameof(MuteDelay));
+            StartCoroutine(nameof(MuteDelay));
+
+            // Make the items visible again.
+            LeanTween.alpha(leftItem, 0.5f, 0.4f);
+            LeanTween.alpha(centerItem, 1.0f, 0.4f);
+            LeanTween.alpha(rightItem, 0.5f, 0.4f);
+
             // Update the sprites of the GUI.
             for (int i = 0; i < containerSize; i++)
             {
@@ -250,6 +319,9 @@ public class PlayerInventoryGUI : MonoBehaviour
                     });
                 }
             }
+
+            // Update the item amount text.
+            SetItemAmount(rotation);
         }
     }
 
