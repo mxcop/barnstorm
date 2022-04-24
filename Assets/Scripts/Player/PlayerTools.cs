@@ -64,7 +64,7 @@ public class PlayerTools : MonoBehaviour
         Vector2Int v = GetPlayerOffsetPos(ang);
 
         targetPos = new Vector3(v.x+0.5f,v.y+0.5f,0);
-        transform.position = Vector3.Lerp(transform.position, targetPos, lerpSpeed * Time.deltaTime);
+        transform.position = targetPos;
 
         if (autoToolReuse) ToolAction();
     }

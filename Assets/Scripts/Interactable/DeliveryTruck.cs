@@ -65,7 +65,6 @@ public class DeliveryTruck : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy")) {
             GameObject collObj = collision.gameObject;
 
-            Debug.Log(collision.contacts[0].point);
             collObj.GetComponent<Rigidbody2D>().AddForceAtPosition((collision.transform.position - transform.position).normalized * bounceStrength, collision.contacts[0].point);
             CowEnemy enemy = collObj.GetComponent<CowEnemy>();
             storedFood -= Mathf.FloorToInt(enemy.hunger);

@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStatic: 1
-  layerOffset: 1
+  layerOffset: 2
 --- !u!114 &3999271708323607140
 MonoBehaviour:
   m_ObjectHideFlags: 0
