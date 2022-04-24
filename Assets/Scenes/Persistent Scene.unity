@@ -415,6 +415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eca97bb051a18004a87cf346bcfd5e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  volume: 0.3
   audioLibrary:
   - name: collect
     volume: 0.5

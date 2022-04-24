@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class SFXManager : MonoBehaviour
 {
-    [Range(0.0f, 1.0f)]
+    [Range(0.0f, 1.0f), SerializeField] float volume;
     [SerializeField] private SoundLibraryEntry[] audioLibrary;
 
     private static SFXManager instance;
@@ -55,8 +55,8 @@ public class SFXManager : MonoBehaviour
             {
                 source.clip = entry.clip;
                 source.loop = true;
-                source.volume = entry.volume;
                 source.Play();
+                LeanTween.value(instance.gameObject, s => source.volume = s, source.volume, instance.volume, 0.5f);
             });
         }
         else Debug.LogError($"Attempted to play non existing music clip: \"{ clip }\"");
