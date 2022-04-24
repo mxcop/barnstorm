@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcdf5f51e3c561d4f8a374e4b1c1ada7, type: 3}
   m_Name: Level 1
   m_EditorClassIdentifier: 
+  musicName: mus_1
   l_sceneName: Level 1
   l_displayName: Rocky Crossing
   l_description: 

@@ -4,6 +4,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/LevelSettings", order = 1)]
 public class LevelSettings : ScriptableObject
 {
+    public string musicName;
+
     [Header("Level select settings")]
     public string l_sceneName;
     public string l_displayName;

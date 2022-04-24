@@ -415,17 +415,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eca97bb051a18004a87cf346bcfd5e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volume: 1
   audioLibrary:
   - name: collect
+    volume: 0.5
     clip: {fileID: 8300000, guid: d68784cfbe80b4a4e85abd2678f38184, type: 3}
-    volume: 0.5
   - name: till
-    clip: {fileID: 8300000, guid: ddc5b340f82722544b9b4c87c78a325c, type: 3}
     volume: 0.5
+    clip: {fileID: 8300000, guid: ddc5b340f82722544b9b4c87c78a325c, type: 3}
   - name: shoot
-    clip: {fileID: 8300000, guid: 95900ef249308a540895d6a999ce90b0, type: 3}
     volume: 0.8
+    clip: {fileID: 8300000, guid: 95900ef249308a540895d6a999ce90b0, type: 3}
+  - name: mus_lobby
+    volume: 0.25
+    clip: {fileID: 8300000, guid: 6b3ada0fccdbdbc4eadda3d91d919ae1, type: 3}
+  - name: mus_1
+    volume: 0.25
+    clip: {fileID: 8300000, guid: d36b781ab5bc1684989d2216708205f2, type: 3}
 --- !u!4 &1984567317
 Transform:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ public class LevelLoader : MonoBehaviour
     [SerializeField] string levelSelectSceneName;
     public LevelSettings currentLevel { get; private set; }
 
-    private void Awake()
+    private void Start()
     {
         main = this;
         LoadLevelSelect();
@@ -38,6 +38,8 @@ public class LevelLoader : MonoBehaviour
 
         LoadNewActiveScene(currentLevel.l_sceneName).completed += (s) => StageManager.current.Setup(settings);
 
+        SFXManager.PlayMusic(settings.musicName);
+
     }
 
     public void ExitLevel()
@@ -53,6 +55,7 @@ public class LevelLoader : MonoBehaviour
     {
         Debug.Log("Loading level select scene");
         LoadNewActiveScene(levelSelectSceneName);
+        SFXManager.PlayMusic("mus_lobby");
     }
 
     public void RestartLevel()
