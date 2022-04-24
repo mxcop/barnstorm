@@ -299,6 +299,7 @@ GameObject:
   - component: {fileID: 1984567317}
   - component: {fileID: 1984567316}
   - component: {fileID: 1984567315}
+  - component: {fileID: 1984567318}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -316,9 +317,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 71017ab5b75bff6418bb87b83aa2eb3d, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -414,14 +415,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eca97bb051a18004a87cf346bcfd5e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volume: 0
+  volume: 1
   audioLibrary:
   - name: collect
     clip: {fileID: 8300000, guid: d68784cfbe80b4a4e85abd2678f38184, type: 3}
+    volume: 0.5
   - name: till
     clip: {fileID: 8300000, guid: ddc5b340f82722544b9b4c87c78a325c, type: 3}
+    volume: 0.5
   - name: shoot
     clip: {fileID: 8300000, guid: 95900ef249308a540895d6a999ce90b0, type: 3}
+    volume: 0.8
 --- !u!4 &1984567317
 Transform:
   m_ObjectHideFlags: 0
@@ -436,3 +440,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &1984567318
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984567314}
+  m_Enabled: 1
