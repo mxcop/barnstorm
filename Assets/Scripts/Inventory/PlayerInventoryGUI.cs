@@ -299,11 +299,6 @@ public class PlayerInventoryGUI : MonoBehaviour
             StopCoroutine(nameof(MuteDelay));
             StartCoroutine(nameof(MuteDelay));
 
-            // Make the items visible again.
-            LeanTween.alpha(leftItem, 0.5f, 0.4f);
-            LeanTween.alpha(centerItem, 1.0f, 0.4f);
-            LeanTween.alpha(rightItem, 0.5f, 0.4f);
-
             // Update the sprites of the GUI.
             for (int i = 0; i < containerSize; i++)
             {
@@ -320,6 +315,11 @@ public class PlayerInventoryGUI : MonoBehaviour
                     });
                 }
             }
+
+            // Make the items visible again.
+            LeanTween.alpha(leftItem, 0.5f, 0.4f);
+            LeanTween.alpha(centerItem, 1.0f, 0.4f);
+            LeanTween.alpha(rightItem, 0.5f, 0.4f);
 
             // Update the item amount text.
             SetItemAmount(rotation);

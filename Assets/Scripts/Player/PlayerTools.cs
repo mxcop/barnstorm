@@ -34,7 +34,7 @@ public class PlayerTools : MonoBehaviour
         {
             case ItemAction.None:
                 int switchTo;
-                if (plr.container.FirstItemOfType(typeof(Hoe), out switchTo))
+                if (plr.container.FirstItemOfType(typeof(Hoe), 0, out switchTo))
                 {
                     plr.HotbarSwitch(switchTo);
                     goto case ItemAction.Till;
