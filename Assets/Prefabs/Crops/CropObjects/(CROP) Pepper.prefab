@@ -64,7 +64,7 @@ MonoBehaviour:
   - sprite: {fileID: -5420819059952913401, guid: 9f172822beda7d246a8fd39bc6f83168, type: 3}
     growthDelay: 0
     _item: {fileID: 6121038885281453526, guid: a747899da4b852b409a82cc15dcae582, type: 3}
-    amount: {x: 1, y: 2}
+    amount: {x: 2, y: 2}
     scoreFromHarvest: 16
   particlePrefab: {fileID: 1881814833480232357, guid: 411c792445f49ea43a7c60b6ecf8b985, type: 3}
   autoRespawn: 0
