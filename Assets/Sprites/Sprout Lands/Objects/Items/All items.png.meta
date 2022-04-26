@@ -294,6 +294,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -601,6 +602,18 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Pumpkin: 313344144316846123
+      Hoe: -6326554769541213105
+      Potato_seeds: 2952979881545722372
+      Potato: 6689160971107792810
+      Corn_seeds: -123238161473367849
+      Pepper: -7778967240658538108
+      Pumpkin_seeds: -1648857455878751160
+      Corn: -3900414357838514297
+      Pepper_seeds: -3736146023192578149
+      Carrot_seeds: 9124856216509703372
+      Carrot: 1979382666408782389
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

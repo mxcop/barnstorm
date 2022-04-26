@@ -51,6 +51,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -316,6 +317,16 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      TestTurret_8: 4512435275252199588
+      TestTurret_7: -2556352086954926585
+      TestTurret_3: -5694592063346786603
+      TestTurret_1: 8235038016253142937
+      TestTurret_2: -7762099149818991146
+      TestTurret_0: -4881385000413934664
+      TestTurret_5: 6120481515576992547
+      TestTurret_4: 480566021321399944
+      TestTurret_6: 4625511020940061107
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

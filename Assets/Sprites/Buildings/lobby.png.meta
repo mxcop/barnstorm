@@ -78,6 +78,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -532,6 +533,25 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      lobby-terminal: -1482746689015997226
+      lobby-fence: 6885226704389184245
+      lobby-terminal-grid: 9111269273635051024
+      lobby-floor-left: -1803121811804500805
+      lobby-bottom-wall: 3484645518982328544
+      lobby-hay-medium: 6458549311534712232
+      lobby-top-wall: -8266608093869316353
+      lobby-floor-bottom: 5875038362160349911
+      lobby-terminal-lines: 8557179603306737223
+      lobby-terminal-box: -9048516448277801297
+      lobby-left-wall: 5794857854994025873
+      lobby-hay-big: -6182782430319439807
+      lobby-garage-door: -1842611795544989291
+      lobby-floor-right: -2721914713639573365
+      lobby-level-0: 5227282363606680179
+      lobby-top-right-wall: 4361685592503535525
+      lobby-truck: 1971342752873788725
+      lobby-right-wall: 356419218759410157
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

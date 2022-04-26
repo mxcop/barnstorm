@@ -111,6 +111,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -796,6 +797,36 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Farming Plants items_11: -5833257737135290264
+      Farming Plants items_9: 2250539243911472009
+      Farming Plants items_7: -8851119026252441742
+      Farming Plants items_14: -7740393600296848984
+      Farming Plants items_10: 8307530529232012642
+      Farming Plants items_20: -1759165690256950850
+      Farming Plants items_2: -8254367786029600004
+      Farming Plants items_0: 5564844169688331221
+      Farming Plants items_24: 6911385280211639432
+      Farming Plants items_6: -1820743261052749542
+      Farming Plants items_19: 5456128823158015354
+      Farming Plants items_26: 9140962928178362603
+      Farming Plants items_27: 5132142758677663485
+      Farming Plants items_18: -2886536992744822632
+      Farming Plants items_16: -4359987161263441948
+      Farming Plants items_4: -763837288768503771
+      Farming Plants items_5: -4009637758380326418
+      Farming Plants items_13: 3162687894535913502
+      Farming Plants items_1: 3646500657995563648
+      Farming Plants items_3: 6499957318792860802
+      Farming Plants items_8: -2126437043912139230
+      Farming Plants items_17: 4448917515691412182
+      Farming Plants items_21: -9148265415245084265
+      Farming Plants items_22: 150598731461044880
+      Farming Plants items_23: 1451864259662463069
+      Farming Plants items_28: -4885762868919689236
+      Farming Plants items_15: 7753515230269262133
+      Farming Plants items_25: -4450961211079476010
+      Farming Plants items_12: 6544056053913867708
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

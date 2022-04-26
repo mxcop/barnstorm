@@ -195,6 +195,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -788,6 +789,28 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      plants-corn-2: 3482569451149137530
+      plants-corn-4: 7448935753994061408
+      plants-carrot-0: 1116706725642825598
+      plants-carrot-2: -3098547097148736168
+      plants-pumpkin-3: -7057375707926749745
+      plants-potato-3: -2154233836028310421
+      plants-pumpkin-0: 9113586584930331469
+      plants-carrot-3: 136203948458210870
+      plants-pepper-1: 593002793200147421
+      plants-corn-1: 736865317306615500
+      plants-potato-0: 7047291313409791736
+      plants-potato-2: -3568057398433270251
+      plants-corn-3: -5784410927573482350
+      plants-pepper-2: 3391927106950375280
+      plants-potato-1: 7608346437684365089
+      plants-corn-0: -7528199513585423542
+      plants-pumpkin-2: 6849194982135307561
+      plants-pumpkin-1: -972495551902887074
+      plants-carrot-1: 8796380703106566107
+      plants-pepper-0: -4343015011740814535
+      plants-pepper-3: -5420819059952913401
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

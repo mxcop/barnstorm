@@ -66,6 +66,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -436,6 +437,21 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      crate-crop-pepper: -343173519927468802
+      crate-closed: -6586510187767786182
+      crate-crop-pumpkin: -4094037756051768742
+      crate-0: 2958523863171369250
+      crate-4: 7129687660154781567
+      crate-3: -370123072403679878
+      crate-crop-carrot: -6211344061224641105
+      crate-5: 7887795594691489000
+      crate-2: -7068887109631265336
+      crate-crop-potato: -1452728539205810923
+      crate-crop-corn: 6259028901605723704
+      crate-1: -3013053334650348085
+      crate-tool-spud-cannon: 7707518973635841299
+      crate-lid: 5887486086981047389
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

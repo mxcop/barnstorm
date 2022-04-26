@@ -75,6 +75,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -508,6 +509,24 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      silo-turret_base: -8493582869925436510
+      silo-turret14: -8055412330075140413
+      silo-turret15: -2837714845883897987
+      silo-turret13: 6335468886558834139
+      silo-turret4: 8267867537011894295
+      silo-turret11: 4442366987462621550
+      silo-turret0: 7721177293500312529
+      silo-turret12: -273147573186816496
+      silo-turret6: -1566853017979956359
+      silo-turret10: -989500707394855288
+      silo-turret9: -7376722504174920597
+      silo-turret3: -2052972664405692567
+      silo-turret8: -2681768670966815225
+      silo-turret1: 6930528599539336896
+      silo-turret7: 4405376139801158704
+      silo-turret2: -772692652457020155
+      silo-turret5: -7648212142664608
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
