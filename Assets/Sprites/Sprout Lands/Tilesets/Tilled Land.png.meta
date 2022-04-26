@@ -45,6 +45,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -268,6 +269,14 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      tilled-land-right: -3706740577196066806
+      tilled-land-3: -4251084111418639164
+      tilled-land-0: -1883389543817844829
+      tilled-land-2: 1368266141117240500
+      tilled-land-left: -3798508834554645098
+      tilled-land-single: 3835424663159278867
+      tilled-land-1: -5763094840692529376
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

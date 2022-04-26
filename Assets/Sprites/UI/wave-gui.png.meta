@@ -39,6 +39,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -220,6 +221,12 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      wave-gui-panel: 6013734071268148755
+      brown-baby-cow-icon: -8666001996695331278
+      green-baby-cow-icon: -7720952373395277615
+      gui-panel: -4546851876706451529
+      purple-baby-cow-icon: -534320321628689658
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

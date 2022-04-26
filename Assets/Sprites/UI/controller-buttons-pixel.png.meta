@@ -108,6 +108,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -877,6 +878,40 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      arrow: 7649185731059610546
+      mini-keys-o: 6450405204483712234
+      mini-keys-r: 2448351447940118862
+      left-button: 1208735940299680547
+      ps-circle: 6375597919356688750
+      mini-ps-square: 3987838322225542799
+      mini-ps-triangle: 9175424525980547750
+      keys-o: 7628829267857303679
+      keys-arrows: -7594305466604371914
+      mini-ps-circle: 6421359587749856765
+      keys-i: -3197669148681578984
+      right-button: -6646514065270880427
+      xbox-a: 2606938926173001353
+      mini-ps-cross: -7618103674177835140
+      xbox-y: 718167918687220320
+      left-trigger: 3895454930035388094
+      ps-cross: 2751609844675965605
+      ps-square: 4300622306813465582
+      xbox-b: -8707564271031708027
+      xbox-x: -7912169656823411777
+      mini-xbox-y: -782906521802139080
+      mini-keys-p: 9220728151368250985
+      ps-triangle: 8753433082300056093
+      keys-q: 3048009235645644779
+      keys-r: 2907886171295009232
+      mini-xbox-a: -63600402530889843
+      mini-xbox-x: 6133560120589016087
+      mini-keys-i: 4720145097970100184
+      keys-p: -4111991437322912139
+      right-stick: -6733158395912743279
+      mini-xbox-b: -1767898262712649405
+      right-trigger: -18041342984932091
+      left-stick: 508299865506030386
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
