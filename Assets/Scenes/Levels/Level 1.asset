@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcdf5f51e3c561d4f8a374e4b1c1ada7, type: 3}
   m_Name: Level 1
   m_EditorClassIdentifier: 
+  musicName: mus_1
   l_sceneName: Level 1
   l_displayName: Rocky Crossing
   l_description: 
   l_objectives:
   - icon: {fileID: 8562434753320100141, guid: 0c47ca714b3917f498f553c6d396f2f1, type: 3}
+    goal: 0
+    item: {fileID: 7618592410482247493, guid: 3650e097378961f4ba8021e9ab27d9b8, type: 3}
     quantity: 128
     isSecondary: 0
   l_animals:
@@ -26,7 +29,16 @@ MonoBehaviour:
     - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
       weight: 10
       dropRange: {x: 0, y: 10}
-    groups: 2
+    groups: 1
+    groupSize: {x: 1, y: 1}
+    groupDelay: {x: 1, y: 2}
+    groupRadius: 2
+    waveDelay: 7
+  - enemies:
+    - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
+      weight: 10
+      dropRange: {x: 0, y: 10}
+    groups: 1
     groupSize: {x: 1, y: 2}
     groupDelay: {x: 1, y: 2}
     groupRadius: 2
@@ -35,16 +47,7 @@ MonoBehaviour:
     - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
       weight: 10
       dropRange: {x: 0, y: 10}
-    groups: 2
-    groupSize: {x: 1, y: 3}
-    groupDelay: {x: 1, y: 2}
-    groupRadius: 2
-    waveDelay: 7
-  - enemies:
-    - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
-      weight: 10
-      dropRange: {x: 0, y: 10}
-    groups: 2
+    groups: 1
     groupSize: {x: 1, y: 3}
     groupDelay: {x: 1, y: 2}
     groupRadius: 2
@@ -53,8 +56,8 @@ MonoBehaviour:
     - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
       weight: 10
       dropRange: {x: 0, y: 10}
-    groups: 2
-    groupSize: {x: 2, y: 3}
+    groups: 1
+    groupSize: {x: 2, y: 4}
     groupDelay: {x: 1, y: 2}
     groupRadius: 2
     waveDelay: 8
@@ -62,7 +65,7 @@ MonoBehaviour:
     - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
       weight: 10
       dropRange: {x: 0, y: 10}
-    groups: 3
+    groups: 2
     groupSize: {x: 1, y: 3}
     groupDelay: {x: 1, y: 2}
     groupRadius: 2
@@ -71,7 +74,7 @@ MonoBehaviour:
     - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
       weight: 10
       dropRange: {x: 0, y: 10}
-    groups: 3
+    groups: 2
     groupSize: {x: 2, y: 3}
     groupDelay: {x: 1, y: 3}
     groupRadius: 2
@@ -80,7 +83,7 @@ MonoBehaviour:
     - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
       weight: 10
       dropRange: {x: 0, y: 10}
-    groups: 4
+    groups: 2
     groupSize: {x: 2, y: 3}
     groupDelay: {x: 2, y: 3}
     groupRadius: 2.5
@@ -89,7 +92,7 @@ MonoBehaviour:
     - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
       weight: 10
       dropRange: {x: 0, y: 10}
-    groups: 4
+    groups: 2
     groupSize: {x: 3, y: 4}
     groupDelay: {x: 2, y: 3}
     groupRadius: 2.5
@@ -98,7 +101,7 @@ MonoBehaviour:
     - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
       weight: 10
       dropRange: {x: 0, y: 10}
-    groups: 5
+    groups: 3
     groupSize: {x: 3, y: 4}
     groupDelay: {x: 2, y: 3}
     groupRadius: 2.5
@@ -107,7 +110,7 @@ MonoBehaviour:
     - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
       weight: 10
       dropRange: {x: 0, y: 10}
-    groups: 5
+    groups: 3
     groupSize: {x: 3, y: 4}
     groupDelay: {x: 1, y: 3}
     groupRadius: 3
@@ -116,7 +119,7 @@ MonoBehaviour:
     - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
       weight: 10
       dropRange: {x: 0, y: 10}
-    groups: 6
+    groups: 3
     groupSize: {x: 2, y: 4}
     groupDelay: {x: 2, y: 4}
     groupRadius: 3
@@ -125,7 +128,7 @@ MonoBehaviour:
     - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
       weight: 10
       dropRange: {x: 0, y: 10}
-    groups: 6
+    groups: 4
     groupSize: {x: 2, y: 4}
     groupDelay: {x: 2, y: 4}
     groupRadius: 3
@@ -134,7 +137,7 @@ MonoBehaviour:
     - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
       weight: 10
       dropRange: {x: 0, y: 10}
-    groups: 6
+    groups: 4
     groupSize: {x: 3, y: 4}
     groupDelay: {x: 3, y: 4}
     groupRadius: 3
@@ -143,7 +146,7 @@ MonoBehaviour:
     - prefab: {fileID: 3121955686671688576, guid: dd9966263d4377f4e8f2864d4d96194e, type: 3}
       weight: 10
       dropRange: {x: 0, y: 10}
-    groups: 5
+    groups: 4
     groupSize: {x: 4, y: 5}
     groupDelay: {x: 4, y: 5}
     groupRadius: 4
@@ -155,8 +158,8 @@ MonoBehaviour:
     - prefab: {fileID: 4120170886141080293, guid: 41363e8c54b9f42428cb01783712d6aa, type: 3}
       weight: 15
       dropRange: {x: 0, y: 10}
-    groups: 4
-    groupSize: {x: 4, y: 5}
+    groups: 10
+    groupSize: {x: 1, y: 1}
     groupDelay: {x: 4, y: 5}
     groupRadius: 4
     waveDelay: 15
@@ -191,7 +194,7 @@ MonoBehaviour:
     - prefab: {fileID: 4120170886141080293, guid: 41363e8c54b9f42428cb01783712d6aa, type: 3}
       weight: 25
       dropRange: {x: 0, y: 10}
-    groups: 6
+    groups: 5
     groupSize: {x: 3, y: 4}
     groupDelay: {x: 3, y: 5}
     groupRadius: 4
@@ -203,7 +206,7 @@ MonoBehaviour:
     - prefab: {fileID: 4120170886141080293, guid: 41363e8c54b9f42428cb01783712d6aa, type: 3}
       weight: 25
       dropRange: {x: 0, y: 10}
-    groups: 6
+    groups: 5
     groupSize: {x: 3, y: 5}
     groupDelay: {x: 3, y: 5}
     groupRadius: 4
@@ -215,7 +218,7 @@ MonoBehaviour:
     - prefab: {fileID: 4120170886141080293, guid: 41363e8c54b9f42428cb01783712d6aa, type: 3}
       weight: 30
       dropRange: {x: 0, y: 10}
-    groups: 7
+    groups: 6
     groupSize: {x: 2, y: 5}
     groupDelay: {x: 2, y: 5}
     groupRadius: 4

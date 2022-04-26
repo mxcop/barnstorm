@@ -4,14 +4,13 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class SFXManager : MonoBehaviour
 {
-    [Range(0.0f, 1.0f)]
-    [SerializeField] private float volume;
+    [Range(0.0f, 1.0f), SerializeField] float volume;
     [SerializeField] private SoundLibraryEntry[] audioLibrary;
 
     private static SFXManager instance;
     private static AudioSource source;
 
-    private Dictionary<string, AudioClip> lib;
+    private Dictionary<string, SoundLibraryEntry> lib = new Dictionary<string, SoundLibraryEntry>();
 
     private void Awake()
     {
@@ -26,9 +25,8 @@ public class SFXManager : MonoBehaviour
     /// </summary>
     private void PopulateLibrary()
     {
-        lib = new Dictionary<string, AudioClip>();
         for (int i = 0; i < audioLibrary.Length; i++)
-            lib.Add(audioLibrary[i].name, audioLibrary[i].clip);
+            lib.Add(audioLibrary[i].name, audioLibrary[i]);
     }
 
     /// <summary>
@@ -37,9 +35,9 @@ public class SFXManager : MonoBehaviour
     /// <param name="clip">The name of the clip in the audio library.</param>
     public static void PlayClip(string clip)
     {
-        if (instance.lib.TryGetValue(clip, out AudioClip audio))
+        if (instance.lib.TryGetValue(clip, out SoundLibraryEntry entry))
         {
-            source.PlayOneShot(audio);
+            source.PlayOneShot(entry.clip, entry.volume);
         }
         else Debug.LogError($"Attempted to play non existing audio clip: \"{ clip }\"");
     }
@@ -50,12 +48,12 @@ public class SFXManager : MonoBehaviour
     /// <param name="clip">The name of the clip in the audio library.</param>
     public static void PlayMusic(string clip)
     {
-        if (instance.lib.TryGetValue(clip, out AudioClip audio))
+        if (instance.lib.TryGetValue(clip, out SoundLibraryEntry entry))
         {
             source.Stop();
             LeanTween.value(instance.gameObject, s => source.volume = s, source.volume, 0.0f, 0.5f).setOnComplete(() =>
             {
-                source.clip = audio;
+                source.clip = entry.clip;
                 source.loop = true;
                 source.Play();
                 LeanTween.value(instance.gameObject, s => source.volume = s, source.volume, instance.volume, 0.5f);
@@ -68,6 +66,7 @@ public class SFXManager : MonoBehaviour
     private struct SoundLibraryEntry
     {
         public string name;
+        [Range(0, 1)] public float volume;
         public AudioClip clip;
     }
 }

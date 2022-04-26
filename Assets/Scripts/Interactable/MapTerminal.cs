@@ -230,30 +230,22 @@ public class MapTerminal : MonoBehaviour, Interactable, IPlayerInputActions
 
     public void Input_BSouth(InputAction.CallbackContext c)
     {
-        if (c.canceled) RelinquishControl();
+        if (c.performed) RelinquishControl();
     }
 
     public void Input_BWest(InputAction.CallbackContext c)
     {
         // if (c.performed) RelinquishControl();
 
-        if (c.canceled) ToggleCurrentLevel();
+        if (c.performed) ToggleCurrentLevel();
     }
-
-    public void Input_DEast(InputAction.CallbackContext c) { }
-
-    public void Input_DNorth(InputAction.CallbackContext c) { }
-
-    public void Input_DSouth(InputAction.CallbackContext c) { }
-
-    public void Input_DWest(InputAction.CallbackContext c) { }
 
     public void Input_LStick(InputAction.CallbackContext c)
     {
         if (c.phase != InputActionPhase.Performed) return;
 
         // Indicate to the player that they first have to cancel the level.
-        if (hasSelected == true) { ButtonHintBop(); return; }
+        //if (hasSelected == true) { ButtonHintBop(); return; }
 
         Vector2 norm = c.ReadValue<Vector2>().normalized;
         Direction? d = null;
@@ -279,6 +271,14 @@ public class MapTerminal : MonoBehaviour, Interactable, IPlayerInputActions
     }
 
     public void Input_ShoulderR(InputAction.CallbackContext c)
+    {
+    }
+
+    public void Input_TriggerR(InputAction.CallbackContext c)
+    {
+    }
+
+    public void Input_TriggerL(InputAction.CallbackContext c)
     {
     }
     #endregion

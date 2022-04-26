@@ -38,6 +38,13 @@ public class Container<T> where T : Item
     }
 
     /// <summary>
+    /// Check if two items are equal in type and variation.
+    /// </summary>
+    private bool AreEqual(T a, T b) {
+        return a.GetType() == b.GetType() && a.variation == b.variation;
+    }
+
+    /// <summary>
     /// Finds first matching item in the inventory.
     /// </summary>
     /// <param name="item">The item to match.</param>
@@ -46,11 +53,13 @@ public class Container<T> where T : Item
     /// <returns>Whether there is a matching slot.</returns>
     private bool FirstMatch(T item, int num, out int slot)
     {
+        UnityEngine.Debug.Log("Item Type: " + item.GetType());
+
         for (int i = 0; i < data.Length; i++)
         {
             ContainedItem<T> match = data[i];
 
-            if (match != null && match.item.GetType() == item.GetType() && match.HasSpaceFor(num))
+            if (match != null && AreEqual(match.item, item) && match.HasSpaceFor(num))
             {
                 slot = i; return true;
             }
@@ -62,15 +71,16 @@ public class Container<T> where T : Item
     /// Find the first item of a specific type in the container.
     /// </summary>
     /// <param name="item">The item to match.</param>
+    /// <param name="variation">The variation to match.</param>
     /// <param name="slot">The index of the matched slot.</param>
     /// <returns>Whether there is a matching slot.</returns>
-    public bool FirstItemOfType(Type item, out int slot)
+    public bool FirstItemOfType(Type item, int variation, out int slot)
     {
         for (int i = 0; i < data.Length; i++)
         {
             ContainedItem<T> match = data[i];
 
-            if (match != null && match.item.GetType() == item)
+            if (match != null && match.item.GetType() == item && match.item.variation == variation)
             {
                 slot = i; return true;
             }
@@ -159,7 +169,7 @@ public class Container<T> where T : Item
                 OnUpdate.Invoke(slot, data[slot]);
                 return true;
             }
-            else if (data[slot].item.GetType() == item.item.GetType() && data[slot].HasSpaceFor(item.num))
+            else if (AreEqual(data[slot].item, item.item) && data[slot].HasSpaceFor(item.num))
             {
                 data[slot].num += item.num;
                 OnUpdate.Invoke(slot, data[slot]);
@@ -186,7 +196,7 @@ public class Container<T> where T : Item
                 OnUpdate.Invoke(slot, data[slot]);
                 return true;
             }
-            else if (data[slot].item.GetType() == item.GetType() && data[slot].HasSpaceFor(amount))
+            else if (AreEqual(data[slot].item, item) && data[slot].HasSpaceFor(amount))
             {
                 data[slot].num += amount;
                 OnUpdate.Invoke(slot, data[slot]);
@@ -209,7 +219,7 @@ public class Container<T> where T : Item
         {
             if (IsOpen(slot))
                 return true;
-            else if (data[slot].item.GetType() == item.GetType() && data[slot].HasSpaceFor(amount))
+            else if (AreEqual(data[slot].item, item) && data[slot].HasSpaceFor(amount))
                 return true;
         }
         return false;
@@ -300,10 +310,10 @@ public class Container<T> where T : Item
     /// Check if the inventory contains an item of this type.
     /// </summary>
     /// <param name="item">The type of item to look for.</param>
-    public bool Contains(Type item)
+    public bool Contains(Type item, int variation)
     {
         for (int i = 0; i < data.Length; i++)
-            if (data[i].item.GetType() == item) return true;
+            if (data[i].item.GetType() == item && data[i].item.variation == variation) return true;
         return false;
     }
 
@@ -312,9 +322,9 @@ public class Container<T> where T : Item
     /// </summary>
     /// <param name="item">The type of item to look for.</param>
     /// /// <param name="slot">The index of the slot to check.</param>
-    public bool ContainsAt(Type item, int slot)
+    public bool ContainsAt(Type item, int variation, int slot)
     {
-        return !(data[slot] is null) && data[slot].item.GetType() == item;
+        return !(data[slot] is null) && data[slot].item.GetType() == item && data[slot].item.variation == variation;
     }
 
     public override string ToString()

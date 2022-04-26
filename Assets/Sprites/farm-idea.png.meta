@@ -109,12 +109,12 @@ TextureImporter:
       name: seed_extractor
       rect:
         serializedVersion: 2
-        x: 130
-        y: 139
+        x: 66
+        y: 135
         width: 12
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 23
+      alignment: 9
+      pivot: {x: 0.5, y: 0.45}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

@@ -60,9 +60,9 @@ public class Inventory : MonoBehaviour
         bool invHasItem = container.Peek(0, out Item invItem);
         bool playerHasItem = player.container.Peek(slot, out Item _);
 
-        bool invItemExists = container.PullItem(0, out ContainedItem<Item> inventoryItem, !(invHasItem && playerHasItem) || player.container.ContainsAt(invItem.GetType(), slot));
+        bool invItemExists = container.PullItem(0, out ContainedItem<Item> inventoryItem, !(invHasItem && playerHasItem) || player.container.ContainsAt(invItem.GetType(), invItem.variation, slot));
 
-        bool sameType = invItemExists && player.container.ContainsAt(inventoryItem.item.GetType(), slot);
+        bool sameType = invItemExists && player.container.ContainsAt(inventoryItem.item.GetType(), inventoryItem.item.variation, slot);
 
         if (sameType == false)
         {

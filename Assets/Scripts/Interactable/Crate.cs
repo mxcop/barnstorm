@@ -54,7 +54,7 @@ public class Crate : Inventory, Interactable
     /// <summary>
     /// Called whenever there is an update to the container.
     /// </summary>
-    private void OnUpdate(int _, ContainedItem<Item> item)
+    protected virtual void OnUpdate(int _, ContainedItem<Item> item)
     {
         Sprite overlay = lid;
 

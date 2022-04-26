@@ -22,7 +22,7 @@ TagManager:
   - RetreatingEnemy
   - Projectile
   - DroppedItem
-  - 
+  - NonCollision
   - 
   - 
   - 

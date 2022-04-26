@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Systems.Inventory;
 using UnityEngine;
 
-public class TurretController : Inventory, Interactable
+public class TurretController : Inventory, Interactable, ITriggerRerouting
 {
     public Food ammunition;
 
@@ -155,7 +155,7 @@ public class TurretController : Inventory, Interactable
         targetEnemies.Insert(0, closest);
     }
 
-    private void OnTriggerEnter2D(Collider2D coll)
+    public void ReTriggerEnter(Collider2D coll)
     {
         if (!coll.CompareTag("Enemy"))
             return;
@@ -164,7 +164,9 @@ public class TurretController : Inventory, Interactable
         SortTargets();
     }
 
-    private void OnTriggerExit2D(Collider2D coll)
+    public void ReTriggerStay(Collider2D coll) { }
+
+    public void ReTriggerExit(Collider2D coll)
     {
         if (!coll.CompareTag("Enemy"))
             return;
@@ -172,5 +174,4 @@ public class TurretController : Inventory, Interactable
         targetEnemies.Remove(coll.gameObject.GetComponent<CowEnemy>());
         SortTargets();
     }
-
 }

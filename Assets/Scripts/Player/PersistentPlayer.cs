@@ -11,6 +11,7 @@ public class PersistentPlayer : MonoBehaviour, IPlayerInputActions
     SortedDictionary<byte, IPlayerInputActions> controlLayers = new SortedDictionary<byte, IPlayerInputActions>();
 
     public DeviceProfileSprites controlsProfile;
+    bool dontSendInput;
 
     /// <summary>
     /// Sets the specific control layer to the given IPlayerInputActions interface
@@ -21,6 +22,7 @@ public class PersistentPlayer : MonoBehaviour, IPlayerInputActions
     {
         if (!controlLayers.ContainsKey(layer)) controlLayers.Add(layer, p);
 
+        dontSendInput = true;
         InitializeTopLevel();
     }
 
@@ -62,68 +64,69 @@ public class PersistentPlayer : MonoBehaviour, IPlayerInputActions
 
     #region Input rerouting
     public void Input_BEast(InputAction.CallbackContext c)
-    {
-        currentlyControlling?.Input_BEast(c);
+    {        
+        if(!dontSendInput) currentlyControlling?.Input_BEast(c);
+        dontSendInput = false;
     }
 
     public void Input_BNorth(InputAction.CallbackContext c)
     {
-        currentlyControlling?.Input_BNorth(c);
+        if (!dontSendInput) currentlyControlling?.Input_BNorth(c);
+        dontSendInput = false;
     }
 
     public void Input_BSouth(InputAction.CallbackContext c)
     {
-        currentlyControlling?.Input_BSouth(c);
+        if (!dontSendInput) currentlyControlling?.Input_BSouth(c);
+        dontSendInput = false;
     }
 
     public void Input_BWest(InputAction.CallbackContext c)
     {
-        currentlyControlling?.Input_BWest(c);
-    }
-
-    public void Input_DEast(InputAction.CallbackContext c)
-    {
-        currentlyControlling?.Input_DEast(c);
-    }
-
-    public void Input_DNorth(InputAction.CallbackContext c)
-    {
-        currentlyControlling?.Input_DNorth(c);
-    }
-
-    public void Input_DSouth(InputAction.CallbackContext c)
-    {
-        currentlyControlling?.Input_DSouth(c);
-    }
-
-    public void Input_DWest(InputAction.CallbackContext c)
-    {
-        currentlyControlling?.Input_DWest(c);
+        if (!dontSendInput) currentlyControlling?.Input_BWest(c);
+        dontSendInput = false;
     }
 
     public void Input_LStick(InputAction.CallbackContext c)
     {
-        currentlyControlling?.Input_LStick(c);
+        if (!dontSendInput) currentlyControlling?.Input_LStick(c);
+        dontSendInput = false;
     }
 
     public void Input_NumberSelect(int num)
     {
-        currentlyControlling?.Input_NumberSelect(num);
+        if (!dontSendInput) currentlyControlling?.Input_NumberSelect(num);
+        dontSendInput = false;
     }
 
     public void Input_RStick(InputAction.CallbackContext c)
     {
-        currentlyControlling?.Input_RStick(c);
+        if (!dontSendInput) currentlyControlling?.Input_RStick(c);
+        dontSendInput = false;
     }
 
     public void Input_ShoulderL(InputAction.CallbackContext c)
     {
-        currentlyControlling?.Input_ShoulderL(c);
+        if (!dontSendInput) currentlyControlling?.Input_ShoulderL(c);
+        dontSendInput = false;
     }
 
     public void Input_ShoulderR(InputAction.CallbackContext c)
     {
-        currentlyControlling?.Input_ShoulderR(c);
+        if (!dontSendInput) currentlyControlling?.Input_ShoulderR(c);
+        dontSendInput = false;
+    }
+
+    public void Input_TriggerL(InputAction.CallbackContext c)
+    {
+        if (!dontSendInput) currentlyControlling?.Input_TriggerL(c);
+        dontSendInput = false;
+    }
+
+    public void Input_TriggerR(InputAction.CallbackContext c)
+    {
+        if (!dontSendInput) currentlyControlling?.Input_TriggerR(c);
+        dontSendInput = false;
     }
 
     public void Initialize()

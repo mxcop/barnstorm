@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6800104492622697202
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6436662360004312709}
+  - component: {fileID: 5020557914964097029}
+  - component: {fileID: 2146531249738784197}
+  m_Layer: 12
+  m_Name: EnemyDetection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6436662360004312709
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6800104492622697202}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8553758800243562975}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &5020557914964097029
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6800104492622697202}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 1}
+  serializedVersion: 2
+  m_Radius: 5
+--- !u!114 &2146531249738784197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6800104492622697202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ecd3dac7746b1643afaeb7b59dfabd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collisionTarget: {fileID: 0}
+  _triggerTarget: {fileID: 8553758800243562973}
 --- !u!1 &8553758799757301754
 GameObject:
   m_ObjectHideFlags: 0
@@ -60,7 +122,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8553758800243562975}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8553758799851338836
 SpriteRenderer:
@@ -198,7 +260,6 @@ GameObject:
   - component: {fileID: 8553758800243562975}
   - component: {fileID: 8553758800243562974}
   - component: {fileID: 470106913}
-  - component: {fileID: 6774032272002536594}
   - component: {fileID: 415339341}
   m_Layer: 6
   m_Name: Turret
@@ -219,6 +280,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8553758801196294227}
+  - {fileID: 6436662360004312709}
   - {fileID: 8553758799851338837}
   - {fileID: 8553758801580227916}
   m_Father: {fileID: 0}
@@ -290,25 +352,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 115c7b27dd771cd4186631f1d836c4b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: 0
   showRadius: 0.75
   offset: {x: 0, y: 2.25}
---- !u!58 &6774032272002536594
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8553758800243562973}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1}
-  serializedVersion: 2
-  m_Radius: 5
 --- !u!70 &415339341
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -753,7 +798,7 @@ Transform:
   - {fileID: 8553758801471292070}
   - {fileID: 8553758800934422139}
   m_Father: {fileID: 8553758800243562975}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8553758801797364905
 GameObject:

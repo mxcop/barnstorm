@@ -45,5 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: -3736146023192578149, guid: 3703f38d2ad9ca247bfd64177e9a999f, type: 3}
   useAction: 1
+  variation: 3
   useAction_cropType: 4
   maximumStack: 999

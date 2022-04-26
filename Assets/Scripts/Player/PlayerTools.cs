@@ -34,7 +34,7 @@ public class PlayerTools : MonoBehaviour
         {
             case ItemAction.None:
                 int switchTo;
-                if (plr.container.FirstItemOfType(typeof(Hoe), out switchTo))
+                if (plr.container.FirstItemOfType(typeof(Hoe), 0, out switchTo))
                 {
                     plr.HotbarSwitch(switchTo);
                     goto case ItemAction.Till;
@@ -64,7 +64,7 @@ public class PlayerTools : MonoBehaviour
         Vector2Int v = GetPlayerOffsetPos(ang);
 
         targetPos = new Vector3(v.x+0.5f,v.y+0.5f,0);
-        transform.position = Vector3.Lerp(transform.position, targetPos, lerpSpeed);
+        transform.position = targetPos;
 
         if (autoToolReuse) ToolAction();
     }

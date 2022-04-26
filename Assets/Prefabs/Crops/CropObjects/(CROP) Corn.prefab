@@ -49,22 +49,22 @@ MonoBehaviour:
   - sprite: {fileID: -7528199513585423542, guid: 9f172822beda7d246a8fd39bc6f83168, type: 3}
     growthDelay: 4
     _item: {fileID: 2463005729711218515, guid: 7311c41d7c5b6404fb390292c9e7f465, type: 3}
-    amount: {x: 0, y: 0}
+    amount: {x: 1, y: 1}
     scoreFromHarvest: 0
   - sprite: {fileID: 736865317306615500, guid: 9f172822beda7d246a8fd39bc6f83168, type: 3}
     growthDelay: 16
     _item: {fileID: 2463005729711218515, guid: 7311c41d7c5b6404fb390292c9e7f465, type: 3}
-    amount: {x: 0, y: 0}
+    amount: {x: 1, y: 1}
     scoreFromHarvest: 0
   - sprite: {fileID: 3482569451149137530, guid: 9f172822beda7d246a8fd39bc6f83168, type: 3}
     growthDelay: 16
     _item: {fileID: 2463005729711218515, guid: 7311c41d7c5b6404fb390292c9e7f465, type: 3}
-    amount: {x: 0, y: 0}
+    amount: {x: 1, y: 1}
     scoreFromHarvest: 0
   - sprite: {fileID: -5784410927573482350, guid: 9f172822beda7d246a8fd39bc6f83168, type: 3}
     growthDelay: 16
     _item: {fileID: 2463005729711218515, guid: 7311c41d7c5b6404fb390292c9e7f465, type: 3}
-    amount: {x: 0, y: 0}
+    amount: {x: 3, y: 4}
     scoreFromHarvest: 0
   - sprite: {fileID: 7448935753994061408, guid: 9f172822beda7d246a8fd39bc6f83168, type: 3}
     growthDelay: 0

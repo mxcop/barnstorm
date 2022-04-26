@@ -6,8 +6,6 @@ using Cinemachine;
 public class Player : PlayerInventory, IPlayerInputActions
 {
     bool isInitialized;
-
-    bool isBeingControlled;
     public int playerID;
 
     [Header("Movement")]
@@ -15,28 +13,28 @@ public class Player : PlayerInventory, IPlayerInputActions
     [SerializeField] float maxSpeed;
     [SerializeField] float friction;
     [SerializeField] float outOfBoundsRadius;
+    private Vector2 inputMove;
+    private float lastInputMag;
+    private Vector2 move;
     [Space]
     [Header("Interactions")]
     [SerializeField] float interactCheckRadius;
     [SerializeField] ContactFilter2D cf;
+    private Interactable currentInteraction;
+    private Inventory currentInventory;
 
     [HideInInspector] public DeviceProfileSprites profile;
     [HideInInspector] public bool isInteracting;
     [HideInInspector] public bool isInBuilding;
-
     private Animator anim;
     public PlayerAngle animDir;
-
-    private Vector2 inputMove;
-    private float lastInputMag;
-    private Vector2 move;
     private int queuedHotbarSelect = -1;
-
-    private Interactable currentInteraction;
-    private Inventory currentInventory;
-
     [SerializeField] GameObject playerToolsPrefab;
     PlayerTools tools;
+
+    private Vector2 inputShoot;
+    float lastShootInput = Mathf.NegativeInfinity;
+    float lastShootPressure;
 
     // do not add base.Awake to this, this is to stop the base awake code from being ran immediately
     protected override void Awake()
@@ -46,9 +44,7 @@ public class Player : PlayerInventory, IPlayerInputActions
     }
 
     public void Initialize()
-    {
-        isBeingControlled = true;
-
+    {        
         if (!isInitialized)
         {
             isInitialized = true;
@@ -60,7 +56,7 @@ public class Player : PlayerInventory, IPlayerInputActions
             tools.playerAnim = anim;
             isInteracting = false;
 
-            FindObjectOfType<CinemachineTargetGroup>()?.AddMember(gameObject.transform, 1f, 1.25f);
+            FindObjectOfType<CinemachineTargetGroup>()?.AddMember(gameObject.transform, 1f, 6.25f);
         }
     }
 
@@ -72,7 +68,7 @@ public class Player : PlayerInventory, IPlayerInputActions
     private void Update()
     {
         //go no further if not being controlled, but try to get the player
-        if (!isBeingControlled)
+        if (!isInitialized)
         {
             if (PersistentPlayerManager.main.TryGetPlayer(playerID, out PersistentPlayer p))
             {
@@ -112,11 +108,27 @@ public class Player : PlayerInventory, IPlayerInputActions
 
         // Prevent player out of bounds
         transform.localPosition = Vector2.ClampMagnitude(transform.localPosition, outOfBoundsRadius);
+
+        // Player continuous shooting
+        if (lastShootPressure > 0.3f && lastShootInput + (1.1f - lastShootPressure) < Time.time)
+        {
+            lastShootInput = Time.time;
+            if (container.PullItem(slot, 1, out Systems.Inventory.ContainedItem<Item> item))
+            {
+                if(inputShoot != Vector2.zero) ThrowItem(item);
+                else DroppedItem.DropUp(item.item, item.num, transform.position);
+            }
+        }
     }
 
     private void FixedUpdate()
     {
         transform.Translate(move);
+    }
+
+    void ThrowItem(Systems.Inventory.ContainedItem<Item> item)
+    {
+        DroppedItem.DropOut(item.item, item.num, transform.position, inputShoot.normalized, inputShoot.magnitude * 4f);
     }
 
     #region Interactables / Inventories
@@ -156,10 +168,10 @@ public class Player : PlayerInventory, IPlayerInputActions
         if (currentInteraction != null)
         {
             currentInteraction.BreakInteraction();
-            isInteracting = false;
-            currentInteraction = null;
-            currentInventory = null;
         }
+        isInteracting = false;
+        currentInteraction = null;
+        currentInventory = null;
     }
 
     bool InteractWithSelected(InteractButton usedButton)
@@ -197,7 +209,7 @@ public class Player : PlayerInventory, IPlayerInputActions
 
     public void Input_RStick(CallbackContext c)
     {
-        throw new System.NotImplementedException();
+        inputShoot = c.ReadValue<Vector2>();
     }
     #endregion
 
@@ -206,13 +218,12 @@ public class Player : PlayerInventory, IPlayerInputActions
     {
         if (c.phase != InputActionPhase.Performed) return;
 
-        if (CheckForInteractable()) InteractWithSelected(InteractButton.North);
-
         if (currentInventory != null)
         {
             currentInventory.QuickSplit(this, slot);
         }
-        
+
+        if (CheckForInteractable()) InteractWithSelected(InteractButton.North);        
     }
 
     public void Input_BEast(CallbackContext c)
@@ -232,7 +243,7 @@ public class Player : PlayerInventory, IPlayerInputActions
         if(shouldDropItem)
         {
             BreakInteraction();
-            if (container.PullItem(slot, out var item))
+            if (container.PullItem(slot, out Systems.Inventory.ContainedItem<Item> item))
             {
                 DroppedItem.DropUp(item.item, item.num, transform.position);
             }
@@ -244,12 +255,15 @@ public class Player : PlayerInventory, IPlayerInputActions
     {
         switch (c.phase)
         {
-            case InputActionPhase.Started:
             case InputActionPhase.Performed:
-                if (c.action.WasPerformedThisFrame())
+                bool interactableExists = false;
+                interactableExists = CheckForInteractable();
+                if (InteractWithSelected(InteractButton.South))
                 {
-                    if (!isInBuilding) tools.PlayerUse();
+
                 }
+                else if (!isInBuilding) tools.PlayerUse();
+
                 break;
 
             case InputActionPhase.Canceled:
@@ -257,7 +271,6 @@ public class Player : PlayerInventory, IPlayerInputActions
                 break;
         }
 
-        if (CheckForInteractable()) InteractWithSelected(InteractButton.South);
 
     }
 
@@ -265,34 +278,12 @@ public class Player : PlayerInventory, IPlayerInputActions
     {
         if (c.phase != InputActionPhase.Performed) return;
 
-        if (CheckForInteractable()) InteractWithSelected(InteractButton.West);
 
         if (currentInventory != null)
         {
             currentInventory.QuickSwap(this, slot);
         }
-    }
-    #endregion
-
-    #region DPad inputs
-    public void Input_DNorth(CallbackContext c)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void Input_DEast(CallbackContext c)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void Input_DSouth(CallbackContext c)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void Input_DWest(CallbackContext c)
-    {
-        throw new System.NotImplementedException();
+        if (CheckForInteractable()) InteractWithSelected(InteractButton.West);
     }
     #endregion
 
@@ -312,6 +303,18 @@ public class Player : PlayerInventory, IPlayerInputActions
             RotateLeft();
         }
     }
+    #endregion
+
+    #region Trigger Buttons
+    public void Input_TriggerR(CallbackContext c)
+    {
+    }
+
+    public void Input_TriggerL(CallbackContext c)
+    {
+        lastShootPressure= c.ReadValue<float>();        
+    }
+    #endregion
 
     public void Input_NumberSelect(int num)
     {
@@ -320,5 +323,4 @@ public class Player : PlayerInventory, IPlayerInputActions
         if (num == 2) RotateRight();
         //HotbarSwitch(num);
     }
-    #endregion
 }

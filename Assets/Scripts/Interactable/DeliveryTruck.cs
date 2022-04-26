@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
-using Systems.Inventory;
-using UnityEngine.SceneManagement;
+using System.Linq;
 using UnityEngine;
 
 public class DeliveryTruck : MonoBehaviour
@@ -9,19 +7,25 @@ public class DeliveryTruck : MonoBehaviour
     [SerializeField] private GameObject colliderObject;
     [SerializeField] private GameObject cover;
     [SerializeField] private float bounceStrength;
+    [SerializeField] private ControlIndicator crate;
 
     [SerializeField] private int storedFood;
     private int startFood;
 
     private bool coverOn = false;
     private bool arrived = false;
+    private bool gameoverTrigged = false;
 
     private List<GameObject> players = new List<GameObject>();
     private Animator animator;
 
     private void Start() {
+        crate.enabled = false;
         animator = GetComponent<Animator>();
         startFood = storedFood;
+
+        // Transition in.
+        CameraTransitions.CircleTransitionIn(transform);
     }
 
     private void FixedUpdate() {
@@ -32,7 +36,7 @@ public class DeliveryTruck : MonoBehaviour
             coverOn = false;
         }
         else if (players.Count <= 0 && !coverOn)
-{
+        {
             // Fade in
             LeanTween.alpha(cover, 1f, 0.15f);
             coverOn = true;
@@ -52,6 +56,7 @@ public class DeliveryTruck : MonoBehaviour
             collision.transform.SetParent(null);
             players.Remove(collision.gameObject);
             SetPlayerInsideTruck(collision.gameObject, false);
+            collision.transform.rotation = Quaternion.identity;
         }
     }
 
@@ -60,15 +65,22 @@ public class DeliveryTruck : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy")) {
             GameObject collObj = collision.gameObject;
 
-            Debug.Log(collision.contacts[0].point);
             collObj.GetComponent<Rigidbody2D>().AddForceAtPosition((collision.transform.position - transform.position).normalized * bounceStrength, collision.contacts[0].point);
             CowEnemy enemy = collObj.GetComponent<CowEnemy>();
             storedFood -= Mathf.FloorToInt(enemy.hunger);
 
-            // TODO: Leantwean Shake truck
+            // Truck shake
+            LeanTween.cancel(gameObject);
+            LeanTween.rotateZ(gameObject, Random.Range(-3.5f, 3.5f), 0.1f).setRepeat(4).setOnComplete(() => transform.rotation = Quaternion.identity);
 
             // Gameover.
-            if (storedFood <= 0) Debug.Log("GameOver!");
+            if (storedFood <= 0 && !gameoverTrigged) {
+                gameoverTrigged = true;
+                Transform[] players = GameObject.FindGameObjectsWithTag("Player").Select(p => p.transform).ToArray();
+                CameraTransitions.CircleTransitionOut(players).setOnComplete(() => {
+                    LevelLoader.main.ExitLevel();
+                });
+            }
         }
     }
 
@@ -77,7 +89,11 @@ public class DeliveryTruck : MonoBehaviour
         player.GetComponent<Player>().isInBuilding = val;
     }
 
-    public void HasArived() {
+    /// <summary>
+    /// Called from the animator when the truck has arrived.
+    /// </summary>
+    public void Arrived() {
+        crate.enabled = true;
         arrived = true;
         colliderObject.SetActive(false);
     }
