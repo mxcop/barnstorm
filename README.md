@@ -8,4 +8,4 @@ Unity ``2021.3.1f1``<br>
 
 ## Copyright
 ``Barnstorm``  Copyright (C) 2022  ``Max Coppen`` ``Milan Bonten`` ``Bram van der Cruijsen``<br>
-License  ``GPLv3`` + ``Common Clause``
+License  ``MIT``
